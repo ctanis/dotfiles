@@ -1,0 +1,5 @@
+(add-to-list 'load-path "~/.dotfiles/elisp/site-lisp/ctanis")
+(add-to-list 'load-path "~/.dotfiles/elisp/site-lisp/other")
+(load-library "init")
+(if (file-readable-p "~/.emacs-local")
+    (load-file "~/.emacs-local"))

@@ -1,0 +1,14 @@
+#ctrl-a as a screen key sucks for emacs
+escape "``"
+autodetach on
+activity "activity: window ~%"
+vbell_msg "bell: window ~%"
+vbellwait 2
+allpartial off
+startup_message off
+
+#should change xterm title:
+#
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+defhstatus "screen ^E (^Et) | $USER@^EH"
+hardstatus off

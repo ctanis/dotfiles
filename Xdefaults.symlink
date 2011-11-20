@@ -1,0 +1,5 @@
+XTerm*Font:  9x15
+XTerm*vt100*metaSendsEscape:  true
+XTerm*Background: black
+XTerm*Foreground: red
+XTerm*ScrollBar: on

@@ -1,0 +1,10 @@
+#set show-all-if-ambiguous on
+set editing-mode emacs
+set keymap emacs
+"\ep": history-search-backward
+"\en": history-search-forward
+
+set completion-ignore-case on
+set completion-prefix-display-length 2
+"\ej": menu-complete
+

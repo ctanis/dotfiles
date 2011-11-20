@@ -1,0 +1,38 @@
+export EDITOR=vi
+export PAGER=less
+export GNUTERM=X11
+
+if [ ! $TEXBIN ]; then
+   export TEXBIN=/usr/local/texlive/2011/bin/universal-darwin
+fi
+
+if [ $WINDOW ]; then
+export SCREEN_WINDOW="(screen $WINDOW) "
+fi
+
+if [ $TERM != 'dumb' ]; then
+export PS1='\h:\W\$ \[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
+else
+#mostly for emacs shell...
+export PS1='\h:\W\$ '
+fi
+
+
+export PATH=~/bin:~/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$TEXBIN
+
+       
+## configure bash history stuff
+shopt -s histappend
+shopt -s cmdhist
+export HISTIGNORE="&:history*"
+export HISTFILESIZE=1000
+export HISTSIZE=1000
+export PROMPT_COMMAND="history -a"
+
+# no colors in my ls
+export LS_OPTIONS='-p'
+alias ls='ls $LS_OPTIONS'
+
+# extended glob features
+shopt -s extglob
+
