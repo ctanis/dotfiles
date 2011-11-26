@@ -33,6 +33,14 @@ export PROMPT_COMMAND="history -a"
 export LS_OPTIONS='-p'
 alias ls='ls $LS_OPTIONS'
 
+# default to screen reconnect if possible
+alias scr=/usr/bin/screen
+alias screen='screen -R'
+
 # extended glob features
 shopt -s extglob
+
+if [ -f ~/.bash-local ]; then
+	source ~/.bash-local
+fi
 
