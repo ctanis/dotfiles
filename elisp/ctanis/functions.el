@@ -515,3 +515,12 @@ in the mode line."
     (mkdir dir)
     (find-file file)))
 
+
+;a little latex convenience
+(defun latex_verbify()
+  (interactive)
+  (save-excursion
+    (kill-region (point) (mark))
+    (insert "\\verb|")
+    (yank)
+    (insert "|")))
