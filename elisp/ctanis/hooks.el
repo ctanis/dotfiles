@@ -3,6 +3,13 @@
 (autoload 'uncompress-while-visiting "uncompress")
 (autoload 'tar-mode "tar-mode" "View .tar files" nil nil)
 
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+
+
 (mapcar '(lambda (a)
 	   (add-to-list 'auto-mode-alist a))
 	'(("\\.Z$" . uncompress-while-visiting)
