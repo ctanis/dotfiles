@@ -1,0 +1,43 @@
+\ProvidesPackage{crt_exam}
+
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{graphicx}
+
+%\newcommand{\correct}{\textbf{*}}
+\newcommand{\correct}{}
+
+\newcommand{\header}[3]
+{
+\begin{center}
+\Large #1
+
+\small #2, #3
+\end{center}
+}
+
+
+\newenvironment{exam} {
+    \newenvironment{question} 
+                   {\item\begin{minipage}[t]{5in}}
+                   {\end{minipage}}
+
+   \begin{enumerate}
+   \setlength{\parindent}{0pt}
+   \setlength{\parskip}{20pt}
+   \setlength{\itemsep}{10pt}
+}
+{\end{enumerate}}
+
+\newenvironment{directions} {\large\begin{bfseries}}{\end{bfseries}}
+
+
+\lstset{
+        basicstyle=\ttfamily,
+        showspaces=false,
+        showstringspaces=false,
+        xleftmargin=50px
+}
+
+
