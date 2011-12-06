@@ -1,9 +1,9 @@
 \ProvidesPackage{crt_exam}
 
 \usepackage{fullpage}
-\usepackage{listings}
 \usepackage{courier}
 \usepackage{graphicx}
+\usepackage{verbatim}
 
 %\newcommand{\correct}{\textbf{*}}
 \newcommand{\correct}{}
@@ -32,13 +32,19 @@
 {\end{enumerate}}
 
 \newenvironment{directions} {\large\begin{bfseries}}{\end{bfseries}}
+\newenvironment{code}
+               {%
+                 \verbatim
+               }{%
+                 \endverbatim
+               }
 
-
-\lstset{
-        basicstyle=\ttfamily,
-        showspaces=false,
-        showstringspaces=false,
-        xleftmargin=50px
-}
+%% \lstset{
+%%         basicstyle=\ttfamily,
+%%         keywordstyle=\ttfamily,
+%%         showspaces=false,
+%%         showstringspaces=false,
+%%         xleftmargin=50px
+%% }
 
 
