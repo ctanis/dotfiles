@@ -353,7 +353,6 @@
 
 
 
-
 (if window-system
     (progn
       (scroll-bar-mode nil)

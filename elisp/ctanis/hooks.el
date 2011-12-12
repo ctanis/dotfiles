@@ -1,4 +1,6 @@
 ;; auto-load
+(setq font-lock-maximum-decoration (list (cons t nil)))
+
 (setq auto-mode-alist (cons '("\\.h$" . c++-mode) auto-mode-alist))
 (autoload 'uncompress-while-visiting "uncompress")
 (autoload 'tar-mode "tar-mode" "View .tar files" nil nil)
@@ -155,6 +157,22 @@
 	  '(lambda ()
 	     (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
 	     (local-set-key "\C-m" 'newline-and-indent)))
+
+(defalias 'perl-mode 'cperl-mode)
+(setq cperl-invalid-face (quote off))
+;(setq cperl-hairy t)
+(add-to-list 'font-lock-maximum-decoration (cons 'cperl-mode 1))
+
+
+(add-hook 'cperl-mode-hook
+	  '(lambda ()
+	     (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
+	     (local-set-key "\C-m" 'newline-and-indent)
+	     (local-set-key "\M-o\M-v" 'cperl-get-help)
+	     (local-set-key "\M-o\M-h" 'cperl-perldoc-at-point)
+	     (local-set-key "\M-o\C-H" 'cperl-perldoc)
+	     (local-set-key "\M-o|" 'cperl-lineup)
+))
 
 
 
