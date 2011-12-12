@@ -1,0 +1,22 @@
+#! /usr/bin/perl
+
+my $p = shift @ARGV or die;
+my ($h,$n) = $p =~ /^([^:]+).*?([^\/]+)\/?$/;
+
+# print '1',$h, "\n";
+# print '2',$n, "\n";
+
+$f = "$h:$n";
+
+die "illegal arguments" unless $f;
+
+mkdir "/Volumes/$f" or print "failure to make mount dir $f";
+$stat = `/usr/local/bin/sshfs $p /Volumes/$f 2>&1`;
+
+if ($stat) {
+    print $stat;
+}
+else
+{
+    print "mount successful on /Volumes/$f\n";
+}
