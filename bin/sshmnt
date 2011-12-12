@@ -13,7 +13,7 @@ my ($h,$n) = $p =~ /^([^:]+).*?([^\/]+)\/?$/;
 # print '1',$h, "\n";
 # print '2',$n, "\n";
 
-$f = "$h:$n";
+$f = "$h$n";
 
 die "sshmnt: illegal argument\n" unless $f;
 
@@ -28,4 +28,7 @@ if ($stat) {
 else
 {
     print "mount successful on /Volumes/$f\n";
+    sleep 1;
+    system "open /Volumes/$f/.";
 }
+
