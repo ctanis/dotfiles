@@ -790,9 +790,16 @@ This will not take effect until Emacs is restarted."
   "\\(^\\|[^\\]\\)\\(\\([*_]\\{2\\}\\)\\(.\\|\n[^\n]\\)*?[^\\ ]\\3\\)"
   "Regular expression for matching bold text.")
 
+;; (defconst markdown-regex-italic
+;;   "\\(^\\|[^\\]\\)\\(\\([*_]\\)\\([^ \\]\\3\\|[^ ]\\(.\\|\n[^\n]\\)*?[^\\ ]\\3\\)\\)"
+;;   "Regular expression for matching italic text.")
+
 (defconst markdown-regex-italic
-  "\\(^\\|[^\\]\\)\\(\\([*_]\\)\\([^ \\]\\3\\|[^ ]\\(.\\|\n[^\n]\\)*?[^\\ ]\\3\\)\\)"
+  "\\(^\\|[^\\]\\)\\B\\(\\([*_]\\)\\([^ \\]\\3\\|[^ ]\\(.\\|\N[^\N]\\)*?[^\\ ]\\3\\)\\)\\B"  
   "Regular expression for matching italic text.")
+
+
+
 
 (defconst markdown-regex-blockquote
   "^>.*$"
