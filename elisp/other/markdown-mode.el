@@ -1996,6 +1996,7 @@ Calls `markdown-cycle' with argument t."
     ;; Add header and footer and switch to html-mode.
     (save-current-buffer
       (set-buffer output-buffer-name)
+      (cd "/tmp")
       (goto-char (point-min))
       (unless (markdown-output-standalone-p)
         (markdown-add-xhtml-header-and-footer title))
