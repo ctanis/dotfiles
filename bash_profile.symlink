@@ -3,6 +3,6 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # run this if we're using terminal
-if [ "$TERM_PROGRAM" = Apple_Terminal ]; then
-	~/.dotfiles/scripts/terminal_color.sh
-fi
+# if [ "$TERM_PROGRAM" = Apple_Terminal ]; then
+# 	~/.dotfiles/scripts/terminal_color.sh
+# fi
