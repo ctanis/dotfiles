@@ -2003,7 +2003,8 @@ Calls `markdown-cycle' with argument t."
       (html-mode))
 
     ;; Ensure buffer gets raised, even with short command output
-    (switch-to-buffer-other-window output-buffer-name)))
+    ;(switch-to-buffer-other-window output-buffer-name)
+    ))
 
 (defun markdown-output-standalone-p ()
   "Determine whether `markdown-command' output is standalone XHTML.
@@ -2059,6 +2060,7 @@ with the extension removed and replaced with .html."
     (when output-file
       (setq output-buffer-name (buffer-name (find-file-noselect output-file)))
       (markdown output-buffer-name)
+      (switch-to-buffer-other-window output-buffer-name)
       (with-current-buffer output-buffer-name
         (save-buffer)
         (kill-buffer-and-window))
