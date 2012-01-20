@@ -11,6 +11,10 @@
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 
+(add-hook 'markdown-mode-hook
+	  '(lambda()
+	     (local-set-key "\C-\M-u" 'backward-up-list)))
+
 
 (mapcar '(lambda (a)
 	   (add-to-list 'auto-mode-alist a))
