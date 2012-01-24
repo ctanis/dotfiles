@@ -38,8 +38,8 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write -g AppleShowScrollBars -string Always
 
 # some exceptions
-defaults write at.EternalStorms.Yoink AppleShowScrollBars -string Always
-defaults write com.apple.Terminal AppleShowScrollBars -string Always
+defaults write at.EternalStorms.Yoink AppleShowScrollBars -string WhenScrolling
+defaults write com.apple.Terminal AppleShowScrollBars -string WhenScrolling
 
 
 # enable airdrop with older macs -- not enabled by default
