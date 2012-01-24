@@ -21,8 +21,13 @@ chflags nohidden ~/Library/
 # allow key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+
 # turn off application saving window state
 defaults write -g NSQuitAlwaysKeepsWindows -bool false
+
+# some exceptions
+defaults write com.mindnode.MindNodePro NSQuitAlwaysKeepsWindows -bool true
+
 
 # defaults write com.apple.Preview NSQuitAlwaysKeepsWindows -bool false
 # defaults write com.apple.Terminal NSQuitAlwaysKeepsWindows -bool false
