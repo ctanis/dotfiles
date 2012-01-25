@@ -13,7 +13,10 @@
 
 (add-hook 'markdown-mode-hook
 	  '(lambda()
-	     (local-set-key "\C-\M-u" 'backward-up-list)))
+	     (local-set-key "\C-\M-u" 'backward-up-list)
+	     (local-set-key "\M-p" 'scroll-down-slow)
+	     (local-set-key "\M-n" 'scroll-up-slow)
+))
 
 
 (mapcar '(lambda (a)
