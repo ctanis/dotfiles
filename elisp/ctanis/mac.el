@@ -38,3 +38,11 @@
   (interactive)
   (shell-command "open ."))
 (define-key craig-prefix-map "\M-w" 'open-in-finder)
+
+
+
+(defun dirshell ()
+  "launch a Terminal.app in the current directory"
+  (interactive)
+  (shell-command "term \"`pwd`\""))
+(define-key craig-prefix-map "\M-s" 'dirshell)
