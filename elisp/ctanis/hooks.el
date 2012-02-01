@@ -50,12 +50,12 @@
 
 ;; MODE HOOKS
 
+(autoload 'autopair-mode "autopair.el" "autopair mode" t)
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
 	     ;(setq c-basic-offset 4)
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
-	     (require 'autopair)
 	     (autopair-mode)
 	     (c-toggle-auto-newline 1)
 ))
