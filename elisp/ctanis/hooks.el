@@ -54,7 +54,11 @@
 	  '(lambda ()
 	     ;(setq c-basic-offset 4)
 	     (local-set-key "\C-c\C-c" 'compile)
-	     (local-set-key "\C-m" 'newline-and-indent)))
+	     (local-set-key "\C-m" 'newline-and-indent)
+	     (require 'autopair)
+	     (autopair-mode)
+	     (c-toggle-auto-newline 1)
+))
 
 
 ;this is the  c comment-region thing i wrote
@@ -235,3 +239,9 @@
 (add-hook 'inferior-python-mode-hook
 	  '(lambda ()
 	     (setq comint-prompt-regexp ">>> ")))
+
+
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+
