@@ -50,3 +50,10 @@ if [ -f ~/.bash-local ]; then
 	source ~/.bash-local
 fi
 
+function update_repos ()
+{
+    for i in `cat ~/.active_repos`; do
+	echo $i;
+	sh -c "cd $i && git pull";
+    done;
+}
