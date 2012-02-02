@@ -1,0 +1,8 @@
+#! /bin/sh  #  -*- Mode: Shell-script; -*- 
+
+INPUTFILE=$1
+PSOUTPUT=`basename $1`.ps
+
+
+a2ps -1 -B -M letter -R -C -L75 $INPUTFILE -o $PSOUTPUT
+open $PSOUTPUT
