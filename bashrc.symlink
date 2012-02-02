@@ -1,5 +1,6 @@
 export EDITOR=vi
-export PAGER=less
+#export PAGER=less
+export PAGER=most
 export GNUTERM=X11
 export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 
