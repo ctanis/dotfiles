@@ -56,7 +56,7 @@
 	     ;(setq c-basic-offset 4)
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
-	     (autopair-mode)
+;	     (autopair-mode)
 	     (c-toggle-auto-newline 1)
 ))
 
