@@ -11,6 +11,7 @@
 (load-library "ispell")
 (load-library "hippie-exp")
 
+
 (if (locate-library "tramp")
     (load-library "tramp"))
 
@@ -350,6 +351,12 @@
 (global-set-key '[double-mouse-1] 'ignore)
 (global-set-key '[triple-mouse-1] 'ignore)
 
+
+
+; don't have to use the mouse to get flymake feedback
+(load-library "flycursor")
+(define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
+(define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
 
 
 
