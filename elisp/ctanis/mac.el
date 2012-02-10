@@ -46,3 +46,30 @@
   (interactive)
   (shell-command "term \"`pwd`\""))
 (define-key craig-prefix-map "\M-s" 'dirshell)
+
+
+;; some stuff for dealing with Dash.app
+(define-derived-mode dash-snippet-mode fundamental-mode
+  "enter dash snippet here"
+  )
+
+(define-key dash-snippet-mode-map "\M-v" 'yank)
+(define-key dash-snippet-mode-map "\C-c\C-c" 'returntosender)
+
+(defvar dash-snippet-mode-return-buffer nil)
+
+(defun returntosender()
+  (interactive)
+  ; kill whole buffer
+  (kill-region (buffer-end -1) (buffer-end 1))
+  (switch-to-buffer dash-snippet-mode-return-buffer)
+  (yank))
+
+(defun dash-snippet-get ()
+  (interactive)
+  (setq dash-snippet-mode-return-buffer (buffer-name))
+  (switch-to-buffer "*dash-snippet-buffer*")
+  (delete-region (buffer-end -1) (buffer-end 1))
+  (dash-snippet-mode))
+
+(define-key craig-prefix-map "x" 'dash-snippet-get)
