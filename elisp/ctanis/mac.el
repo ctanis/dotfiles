@@ -54,11 +54,11 @@
   )
 
 
-;(define-key dash-snippet-mode-map "\C-c\C-c" 'returntosender)
 
 (defvar dash-snippet-mode-return-buffer nil)
+(defvar dash-snippet-mode-win-config nil)
 
-(defun returntosender()
+(defun dash-snippet-returntosender()
   (interactive)
   ; kill whole buffer
   (yank)
@@ -68,16 +68,28 @@
     (switch-to-buffer dash-snippet-mode-return-buffer)
     (yank)
     (backward-char offset)
+    (set-window-configuration dash-snippet-mode-win-config)
     ))
+
+(defun dash-snippet-abort()
+  (interactive)
+  ; kill whole buffer
+  (kill-buffer-and-window)
+  (set-window-configuration dash-snippet-mode-win-config)
+  (switch-to-buffer dash-snippet-mode-return-buffer)
+  )
+
 
 (defun dash-snippet-get ()
   (interactive)
   (setq dash-snippet-mode-return-buffer (buffer-name))
+  (setq dash-snippet-mode-win-config (current-window-configuration))
   (switch-to-buffer-other-window "*dash-snippet-buffer*")
   (delete-region (buffer-end -1) (buffer-end 1))
   (shrink-window-if-larger-than-buffer)
   (dash-snippet-mode))
 
-(define-key dash-snippet-mode-map "\M-v" 'returntosender)
-(define-key dash-snippet-mode-map "\C-y" 'returntosender)
+(define-key dash-snippet-mode-map "\C-c\C-c" 'dash-snippet-abort)
+(define-key dash-snippet-mode-map "\M-v" 'dash-snippet-returntosender)
+(define-key dash-snippet-mode-map "\C-y" 'dash-snippet-returntosender)
 (define-key craig-prefix-map "x" 'dash-snippet-get)
