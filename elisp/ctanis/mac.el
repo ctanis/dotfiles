@@ -53,23 +53,31 @@
   "enter dash snippet here"
   )
 
-(define-key dash-snippet-mode-map "\M-v" 'yank)
-(define-key dash-snippet-mode-map "\C-c\C-c" 'returntosender)
+
+;(define-key dash-snippet-mode-map "\C-c\C-c" 'returntosender)
 
 (defvar dash-snippet-mode-return-buffer nil)
 
 (defun returntosender()
   (interactive)
   ; kill whole buffer
-  (kill-region (buffer-end -1) (buffer-end 1))
-  (switch-to-buffer dash-snippet-mode-return-buffer)
-  (yank))
+  (yank)
+  (let ((offset (- (buffer-end 1) (point))))
+    (kill-region (buffer-end -1) (buffer-end 1))
+    (kill-buffer-and-window)
+    (switch-to-buffer dash-snippet-mode-return-buffer)
+    (yank)
+    (backward-char offset)
+    ))
 
 (defun dash-snippet-get ()
   (interactive)
   (setq dash-snippet-mode-return-buffer (buffer-name))
-  (switch-to-buffer "*dash-snippet-buffer*")
+  (switch-to-buffer-other-window "*dash-snippet-buffer*")
   (delete-region (buffer-end -1) (buffer-end 1))
+  (shrink-window-if-larger-than-buffer)
   (dash-snippet-mode))
 
+(define-key dash-snippet-mode-map "\M-v" 'returntosender)
+(define-key dash-snippet-mode-map "\C-y" 'returntosender)
 (define-key craig-prefix-map "x" 'dash-snippet-get)
