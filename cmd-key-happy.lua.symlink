@@ -35,6 +35,9 @@ global_excludes = Set{ "shift-cmd-tab",
 		       "alt-,",
 		       "alt-/",
 		       "alt-.",
+			"shift-alt-b",
+			"shift-alt-d",
+			"shift-alt-x",
 			"shift-alt-w",
 			"shift-alt-l"
 }
