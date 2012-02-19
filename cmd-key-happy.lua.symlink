@@ -35,11 +35,11 @@ global_excludes = Set{ "shift-cmd-tab",
 		       "alt-,",
 		       "alt-/",
 		       "alt-.",
-			"shift-alt-b",
-			"shift-alt-d",
-			"shift-alt-x",
-			"shift-alt-w",
-			"shift-alt-l"
+			"control-alt-b",
+			"control-alt-d",
+			"control-alt-x",
+			"control-alt-w",
+			"control-alt-l"
 }
 
 -- The set of apps we want to consider swapping keys for, with some
