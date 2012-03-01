@@ -1,8 +1,11 @@
 #! /bin/sh  #  -*- Mode: Shell-script; -*- 
 
 INPUTFILE=$1
-PSOUTPUT=`basename $1`.ps
+TMPOUT=`mktemp -u -t codepdf`
+PDFOUTPUT=`basename $1`.pdf
 
-
-a2ps -1 -B -M letter -R -C -L75 $INPUTFILE -o $PSOUTPUT
-open $PSOUTPUT
+# -C is line-numbers=5
+#a2ps -1 -B -M letter -R -C -L75 $INPUTFILE -o $TMPOUT
+a2ps -1 -B -M letter -R -L75 $INPUTFILE -o $TMPOUT
+ps2pdf  $TMPOUT $PDFOUTPUT
+open $PDFOUTPUT
