@@ -1,3 +1,4 @@
+#  -*- Mode: Shell-script; -*- 
 export EDITOR=vi
 #export PAGER=less
 export PAGER=most
@@ -54,7 +55,12 @@ fi
 function update_repos ()
 {
     for i in `cat ~/.active_repos`; do
-	echo $i;
-	sh -c "cd $i && git pull";
+	d=`eval echo $i;`
+	if [ -d $d ]; then 
+	    echo $d;
+	   sh -c "cd $d && git pull";
+	else
+	    echo "** $d not found **";
+	fi;
     done;
 }
