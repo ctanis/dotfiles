@@ -5,7 +5,7 @@
 (load-library "hooks")
 ;(load-library "source")
 (load-library "attribute")
-(load-library "colors")
+;(load-library "colors")
 (load-library "school")
 (load-library "headers")
 (load-library "ispell")
