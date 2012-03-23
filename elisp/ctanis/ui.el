@@ -7,7 +7,12 @@
   (set-face-foreground font-lock-string-face "darkgreen")
   (set-face-foreground font-lock-function-name-face "blue")
   (set-face-foreground font-lock-keyword-face "darkred")
+  (set-face-background 'fringe' "darkgrey")
+  (set-face-foreground 'fringe "darkslateblue")
   )
+
+(setq-default indicate-empty-lines t)
+
 
 (defvar frame-mitosis-config '(75  ;; width
 			       49  ;; height
@@ -59,6 +64,9 @@
     (set-frame-position f 309 0)))
 
 
-(if window-system
-    (menu-bar-mode t)
-    (scroll-bar-mode -1))
+
+
+(set-fringe-style 1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+
