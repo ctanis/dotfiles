@@ -20,7 +20,10 @@
 
 
 (if window-system
-    (set-frame-font (selected-frame) ctanis_font)
-    (set-frame-height (selected-frame) 50)
-    (set-frame-width (selected-frame) 87)
-    )
+    (progn
+      (set-frame-font  ctanis_font)
+      (set-frame-width (selected-frame) 84)
+      (set-frame-height (selected-frame) 57)
+      (ctanis_colorfy)
+      ))
+
