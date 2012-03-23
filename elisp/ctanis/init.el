@@ -3,9 +3,8 @@
 
 (load-library "functions")
 (load-library "hooks")
-;(load-library "source")
 (load-library "attribute")
-;(load-library "colors")
+(load-library "ui")
 (load-library "school")
 (load-library "headers")
 (load-library "ispell")
@@ -357,11 +356,3 @@
 (load-library "flycursor")
 (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
-
-
-
-(if window-system
-    (progn
-      (scroll-bar-mode nil)
-      (menu-bar-mode t) ;; it looks silly without a menu
-      ))

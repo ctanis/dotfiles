@@ -1,79 +1,26 @@
 ;;  -*- Mode: Emacs-Lisp; -*- 
 (load-library "mac")
+(setq hostname "goose")
+
+(setq header-user-name "Craig Tanis")
 (setq header-email "craig-tanis@utc.edu")
-(setq hostname "nincompoop")
+(setq ctanis_font "-apple-ProFontWindows-medium-normal-normal-*-10-*-*-*-p-0-iso10646-1")
 
-
-(defun ctanis_colorfy()
-  (interactive)
-  (set-cursor-color "yellow")
-  (set-background-color "lightgrey")
-  (set-foreground-color "black")
-  (set-face-foreground font-lock-comment-face "brown")
-  (set-face-foreground font-lock-string-face "darkgreen")
-  (set-face-foreground font-lock-function-name-face "blue")
-  (set-face-foreground font-lock-keyword-face "darkred")
-  )
-
-
-; redefining this with specific window params for this machine
-(defun frame-mitosis()
-  (interactive)
-
-  (let ( (width 103)
-	 (height 91)
-	 (geom-y 27)
-	 (geom-x1 858)
-	 (geom-x2 1708)
-
-	 (font "-apple-ProFontWindows-medium-normal-normal-*-12-*-*-*-p-0-iso10646-1")
-	 )
-
-    (set-frame-height last-event-frame height)
-    (set-frame-width last-event-frame width)
-    (set-frame-position last-event-frame geom-x2 geom-y)
-
-    (let ((after-make-frame-functions '(lambda (frame)
-					 (set-frame-height frame height)
-					 (set-frame-width frame width)
-					 (set-frame-position frame geom-x1 geom-y)))
-	  (default-frame-alist
-	    (cons (cons 'font font)
-		  default-frame-alist))
-	  )
-      (set-default-font font)
-
-      (let ((f (new-frame)))
-	(select-frame f)
-	(ctanis_colorfy)))))
-
-(defun mono-framify()
-  (interactive)
-  (if (> (length (frame-list)) 1)
-      (delete-frame))
-    
-  (let ((f (car (frame-list))))
-    (set-frame-height f 42)
-    (set-frame-width f 87)
-    (set-frame-position f 309 0)))
-
-
-
-(setenv "PATH" "/Users/ctanis/bin:/Users/ctanis/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011/bin/universal-darwin")
+(setq frame-mitosis-config `(84		  ;; width
+			     57		  ;; height
+			     0		  ;; geom-y
+			     10		  ;; geom-x1
+			     640	  ;; geom-x2
+     			     ,ctanis_font ;; font
+			     ))
 
 (setenv "GNUTERM" "x11")
 
+(setenv "PATH" "/Users/ctanis/bin:/Users/ctanis/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/texlive/2011/bin/universal-darwin")
 
 
-;; (defun verbify()
-;;   (interactive)
-  
-;;   (save-excursion
-;;     (kill-region (point) (mark))
-;;     (insert "\\verb|")
-;;     (yank)
-;;     (insert "|")))
-
-(setq ispell-program-name "/usr/local/bin/aspell")
-(scroll-bar-mode -1)
-(ctanis_colorfy)
+(if window-system
+    (set-frame-font (selected-frame) ctanis_font)
+    (set-frame-height (selected-frame) 50)
+    (set-frame-width (selected-frame) 87)
+    )
