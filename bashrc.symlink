@@ -20,7 +20,8 @@ export SCREEN_WINDOW="(screen $WINDOW) "
 fi
 
 if [ $TERM != 'dumb' ]; then
-export PS1='\h:\W\$ \[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
+#export PS1='\h:\W\$ \[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
+export PS1='\[\e[1;10m\][\u@\h \W]$ \[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
 else
 #mostly for emacs shell...
 export PS1='\h:\W\$ '
