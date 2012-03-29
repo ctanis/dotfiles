@@ -1,5 +1,15 @@
 #! /bin/sh  #  -*- Mode: Shell-script; -*- 
 
+if [ -z $1 ]; then
+    echo "usage error"
+    exit
+fi
+
+if [ ! -f $1 ]; then
+    echo "file not found: $1"
+    exit
+fi
+
 INPUTFILE=$1
 TMPOUT=`mktemp -u -t codepdf`
 PDFOUTPUT=`basename $1`.pdf
