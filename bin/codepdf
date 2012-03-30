@@ -10,7 +10,7 @@ if [ ! -f $1 ]; then
     exit
 fi
 
-INPUTFILE=$1
+INPUTFILE=$*
 TMPOUT=`mktemp -u -t codepdf`
 PDFOUTPUT=`basename $1`.pdf
 
