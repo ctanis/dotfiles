@@ -92,4 +92,4 @@
 (define-key dash-snippet-mode-map "\C-c\C-c" 'dash-snippet-abort)
 (define-key dash-snippet-mode-map "\M-v" 'dash-snippet-returntosender)
 (define-key dash-snippet-mode-map "\C-y" 'dash-snippet-returntosender)
-(define-key craig-prefix-map "x" 'dash-snippet-get)
+;(define-key craig-prefix-map "x" 'dash-snippet-get)
