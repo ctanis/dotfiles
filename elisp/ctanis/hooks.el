@@ -218,7 +218,7 @@
 
 (add-hook 'dired-mode-hook
 	  '(lambda ()
-	     (set-face-foreground 'dired-marked "lightblue")
+	     (set-face-foreground 'dired-marked "darkgreen")
 	     (local-set-key "h" 'dired-hide-dotfiles)
 	     (local-set-key "\C-c\C-q" 'wdired-change-to-wdired-mode)))
 

@@ -341,6 +341,8 @@
 ;; disable scroll wheel
 (global-unset-key [mouse-wheel-down])
 (global-unset-key [mouse-wheel-up])
+(global-unset-key [wheel-up])
+(global-unset-key [wheel-down])
 
 
 ; no trackpad usage here by golly
@@ -356,3 +358,8 @@
 (load-library "flycursor")
 (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
+
+
+; don't use ls for dired -- use elisp
+(setq ls-lisp-use-insert-directory-program nil)
+(require 'ls-lisp)
