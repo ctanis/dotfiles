@@ -7,7 +7,7 @@
   (set-face-foreground font-lock-string-face "darkgreen")
   (set-face-foreground font-lock-function-name-face "blue")
   (set-face-foreground font-lock-keyword-face "darkred")
-  (set-face-background 'fringe' "darkgrey")
+  (set-face-background 'fringe "darkgrey")
   (set-face-foreground 'fringe "darkslateblue")
   )
 
