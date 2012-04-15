@@ -3,6 +3,7 @@
   (set-cursor-color "red")
   (set-background-color "lightgrey")
   (set-foreground-color "black")
+  (set-face-background 'region "darkgrey")
   (set-face-foreground font-lock-comment-face "brown")
   (set-face-foreground font-lock-string-face "darkgreen")
   (set-face-foreground font-lock-function-name-face "blue")
