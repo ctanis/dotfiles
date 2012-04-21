@@ -46,8 +46,14 @@ alias ls='ls $LS_OPTIONS'
 alias scr=/usr/bin/screen
 alias screen='screen -R'
 
-# extended glob features
-shopt -s extglob
+# extended glob features and programmable tab completion
+shopt -s extglob progcomp
+
+## directory commands only complete with directories
+complete -d pushd cd
+
+
+
 
 if [ -f ~/.bash-local ]; then
 	source ~/.bash-local
@@ -65,3 +71,4 @@ function update_repos ()
 	fi;
     done;
 }
+
