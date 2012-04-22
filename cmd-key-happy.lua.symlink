@@ -10,36 +10,21 @@ end
 
 -- The set of global shortcuts we don't want to swap cmd/alt.
 
-global_excludes = Set{ "shift-cmd-tab",
-                       "cmd-tab",
-                       "cmd-space",
-                       "alt-space",
-                       "alt-`",
-                       "alt-tab",
-                       "control-cmd-left",
-                       "control-cmd-right",
-                       "control-cmd-up",
-                       "control-cmd-down",
-                       "control-cmd-a",
-                       "control-cmd-f",
-                       "shift-control-cmd-left",       
-                       "shift-control-cmd-right",
-                       "shift-control-cmd-up",
-                       "shift-control-cmd-down",
-                       "shift-control-cmd-=",
-                       "cmd-return",   
-                       "control-cmd-return",
-                       "control-cmd-/",
-		       "shift-control-cmd-return",
-                       "shift-control-cmd-\\",
-		       "alt-,",
-		       "alt-/",
-		       "alt-.",
-			"control-alt-b",
-			"control-alt-d",
-			"control-alt-x",
+global_excludes = Set{ 
+			"alt-F1",
+			"shift-alt-g",
+			"shift-alt-o",
+			"shift-alt-x",
+			"shift-alt-b",
 			"shift-alt-w",
-			"shift-alt-e"
+			"shift-alt-e",
+			"shift-alt-d",
+			"shift-alt-m",
+			"shift-alt-s",
+			"control-shift-alt-s"
+			"shift-alt-j",
+			"shift-alt-k",		
+			"shift-alt-l"
 }
 
 -- The set of apps we want to consider swapping keys for, with some
@@ -52,39 +37,7 @@ apps = {
                                "shift-cmd-]",
 			       "cmd-h",		       
                                "cmd-`",
-			       "cmd-,",
-
-			       "cmd-F1",			       
-			       "alt-F1",			       
-			       "cmd-F2", 
-			       "alt-F2",			       
-			       "cmd-F3",			       
-			       "alt-F3",			       
-			       "cmd-F4",			       
-			       "alt-F4",			       
-
-			       "cmd-F5",
-			       "alt-F5",
-			       "cmd-F6",
-			       "alt-F6",
-			       "cmd-F7",
-			       "alt-F7",
-			       "cmd-F8",
-			       "alt-F8",
-
-			       "cmd-F9",
-			       "alt-F9",
-			       "cmd-F10",
-			       "alt-F10",
-			       "cmd-F11",
-			       "alt-F11",
-			       "cmd-F12",
-			       "alt-F12",
-
-			       "control-alt-1",
-			       "control-alt-2",
-			       "control-alt-3",
-			       "control-alt-4",
+			       "cmd-,"
 			 } },
 }
 
