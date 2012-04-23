@@ -11,20 +11,6 @@ end
 -- The set of global shortcuts we don't want to swap cmd/alt.
 
 global_excludes = Set{ 
-			"alt-F1",
-			"shift-alt-g",
-			"shift-alt-o",
-			"shift-alt-x",
-			"shift-alt-b",
-			"shift-alt-w",
-			"shift-alt-e",
-			"shift-alt-d",
-			"shift-alt-m",
-			"shift-alt-s",
-			"control-shift-alt-s"
-			"shift-alt-j",
-			"shift-alt-k",		
-			"shift-alt-l"
 }
 
 -- The set of apps we want to consider swapping keys for, with some
@@ -37,7 +23,28 @@ apps = {
                                "shift-cmd-]",
 			       "cmd-h",		       
                                "cmd-`",
-			       "cmd-,"
+			       "alt-,",
+			       "alt-.",		       
+			       "cmd-,",
+			       "alt-F1",
+			"alt-F2",
+			"alt-F3",
+			"shift-alt-p",
+			"shift-control-alt-p",
+			"shift-alt-g",
+			"shift-alt-o",
+			"shift-alt-a",
+			"cmd-tab",
+			"alt-tab",
+			"shift-alt-h",
+			"shift-alt-s",
+			"cmd-space",
+			"alt-space",
+			"shift-alt-k",
+			"shift-alt-l",
+			"shift-alt-j",
+			"shift-alt-x",
+			"shift-alt-w"
 			 } },
 }
 
