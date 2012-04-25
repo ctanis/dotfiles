@@ -1,5 +1,9 @@
 ;(setq default-frame-alist '((scroll-bar-width . 10)))
 
+;; start this asap
+(if window-system
+    (server-start))
+
 
 (load-library "functions")
 (load-library "hooks")
