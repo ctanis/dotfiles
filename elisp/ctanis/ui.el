@@ -1,15 +1,29 @@
 (defun ctanis_colorfy()
   (interactive)
-  (set-cursor-color "red")
-  (set-background-color "lightgrey")
+
   (set-foreground-color "black")
+  (set-background-color "lightgrey")
+
+  (set-cursor-color "darkgrey")
   (set-face-background 'region "darkgrey")
-  (set-face-foreground font-lock-comment-face "brown")
-  (set-face-foreground font-lock-string-face "darkgreen")
-  (set-face-foreground font-lock-function-name-face "blue")
-  (set-face-foreground font-lock-keyword-face "darkred")
+
   (set-face-background 'fringe "darkgrey")
   (set-face-foreground 'fringe "darkslateblue")
+
+  (set-face-foreground font-lock-doc-face "grey30")
+  (set-face-foreground font-lock-comment-face "grey45")
+
+  (set-face-foreground font-lock-string-face "DarkSeaGreen4")
+  (set-face-foreground font-lock-constant-face "DarkSeaGreen4")
+
+  (set-face-foreground font-lock-type-face "goldenrod4")
+  (set-face-foreground font-lock-preprocessor-face "goldenrod4")
+  (set-face-foreground font-lock-keyword-face "blue3")
+  (set-face-foreground font-lock-builtin-face "blue3")
+
+  (set-face-foreground font-lock-function-name-face "firebrick4")
+  (set-face-foreground font-lock-variable-name-face "chocolate4")
+
   )
 
 (setq-default indicate-empty-lines t)

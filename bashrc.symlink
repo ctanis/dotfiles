@@ -42,6 +42,8 @@ export PROMPT_COMMAND="history -a"
 export LS_OPTIONS='-p'
 alias ls='ls $LS_OPTIONS'
 
+alias edit='emacsclient -n'
+
 # default to screen reconnect if possible
 alias scr=/usr/bin/screen
 alias screen='screen -R'
