@@ -39,6 +39,7 @@ apps = {
 			"alt-F3",
 			"cmd-F3",
 			"cmd-F4",
+			"alt-`",
 			"shift-alt-l",
 			"shift-alt-p",
 			"shift-control-alt-p",
