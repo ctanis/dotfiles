@@ -183,6 +183,7 @@
 	     (local-set-key "\M-o\M-h" 'cperl-perldoc-at-point)
 	     (local-set-key "\M-o\C-H" 'cperl-perldoc)
 	     (local-set-key "\M-o|" 'cperl-lineup)
+	     (set-face-foreground 'cperl-nonoverridable-face "darkblue")
 ))
 
 
