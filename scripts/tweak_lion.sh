@@ -27,6 +27,7 @@ defaults write -g NSQuitAlwaysKeepsWindows -bool false
 
 # some exceptions
 defaults write com.mindnode.MindNodePro NSQuitAlwaysKeepsWindows -bool true
+defaults write com.pixelmatorteam.pixelmator NSQuitAlwaysKeepsWindows -bool true
 
 
 # defaults write com.apple.Preview NSQuitAlwaysKeepsWindows -bool false
@@ -46,6 +47,7 @@ defaults write -g AppleShowScrollBars -string Always
 defaults write at.EternalStorms.Yoink AppleShowScrollBars -string WhenScrolling
 defaults write com.apple.Terminal AppleShowScrollBars -string WhenScrolling
 defaults write org.gnu.Emacs AppleShowScrollBars -string WhenScrolling
+defaults write com.pixelmatorteam.pixelmator AppleShowScrollBars -string WhenScrolling
 
 
 # enable airdrop with older macs -- not enabled by default
