@@ -99,6 +99,7 @@
 	  '(lambda ()
 	     (progn
 	       (define-key text-mode-map "\M-s" 'goto-line)
+	       (visual-line-mode t)
 	       (set-fill-column 68)
 	       ;(auto-fill-mode 1)
 	       (auto-save-mode 1))))
