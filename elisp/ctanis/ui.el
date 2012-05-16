@@ -4,7 +4,8 @@
   (set-foreground-color "black")
   (set-background-color "lightgrey")
 
-  (set-cursor-color "darkgrey")
+  ;(set-cursor-color "darkgrey")
+  (set-cursor-color "green")
   (set-face-background 'region "darkgrey")
 
   (set-face-background 'fringe "darkgrey")

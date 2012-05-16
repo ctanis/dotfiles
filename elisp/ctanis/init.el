@@ -218,7 +218,7 @@
 (define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
 (define-key craig-prefix-map "\M-f" 'find-and-display-file)
 (define-key craig-prefix-map "\M-c" 'make-tmp-code)
-
+(define-key craig-prefix-map "\M-m" 'make-directory)
 ;(define-key craig-prefix-map "\C-xh" 'open-file-in-hidden-buffer)
 (define-key craig-prefix-map "\C-x1" 'mono-framify)
 (define-key craig-prefix-map "\C-x2" 'frame-mitosis)
