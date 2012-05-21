@@ -58,7 +58,8 @@ apps = {
 			"shift-alt-j",
 			"shift-alt-x",
 			"shift-alt-w",
-			"shift-alt-m"
+			"shift-alt-m",
+			"shift-alt-w"
 			 } },
 }
 
