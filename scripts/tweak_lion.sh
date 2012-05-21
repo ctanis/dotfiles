@@ -65,4 +65,4 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE;
 
 # hold window against side for 2 seconds before moving to next workspace
 # (better for BetterSnapTool)
-defaults write com.apple.dock workspaces-edge-delay 2
+defaults write com.apple.dock workspaces-edge-delay -float 2.0
