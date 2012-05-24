@@ -1,4 +1,3 @@
-;; auto-load
 (setq font-lock-maximum-decoration (list (cons t nil)))
 
 (setq auto-mode-alist (cons '("\\.h$" . c++-mode) auto-mode-alist))
@@ -9,6 +8,15 @@
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+
+; C style
+(setq c-default-style '((c-mode  . "k&r")
+			(c++-mode . "stroustrup")
+			(objc-mode . "k&r")
+			(other . "ellemtel")))
+(setq c-basic-offset 4)
+
 
 
 (add-hook 'markdown-mode-hook
@@ -64,25 +72,8 @@
 ;this is the  c comment-region thing i wrote
 (add-hook 'c-mode-hook
 	  '(lambda ()
-	     (c-set-style "k&r")
 	     (local-set-key "\M-o1" 'make-c-header)
-;	     (define-key c-mode-map "\C-c;" 'c-make-block-comment)
 	     ))
-
-;; do i want this?
-(add-hook 'c++-mode-hook
-	  '(lambda ()
-	     (c-set-style "stroustrup")))
-	     
-
-(add-hook 'java-mode-hook
-	  '(lambda ()
-	     (c-set-style "java")))
-
-
-(add-hook 'objc-mode-hook
-	  '(lambda()
-	     (c-set-style "k&r")))
 
 (add-hook 'f90-mode-hook
 	  '(lambda()
