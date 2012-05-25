@@ -1,0 +1,1 @@
+perl -e '@f=<>; while (@f) { print splice @f,int(rand @f),1; }' 
