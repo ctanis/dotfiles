@@ -1,1 +1,0 @@
-open -a /usr/local/Cellar/emacs/23.3b/Emacs.app "$*"
