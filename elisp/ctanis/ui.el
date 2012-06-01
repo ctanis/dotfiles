@@ -1,12 +1,13 @@
+
 (defun ctanis_colorfy()
   (interactive)
 
   (set-foreground-color "black")
   (set-background-color "lightgrey")
 
-  ;(set-cursor-color "darkgrey")
-  (set-cursor-color "green")
+  (set-cursor-color "blue")
   (set-face-background 'region "darkgrey")
+  (set-face-background 'hl-line "darkgrey")
 
   (set-face-background 'fringe "darkgrey")
   (set-face-foreground 'fringe "darkslateblue")

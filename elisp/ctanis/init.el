@@ -223,6 +223,7 @@
 (define-key craig-prefix-map "\C-x1" 'mono-framify)
 (define-key craig-prefix-map "\C-x2" 'frame-mitosis)
 (define-key craig-prefix-map "\C-x-" 'shrink-other-window-if-larger-than-buffer)
+(define-key craig-prefix-map "\M-h" 'hl-line-mode)
 
 ;(global-set-key "\C-x\M-q" 'prefix-paragraph)
 ;(global-set-key "\C-xrv" 'invert-rectangle)
