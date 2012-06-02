@@ -1,3 +1,4 @@
+(require 'hl-line)
 
 (defun ctanis_colorfy()
   (interactive)
