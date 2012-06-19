@@ -53,6 +53,7 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'scroll-left 'disabled nil)
 
 
 ;(resize-minibuffer-mode)
