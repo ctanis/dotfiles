@@ -1,6 +1,5 @@
 #  -*- Mode: Shell-script; -*- 
 export EDITOR=vi
-#export PAGER=less
 export PAGER=most
 export GNUTERM=X11
 export TEXINPUTS="~/.tex:.:$TEXINPUTS"
@@ -42,9 +41,8 @@ export PROMPT_COMMAND="history -a"
 export LS_OPTIONS='-p'
 alias ls='ls $LS_OPTIONS'
 
-alias edit='emacsclient -n'
 
-# default to screen reconnect if possible
+# Default to screen reconnect if possible
 alias scr=/usr/bin/screen
 alias screen='screen -R'
 
@@ -55,11 +53,15 @@ shopt -s extglob progcomp
 complete -d pushd cd
 
 
+function edit()
+{
+    osascript -e 'tell application "Emacs" to activate'
 
+    until emacsclient -n $*  >/dev/null 2>&1; do
+	sleep 1;
+    done;
+}
 
-if [ -f ~/.bash-local ]; then
-	source ~/.bash-local
-fi
 
 function update_repos ()
 {
@@ -73,4 +75,11 @@ function update_repos ()
 	fi;
     done;
 }
+
+
+
+
+if [ -f ~/.bash-local ]; then
+	source ~/.bash-local
+fi
 
