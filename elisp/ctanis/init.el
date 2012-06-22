@@ -344,20 +344,6 @@
 
 (global-set-key "\C-l" 'recenter)
 
-;; disable scroll wheel
-(global-unset-key [mouse-wheel-down])
-(global-unset-key [mouse-wheel-up])
-(global-unset-key [wheel-up])
-(global-unset-key [wheel-down])
-
-
-; no trackpad usage here by golly
-(global-set-key '[down-mouse-1] 'ignore)
-(global-set-key '[mouse-1] 'ignore)
-(global-set-key '[drag-mouse-1] 'ignore)
-(global-set-key '[double-mouse-1] 'ignore)
-(global-set-key '[triple-mouse-1] 'ignore)
-
 
 
 ; don't have to use the mouse to get flymake feedback
@@ -369,3 +355,9 @@
 ; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
 (require 'ls-lisp)
+
+
+;; case doesn't matter in the minibuffer
+(setq completion-ignore-case t)
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)

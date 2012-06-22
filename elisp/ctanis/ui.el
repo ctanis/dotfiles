@@ -27,6 +27,9 @@
   (set-face-foreground font-lock-function-name-face "firebrick4")
   (set-face-foreground font-lock-variable-name-face "chocolate4")
 
+  (set-face-foreground 'modeline-inactive "lightgray")
+  (set-face-background 'modeline-inactive "slateblue")
+  (set-face-background 'modeline "salmon")
   )
 
 (setq-default indicate-empty-lines t)
@@ -87,4 +90,39 @@
 (set-fringe-style 1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+
+
+;; disable the mouse/trackpad as much as possible
+
+(global-set-key '[wheel-up] 'ignore)
+(global-set-key '[double-wheel-up] 'ignore)
+(global-set-key '[triple-wheel-up] 'ignore)
+(global-set-key '[wheel-down] 'ignore)
+(global-set-key '[double-wheel-down] 'ignore)
+(global-set-key '[triple-wheel-down] 'ignore)
+
+(global-set-key '[down-mouse-1] 'ignore)
+(global-set-key '[mouse-1] 'ignore)
+(global-set-key '[drag-mouse-1] 'ignore)
+(global-set-key '[double-mouse-1] 'ignore)
+(global-set-key '[triple-mouse-1] 'ignore)
+
+(global-set-key '[down-mouse-2] 'ignore)
+(global-set-key '[mouse-2] 'ignore)
+(global-set-key '[drag-mouse-2] 'ignore)
+(global-set-key '[double-mouse-2] 'ignore)
+(global-set-key '[triple-mouse-2] 'ignore)
+
+(global-set-key '[down-mouse-3] 'ignore)
+(global-set-key '[mouse-3] 'ignore)
+(global-set-key '[drag-mouse-3] 'ignore)
+(global-set-key '[double-mouse-3] 'ignore)
+(global-set-key '[triple-mouse-3] 'ignore)
+
+
+;; refuse the OS's advances
+(defun handle-switch-frame (event)
+  (interactive "e")
+  (other-frame 0)
+  )
 
