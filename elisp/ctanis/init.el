@@ -331,6 +331,19 @@
     ad-do-it
     (raise-frame f)))
 
+;; advise dired to only complete directory names, when done interactively
+;; (defadvice dired
+;;   (before complete-directories-only activate)
+;;   "when called interactively, only tab-complete directory names"
+;;   (interactive "DDired (Directory): ")
+;; )
+
+;; a wrapper around dired that only completes directory names
+(defun my-dired (d)
+  (interactive "DDired (Directory): ")
+  (dired d))
+(global-set-key "\C-xd" 'my-dired)
+
 
 (defun monitor-tex (file)
   (interactive "fRoot Tex File: ")
