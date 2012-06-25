@@ -5,8 +5,6 @@
 \usepackage{graphicx}
 \usepackage{verbatim}
 
-%\newcommand{\correct}{\textbf{*}}
-\newcommand{\correct}{}
 
 \newcommand{\header}[3]
 {
@@ -17,34 +15,42 @@
 \end{center}
 }
 
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{20pt}
 
 
-\newenvironment{exam} {
-    \newenvironment{question} 
-                   {\item\begin{minipage}[t]{6in}}
-                   {\end{minipage}}
+\newenvironment{exam}[1] {
+
+  \if #1
+  \newcommand{\correct}{}
+  \else
+  \newcommand{\correct}{\textbf{#1}}
+  \fi
+
+  \newenvironment{question} 
+                 {\item\begin{minipage}[t]{6in}}
+                 {\end{minipage}}
 
    \begin{enumerate}
-   \setlength{\itemsep}{10pt}
+   \setlength{\itemsep}{25pt}
 }
 {\end{enumerate}}
+
+
+\newenvironment{choices} {
+  \begin{enumerate}
+  \setlength{\itemsep}{0pt}
+}
+{
+  \end{enumerate}
+}
+
 
 \newenvironment{directions} {\large\begin{bfseries}}{\end{bfseries}}
 \newenvironment{code}
                {%
-                 \verbatim
-               }{%
-                 \endverbatim
-               }
-
-%% \lstset{
-%%         basicstyle=\ttfamily,
-%%         keywordstyle=\ttfamily,
-%%         showspaces=false,
-%%         showstringspaces=false,
-%%         xleftmargin=50px
-%% }
-
+                \verbatim}
+               {%
+                 \endverbatim}
 
