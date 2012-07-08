@@ -122,12 +122,23 @@
 	  '(lambda ()
 	     (setq comint-use-prompt-regexp t)
 	     (setq comint-prompt-regexp "^[^\$]+\$ ")
+	     (setq comint-prompt-read-only t)
 	     (define-key comint-mode-map
 	       "\M-p" 'comint-previous-matching-input-from-input)
 	     (define-key comint-mode-map
 	       "\M-n" 'comint-next-matching-input-from-input)
 	     (define-key comint-mode-map "\C-a" 'comint-bol)
 	     (define-key comint-mode-map "\M-o\C-?" 'comint-kill-input)))
+
+
+(add-hook 'shell-mode-hook 
+     '(lambda () (toggle-truncate-lines 1)))
+
+(setq shell-font-lock-keywords
+      `(
+	("\#.*" . font-lock-comment-face)
+	))
+
 
 
 (add-hook 'octave-mode-hook
