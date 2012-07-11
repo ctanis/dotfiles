@@ -11,10 +11,12 @@
 
 
 ; C style
-(setq c-default-style '((c-mode  . "k&r")
-			(c++-mode . "stroustrup")
-			(objc-mode . "k&r")
-			(other . "ellemtel")))
+;; (setq c-default-style '((c-mode  . "k&r")
+;; 			(c++-mode . "stroustrup")
+;; 			(objc-mode . "k&r")
+;; 			(other . "ellemtel")))
+(setq c-default-style  "ellemtel")
+
 (setq c-basic-offset 4)
 
 
