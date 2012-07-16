@@ -53,14 +53,12 @@ apps = {
 			"cmd-space",
 			"alt-space",
 			"shift-alt-k",
-			"shift-alt-e",
+			"shift-alt-z",
 			"shift-alt-l",
 			"shift-alt-j",
 			"shift-alt-x",
 			"shift-alt-w",
-			"alt-escape",
-			"shift-alt-m",
-			"shift-alt-w"
+			"alt-escape"
 			 } },
 }
 
