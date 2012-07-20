@@ -10,17 +10,6 @@
       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 
-; C style
-;; (setq c-default-style '((c-mode  . "k&r")
-;; 			(c++-mode . "stroustrup")
-;; 			(objc-mode . "k&r")
-;; 			(other . "ellemtel")))
-(setq c-default-style  "ellemtel")
-
-(setq c-basic-offset 4)
-
-
-
 (add-hook 'markdown-mode-hook
 	  '(lambda()
 	     (local-set-key "\C-\M-u" 'backward-up-list)
@@ -58,16 +47,31 @@
   (load "popper"))
 
 
-;; MODE HOOKS
+
+; C style
+;; (setq c-default-style '((c-mode  . "k&r")
+;; 			(c++-mode . "stroustrup")
+;; 			(objc-mode . "k&r")
+;; 			(other . "ellemtel")))
+
 
 (autoload 'autopair-mode "autopair.el" "autopair mode" t)
+
+(c-add-style "ctanis" '("ellemtel"
+			(c-basic-offset . 4)
+			(c-hanging-braces-alist
+			 (class-close)
+			 )
+			))
+(setq c-default-style "ctanis")
+
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
-	     ;(setq c-basic-offset 4)
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
 ;	     (autopair-mode)
 	     (c-toggle-auto-newline 1)
+
 ))
 
 
@@ -101,8 +105,6 @@
 
 (add-hook 'comint-output-filter-functions
 	  'shell-strip-ctrl-m)
-
-
 
 
 
