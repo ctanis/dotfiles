@@ -66,3 +66,39 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE;
 # hold window against side for 2 seconds before moving to next workspace
 # (better for BetterSnapTool)
 defaults write com.apple.dock workspaces-edge-delay -float 2.0
+
+
+# Display ASCII control characters using caret notation in standard text views
+# Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
+defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+
+# Disable automatic termination of inactive apps
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+
+# Disable disk image verification
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+# Group windows by application in Mission Control
+defaults write com.apple.dock "expose-group-by-app" -bool false
+
+# Don’t show Dashboard as a Space
+defaults write com.apple.dock "dashboard-in-overlay" -bool true
+
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
+
+# Disable the Ping sidebar in iTunes
+defaults write com.apple.iTunes disablePingSidebar -bool true
+
+# Disable all the other Ping stuff in iTunes
+defaults write com.apple.iTunes disablePing -bool true
