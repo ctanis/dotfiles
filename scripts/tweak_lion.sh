@@ -88,7 +88,7 @@ defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# Group windows by application in Mission Control
+# Don't Group windows by application in Mission Control
 defaults write com.apple.dock "expose-group-by-app" -bool false
 
 # Don’t show Dashboard as a Space
