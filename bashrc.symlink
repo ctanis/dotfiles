@@ -1,4 +1,11 @@
 #  -*- Mode: Shell-script; -*- 
+
+if [ -f ~/.bash-local ]; then
+	source ~/.bash-local
+fi
+
+
+
 export EDITOR=vi
 export PAGER=most
 export GNUTERM=X11
@@ -8,8 +15,8 @@ export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 export PATH=~/bin:~/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:.
 if [ ! $TEXBIN ]; then
    export TEXBIN=/usr/local/texlive/2011/bin/universal-darwin
-   export PATH=$PATH:$TEXBIN
 fi
+export PATH=$PATH:$TEXBIN
 
 
 
@@ -77,9 +84,4 @@ function update_repos ()
 }
 
 
-
-
-if [ -f ~/.bash-local ]; then
-	source ~/.bash-local
-fi
 
