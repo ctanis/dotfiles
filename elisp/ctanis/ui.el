@@ -120,9 +120,10 @@
 (global-set-key '[triple-mouse-3] 'ignore)
 
 
-;; refuse the OS's advances
-(defun handle-switch-frame (event)
-  (interactive "e")
-  (other-frame 0)
-  )
+;; put this in .emacs-local if you want
+;; ;; refuse the OS's advances
+;; (defun handle-switch-frame (event)
+;;   (interactive "e")
+;;   (other-frame 0)
+;;   )
 

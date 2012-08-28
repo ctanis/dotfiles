@@ -51,6 +51,7 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 # defaults write com.apple.iCal AppleShowScrollBars -string WhenScrolling
 
 
+
 # enable airdrop with older macs -- not enabled by default
 # defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 # (see http://www.macsessed.com/posts/how-to-use-airdrop-on-your-older-macs/)
