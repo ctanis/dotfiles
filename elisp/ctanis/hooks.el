@@ -126,7 +126,7 @@
 	  '(lambda ()
 	     (setq comint-use-prompt-regexp t)
 	     (setq comint-prompt-regexp "^[^\$]+\$ ")
-	     (setq comint-prompt-read-only t)
+	     ; (setq comint-prompt-read-only t)
 	     (define-key comint-mode-map
 	       "\M-p" 'comint-previous-matching-input-from-input)
 	     (define-key comint-mode-map
