@@ -44,11 +44,12 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 
 
 # some exceptions
-# defaults write at.EternalStorms.Yoink AppleShowScrollBars -string WhenScrolling
-# defaults write com.apple.Terminal AppleShowScrollBars -string WhenScrolling
+defaults write -g AppleShowScrollBars -string Automatic
+defaults write at.EternalStorms.Yoink AppleShowScrollBars -string WhenScrolling
+defaults write com.apple.Terminal AppleShowScrollBars -string WhenScrolling
 # defaults write org.gnu.Emacs AppleShowScrollBars -string WhenScrolling
-# defaults write com.pixelmatorteam.pixelmator AppleShowScrollBars -string WhenScrolling
-# defaults write com.apple.iCal AppleShowScrollBars -string WhenScrolling
+defaults write com.pixelmatorteam.pixelmator AppleShowScrollBars -string WhenScrolling
+defaults write com.apple.iCal AppleShowScrollBars -string WhenScrolling
 
 
 
