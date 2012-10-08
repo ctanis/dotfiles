@@ -12,6 +12,7 @@
 
 (add-hook 'markdown-mode-hook
 	  '(lambda()
+	     (setq tab-width 6)
 	     (local-set-key "\C-\M-u" 'backward-up-list)
 	     (local-set-key "\M-p" 'scroll-down-slow)
 	     (local-set-key "\M-n" 'scroll-up-slow)

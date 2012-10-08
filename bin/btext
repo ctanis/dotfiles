@@ -21,5 +21,6 @@ fi
 else
   f="/tmp/browser.$RANDOM.txt"
   cat /dev/stdin > $f
-  open -a /Applications/Google\ Chrome.app $f
+  #open -a /Applications/Google\ Chrome.app $f
+  open -a /Applications/Safari.app $f
 fi

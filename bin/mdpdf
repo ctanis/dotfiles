@@ -1,0 +1,4 @@
+#! /bin/sh
+BASE=`basename $1 .md`
+markdown  $1 | wkhtmltopdf - ~/Desktop/$1.pdf
+
