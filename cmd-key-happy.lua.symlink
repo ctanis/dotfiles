@@ -64,6 +64,8 @@ apps = {
 			"shift-alt-w",
 			"shift-alt-n",
 			"shift-alt-t",
+			"shift-alt-e",
+			"shift-alt-m",
 			"alt-escape"
 			 } },
 }
