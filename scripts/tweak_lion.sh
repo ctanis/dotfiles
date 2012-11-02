@@ -38,7 +38,7 @@ defaults write com.pixelmatorteam.pixelmator NSQuitAlwaysKeepsWindows -bool true
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
 
 # speed up mission control (not space switching)
-defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.dock expose-animation-duration -float 0.05
 
 
 
