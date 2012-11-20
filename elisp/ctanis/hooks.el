@@ -254,3 +254,6 @@
 (setq auto-mode-alist
       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
+
+(add-hook 'ibuffer-mode-hook
+	  '(lambda () (local-unset-key "\M-o")))
