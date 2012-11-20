@@ -374,3 +374,5 @@
 (setq completion-ignore-case t)
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
+
+(global-set-key "\C-x\C-b" 'ibuffer)
