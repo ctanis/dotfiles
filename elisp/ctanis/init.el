@@ -375,4 +375,5 @@
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 
-(global-set-key "\C-x\C-b" 'ibuffer)
+(defalias 'list-buffers 'ibuffer)
+(ido-mode 1)
