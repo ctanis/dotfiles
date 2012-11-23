@@ -106,5 +106,3 @@ defaults write com.apple.iTunes disablePingSidebar -bool true
 # Disable all the other Ping stuff in iTunes
 defaults write com.apple.iTunes disablePing -bool true
 
-## shortcat activation key
-defaults write com.sproutcube.shortcat activationShortcut "m+SHIFT+OPTION"

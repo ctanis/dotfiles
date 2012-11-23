@@ -339,10 +339,10 @@
 ;; )
 
 ;; a wrapper around dired that only completes directory names
-(defun my-dired (d)
-  (interactive "DDired (Directory): ")
-  (dired d))
-(global-set-key "\C-xd" 'my-dired)
+;; (defun my-dired (d)
+;;   (interactive "DDired (Directory): ")
+;;   (dired d))
+;; (global-set-key "\C-xd" 'my-dired)
 
 
 (defun monitor-tex (file)
@@ -377,3 +377,6 @@
 
 (defalias 'list-buffers 'ibuffer)
 (ido-mode 1)
+
+
+(defalias 'yes-or-no-p 'y-or-n-p)
