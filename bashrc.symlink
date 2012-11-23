@@ -6,8 +6,16 @@ fi
 
 
 
+if [ -z $INSIDE_EMACS ]; then
+# not in emacs
 export EDITOR=vi
 export PAGER=most
+else
+# in emacs
+export EDITOR=emacsclient
+export PAGER=cat
+fi
+
 export GNUTERM=X11
 export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 

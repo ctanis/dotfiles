@@ -376,7 +376,16 @@
 (setq read-file-name-completion-ignore-case t)
 
 (defalias 'list-buffers 'ibuffer)
+
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-ignore-files '("^ " "^\\*"))
 (ido-mode 1)
 
 
+
 (defalias 'yes-or-no-p 'y-or-n-p)
+(show-paren-mode 1)
+
+(setenv "PAGER" "/bin/cat")

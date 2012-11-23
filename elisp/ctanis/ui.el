@@ -30,7 +30,11 @@
   (set-face-foreground 'modeline-inactive "lightgray")
   (set-face-background 'modeline-inactive "slateblue")
   (set-face-background 'modeline "salmon")
+
+  (set-face-background 'show-paren-match "darkkhaki")
+  (set-face-background 'show-paren-mismatch "red")
   )
+  
 
 (setq-default indicate-empty-lines t)
 
