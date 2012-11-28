@@ -63,6 +63,9 @@
 			(c-hanging-braces-alist
 			 (class-close)
 			 )
+			(c-hanging-semi&comma-criteria .
+						       (c-semi&comma-no-newlines-before-nonblanks
+							c-semi&comma-inside-parenlist))
 			))
 (setq c-default-style "ctanis")
 
