@@ -232,7 +232,8 @@
 	  '(lambda ()
 	     (set-face-foreground 'dired-marked "darkgreen")
 	     (local-set-key "h" 'dired-hide-dotfiles)
-	     (local-set-key "\C-c\C-q" 'wdired-change-to-wdired-mode)))
+	     (local-set-key "\C-c\C-q" 'wdired-change-to-wdired-mode)
+	     ))
 
 (add-hook 'octave-mode-hook
 	  '(lambda ()
