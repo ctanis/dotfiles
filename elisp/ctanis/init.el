@@ -385,6 +385,12 @@
 (setq ido-ignore-files '("^ " "^\\*"))
 (ido-mode 1)
 
+; ignore certain files in the list
+(mapcar (lambda (x) (add-to-list 'completion-ignored-extensions x))
+	'(".ctxt" ".DS_Store" ".log"))
+
+; inhibit ffap- in dired mode, expose other controls
+(load-library "ffap-")
 
 
 (defalias 'yes-or-no-p 'y-or-n-p)
