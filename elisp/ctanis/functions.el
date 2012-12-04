@@ -112,6 +112,7 @@ more than 2 windows are currently displayed."
   "This is the alist of codes to buffer names for use in switch-to-common-buffer")
 
 
+;; tweaked to work with shell-current-directory.el
 (defun switch-to-common-buffer (buf-id)
   "Jump-to-existing-buffer with name corresponding to buf-id in
 common-buffers alist"
@@ -121,7 +122,9 @@ common-buffers alist"
       (let ((buff (directory-shell-buffer)))
 	(if buff
 	    (jump-to-existing-buffer buff)
-	  (error "no shell for current directory")))
+	  (if (and shell-last-shell (get-buffer shell-last-shell))
+	      (jump-to-existing-buffer shell-last-shell)
+	    (error "no shell for current directory"))))
     (let* ((entry (assoc (char-to-string buf-id)
 			 (filter '(lambda (i)
 				    (get-buffer (cdr i)))

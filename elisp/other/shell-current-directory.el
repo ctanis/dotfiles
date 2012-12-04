@@ -97,6 +97,8 @@ This is hopefully a shell one - this is a q/d heuristic."
 
 
 
+(defvar shell-last-shell nil)
+
 
 ;;;###autoload
 (defun shell-current-directory ()
@@ -121,7 +123,8 @@ This is hopefully a shell one - this is a q/d heuristic."
 
       (shell)
       (rename-buffer (directory-shell-buffer-name) t) ; unique
-      
+      (setq shell-last-shell (directory-shell-buffer-name))
+
       (if original-shell-buffer ; there has been a standard
 					; *shell* buffer before,
 					; restore it
