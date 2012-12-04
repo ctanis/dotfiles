@@ -1,2 +1,3 @@
 osascript -e "tell application \"Terminal\" to activate"
 osascript -e "tell application \"Terminal\" to do script with command \"cd \\\"$1\\\"\""
+osascript -e "tell application \"Terminal\" to activate"
