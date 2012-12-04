@@ -109,6 +109,8 @@ This is hopefully a shell one - this is a q/d heuristic."
   (let ((current-shell-buffer (directory-shell-buffer))
 	original-shell-buffer)
 
+    (setq shell-last-shell (buffer-name current-shell-buffer))
+
     (if current-shell-buffer
 	(pop-to-buffer current-shell-buffer nil)
 
@@ -123,7 +125,6 @@ This is hopefully a shell one - this is a q/d heuristic."
 
       (shell)
       (rename-buffer (directory-shell-buffer-name) t) ; unique
-      (setq shell-last-shell (directory-shell-buffer-name))
 
       (if original-shell-buffer ; there has been a standard
 					; *shell* buffer before,
