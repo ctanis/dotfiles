@@ -140,7 +140,10 @@
 
 
 (add-hook 'shell-mode-hook 
-     '(lambda () (toggle-truncate-lines 1)))
+     '(lambda ()
+	; allow the killing of this buffer without prompting
+	(process-kill-without-query (get-buffer-process (current-buffer)))
+	(toggle-truncate-lines 1)))
 
 (setq shell-font-lock-keywords
       `(
