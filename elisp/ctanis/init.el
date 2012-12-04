@@ -19,6 +19,7 @@
     (load-library "tramp"))
 
 
+
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
 	try-complete-file-name
@@ -380,7 +381,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
-;(setq ido-use-filename-at-point 'guess)
+(setq ido-use-filename-at-point 'guess)
 (setq ido-ignore-files '("^ " "^\\*"))
 (ido-mode 1)
 
