@@ -167,6 +167,7 @@
 (global-set-key "\M-j" 'backward-jump-to-char)
 (global-set-key "\C-xz" 'calendar)
 ;(global-set-key "\C-x!" 'shell)
+(global-set-key "\C-x!" 'shell-current-directory)
 (global-set-key "\C-q" 'base-quoted-insert)
 (global-set-key "\C-h\C-m" 'man)
 
@@ -392,8 +393,7 @@
 ; inhibit ffap- in dired mode, expose other controls
 (load-library "ffap-")
 
-(load-library "shell-current-directory")
-(global-set-key "\C-x!" 'shell-current-directory)
+
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (show-paren-mode 1)

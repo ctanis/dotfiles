@@ -119,9 +119,12 @@ common-buffers alist"
   (interactive "cSwitch to indexed buffer (lisb): ")
 
   (if (string= (char-to-string buf-id) "l")
-      (let ((buff (directory-shell-buffer)))
-	(if buff
-	    (jump-to-existing-buffer buff)
+      (let ((buff (directory-shell-buffer-name)))
+	(if (get-buffer buff)
+	    (progn 
+	      (message buff)
+	      (jump-to-existing-buffer (get-buffer buff))
+	      )
 	  (if (and shell-last-shell (get-buffer shell-last-shell))
 	      (jump-to-existing-buffer shell-last-shell)
 	    (error "no shell for current directory"))))
@@ -147,6 +150,32 @@ and go there."
 	 ((get-buffer-window buf)
 	  (select-window (get-buffer-window buf)))
 	 (t (switch-to-buffer bufname))))))
+
+
+;; modifications of shell-current-directory.el by Daniel Polani
+(defun directory-shell-buffer-name ()
+  "The name of a shell buffer pertaining to DIR."
+  (interactive)
+  (concat "*"
+	  (directory-file-name (expand-file-name default-directory))
+	  "-shell*"))
+
+(defvar shell-last-shell nil)
+
+(defun shell-current-directory ()
+
+  "Create a shell pertaining to the current directory."
+
+  (interactive)
+  (let ((shell-buffer-name (directory-shell-buffer-name)))
+    (setq shell-last-shell shell-buffer-name)
+    (if (get-buffer shell-buffer-name)
+	(jump-to-existing-buffer shell-buffer-name)
+      (shell)
+      (rename-buffer (directory-shell-buffer-name) t))))
+
+
+
 
 
 (require 'advice)
