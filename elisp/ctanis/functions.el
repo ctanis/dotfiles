@@ -112,6 +112,7 @@ more than 2 windows are currently displayed."
   "This is the alist of codes to buffer names for use in switch-to-common-buffer")
 
 
+;; tweaked to work with shell-current-directory.el
 (defun switch-to-common-buffer (buf-id)
   "Jump-to-existing-buffer with name corresponding to buf-id in
 common-buffers alist"
@@ -169,11 +170,7 @@ and go there."
   (let ((shell-buffer-name (directory-shell-buffer-name)))
     (setq shell-last-shell shell-buffer-name)
     (if (get-buffer shell-buffer-name)
-	(progn
-	  (jump-to-existing-buffer shell-buffer-name)
-	  ;; if shell is did, run a new one
-	  (if (not (get-buffer-process (current-buffer)))
-	      (shell)))
+	(jump-to-existing-buffer shell-buffer-name)
       (shell)
       (rename-buffer (directory-shell-buffer-name) t))))
 
