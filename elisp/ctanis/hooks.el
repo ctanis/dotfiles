@@ -128,15 +128,18 @@
 ;redefinitions of shell-mode keys
 (add-hook 'comint-mode-hook
 	  '(lambda ()
-	     (setq comint-use-prompt-regexp t)
-	     (setq comint-prompt-regexp "^[^\$]+\$ ")
+	     ;; (setq comint-use-prompt-regexp t)
+	     ;; (setq comint-prompt-regexp "^[^\$]+\$ ")
 	     ; (setq comint-prompt-read-only t)
 	     (define-key comint-mode-map
 	       "\M-p" 'comint-previous-matching-input-from-input)
 	     (define-key comint-mode-map
 	       "\M-n" 'comint-next-matching-input-from-input)
 	     (define-key comint-mode-map "\C-a" 'comint-bol)
-	     (define-key comint-mode-map "\M-o\C-?" 'comint-kill-input)))
+	     (define-key comint-mode-map "\M-o\C-?" 'comint-kill-input)
+	     (define-key comint-mode-map "\M-{" 'comint-previous-prompt)
+	     (define-key comint-mode-map "\M-}" 'comint-next-prompt)
+	     ))
 
 
 (add-hook 'shell-mode-hook 

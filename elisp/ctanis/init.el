@@ -399,3 +399,7 @@
 (show-paren-mode 1)
 
 (setenv "PAGER" "/bin/cat")
+
+(setq gdb-show-main t)
+;(setq gdb-many-windows t)
+
