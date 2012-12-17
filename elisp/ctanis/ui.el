@@ -31,7 +31,7 @@
   (set-face-background 'modeline-inactive "slateblue")
   (set-face-background 'modeline "salmon")
 
-  (set-face-background 'show-paren-match "darkkhaki")
+  (set-face-background 'show-paren-match "white")
   (set-face-background 'show-paren-mismatch "red")
   )
   

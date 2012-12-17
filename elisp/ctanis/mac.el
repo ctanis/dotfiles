@@ -48,6 +48,29 @@
 (define-key craig-prefix-map "\M-s" 'dirshell)
 
 
+(defvar os-launcher-cmd "open")
+
+(defun launch ()
+  "launch current file with OS"
+  (interactive)
+  (shell-command (concat os-launcher-cmd " "
+			 (shell-quote-argument (buffer-file-name)))))
+(define-key craig-prefix-map "\M-l" 'launch)
+
+(require 'dired)
+(defun launch-dired ()
+  "launch current marked files in dired buffer"
+  (interactive)
+  (mapcar
+   (lambda (x)
+     (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
+   (dired-get-marked-files)))
+
+(add-hook 'dired-mode-hook
+	   '(lambda ()
+	      (local-set-key "\M-o\M-l" 'launch-dired)))
+
+
 ;; some stuff for dealing with Dash.app
 (define-derived-mode dash-snippet-mode fundamental-mode
   "enter dash snippet here"
