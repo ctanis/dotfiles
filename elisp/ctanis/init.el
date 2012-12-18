@@ -175,65 +175,63 @@
 (define-prefix-command 'craig-prefix 'craig-prefix-map)
 (global-set-key "\M-o" 'craig-prefix)
 
-(define-key craig-prefix-map "\C-o" 'better-display-buffer)
-(define-key craig-prefix-map "\M-o" 'popper-other-window)
-(define-key craig-prefix-map "o" 'switch-to-buffer)
-(define-key craig-prefix-map "k" 'kill-other-buffer)
-(define-key craig-prefix-map "\M-k" 'kill-current-buffer)
-(define-key craig-prefix-map "\M-b" 'sink-buffer)
-(define-key craig-prefix-map "q" 'flip-windows)
-(define-key craig-prefix-map "p" 'delete-other-windows)
-(define-key craig-prefix-map "b" 'switch-to-buffer-other-window)
-(define-key craig-prefix-map "d" 'dired-other-window)
-(define-key craig-prefix-map "\M-d" 'selectively-delete-lines)
-(define-key craig-prefix-map "i" 'delete-window)
-(define-key craig-prefix-map "f" 'find-file-other-window)
-(define-key craig-prefix-map "\M-j" 'forward-jump-to-char)
-(define-key craig-prefix-map "l" 'move-to-window-line)
-(define-key craig-prefix-map "h" 'split-window-vertically)
-(define-key craig-prefix-map "v" 'split-window-horizontally)
-;(define-key craig-prefix-map "u" 'undo-window-config-change)
-;(define-key craig-prefix-map "r" 'undo-undo-window-config-change)
-(define-key craig-prefix-map "\M-r" 'rename-buffer)
-(define-key craig-prefix-map "s" 'switch-to-common-buffer)
-(define-key craig-prefix-map "t" 'insert-time-stamp)
-(define-key craig-prefix-map "w" 'write-region)
-;(define-key craig-prefix-map "n" 'send-region-to-netscape)
-(define-key craig-prefix-map "\C-w" 'delete-region)
-;(define-key craig-prefix-map "\C-f" 'find-and-display-file)
-(define-key craig-prefix-map "\C-d" 'list-and-display-directory)
-(define-key craig-prefix-map "\C-a" 'alternate-buffer-in-other-window)
-(define-key craig-prefix-map "\C-?" 'kill-to-beginning-of-line)
-(define-key craig-prefix-map "a" 'alternate-buffer)
 (define-key craig-prefix-map " " 'just-no-space)
-(define-key craig-prefix-map "c" 'center-line)
 (define-key craig-prefix-map "." 'find-tag-other-window)
-;(define-key craig-prefix-map "\M-." 'online-dictionary-lookup)
-(define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
-(define-key craig-prefix-map "\M-e" 'interactively-enlarge-window)
 (define-key craig-prefix-map "1" 'make-generic-header)
 (define-key craig-prefix-map "2" 'create-attribute-list)
 (define-key craig-prefix-map "3" 'executable-set-magic)
 (define-key craig-prefix-map "4" 'make-perl-script)
-(define-key craig-prefix-map "\M-i" 'imenu)
-;(define-key craig-prefix-map "\C-g" 'find-grep-dired)
-(define-key craig-prefix-map "\C-f" 'find-dired)
-(define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
-(define-key craig-prefix-map "\M-f" 'find-and-display-file)
-(define-key craig-prefix-map "\M-c" 'make-tmp-code)
-(define-key craig-prefix-map "\M-m" 'make-directory)
-;(define-key craig-prefix-map "\C-xh" 'open-file-in-hidden-buffer)
+(define-key craig-prefix-map "\C-?" 'kill-to-beginning-of-line)
+(define-key craig-prefix-map "\C-a" 'alternate-buffer-in-other-window)
+(define-key craig-prefix-map "\C-d" 'list-and-display-directory)
+(define-key craig-prefix-map "\C-o" 'better-display-buffer)
+(define-key craig-prefix-map "\C-w" 'delete-region)
+(define-key craig-prefix-map "\C-x-" 'shrink-other-window-if-larger-than-buffer)
 (define-key craig-prefix-map "\C-x1" 'mono-framify)
 (define-key craig-prefix-map "\C-x2" 'frame-mitosis)
-(define-key craig-prefix-map "\C-x-" 'shrink-other-window-if-larger-than-buffer)
+(define-key craig-prefix-map "\M-b" 'sink-buffer)
+(define-key craig-prefix-map "\M-c" 'make-tmp-code)
+(define-key craig-prefix-map "\M-d" 'selectively-delete-lines)
+(define-key craig-prefix-map "\M-e" 'interactively-enlarge-window)
+(define-key craig-prefix-map "\M-f" 'find-dired)
 (define-key craig-prefix-map "\M-h" 'hl-line-mode)
+(define-key craig-prefix-map "\M-i" 'imenu)
+(define-key craig-prefix-map "\M-j" 'forward-jump-to-char)
+(define-key craig-prefix-map "\M-k" 'kill-current-buffer)
+(define-key craig-prefix-map "\M-m" 'make-directory)
+(define-key craig-prefix-map "\M-o" 'popper-other-window)
+(define-key craig-prefix-map "\M-r" 'rename-buffer)
+(define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
+(define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
+(define-key craig-prefix-map "a" 'alternate-buffer)
+(define-key craig-prefix-map "b" 'switch-to-buffer-other-window)
+(define-key craig-prefix-map "c" 'center-line)
+(define-key craig-prefix-map "d" 'dired-other-window)
+(define-key craig-prefix-map "f" 'find-file-other-window)
+(define-key craig-prefix-map "h" 'split-window-vertically)
+(define-key craig-prefix-map "i" 'delete-window)
+(define-key craig-prefix-map "k" 'kill-other-buffer)
+(define-key craig-prefix-map "l" 'move-to-window-line)
+(define-key craig-prefix-map "o" 'switch-to-buffer)
+(define-key craig-prefix-map "p" 'delete-other-windows)
+(define-key craig-prefix-map "q" 'flip-windows)
+(define-key craig-prefix-map "s" 'switch-to-common-buffer)
+(define-key craig-prefix-map "t" 'insert-time-stamp)
+(define-key craig-prefix-map "v" 'split-window-horizontally)
+(define-key craig-prefix-map "w" 'write-region)
+;(define-key craig-prefix-map "\C-f" 'find-and-display-file)
+;(define-key craig-prefix-map "\C-g" 'find-grep-dired)
+;(define-key craig-prefix-map "\C-xh" 'open-file-in-hidden-buffer)
+;(define-key craig-prefix-map "\M-." 'online-dictionary-lookup)
+;(define-key craig-prefix-map "n" 'send-region-to-netscape)
+;(define-key craig-prefix-map "r" 'undo-undo-window-config-change)
+;(define-key craig-prefix-map "u" 'undo-window-config-change)
 
 ;(global-set-key "\C-x\M-q" 'prefix-paragraph)
 ;(global-set-key "\C-xrv" 'invert-rectangle)
 
 ;why would i want to SUSPEND EMACS!  
-
-(global-set-key "\M-\C-z" 'suspend-emacs)
+;(global-set-key "\M-\C-z" 'suspend-emacs)
 
 ;(global-set-key [M-tab] 'hippie-expand)
 (global-set-key "\M-?" 'hippie-expand)
@@ -244,7 +242,6 @@
 
 ; this one should be \C-M-/
 (global-set-key (quote [201326639]) (quote hippie-expand))
-
 
 
 (global-set-key "\M-/" 'dabbrev-expand)
@@ -286,7 +283,6 @@
 ;remove an alternate keybinding for undo
 ;(global-unset-key "\C-/")
 (global-unset-key (quote [67108911]))
-
 
 
 ; don't highlight region
@@ -379,20 +375,25 @@
 
 (defalias 'list-buffers 'ibuffer)
 
+
+; inhibit ffap- in dired mode, expose other controls
+;(load-library "ffap-")
+
 (setq ido-enable-flex-matching t)
 ;(setq ido-everywhere t)
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
-(setq ido-use-filename-at-point 'ffap-guesser)
+(setq ido-use-filename-at-point nil)
 (setq ido-ignore-files '("^ " "^\\*"))
 (ido-mode 1)
 (ido-everywhere -1)
+
+(load-library "ffap")
+(define-key craig-prefix-map "\C-f" 'find-file-at-point)
 
 ; ignore certain files in the list
 (mapcar (lambda (x) (add-to-list 'completion-ignored-extensions x))
 	'(".ctxt" ".DS_Store" ".log"))
 
-; inhibit ffap- in dired mode, expose other controls
-(load-library "ffap-")
 
 
 
