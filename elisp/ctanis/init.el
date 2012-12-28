@@ -379,7 +379,7 @@
 ; inhibit ffap- in dired mode, expose other controls
 ;(load-library "ffap-")
 
-(setq ido-enable-flex-matching t)
+(setq ido-enable-flex-matching nil)
 ;(setq ido-everywhere t)
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
 (setq ido-use-filename-at-point nil)
