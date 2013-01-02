@@ -60,6 +60,8 @@
 
 (c-add-style "ctanis" '("ellemtel"
 			(c-basic-offset . 4)
+			(c-offsets-alist
+			 (case-label . 1))
 			(c-hanging-braces-alist
 			 (class-close)
 			 )

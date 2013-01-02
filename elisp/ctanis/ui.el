@@ -95,33 +95,32 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; ;; disable the mouse/trackpad as much as possible
 
-;; disable the mouse/trackpad as much as possible
+;; (global-set-key '[wheel-up] 'ignore)
+;; (global-set-key '[double-wheel-up] 'ignore)
+;; (global-set-key '[triple-wheel-up] 'ignore)
+;; (global-set-key '[wheel-down] 'ignore)
+;; (global-set-key '[double-wheel-down] 'ignore)
+;; (global-set-key '[triple-wheel-down] 'ignore)
 
-(global-set-key '[wheel-up] 'ignore)
-(global-set-key '[double-wheel-up] 'ignore)
-(global-set-key '[triple-wheel-up] 'ignore)
-(global-set-key '[wheel-down] 'ignore)
-(global-set-key '[double-wheel-down] 'ignore)
-(global-set-key '[triple-wheel-down] 'ignore)
+;; (global-set-key '[down-mouse-1] 'ignore)
+;; (global-set-key '[mouse-1] 'ignore)
+;; (global-set-key '[drag-mouse-1] 'ignore)
+;; (global-set-key '[double-mouse-1] 'ignore)
+;; (global-set-key '[triple-mouse-1] 'ignore)
 
-(global-set-key '[down-mouse-1] 'ignore)
-(global-set-key '[mouse-1] 'ignore)
-(global-set-key '[drag-mouse-1] 'ignore)
-(global-set-key '[double-mouse-1] 'ignore)
-(global-set-key '[triple-mouse-1] 'ignore)
+;; (global-set-key '[down-mouse-2] 'ignore)
+;; (global-set-key '[mouse-2] 'ignore)
+;; (global-set-key '[drag-mouse-2] 'ignore)
+;; (global-set-key '[double-mouse-2] 'ignore)
+;; (global-set-key '[triple-mouse-2] 'ignore)
 
-(global-set-key '[down-mouse-2] 'ignore)
-(global-set-key '[mouse-2] 'ignore)
-(global-set-key '[drag-mouse-2] 'ignore)
-(global-set-key '[double-mouse-2] 'ignore)
-(global-set-key '[triple-mouse-2] 'ignore)
-
-(global-set-key '[down-mouse-3] 'ignore)
-(global-set-key '[mouse-3] 'ignore)
-(global-set-key '[drag-mouse-3] 'ignore)
-(global-set-key '[double-mouse-3] 'ignore)
-(global-set-key '[triple-mouse-3] 'ignore)
+;; (global-set-key '[down-mouse-3] 'ignore)
+;; (global-set-key '[mouse-3] 'ignore)
+;; (global-set-key '[drag-mouse-3] 'ignore)
+;; (global-set-key '[double-mouse-3] 'ignore)
+;; (global-set-key '[triple-mouse-3] 'ignore)
 
 
 ;; put this in .emacs-local if you want
