@@ -145,10 +145,13 @@ and go there."
     (if buf
 	(cond
 	 ((equal buf (current-buffer)) t)
+	 ((get-buffer-window buf t)
+	  (let ((win (select-window (get-buffer-window buf t))))
+	    (select-frame (window-frame win))
+	    (other-frame 0) ; switch to the selected frame?
+	    (select-window win)))
 	 ((equal (count-windows) 1)
 	  (switch-to-buffer-other-window buf))
-	 ((get-buffer-window buf)
-	  (select-window (get-buffer-window buf)))
 	 (t (switch-to-buffer bufname))))))
 
 

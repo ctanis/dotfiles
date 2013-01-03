@@ -383,7 +383,7 @@
 ;(setq ido-everywhere t)
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
 (setq ido-use-filename-at-point nil)
-(setq ido-ignore-files '("^ " "^\\*"))
+(setq ido-ignore-buffers '("\\` " "\\*"))
 (ido-mode 1)
 (ido-everywhere -1)
 
@@ -392,7 +392,9 @@
 
 ; ignore certain files in the list
 (mapcar (lambda (x) (add-to-list 'completion-ignored-extensions x))
-	'(".ctxt" ".DS_Store" ".log"))
+	'(".ctxt"
+	  ".DS_Store"
+	  ".log"))
 
 
 
