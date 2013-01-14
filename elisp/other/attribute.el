@@ -144,7 +144,9 @@ initial entry is Mode: with the current buffer mode inserted."
 	(progn
 	  (end-of-line)
 	  (insert "  ")))
-    (insert comment-start " -*- Mode: " mode-name "; -*- " comment-end "\n")))
+    (insert comment-start " -*- Mode: "
+	    (car (split-string mode-name "/")) ;; ctanis -- remove minor modes
+	    "; -*- " comment-end "\n")))
 
 
 (defun reparse-attribute-list ()
