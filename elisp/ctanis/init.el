@@ -407,3 +407,4 @@
 (setq gdb-show-main t)
 ;(setq gdb-many-windows t)
 
+(setq compilation-scroll-output t)
