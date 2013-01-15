@@ -91,7 +91,7 @@
 
 
 
-(set-fringe-style 1)
+(set-fringe-style 5)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
