@@ -195,7 +195,7 @@
 (define-key craig-prefix-map "\M-e" 'interactively-enlarge-window)
 (define-key craig-prefix-map "\M-f" 'find-dired)
 (define-key craig-prefix-map "\M-h" 'hl-line-mode)
-(define-key craig-prefix-map "\M-i" 'imenu)
+;(define-key craig-prefix-map "\M-i" 'imenu)
 (define-key craig-prefix-map "\M-j" 'forward-jump-to-char)
 (define-key craig-prefix-map "\M-k" 'kill-current-buffer)
 (define-key craig-prefix-map "\M-m" 'make-directory)
@@ -386,6 +386,8 @@
 (setq ido-ignore-buffers '("\\` " "\\*"))
 (ido-mode 1)
 (ido-everywhere -1)
+(load-library "idomenu")
+(define-key craig-prefix-map "\M-i" 'idomenu)
 
 (load-library "ffap")
 (define-key craig-prefix-map "\C-f" 'find-file-at-point)
