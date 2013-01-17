@@ -162,7 +162,7 @@
    "\C-u\C-xo")
 
 (global-set-key "\C-zo" 'goto-popper-buffer)
-(global-set-key "\M-s" 'goto-line)
+;(global-set-key "\M-s" 'goto-line)
 (global-set-key "\M-,"  'ispell-word)
 (global-set-key "\M-j" 'backward-jump-to-char)
 (global-set-key "\C-xz" 'calendar)
