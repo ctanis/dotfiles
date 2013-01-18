@@ -206,7 +206,7 @@
 (define-key craig-prefix-map "a" 'alternate-buffer)
 (define-key craig-prefix-map "b" 'switch-to-buffer-other-window)
 (define-key craig-prefix-map "c" 'center-line)
-(define-key craig-prefix-map "d" 'dired-other-window)
+;(define-key craig-prefix-map "d" 'dired-other-window)
 (define-key craig-prefix-map "f" 'find-file-other-window)
 (define-key craig-prefix-map "h" 'split-window-vertically)
 (define-key craig-prefix-map "i" 'delete-window)
@@ -379,6 +379,9 @@
 ; inhibit ffap- in dired mode, expose other controls
 ;(load-library "ffap-")
 
+
+
+;; ------------ ido stuff
 (setq ido-enable-flex-matching nil)
 ;(setq ido-everywhere t)
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
@@ -388,6 +391,23 @@
 (ido-everywhere -1)
 (load-library "idomenu")
 (define-key craig-prefix-map "\M-i" 'idomenu)
+
+(defun ido-dired-other-window ()
+  "Call `dired-other-window' the ido way.
+The directory is selected interactively by typing a substring.
+For details of keybindings, see `ido-find-file'."
+  (interactive)
+  (let ((ido-report-no-match nil)
+	(ido-auto-merge-work-directories-length -1))
+    (ido-file-internal 'other-window 'dired-other-window nil "Dired: " 'dir)))
+
+(define-key craig-prefix-map "d" 'ido-dired-other-window)
+
+
+(define-key ido-file-completion-map "\C-t" 'transpose-chars)
+(define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
+;;--------------
+
 
 (load-library "ffap")
 (define-key craig-prefix-map "\C-f" 'find-file-at-point)

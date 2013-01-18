@@ -268,3 +268,8 @@
 
 (add-hook 'ibuffer-mode-hook
 	  '(lambda () (local-unset-key "\M-o")))
+
+;; (add-hook 'ido-minibuffer-setup-hook
+;; 	  (lambda()
+;; 	    (local-set-key "\C-n" 'ido-toggle-regexp)
+;; 	    (local-set-key "\C-t" 'transpose-chars)))
