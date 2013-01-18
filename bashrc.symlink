@@ -93,3 +93,15 @@ function update_repos ()
 
 
 
+function check_repos ()
+{
+    for i in `cat ~/.active_repos`; do
+	d=`eval echo $i;`
+	if [ -d $d ]; then 
+	    echo $d;
+	   sh -c "cd $d && git status";
+	else
+	    echo "** $d not found **";
+	fi;
+    done;
+}
