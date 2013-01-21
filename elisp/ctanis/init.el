@@ -416,7 +416,8 @@ For details of keybindings, see `ido-find-file'."
 (mapcar (lambda (x) (add-to-list 'completion-ignored-extensions x))
 	'(".ctxt"
 	  ".DS_Store"
-	  ".log"))
+	  ".log"
+	  ".dSYM/"))
 
 
 
