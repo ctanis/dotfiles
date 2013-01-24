@@ -405,6 +405,7 @@ For details of keybindings, see `ido-find-file'."
 
 
 (define-key ido-file-completion-map "\C-t" 'transpose-chars)
+(define-key ido-buffer-completion-map "\C-t" 'transpose-chars)
 (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
 ;;--------------
 
