@@ -4,7 +4,7 @@
   (interactive)
 
   (set-foreground-color "black")
-  (set-background-color "lightgrey")
+  (iset-background-color "lightgrey")
 
   (set-cursor-color "blue")
   (set-face-background 'region "darkgrey")
@@ -28,8 +28,11 @@
   (set-face-foreground font-lock-variable-name-face "chocolate4")
 
   (set-face-foreground 'modeline-inactive "lightgray")
-  (set-face-background 'modeline-inactive "slateblue")
-  (set-face-background 'modeline "salmon")
+  ;; (set-face-background 'modeline-inactive "slateblue")
+  ;; (set-face-background 'modeline "salmon")
+  (set-face-background 'modeline-inactive "black")
+  (set-face-background 'modeline "yellow")
+
 
   (set-face-background 'show-paren-match "white")
   (set-face-background 'show-paren-mismatch "red")
