@@ -4,7 +4,7 @@
   (interactive)
 
   (set-foreground-color "black")
-  (iset-background-color "lightgrey")
+  (set-background-color "lightgrey")
 
   (set-cursor-color "blue")
   (set-face-background 'region "darkgrey")
