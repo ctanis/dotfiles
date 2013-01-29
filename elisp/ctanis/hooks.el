@@ -269,9 +269,14 @@
 (add-hook 'ibuffer-mode-hook
 	  '(lambda () (local-unset-key "\M-o")))
 
+
+
+
 (add-hook 'ido-minibuffer-setup-hook
 	  (lambda()
 	    (define-key ido-file-completion-map "\C-t" 'transpose-chars)
 	    (define-key ido-buffer-completion-map "\C-t" 'transpose-chars)
+	    (define-key ido-file-completion-map "\M-b" 'backward-word)
+	    (define-key ido-buffer-completion-map "\M-b" 'bakcword-word)
 	    (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
 	    ))

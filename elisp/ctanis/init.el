@@ -387,6 +387,7 @@
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
 (setq ido-use-filename-at-point nil)
 (setq ido-ignore-buffers '("\\` " "\\*"))
+(setq ido-enable-regexp t)
 (ido-mode 1)
 (ido-everywhere -1)
 (load-library "idomenu")
