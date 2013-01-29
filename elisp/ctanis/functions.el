@@ -565,3 +565,12 @@ in the mode line."
     (insert "\\verb|")
     (yank)
     (insert "|")))
+
+
+; clean up ido-work-dirs
+(defun remove-ido-work-dirs (match)
+  (interactive "MRemove work directories matching: ")
+  (setq ido-work-directory-list
+	(filter '(lambda(c) (not
+			     (string-match (string-append "^.*" match) c)))
+		ido-work-directory-list)))
