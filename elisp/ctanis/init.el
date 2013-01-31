@@ -428,3 +428,6 @@ For details of keybindings, see `ido-find-file'."
 ;(setq gdb-many-windows t)
 
 (setq compilation-scroll-output t)
+
+(require 'sml-modeline)
+(sml-modeline-mode 1)

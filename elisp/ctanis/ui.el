@@ -1,6 +1,55 @@
 (require 'hl-line)
+(require 'sml-modeline)
 
 (defun ctanis_colorfy()
+  (interactive)
+
+  (set-foreground-color "black")
+  (set-background-color "wheat3")
+
+  (set-cursor-color "blue")
+  (set-face-background 'region "darkgrey")
+  (set-face-background 'hl-line "darkgrey")
+
+  (set-face-background 'fringe "wheat3")  
+  (set-face-foreground 'fringe "darkslateblue")
+
+  (set-face-foreground font-lock-doc-face "grey30")
+  (set-face-foreground font-lock-comment-face "steelblue4")
+
+  (set-face-foreground font-lock-string-face "darkgreen")
+  (set-face-foreground font-lock-constant-face "blue4")
+
+  (set-face-foreground font-lock-type-face "orangered4")
+  (set-face-foreground font-lock-preprocessor-face "chartreuse4")
+  (set-face-foreground font-lock-keyword-face "firebrick4")
+  (set-face-foreground font-lock-builtin-face "blue3")
+
+  (set-face-foreground font-lock-function-name-face "blue3")
+  (set-face-foreground font-lock-variable-name-face "darkgoldenrod4")
+
+  (set-face-foreground 'modeline-inactive "black")
+  (set-face-background 'modeline-inactive "darkgrey")
+  (set-face-background 'modeline "darkred")
+  (set-face-foreground 'modeline "goldenrod")
+
+  
+
+  (set-face-background 'sml-modeline-end-face "wheat4")
+  (set-face-background 'sml-modeline-vis-face "black")
+  (set-face-foreground 'sml-modeline-end-face "wheat3")
+  (set-face-foreground 'sml-modeline-vis-face "wheat3")
+  (set-face-foreground 'ido-only-match "green4")
+  (set-face-foreground 'ido-first-match "cyan4")
+
+
+  (set-face-background 'show-paren-match "wheat2")
+  (set-face-background 'show-paren-mismatch "red")
+  )
+
+
+
+(defun ctanis_colorfy2()
   (interactive)
 
   (set-foreground-color "black")
