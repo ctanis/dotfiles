@@ -63,8 +63,7 @@ defaults write com.apple.iCal AppleShowScrollBars -string WhenScrolling
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
 # enable selecting text in quick look preview
-defaults write com.apple.finder QLEnableTextSelection -bool TRUE;
-
+defaults write -g QLEnableTextSelection -bool TRUE;
 
 # hold window against side for 2 seconds before moving to next workspace
 # (better for BetterSnapTool)
