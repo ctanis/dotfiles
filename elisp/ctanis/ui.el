@@ -15,20 +15,6 @@
   (set-face-background 'fringe "burlywood3")
   (set-face-foreground 'fringe "darkslateblue")
 
-  (set-face-foreground font-lock-doc-face "grey30")
-  (set-face-foreground font-lock-comment-face "grey40")
-
-  (set-face-foreground font-lock-string-face "darkgreen")
-  (set-face-foreground font-lock-constant-face "blue4")
-
-  (set-face-foreground font-lock-type-face "darkcyan")
-  (set-face-foreground font-lock-preprocessor-face "chartreuse4")
-  (set-face-foreground font-lock-keyword-face "firebrick4")
-  (set-face-foreground font-lock-builtin-face "blue3")
-
-  (set-face-foreground font-lock-function-name-face "blue3")
-  (set-face-foreground font-lock-variable-name-face "deepskyblue4")
-
   (set-face-foreground 'modeline-inactive "black")
   (set-face-background 'modeline-inactive "darkgrey")
   (set-face-background 'modeline "darkred")
@@ -48,11 +34,39 @@
   (set-face-foreground 'ido-subdir  "orangered4")
 
   (set-face-background 'flymake-errline "hotpink")
-  (set-face-background 'flymake-warnline "lightblue2")
-
+  (set-face-background 'flymake-warnline "lightblue3")
 
   (set-face-background 'show-paren-match "wheat2")
   (set-face-background 'show-paren-mismatch "red")
+
+
+
+  (set-face-foreground font-lock-doc-face "grey40")
+  (set-face-foreground font-lock-comment-face "grey40")
+  (set-face-foreground font-lock-string-face "darkgreen")
+  (set-face-background font-lock-string-face "wheat2")
+  (set-face-foreground font-lock-constant-face "black")
+  (set-face-foreground font-lock-type-face "black")
+  (set-face-foreground font-lock-preprocessor-face "black")
+  (set-face-foreground font-lock-keyword-face "goldenrod4")
+  (set-face-foreground font-lock-builtin-face "goldenrod4")
+  (set-face-foreground font-lock-function-name-face "blue3")
+  (set-face-foreground font-lock-variable-name-face "red4")
+
+
+  ;;   (set-face-foreground font-lock-doc-face "grey40")
+  ;; (set-face-foreground font-lock-comment-face "grey40")
+  ;; (set-face-foreground font-lock-string-face "darkgreen")
+  ;; (set-face-foreground font-lock-constant-face "blue4")
+  ;; (set-face-foreground font-lock-type-face "darkcyan")
+  ;; (set-face-foreground font-lock-preprocessor-face "chartreuse4")
+  ;; (set-face-foreground font-lock-keyword-face "firebrick4")
+  ;; (set-face-foreground font-lock-builtin-face "blue3")
+  ;; (set-face-foreground font-lock-function-name-face "blue3")
+  ;; (set-face-foreground font-lock-variable-name-face "deepskyblue4")
+
+
+
   )
 
 
