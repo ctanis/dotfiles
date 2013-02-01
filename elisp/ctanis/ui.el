@@ -11,7 +11,7 @@
   (set-face-background 'region "darkgrey")
   (set-face-background 'hl-line "darkgrey")
 
-  (set-face-background 'fringe "wheat3")  
+  (set-face-background 'fringe "burlywood3")
   (set-face-foreground 'fringe "darkslateblue")
 
   (set-face-foreground font-lock-doc-face "grey30")
@@ -39,8 +39,13 @@
   (set-face-background 'sml-modeline-vis-face "black")
   (set-face-foreground 'sml-modeline-end-face "wheat3")
   (set-face-foreground 'sml-modeline-vis-face "wheat3")
-  (set-face-foreground 'ido-only-match "green4")
-  (set-face-foreground 'ido-first-match "cyan4")
+
+
+  (set-face-foreground 'ido-first-match "violetred4")
+  (set-face-background 'ido-first-match  "wheat2")
+  (set-face-foreground 'ido-only-match  "black")
+  (set-face-background 'ido-only-match  "green")
+  (set-face-foreground 'ido-subdir  "orangered4")
 
 
   (set-face-background 'show-paren-match "wheat2")

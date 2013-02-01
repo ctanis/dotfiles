@@ -2,7 +2,9 @@
 
 ;; start this asap
 (if window-system
-    (server-start))
+    (progn
+      (cd "~/")	;; assume it was launchd
+      (server-start)))
 
 
 (load-library "functions")

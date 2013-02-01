@@ -1,5 +1,6 @@
 ;; mac stuff
 
+(setq mac-option-modifier 'none)
 (setq mac-command-modifier 'meta)
 
 
@@ -23,9 +24,6 @@
 
 ; xcode stuff
 (load-library "xcode")
-
-; need this in case xcode invoked us
-(cd "~/")
 
 
 ;(add-to-list 'popper-no-pop-buffers "*Completions*")
@@ -71,48 +69,48 @@
 	      (local-set-key "\M-o\M-l" 'launch-dired)))
 
 
-;; some stuff for dealing with Dash.app
-(define-derived-mode dash-snippet-mode fundamental-mode
-  "enter dash snippet here"
-  )
+;; ;; some stuff for dealing with Dash.app
+;; (define-derived-mode dash-snippet-mode fundamental-mode
+;;   "enter dash snippet here"
+;;   )
 
 
 
-(defvar dash-snippet-mode-return-buffer nil)
-(defvar dash-snippet-mode-win-config nil)
+;; (defvar dash-snippet-mode-return-buffer nil)
+;; (defvar dash-snippet-mode-win-config nil)
 
-(defun dash-snippet-returntosender()
-  (interactive)
-  ; kill whole buffer
-  (yank)
-  (let ((offset (- (buffer-end 1) (point))))
-    (kill-region (buffer-end -1) (buffer-end 1))
-    (kill-buffer-and-window)
-    (switch-to-buffer dash-snippet-mode-return-buffer)
-    (yank)
-    (backward-char offset)
-    (set-window-configuration dash-snippet-mode-win-config)
-    ))
+;; (defun dash-snippet-returntosender()
+;;   (interactive)
+;;   ; kill whole buffer
+;;   (yank)
+;;   (let ((offset (- (buffer-end 1) (point))))
+;;     (kill-region (buffer-end -1) (buffer-end 1))
+;;     (kill-buffer-and-window)
+;;     (switch-to-buffer dash-snippet-mode-return-buffer)
+;;     (yank)
+;;     (backward-char offset)
+;;     (set-window-configuration dash-snippet-mode-win-config)
+;;     ))
 
-(defun dash-snippet-abort()
-  (interactive)
-  ; kill whole buffer
-  (kill-buffer-and-window)
-  (set-window-configuration dash-snippet-mode-win-config)
-  (switch-to-buffer dash-snippet-mode-return-buffer)
-  )
+;; (defun dash-snippet-abort()
+;;   (interactive)
+;;   ; kill whole buffer
+;;   (kill-buffer-and-window)
+;;   (set-window-configuration dash-snippet-mode-win-config)
+;;   (switch-to-buffer dash-snippet-mode-return-buffer)
+;;   )
 
 
-(defun dash-snippet-get ()
-  (interactive)
-  (setq dash-snippet-mode-return-buffer (buffer-name))
-  (setq dash-snippet-mode-win-config (current-window-configuration))
-  (switch-to-buffer-other-window "*dash-snippet-buffer*")
-  (delete-region (buffer-end -1) (buffer-end 1))
-  (shrink-window-if-larger-than-buffer)
-  (dash-snippet-mode))
+;; (defun dash-snippet-get ()
+;;   (interactive)
+;;   (setq dash-snippet-mode-return-buffer (buffer-name))
+;;   (setq dash-snippet-mode-win-config (current-window-configuration))
+;;   (switch-to-buffer-other-window "*dash-snippet-buffer*")
+;;   (delete-region (buffer-end -1) (buffer-end 1))
+;;   (shrink-window-if-larger-than-buffer)
+;;   (dash-snippet-mode))
 
-(define-key dash-snippet-mode-map "\C-c\C-c" 'dash-snippet-abort)
-(define-key dash-snippet-mode-map "\M-v" 'dash-snippet-returntosender)
-(define-key dash-snippet-mode-map "\C-y" 'dash-snippet-returntosender)
-;(define-key craig-prefix-map "x" 'dash-snippet-get)
+;; (define-key dash-snippet-mode-map "\C-c\C-c" 'dash-snippet-abort)
+;; (define-key dash-snippet-mode-map "\M-v" 'dash-snippet-returntosender)
+;; (define-key dash-snippet-mode-map "\C-y" 'dash-snippet-returntosender)
+;; ;(define-key craig-prefix-map "x" 'dash-snippet-get)

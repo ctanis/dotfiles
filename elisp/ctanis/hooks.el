@@ -74,9 +74,10 @@
 	  '(lambda ()
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
-;	     (autopair-mode)
+	     (autopair-mode)
 	     (c-toggle-auto-newline 1)
-
+	     (setq c-hungry-delete-key t)
+	     (abbrev-mode -1)
 ))
 
 
