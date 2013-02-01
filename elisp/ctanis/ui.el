@@ -1,5 +1,6 @@
 (require 'hl-line)
 (require 'sml-modeline)
+(require 'flymake)
 
 (defun ctanis_colorfy()
   (interactive)
@@ -15,18 +16,18 @@
   (set-face-foreground 'fringe "darkslateblue")
 
   (set-face-foreground font-lock-doc-face "grey30")
-  (set-face-foreground font-lock-comment-face "steelblue4")
+  (set-face-foreground font-lock-comment-face "grey40")
 
   (set-face-foreground font-lock-string-face "darkgreen")
   (set-face-foreground font-lock-constant-face "blue4")
 
-  (set-face-foreground font-lock-type-face "orangered4")
+  (set-face-foreground font-lock-type-face "darkcyan")
   (set-face-foreground font-lock-preprocessor-face "chartreuse4")
   (set-face-foreground font-lock-keyword-face "firebrick4")
   (set-face-foreground font-lock-builtin-face "blue3")
 
   (set-face-foreground font-lock-function-name-face "blue3")
-  (set-face-foreground font-lock-variable-name-face "darkgoldenrod4")
+  (set-face-foreground font-lock-variable-name-face "deepskyblue4")
 
   (set-face-foreground 'modeline-inactive "black")
   (set-face-background 'modeline-inactive "darkgrey")
@@ -34,7 +35,6 @@
   (set-face-foreground 'modeline "goldenrod")
 
   
-
   (set-face-background 'sml-modeline-end-face "wheat4")
   (set-face-background 'sml-modeline-vis-face "black")
   (set-face-foreground 'sml-modeline-end-face "wheat3")
@@ -46,6 +46,9 @@
   (set-face-foreground 'ido-only-match  "black")
   (set-face-background 'ido-only-match  "green")
   (set-face-foreground 'ido-subdir  "orangered4")
+
+  (set-face-background 'flymake-errline "hotpink")
+  (set-face-background 'flymake-warnline "lightblue2")
 
 
   (set-face-background 'show-paren-match "wheat2")
