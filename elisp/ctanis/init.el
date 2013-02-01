@@ -2,9 +2,8 @@
 
 ;; start this asap
 (if window-system
-    (progn
-      (cd "~/")	;; assume it was launchd
-      (server-start)))
+    (server-start))
+
 
 
 (load-library "functions")
@@ -433,3 +432,9 @@ For details of keybindings, see `ido-find-file'."
 
 (require 'sml-modeline)
 (sml-modeline-mode 1)
+
+;; start this asap
+(if window-system
+    (cd "~/")	;; assume it was launchd
+  (global-font-lock-mode 0)) ;; no colors in the terminal
+
