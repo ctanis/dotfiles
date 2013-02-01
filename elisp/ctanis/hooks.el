@@ -55,7 +55,6 @@
 ;; 			(other . "ellemtel")))
 
 
-(autoload 'autopair-mode "autopair.el" "autopair mode" t)
 
 (c-add-style "ctanis" '("ellemtel"
 			(c-basic-offset . 4)
@@ -74,7 +73,6 @@
 	  '(lambda ()
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
-	     (autopair-mode)
 	     (c-toggle-auto-newline 1)
 	     (setq c-hungry-delete-key t)
 	     (abbrev-mode -1)

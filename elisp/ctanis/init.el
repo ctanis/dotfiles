@@ -14,10 +14,8 @@
 (load-library "headers")
 (load-library "ispell")
 (load-library "hippie-exp")
-
-
-(if (locate-library "tramp")
-    (load-library "tramp"))
+(load-library "modeline-cleanup")
+(load-library "tramp")
 
 
 
@@ -437,4 +435,13 @@ For details of keybindings, see `ido-find-file'."
 (if window-system
     (cd "~/")	;; assume it was launchd
   (global-font-lock-mode 0)) ;; no colors in the terminal
+
+(require 'autopair)
+(autopair-global-mode)
+(setq autopair-blink nil)
+
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+	     (push ?{
+		   (getf autopair-dont-pair :code))))
 
