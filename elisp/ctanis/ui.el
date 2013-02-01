@@ -39,8 +39,6 @@
   (set-face-background 'show-paren-match "wheat2")
   (set-face-background 'show-paren-mismatch "red")
 
-
-
   (set-face-foreground font-lock-doc-face "grey40")
   (set-face-foreground font-lock-comment-face "grey40")
   (set-face-foreground font-lock-string-face "darkgreen")
@@ -53,6 +51,7 @@
   (set-face-foreground font-lock-function-name-face "blue3")
   (set-face-foreground font-lock-variable-name-face "red4")
 
+  (set-face-foreground 'compilation-info "white")
 
   ;;   (set-face-foreground font-lock-doc-face "grey40")
   ;; (set-face-foreground font-lock-comment-face "grey40")
