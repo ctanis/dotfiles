@@ -36,7 +36,7 @@
   (set-face-background 'flymake-errline "hotpink")
   (set-face-background 'flymake-warnline "lightblue3")
 
-  (set-face-background 'show-paren-match "wheat2")
+  (set-face-background 'show-paren-match "goldenrod1")
   (set-face-background 'show-paren-mismatch "red")
 
   (set-face-foreground font-lock-doc-face "grey40")
