@@ -2,8 +2,9 @@
 
 (defvar mode-line-cleaner-alist
   `(
+    (lisp-interaction-mode . "λ")
     (autopair-mode . " Θ")
-    (abbrev-mode . " !")
+    (abbrev-mode . " α")
     )
   "Alist for `clean-mode-line'.
  
