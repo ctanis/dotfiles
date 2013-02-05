@@ -75,7 +75,6 @@
 	     (local-set-key "\C-m" 'newline-and-indent)
 	     (c-toggle-auto-newline 1)
 	     (setq c-hungry-delete-key t)
-	     (abbrev-mode -1)
 ))
 
 

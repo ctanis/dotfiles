@@ -15,8 +15,8 @@
   (set-face-background 'fringe "burlywood3")
   (set-face-foreground 'fringe "darkslateblue")
 
-  (set-face-foreground 'modeline-inactive "black")
-  (set-face-background 'modeline-inactive "darkgrey")
+  (set-face-foreground 'modeline-inactive "wheat3")
+  (set-face-background 'modeline-inactive "darkslategrey")
   (set-face-background 'modeline "darkred")
   (set-face-foreground 'modeline "goldenrod")
 

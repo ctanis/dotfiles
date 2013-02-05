@@ -445,3 +445,10 @@ For details of keybindings, see `ido-find-file'."
 	     (push ?{
 		   (getf autopair-dont-pair :code))))
 
+
+
+(setq-default abbrev-mode t)
+(setq save-abbrevs 'silently)
+
+(if (file-readable-p "~/.emacs.d/projects.el")
+    (load-file "~/.emacs.d/projects.el"))

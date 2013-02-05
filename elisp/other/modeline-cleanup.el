@@ -3,6 +3,7 @@
 (defvar mode-line-cleaner-alist
   `(
     (autopair-mode . " Θ")
+    (abbrev-mode . " !")
     )
   "Alist for `clean-mode-line'.
  
