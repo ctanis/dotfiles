@@ -440,13 +440,6 @@ For details of keybindings, see `ido-find-file'."
 (autopair-global-mode)
 (setq autopair-blink nil)
 
-(add-hook 'c-mode-common-hook
-          '(lambda ()
-	     (push ?{
-		   (getf autopair-dont-pair :code))))
-
-
-
 (setq-default abbrev-mode t)
 (setq save-abbrevs 'silently)
 

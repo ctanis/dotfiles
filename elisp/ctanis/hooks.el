@@ -69,13 +69,28 @@
 			))
 (setq c-default-style "ctanis")
 
+
+(defun autopair-cleanup-closing-brace (action pair pos-before)
+  (when (eq pair ?})
+    (save-excursion
+      (open-line 1)
+      (next-line)
+      (c-indent-line)
+      )
+  ))
+
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
 	     (c-toggle-auto-newline 1)
-	     (setq c-hungry-delete-key t)
+	     (c-toggle-hungry-state 1)
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
+
+	     ;; so autopair works with electric braces and auto newline
+	     (setq autopair-handle-action-fns
+		   (list 'autopair-default-handle-action
+			 'autopair-cleanup-closing-brace))
 ))
 
 
