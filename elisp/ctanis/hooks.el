@@ -69,9 +69,9 @@
 			))
 (setq c-default-style "ctanis")
 
-
+; open-line between curlies when autopair & auto-newline are enabled
 (defun autopair-cleanup-closing-brace (action pair pos-before)
-  (when (eq pair ?})
+  (when (and (eq pair ?}) c-auto-newline)
     (save-excursion
       (open-line 1)
       (next-line)
