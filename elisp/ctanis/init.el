@@ -16,6 +16,8 @@
 (load-library "hippie-exp")
 (load-library "modeline-cleanup")
 (load-library "tramp")
+;(load-library "autopair+")
+(load-library "autopair")
 
 
 
@@ -436,7 +438,6 @@ For details of keybindings, see `ido-find-file'."
     (cd "~/")	;; assume it was launchd
   (global-font-lock-mode 0)) ;; no colors in the terminal
 
-(require 'autopair)
 (autopair-global-mode)
 (setq autopair-blink nil)
 

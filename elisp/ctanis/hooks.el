@@ -69,15 +69,32 @@
 			))
 (setq c-default-style "ctanis")
 
-; open-line between curlies when autopair & auto-newline are enabled
+;; ; open-line between curlies when autopair & auto-newline are enabled
+;; (defun autopair-cleanup-closing-brace (action pair pos-before)
+;;   (when (and (eq pair ?}) c-auto-newline)
+;;     (save-excursion
+;;       (open-line 1)
+;;       (next-line)
+;;       (c-indent-line)
+;;       )
+;;   ))
+
 (defun autopair-cleanup-closing-brace (action pair pos-before)
-  (when (and (eq pair ?}) c-auto-newline)
-    (save-excursion
-      (open-line 1)
-      (next-line)
-      (c-indent-line)
-      )
-  ))
+  (cond ((and (eq action 'opening)(eq pair ?}) c-auto-newline)
+	 (save-excursion
+	   (message "howdy")
+	   (open-line 1)
+	   (next-line)
+	   (c-indent-line)
+	   ))
+	((and (eq action 'closing) (eq pair ?{) c-auto-newline)
+	 (if (looking-at "\\($\\| $\\|\t\\| \\|\n\\)*}")
+	     (progn 
+	       (message "deleting")
+	       (zap-to-char -1 ?})
+	       (forward-jump-to-char 1 ?})(forward-char))))))
+
+
 
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
@@ -89,8 +106,8 @@
 
 	     ;; so autopair works with electric braces and auto newline
 	     (setq autopair-handle-action-fns
-		   (list 'autopair-default-handle-action
-			 'autopair-cleanup-closing-brace))
+	     	   (list 'autopair-default-handle-action
+	     		 'autopair-cleanup-closing-brace))
 ))
 
 
