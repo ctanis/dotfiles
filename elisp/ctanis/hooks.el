@@ -82,17 +82,21 @@
 (defun autopair-cleanup-closing-brace (action pair pos-before)
   (cond ((and (eq action 'opening)(eq pair ?}) c-auto-newline)
 	 (save-excursion
-	   (message "howdy")
 	   (open-line 1)
 	   (next-line)
 	   (c-indent-line)
 	   ))
+	; jump to next closing brace and cleanup all these auto
+	; behaviors
 	((and (eq action 'closing) (eq pair ?{) c-auto-newline)
 	 (if (looking-at "\\($\\| $\\|\t\\| \\|\n\\)*}")
 	     (progn 
-	       (message "deleting")
 	       (zap-to-char -1 ?})
-	       (forward-jump-to-char 1 ?})(forward-char))))))
+	       (if c-electric-flag
+		   (kill-line))
+	       (forward-jump-to-char 1 ?})
+	       (c-indent-line)
+	       (forward-char))))))
 
 
 
@@ -105,6 +109,8 @@
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
 
 	     ;; so autopair works with electric braces and auto newline
+	     (make-variable-buffer-local 'autopair-pair-criteria)
+	     (setq autopair-pair-criteria 'always)
 	     (setq autopair-handle-action-fns
 	     	   (list 'autopair-default-handle-action
 	     		 'autopair-cleanup-closing-brace))
