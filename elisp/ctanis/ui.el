@@ -70,7 +70,8 @@
 (add-hook 'org-mode-hook
 	  (lambda()
 	    (set-face-foreground 'org-todo "purple")
-	    (set-face-background 'org-todo "wheat2")))
+	    (set-face-background 'org-todo "wheat2")
+	    (set-face-background 'org-warning "wheat2")))
 
 (add-hook 'dired-mode-hook
 	  '(lambda ()
