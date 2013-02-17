@@ -15,6 +15,7 @@
 	     (local-set-key "\C-\M-u" 'backward-up-list)
 	     (local-set-key "\M-p" 'scroll-down-slow)
 	     (local-set-key "\M-n" 'scroll-up-slow)
+	     (local-set-key [S-tab] 'markdown-shifttab)
 ))
 
 
@@ -239,19 +240,11 @@
 	     (local-set-key "\M-o\M-h" 'cperl-perldoc-at-point)
 	     (local-set-key "\M-o\C-H" 'cperl-perldoc)
 	     (local-set-key "\M-o|" 'cperl-lineup)
-	     (set-face-foreground 'cperl-nonoverridable-face "darkblue")
 ))
 
 
 
-(add-hook 'initial-calendar-window-hook
-	  (lambda ()
-	    (if window-system
-		(progn
-		  (set-face-background 'holiday-face "darkslategray")
-		  (set-face-foreground 'calendar-today-face "yellow")
-		  (set-face-foreground 'diary-face "orange")
-		  (set-face-foreground 'holiday-face "cyan")))))
+
 
 (add-hook 'Man-mode-hook '(lambda ()
 			    (local-set-key "\M-n" 'scroll-up-slow)
@@ -275,7 +268,6 @@
 
 (add-hook 'dired-mode-hook
 	  '(lambda ()
-	     (set-face-foreground 'dired-marked "darkgreen")
 	     (local-set-key "h" 'dired-hide-dotfiles)
 	     (local-set-key "\C-c\C-q" 'wdired-change-to-wdired-mode)
 	     ))
@@ -324,6 +316,4 @@
 	    ))
 
 
-(add-hook 'org-mode-hook
-	  (lambda()
-	    (set-face-background 'org-todo "white")))
+

@@ -451,5 +451,6 @@ For details of keybindings, see `ido-find-file'."
 ;; org-mode
 (setq org-log-done 'time)
 (setq org-completion-use-ido t)
+(setq org-log-into-drawer t)
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\M-a" 'org-agenda)

@@ -65,9 +65,30 @@
   ;; (set-face-foreground font-lock-function-name-face "blue3")
   ;; (set-face-foreground font-lock-variable-name-face "deepskyblue4")
 
-
-
   )
+
+(add-hook 'org-mode-hook
+	  (lambda()
+	    (set-face-foreground 'org-todo "purple")
+	    (set-face-background 'org-todo "wheat2")))
+
+(add-hook 'dired-mode-hook
+	  '(lambda ()
+	     (set-face-foreground 'dired-marked "darkgreen")
+	     ))
+
+(add-hook 'initial-calendar-window-hook
+	  (lambda ()
+	    (set-face-background 'holiday-face "darkslategray")
+	    (set-face-foreground 'calendar-today-face "yellow")
+	    (set-face-foreground 'diary-face "orange")
+	    (set-face-foreground 'holiday-face "cyan")))
+
+
+(add-hook 'cperl-mode-hook
+	  '(lambda ()
+	     (set-face-foreground 'cperl-nonoverridable-face "darkblue")
+))
 
 
 
