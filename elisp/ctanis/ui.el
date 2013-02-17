@@ -53,7 +53,6 @@
 
   (set-face-foreground 'compilation-info "white")
 
-  (set-face-background 'org-todo "white")
 
   ;;   (set-face-foreground font-lock-doc-face "grey40")
   ;; (set-face-foreground font-lock-comment-face "grey40")
