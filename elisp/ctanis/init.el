@@ -446,3 +446,12 @@ For details of keybindings, see `ido-find-file'."
 
 (if (file-readable-p "~/.emacs.d/projects.el")
     (load-file "~/.emacs.d/projects.el"))
+
+
+;; org-mode
+(setq org-log-done 'time)
+(setq org-completion-use-ido t)
+(define-key craig-prefix-map "\C-l" 'org-store-link)
+
+
+
