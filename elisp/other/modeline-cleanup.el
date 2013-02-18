@@ -2,9 +2,9 @@
 
 (defvar mode-line-cleaner-alist
   `(
-    (lisp-interaction-mode . "λ")
-    (autopair-mode . " Θ")
-    (abbrev-mode . " α")
+    (autopair-mode . "Θ")
+    (abbrev-mode . "α")
+    (yas-minor-mode . "Υ")
     )
   "Alist for `clean-mode-line'.
  
@@ -15,6 +15,9 @@ want to use in the modeline *in lieu of* the original.")
  
 (defun clean-mode-line ()
   (interactive)
+  ; put a whitespace
+  (if (not (string= (substring mode-name -1) " "))
+      (setq mode-name (string-append mode-name " ")))
   (loop for cleaner in mode-line-cleaner-alist
         do (let* ((mode (car cleaner))
                  (mode-str (cdr cleaner))

@@ -3,4 +3,3 @@
 (load-library "init")
 (if (file-readable-p "~/.emacs-local")
     (load-file "~/.emacs-local"))
-

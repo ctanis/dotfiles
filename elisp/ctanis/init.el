@@ -454,3 +454,11 @@ For details of keybindings, see `ido-find-file'."
 (setq org-log-into-drawer t)
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
+
+
+;; yasnippet
+
+(add-hook 'after-init-hook
+	  '(lambda ()
+	     (load-library "yasnippet")
+	     (yas-global-mode 1)))

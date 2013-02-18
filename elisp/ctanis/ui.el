@@ -71,7 +71,9 @@
 	  (lambda()
 	    (set-face-foreground 'org-todo "purple")
 	    (set-face-background 'org-todo "wheat2")
-	    (set-face-background 'org-warning "wheat2")))
+	    (set-face-background 'org-warning "wheat2")
+	    (set-face-attribute 'org-document-title nil :height 1.44)
+))
 
 (add-hook 'dired-mode-hook
 	  '(lambda ()
