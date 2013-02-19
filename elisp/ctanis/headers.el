@@ -1,7 +1,6 @@
 (require 'attribute)
 
 (defvar header-user-name "My name");
-(defvar header-email "my@email.com");
 
 
 (defun c-make-block-comment (begin end)
@@ -43,7 +42,7 @@
     (open-line 1)
     (let ((p1 (point)))
       (insert "\n" header-user-name "\n")
-      (insert  header-email "\n")
+      (insert  user-mail-address "\n")
 
       (insert "\n" (buffer-name))
       (open-line 2)
@@ -62,7 +61,7 @@ leaving room for attribute lists or magic cookies"
 
 
     (insert header-user-name "\n")
-    (insert  header-email "\n")
+    (insert  user-mail-address "\n")
 
     (insert "\n" (buffer-name)"\n\n")
     (open-line 2)

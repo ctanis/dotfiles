@@ -22,11 +22,11 @@
 
 
 (setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
+      '(yas/hippie-try-expand
+	try-complete-file-name-partially
 	try-complete-file-name
 	try-expand-list
 	try-expand-line
-	try-expand-dabbrev-from-kill
 	try-expand-list-all-buffers
 	try-expand-line-all-buffers
 	;try-complete-lisp-symbol
@@ -34,7 +34,7 @@
 
 (setq grep-command "egrep -ni ")
 
-(setq comint-input-ring-size 75)
+(setq comint-input-ring-size 500)
 
 ; always process attribute list(?)
 (setq enable-local-eval 'query)
@@ -441,7 +441,8 @@ For details of keybindings, see `ido-find-file'."
 (autopair-global-mode)
 (setq autopair-blink nil)
 
-(setq-default abbrev-mode t)
+;(setq-default abbrev-mode t)
+(setq-default abbrev-mode nil)
 (setq save-abbrevs 'silently)
 
 (if (file-readable-p "~/.emacs.d/projects.el")
@@ -458,7 +459,10 @@ For details of keybindings, see `ido-find-file'."
 
 ;; yasnippet
 
+(setq yas-prompt-functions (list 'yas-ido-prompt))
 (add-hook 'after-init-hook
 	  '(lambda ()
 	     (load-library "yasnippet")
-	     (yas-global-mode 1)))
+	     (yas-global-mode 1)
+	     (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
+	     ))

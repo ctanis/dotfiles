@@ -107,6 +107,7 @@
 	     (local-set-key "\C-m" 'newline-and-indent)
 	     (c-toggle-auto-newline 1)
 	     (c-toggle-hungry-state 1)
+	     (abbrev-mode -1)
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
 
 	     ;; so autopair works with electric braces and auto newline
