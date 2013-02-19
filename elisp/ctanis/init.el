@@ -460,6 +460,7 @@ For details of keybindings, see `ido-find-file'."
 ;; yasnippet
 
 (setq yas-prompt-functions (list 'yas-ido-prompt))
+(setq yas-verbosity 1)
 (add-hook 'after-init-hook
 	  '(lambda ()
 	     (load-library "yasnippet")

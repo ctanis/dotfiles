@@ -298,7 +298,9 @@
 
 
 (add-hook 'ibuffer-mode-hook
-	  '(lambda () (local-unset-key "\M-o")))
+	  '(lambda ()
+	     (local-set-key "\C-x\C-f" 'ido-find-file)
+	     (local-unset-key "\M-o")))
 
 
 

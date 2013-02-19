@@ -27,7 +27,7 @@
   (set-face-foreground 'sml-modeline-vis-face "wheat3")
 
 
-  (set-face-foreground 'ido-first-match "violetred4")
+  (set-face-foreground 'ido-first-match "cyan4")
   (set-face-background 'ido-first-match  "wheat2")
   (set-face-foreground 'ido-only-match  "black")
   (set-face-background 'ido-only-match  "green")
@@ -52,6 +52,12 @@
   (set-face-foreground font-lock-variable-name-face "red4")
 
   (set-face-foreground 'compilation-info "white")
+
+  (set-face-background 'error "red")
+  (set-face-foreground 'error "white")
+  (set-face-foreground 'warning "cyan3")
+  (set-face-background 'warning "wheat2")
+
 
 
   ;;   (set-face-foreground font-lock-doc-face "grey40")
