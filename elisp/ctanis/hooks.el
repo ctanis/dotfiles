@@ -303,6 +303,10 @@
 	     (local-unset-key "\M-o")))
 
 
+(add-hook 'org-mode-hook
+	  '(lambda()
+	     (auto-fill-mode 1)))
+
 
 
 (add-hook 'ido-minibuffer-setup-hook
