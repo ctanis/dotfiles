@@ -16,7 +16,8 @@ want to use in the modeline *in lieu of* the original.")
 (defun clean-mode-line ()
   (interactive)
   ; put a whitespace
-  (if (not (string= (substring mode-name -1) " "))
+  (if (and (stringp mode-name)
+	   (not (string= (substring mode-name -1) " ")))
       (setq mode-name (string-append mode-name " ")))
   (loop for cleaner in mode-line-cleaner-alist
         do (let* ((mode (car cleaner))

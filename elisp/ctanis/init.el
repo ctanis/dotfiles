@@ -454,6 +454,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
 (define-key craig-prefix-map "\C-l" 'org-store-link)
+(define-key craig-prefix-map "\C-c" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
 
 
@@ -461,9 +462,14 @@ For details of keybindings, see `ido-find-file'."
 
 (setq yas-prompt-functions (list 'yas-ido-prompt))
 (setq yas-verbosity 1)
+
 (add-hook 'after-init-hook
 	  '(lambda ()
 	     (load-library "yasnippet")
 	     (yas-global-mode 1)
 	     (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
+
+	     (require 'undo-tree)
+	     (setq undo-tree-mode-lighter nil)
+	     (global-undo-tree-mode)
 	     ))
