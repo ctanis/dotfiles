@@ -5,6 +5,7 @@
     (autopair-mode . "Θ")
     (abbrev-mode . "α")
     (yas-minor-mode . "Υ")
+    (org-indent-mode . "⇥")
     )
   "Alist for `clean-mode-line'.
  

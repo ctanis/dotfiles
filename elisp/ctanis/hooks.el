@@ -305,6 +305,7 @@
 
 (add-hook 'org-mode-hook
 	  '(lambda()
+;	     (org-indent-mode t)
 	     (auto-fill-mode 1)))
 
 

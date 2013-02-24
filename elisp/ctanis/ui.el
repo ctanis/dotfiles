@@ -36,7 +36,8 @@
   (set-face-background 'flymake-errline "hotpink")
   (set-face-background 'flymake-warnline "lightblue3")
 
-  (set-face-background 'show-paren-match "goldenrod1")
+  (set-face-background 'show-paren-match "wheat2")
+  (set-face-foreground 'show-paren-match "purple")
   (set-face-background 'show-paren-mismatch "red")
 
   (set-face-foreground font-lock-doc-face "grey40")
@@ -58,6 +59,8 @@
   (set-face-foreground 'warning "cyan3")
   (set-face-background 'warning "wheat2")
 
+  (set-face-background 'isearch "orange")
+  (set-face-foreground 'isearch "black")
 
 
   ;;   (set-face-foreground font-lock-doc-face "grey40")
@@ -75,6 +78,7 @@
 
 (add-hook 'org-mode-hook
 	  (lambda()
+	    (set-face-foreground 'org-hide "wheat3")
 	    (set-face-foreground 'org-todo "purple")
 	    (set-face-background 'org-todo "wheat2")
 	    (set-face-background 'org-warning "wheat2")
