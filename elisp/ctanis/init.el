@@ -445,8 +445,6 @@ For details of keybindings, see `ido-find-file'."
 (setq-default abbrev-mode nil)
 (setq save-abbrevs 'silently)
 
-(if (file-readable-p "~/.emacs.d/projects.el")
-    (load-file "~/.emacs.d/projects.el"))
 
 
 ;; org-mode
@@ -473,3 +471,7 @@ For details of keybindings, see `ido-find-file'."
 	     (setq undo-tree-mode-lighter nil)
 	     (global-undo-tree-mode)
 	     ))
+
+(setq custom-file "~/.emacs.d/projects.el")
+(if (file-readable-p custom-file)
+    (load-file custom-file))
