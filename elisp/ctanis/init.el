@@ -475,3 +475,12 @@ For details of keybindings, see `ido-find-file'."
 (setq custom-file "~/.emacs.d/projects.el")
 (if (file-readable-p custom-file)
     (load-file custom-file))
+
+;; remove nroff bindings
+;; (while (rassoc 'nroff-mode auto-mode-alist)
+;;   (setq auto-mode-alist (remove (rassoc 'nroff-mode auto-mode-alist)
+;; 				auto-mode-alist)))
+
+; remove only the *.1 mapping for nroff
+(setq auto-mode-alist
+      (remove  (assoc "\\.[1-9]\\'" auto-mode-alist) auto-mode-alist))
