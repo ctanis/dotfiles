@@ -1,9 +1,5 @@
 #  -*- Mode: Shell-script; -*- 
 
-if [ -f ~/.bash-local ]; then
-	source ~/.bash-local
-fi
-
 
 
 if [ -z $INSIDE_EMACS ]; then
@@ -105,3 +101,9 @@ function check_repos ()
 	fi;
     done;
 }
+
+
+if [ -f ~/.bash-local ]; then
+	source ~/.bash-local
+fi
+
