@@ -111,11 +111,11 @@
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
 
 	     ;; so autopair works with electric braces and auto newline
-	     (make-variable-buffer-local 'autopair-pair-criteria)
-	     (setq autopair-pair-criteria 'always)
-	     (setq autopair-handle-action-fns
-	     	   (list 'autopair-default-handle-action
-	     		 'autopair-cleanup-closing-brace))
+	     ;; (make-variable-buffer-local 'autopair-pair-criteria)
+	     ;; (setq autopair-pair-criteria 'always)
+	     ;; (setq autopair-handle-action-fns
+	     ;; 	   (list 'autopair-default-handle-action
+	     ;; 		 'autopair-cleanup-closing-brace))
 ))
 
 
