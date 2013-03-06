@@ -4,7 +4,7 @@
   `(
     (autopair-mode . "Θ")
     (abbrev-mode . "α")
-    (yas-minor-mode . "Υ")
+    (yas-minor-mode . " Υ")
     (org-indent-mode . "⇥")
     )
   "Alist for `clean-mode-line'.
@@ -19,7 +19,9 @@ want to use in the modeline *in lieu of* the original.")
   ; put a whitespace
   (if (and (stringp mode-name)
 	   (not (string= (substring mode-name -1) " ")))
-      (setq mode-name (string-append mode-name " ")))
+      ;(setq mode-name2 (string-append mode-name " "))
+      nil
+    )
   (loop for cleaner in mode-line-cleaner-alist
         do (let* ((mode (car cleaner))
                  (mode-str (cdr cleaner))
