@@ -193,8 +193,10 @@
 (define-key craig-prefix-map "\M-b" 'sink-buffer)
 (define-key craig-prefix-map "\M-c" 'make-tmp-code)
 (define-key craig-prefix-map "\M-d" 'selectively-delete-lines)
-(define-key craig-prefix-map "\M-e" 'interactively-enlarge-window)
-(define-key craig-prefix-map "\M-f" 'find-dired)
+;(define-key craig-prefix-map "\M-e" 'end-of-defun)
+(define-key craig-prefix-map "\M-e" 'end-of-defun)
+(global-set-key "\C-\M-e" 'up-list)
+;(define-key craig-prefix-map "\M-f" 'find-dired)
 (define-key craig-prefix-map "\M-h" 'hl-line-mode)
 ;(define-key craig-prefix-map "\M-i" 'imenu)
 (define-key craig-prefix-map "\M-j" 'forward-jump-to-char)
@@ -440,6 +442,7 @@ For details of keybindings, see `ido-find-file'."
 
 (autopair-global-mode)
 (setq autopair-blink nil)
+(setq autopair-skip-whitespace t)
 
 ;(setq-default abbrev-mode t)
 (setq-default abbrev-mode nil)
@@ -486,3 +489,4 @@ For details of keybindings, see `ido-find-file'."
 ; remove only the *.1 mapping for nroff
 (setq auto-mode-alist
       (remove  (assoc "\\.[1-9]\\'" auto-mode-alist) auto-mode-alist))
+

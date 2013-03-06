@@ -60,8 +60,13 @@
 (c-add-style "ctanis" '("ellemtel"
 			(c-basic-offset . 4)
 			(c-offsets-alist
-			 (case-label . 1) (access-label . -))
+			 (case-label . 1)
+			 (access-label . -)
+			 (cpp-macro . 0))
 			(c-hanging-braces-alist
+			 (substatement-open . 'before)
+			 (class-open . 'before)
+			 (defun-open . 'before)
 			 (class-close)
 			 )
 			(c-hanging-semi&comma-criteria .
@@ -109,6 +114,8 @@
 	     (c-toggle-hungry-state 1)
 	     (abbrev-mode -1)
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
+	     (local-set-key "\C-\M-e" 'up-list)
+	     (local-set-key "\M-o\M-e" 'c-end-of-defun)
 
 	     ;; so autopair works with electric braces and auto newline
 	     ;; (make-variable-buffer-local 'autopair-pair-criteria)
