@@ -67,14 +67,14 @@
 			(c-hanging-braces-alist
 			 (substatement-open . 'before)
 			 (class-open . 'before)
-			 (defun-open)
+			 (defun-open . 'before)
 			 (block-open . 'before)
 			 (brace-list-open . 'before)
 			 (brace-entry-open . 'before)
 			 (statement-case-open . 'before)
 			 (extern-lang-open . 'before)
 			 (namespace-open . 'before)
-			 (inline-open)
+			 (inline-open . 'before)
 			 (class-close)
 			 )
 			(c-hanging-semi&comma-criteria .
