@@ -46,7 +46,7 @@
   (set-face-background font-lock-string-face "wheat2")
   (set-face-foreground font-lock-constant-face "black")
   (set-face-foreground font-lock-type-face "black")
-  (set-face-foreground font-lock-preprocessor-face "black")
+  (set-face-foreground font-lock-preprocessor-face "magenta4")
   (set-face-foreground font-lock-keyword-face "goldenrod4")
   (set-face-foreground font-lock-builtin-face "goldenrod4")
   (set-face-foreground font-lock-function-name-face "blue3")

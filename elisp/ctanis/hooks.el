@@ -62,11 +62,19 @@
 			(c-offsets-alist
 			 (case-label . 1)
 			 (access-label . -)
-			 (cpp-macro . 0))
+			 (cpp-macro . 0)
+			 )
 			(c-hanging-braces-alist
 			 (substatement-open . 'before)
 			 (class-open . 'before)
-			 (defun-open . 'before)
+			 (defun-open)
+			 (block-open . 'before)
+			 (brace-list-open . 'before)
+			 (brace-entry-open . 'before)
+			 (statement-case-open . 'before)
+			 (extern-lang-open . 'before)
+			 (namespace-open . 'before)
+			 (inline-open)
 			 (class-close)
 			 )
 			(c-hanging-semi&comma-criteria .
