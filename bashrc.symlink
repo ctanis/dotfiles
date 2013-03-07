@@ -16,13 +16,9 @@ export GNUTERM=X11
 export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 
 
-export PATH=.:~/bin:~/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-if [ ! $TEXBIN ]; then
-   export TEXBIN=/usr/local/texlive/2011/bin/universal-darwin
-fi
-export PATH=$PATH:$TEXBIN
-
-
+# may need to override this in a bash-local
+export TEXBIN=/usr/local/texlive/2012/bin/universal-darwin
+export PATH=.:~/bin:~/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$TEXBIN
 
 
 if [ $WINDOW ]; then
