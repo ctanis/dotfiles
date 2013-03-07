@@ -229,6 +229,7 @@
 ;(define-key craig-prefix-map "n" 'send-region-to-netscape)
 ;(define-key craig-prefix-map "r" 'undo-undo-window-config-change)
 ;(define-key craig-prefix-map "u" 'undo-window-config-change)
+(define-key craig-prefix-map "u" 'revert-buffer)
 
 ;(global-set-key "\C-x\M-q" 'prefix-paragraph)
 ;(global-set-key "\C-xrv" 'invert-rectangle)
