@@ -322,7 +322,9 @@
 
 (add-hook 'org-mode-hook
 	  '(lambda()
-;	     (org-indent-mode t)
+	     (local-set-key "\C-\M-p" 'org-backward-same-level)
+	     (local-set-key "\C-\M-n" 'org-forward-same-level)
+	     (local-set-key "\C-\M-u" 'outline-up-heading)
 	     (auto-fill-mode 1)))
 
 
