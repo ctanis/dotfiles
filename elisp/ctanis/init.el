@@ -444,6 +444,7 @@ For details of keybindings, see `ido-find-file'."
 (autopair-global-mode)
 (setq autopair-blink nil)
 (setq autopair-skip-whitespace t)
+(setq autopair-pair-criteria 'always)
 
 ;(setq-default abbrev-mode t)
 (setq-default abbrev-mode nil)
@@ -473,9 +474,9 @@ For details of keybindings, see `ido-find-file'."
 	     (yas-global-mode 1)
 	     (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
 
-	     (require 'undo-tree)
-	     (setq undo-tree-mode-lighter nil)
-	     (global-undo-tree-mode)
+	     ;; (require 'undo-tree)
+	     ;; (setq undo-tree-mode-lighter nil)
+	     ;; (global-undo-tree-mode)
 	     ))
 
 (setq custom-file "~/.emacs.d/projects.el")
