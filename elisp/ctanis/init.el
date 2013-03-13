@@ -93,8 +93,6 @@
 
 (setq c-macro-preprocessor "gcc -E -C -")
 
-(global-cwarn-mode)
-
 ;this should cause CVS'ed files to be backuped as normal
 ;(setq vc-make-backup-files t)
 
@@ -381,6 +379,7 @@
 (defalias 'list-buffers 'ibuffer)
 (setq ibuffer-show-empty-filter-groups nil)
 (setq ibuffer-expert t)
+(define-key craig-prefix-map "\C-x\C-b" 'ibuffer-other-window)
 
 ; inhibit ffap- in dired mode, expose other controls
 ;(load-library "ffap-")
@@ -388,7 +387,7 @@
 
 
 ;; ------------ ido stuff
-(setq ido-enable-flex-matching nil)
+(setq ido-enable-flex-matching t)
 ;(setq ido-everywhere t)
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
 (setq ido-use-filename-at-point nil)

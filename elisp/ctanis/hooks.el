@@ -122,6 +122,7 @@
 	     (c-toggle-auto-newline 1)
 	     (c-toggle-hungry-state 1)
 	     (abbrev-mode -1)
+	     (cwarn-mode 1)
 	     (local-set-key "}" 'self-insert-command)
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
 	     (local-set-key "\C-\M-e" 'up-list)
@@ -336,6 +337,11 @@
 	    (define-key ido-file-completion-map "\C-t" 'transpose-chars)
 	    (define-key ido-buffer-completion-map "\C-t" 'transpose-chars)
 	    (define-key ido-file-dir-completion-map "\C-t" 'transpose-chars)
+
+	    (define-key ido-file-completion-map "\M-t" 'ido-toggle-regexp)
+	    (define-key ido-buffer-completion-map "\M-t" 'ido-toggle-regexp)
+	    (define-key ido-file-dir-completion-map "\M-t" 'ido-toggle-regexp)
+
 
 	    (define-key ido-file-completion-map "\M-b" 'backward-word)
 	    (define-key ido-buffer-completion-map "\M-b" 'backword-word)
