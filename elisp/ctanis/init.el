@@ -16,7 +16,6 @@
 (load-library "hippie-exp")
 (load-library "modeline-cleanup")
 (load-library "tramp")
-;(load-library "autopair+")
 (load-library "autopair")
 
 
@@ -378,7 +377,8 @@
 (setq read-file-name-completion-ignore-case t)
 
 (defalias 'list-buffers 'ibuffer)
-
+(setq ibuffer-show-empty-filter-groups nil)
+(setq ibuffer-expert t)
 
 ; inhibit ffap- in dired mode, expose other controls
 ;(load-library "ffap-")
@@ -492,3 +492,10 @@ For details of keybindings, see `ido-find-file'."
 (setq auto-mode-alist
       (remove  (assoc "\\.[1-9]\\'" auto-mode-alist) auto-mode-alist))
 
+
+;; kill the *Compile-Log* buffer
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (let ((compile-log-buffer (get-buffer "*Compile-Log*")))
+              (when compile-log-buffer
+                (kill-buffer compile-log-buffer)))))
