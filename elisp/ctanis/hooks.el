@@ -318,6 +318,7 @@
 	  '(lambda ()
 	     (ibuffer-auto-mode 1)
 	     (local-set-key "\C-x\C-f" 'ido-find-file)
+	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
 	     (local-unset-key "\M-o")))
 
 

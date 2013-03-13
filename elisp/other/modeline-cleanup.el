@@ -6,6 +6,7 @@
     (abbrev-mode . "α")
     (yas-minor-mode . " Υ")
     (org-indent-mode . "⇥")
+    (cwarn-mode . "w")
     )
   "Alist for `clean-mode-line'.
  

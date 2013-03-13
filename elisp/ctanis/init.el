@@ -93,6 +93,8 @@
 
 (setq c-macro-preprocessor "gcc -E -C -")
 
+(global-cwarn-mode)
+
 ;this should cause CVS'ed files to be backuped as normal
 ;(setq vc-make-backup-files t)
 
