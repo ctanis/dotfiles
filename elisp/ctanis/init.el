@@ -362,9 +362,10 @@
 
 ; don't have to use the mouse to get flymake feedback
 (load-library "flycursor")
+(setq flymake-no-changes-timeout 1)
 (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
-
+(define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
 
 ; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
@@ -396,6 +397,7 @@
 (ido-mode 1)
 (ido-everywhere -1)
 (load-library "idomenu")
+(setq imenu-auto-rescan t)
 (define-key craig-prefix-map "\M-i" 'idomenu)
 
 (defun ido-dired-other-window ()

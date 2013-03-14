@@ -33,8 +33,9 @@
   (set-face-background 'ido-only-match  "green")
   (set-face-foreground 'ido-subdir  "orangered4")
 
-  (set-face-background 'flymake-errline "hotpink")
-  (set-face-background 'flymake-warnline "lightblue3")
+  (set-face-background 'flymake-errline "magenta3")
+  (set-face-foreground 'flymake-errline "yellow")
+  (set-face-background 'flymake-warnline "cyan4")
 
   (set-face-background 'show-paren-match "wheat2")
   (set-face-foreground 'show-paren-match "purple")
@@ -56,6 +57,8 @@
 
   (set-face-background 'error "red")
   (set-face-foreground 'error "white")
+  (set-face-background 'compilation-mode-line-fail "yellow1")
+  (set-face-foreground 'compilation-mode-line-fail "red")
   (set-face-foreground 'warning "cyan3")
   (set-face-background 'warning "wheat2")
 

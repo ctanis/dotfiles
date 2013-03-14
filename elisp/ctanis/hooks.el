@@ -117,7 +117,7 @@
 
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
-	     (local-set-key "\C-c\C-c" 'compile)
+	     (local-set-key "\C-c\C-c" 'compile-again)
 	     (local-set-key "\C-m" 'newline-and-indent)
 	     (c-toggle-auto-newline 1)
 	     (c-toggle-hungry-state 1)
