@@ -15,10 +15,10 @@
   (set-face-background 'fringe "burlywood3")
   (set-face-foreground 'fringe "darkslateblue")
 
-  (set-face-foreground 'modeline-inactive "wheat3")
-  (set-face-background 'modeline-inactive "darkslategrey")
-  (set-face-background 'modeline "darkred")
-  (set-face-foreground 'modeline "goldenrod")
+  (set-face-foreground 'mode-line-inactive "wheat3")
+  (set-face-background 'mode-line-inactive "darkslategrey")
+  (set-face-background 'mode-line "darkred")
+  (set-face-foreground 'mode-line "goldenrod")
 
   
   (set-face-background 'sml-modeline-end-face "wheat4")
