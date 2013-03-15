@@ -416,8 +416,8 @@ multiple times in a row"
 (defun tail-file (pre file)
   (interactive "P\nfTail file:")
   (let* ((args (if pre
-		   (read-from-minibuffer "Tail switches :" "-f")
-		 "-f"))
+		   (read-from-minibuffer "Tail switches :" "-F")
+		 "-F"))
 	 (buf (generate-new-buffer
 	       (concat "*tail " file "*"))))
     (shell-command (concat "tail " args " " file " &") buf)
