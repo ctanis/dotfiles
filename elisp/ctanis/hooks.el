@@ -319,14 +319,14 @@
 	  '(lambda ()
 	     (ibuffer-auto-mode 1)
 	     (local-set-key "\C-x\C-f" 'ido-find-file)
-	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
+;	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
 	     (local-unset-key "\M-o")))
 
 
 (add-hook 'org-mode-hook
 	  '(lambda()
-	     (local-set-key "\C-\M-p" 'org-backward-same-level)
-	     (local-set-key "\C-\M-n" 'org-forward-same-level)
+	     (local-set-key "\C-\M-p" 'org-backward-heading-same-level)
+	     (local-set-key "\C-\M-n" 'org-forward-heading-same-level)
 	     (local-set-key "\C-\M-u" 'outline-up-heading)
 	     (auto-fill-mode 1)))
 
