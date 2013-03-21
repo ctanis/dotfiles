@@ -117,7 +117,8 @@
 
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
-	     (local-set-key "\C-c\C-c" 'compile-again)
+	     (local-set-key "\C-c\C-c" 'compile)
+	     (local-set-key "\M-o\M-x" 'compile-again)
 	     (local-set-key "\C-m" 'newline-and-indent)
 	     (c-toggle-auto-newline 1)
 	     (c-toggle-hungry-state 1)
@@ -134,7 +135,7 @@
 	     ;; (setq autopair-handle-action-fns
 	     ;; 	   (list 'autopair-default-handle-action
 	     ;; 		 'autopair-cleanup-closing-brace))
-))
+	     ))
 
 
 ;this is the  c comment-region thing i wrote
