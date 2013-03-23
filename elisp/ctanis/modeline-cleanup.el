@@ -7,6 +7,8 @@
     (yas-minor-mode . " Υ")
     (org-indent-mode . "⇥")
     (cwarn-mode . "w")
+    (hs-minor-mode . "Σ")
+    (folding-mode . "F")
     )
   "Alist for `clean-mode-line'.
  

@@ -41,8 +41,8 @@
   (set-face-foreground 'show-paren-match "purple")
   (set-face-background 'show-paren-mismatch "red")
 
-  (set-face-foreground font-lock-doc-face "grey40")
-  (set-face-foreground font-lock-comment-face "grey40")
+  (set-face-foreground font-lock-doc-face "grey25")
+  (set-face-foreground font-lock-comment-face "grey25")
   (set-face-foreground font-lock-string-face "darkgreen")
   (set-face-background font-lock-string-face "wheat2")
   (set-face-foreground font-lock-constant-face "black")

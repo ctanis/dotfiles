@@ -170,7 +170,7 @@
 (global-set-key "\C-x!" 'shell-current-directory)
 (global-set-key "\C-q" 'base-quoted-insert)
 (global-set-key "\C-h\C-m" 'man)
-
+(global-set-key (read-kbd-macro "M-C->") 'tags-loop-continue)
 ;bindings for customized functions
 (define-prefix-command 'craig-prefix 'craig-prefix-map)
 (global-set-key "\M-o" 'craig-prefix)
@@ -229,6 +229,15 @@
 ;(define-key craig-prefix-map "r" 'undo-undo-window-config-change)
 ;(define-key craig-prefix-map "u" 'undo-window-config-change)
 (define-key craig-prefix-map "u" 'revert-buffer)
+(define-key craig-prefix-map (read-kbd-macro "<tab>") 'hs-toggle-hiding)
+(defadvice goto-line (after expand-after-goto-line
+                                activate compile)
+        "hideshow-expand affected block when using goto-line in a collapsed buffer"
+        (save-excursion
+           (hs-show-block)))
+
+
+
 
 ;(global-set-key "\C-x\M-q" 'prefix-paragraph)
 ;(global-set-key "\C-xrv" 'invert-rectangle)
@@ -495,6 +504,10 @@ For details of keybindings, see `ido-find-file'."
 (setq auto-mode-alist
       (remove  (assoc "\\.[1-9]\\'" auto-mode-alist) auto-mode-alist))
 
+
+(autoload 'folding-mode          "folding" "Folding mode" t)
+(autoload 'turn-off-folding-mode "folding" "Folding mode" t)
+(autoload 'turn-on-folding-mode  "folding" "Folding mode" t)
 
 ;; kill the *Compile-Log* buffer
 (add-hook 'emacs-startup-hook
