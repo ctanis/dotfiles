@@ -473,6 +473,11 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\C-c" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
+(defadvice org-agenda-redo (after shrink-after-redoing
+				 activate compile)
+        "minimize buffer after rebuilding agenda"
+        (shrink-window-if-larger-than-buffer))
+
 
 
 ;; yasnippet

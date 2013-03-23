@@ -84,7 +84,7 @@
 	    (set-face-foreground 'org-hide "wheat3")
 	    (set-face-foreground 'org-todo "purple")
 	    (set-face-background 'org-todo "wheat2")
-	    (set-face-background 'org-warning "wheat2")
+	    (set-face-background 'org-warning "orange")
 	    (set-face-attribute 'org-document-title nil :height 1.44)
 ))
 
