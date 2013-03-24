@@ -106,9 +106,8 @@ more than 2 windows are currently displayed."
 
 
 (defvar common-buffers '(("l" . "*shell*")
-			 ("i" . "*info*")
 			 ("s" . "*scratch*")
-			 ("b" . "*Backtrace*"))
+			 ("c" . "*compilation*"))
   "This is the alist of codes to buffer names for use in switch-to-common-buffer")
 
 
@@ -116,13 +115,15 @@ more than 2 windows are currently displayed."
 (defun switch-to-common-buffer (buf-id)
   "Jump-to-existing-buffer with name corresponding to buf-id in
 common-buffers alist"
-  (interactive "cSwitch to indexed buffer (lisb): ")
+  ;; TODO: build the string of options from the items in common-buffers
+  (interactive "cSwitch to indexed buffer (lsc): ")
 
   (if (string= (char-to-string buf-id) "l")
       (let ((buff (directory-shell-buffer-name)))
 	(if (get-buffer buff)
 	    (progn 
 	      (message buff)
+	      (setq shell-last-shell buff)
 	      (jump-to-existing-buffer (get-buffer buff))
 	      )
 	  (if (and shell-last-shell (get-buffer shell-last-shell))

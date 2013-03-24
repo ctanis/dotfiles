@@ -43,7 +43,7 @@
   "launch a Terminal.app in the current directory"
   (interactive)
   (shell-command "term \"`pwd`\""))
-(define-key craig-prefix-map "\M-s" 'dirshell)
+(define-key craig-prefix-map "\C-s" 'dirshell)
 
 
 (defvar os-launcher-cmd "open")

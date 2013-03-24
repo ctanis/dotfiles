@@ -230,6 +230,9 @@
 ;(define-key craig-prefix-map "u" 'undo-window-config-change)
 (define-key craig-prefix-map "u" 'revert-buffer)
 (define-key craig-prefix-map (read-kbd-macro "<tab>") 'hs-toggle-hiding)
+(define-key craig-prefix-map "\M-x" 'compile-again)
+(define-key craig-prefix-map "\M-v" 'view-mode)
+
 (defadvice goto-line (after expand-after-goto-line
                                 activate compile)
         "hideshow-expand affected block when using goto-line in a collapsed buffer"
@@ -237,7 +240,14 @@
            (hs-show-block)))
 
 
-
+(defadvice idomenu (after expand-after-goto-line
+			  activate compile)
+  "hideshow-expand affected subroutine when using idomenu"
+  (if hs-block-start-regexp
+      (save-excursion
+	(search-forward-regexp hs-block-start-regexp)
+	(hs-show-block))))
+	
 
 ;(global-set-key "\C-x\M-q" 'prefix-paragraph)
 ;(global-set-key "\C-xrv" 'invert-rectangle)
@@ -424,6 +434,8 @@ For details of keybindings, see `ido-find-file'."
 
 (load-library "ffap")
 (define-key craig-prefix-map "\C-f" 'find-file-at-point)
+
+
 
 ; ignore certain files in the list
 (mapcar (lambda (x) (add-to-list 'completion-ignored-extensions x))
