@@ -328,6 +328,7 @@
 	     (local-set-key "\C-\M-p" 'org-backward-heading-same-level)
 	     (local-set-key "\C-\M-n" 'org-forward-heading-same-level)
 	     (local-set-key "\C-\M-u" 'outline-up-heading)
+	     (toggle-truncate-lines 0)
 	     (auto-fill-mode 1)))
 
 
