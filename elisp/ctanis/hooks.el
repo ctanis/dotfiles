@@ -353,3 +353,6 @@
 
 
 
+(add-hook 'erlang-mode-hook
+	  (lambda()
+	    (local-set-key "\C-m" 'newline-and-indent)))

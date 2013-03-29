@@ -539,3 +539,7 @@ For details of keybindings, see `ido-find-file'."
 (fset 'hide-all-this-level
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217749 14 1 67108896 67108896 134217749 134217734 16 5 24 110 110 3 64 134217736 24 110 119 24 24 12] 0 "%d")) arg)))
 (define-key craig-prefix-map "\C-\M-h" 'hide-all-this-level)
+
+
+(require 'erlang-start)
+(require 'erlang-flymake)
