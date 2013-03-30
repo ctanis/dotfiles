@@ -485,6 +485,13 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\C-c" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
+
+; Targets include this file and any file contributing to the agenda -
+; up to 9 levels deep
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+
+; don't use so much room...
 (defadvice org-agenda-redo (after shrink-after-redoing
 				 activate compile)
         "minimize buffer after rebuilding agenda"
