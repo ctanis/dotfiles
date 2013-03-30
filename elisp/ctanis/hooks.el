@@ -123,7 +123,7 @@
 	     (c-toggle-hungry-state 1)
 	     (abbrev-mode -1)
 	     (cwarn-mode 1)
-	     (local-set-key "}" 'self-insert-command)
+	     ; (local-set-key "}" 'self-insert-command)
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
 	     (local-set-key "\C-\M-e" 'up-list)
 	     (local-set-key "\M-o\M-e" 'c-end-of-defun)

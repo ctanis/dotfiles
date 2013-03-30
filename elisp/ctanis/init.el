@@ -467,7 +467,8 @@ For details of keybindings, see `ido-find-file'."
 
 (autopair-global-mode)
 (setq autopair-blink nil)
-(setq autopair-skip-whitespace t)
+;(setq autopair-skip-whitespace t)
+(setq autopair-skip-whitespace nil)
 (setq autopair-pair-criteria 'always)
 
 ;(setq-default abbrev-mode t)
