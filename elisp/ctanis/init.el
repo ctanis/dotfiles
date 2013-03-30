@@ -21,13 +21,14 @@
 
 
 (setq hippie-expand-try-functions-list
-      '(yas/hippie-try-expand
+      '(;yas/hippie-try-expand
 	try-complete-file-name-partially
 	try-complete-file-name
 	try-expand-list
 	try-expand-line
 	try-expand-list-all-buffers
 	try-expand-line-all-buffers
+	try-expand-dabbrev-from-kill
 	;try-complete-lisp-symbol
 	))
 
@@ -381,7 +382,6 @@
 
 ; don't have to use the mouse to get flymake feedback
 (load-library "flycursor")
-(setq flymake-no-changes-timeout 1)
 (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
 (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
