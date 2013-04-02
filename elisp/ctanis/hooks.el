@@ -1,13 +1,9 @@
 (setq font-lock-maximum-decoration (list (cons t nil)))
 
-(setq auto-mode-alist (cons '("\\.h$" . c++-mode) auto-mode-alist))
-(autoload 'uncompress-while-visiting "uncompress")
-(autoload 'tar-mode "tar-mode" "View .tar files" nil nil)
 
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
 
 
 (add-hook 'markdown-mode-hook
@@ -21,10 +17,10 @@
 
 (mapcar '(lambda (a)
 	   (add-to-list 'auto-mode-alist a))
-	'(("\\.Z$" . uncompress-while-visiting)
-	  ("\\.gz$" . uncompress-while-visiting)
-	  ("\\.h$" . c-mode)
+	'(
+	  ("\\.h$" . c++-mode)
 	  ("\\.m$" . octave-mode)
+	  ("\\.md$" . markdown-mode)
 	  ))
 
 
@@ -42,11 +38,6 @@
        ;; Don't skip over *Buffer List*
        (setq popper-buffers-no-skip (cons "*Buffer List*" 
 					  popper-buffers-no-skip))))
-
-(if (string-match "^19.34" emacs-version)
-    (load "popper-19.34")
-  (load "popper"))
-
 
 
 ; C style
@@ -94,25 +85,24 @@
 ;;       )
 ;;   ))
 
-(defun autopair-cleanup-closing-brace (action pair pos-before)
-  (cond ((and (eq action 'opening)(eq pair ?}) c-auto-newline)
-	 (save-excursion
-	   (open-line 1)
-	   (next-line)
-	   (c-indent-line)
-	   ))
-	; jump to next closing brace and cleanup all these auto
-	; behaviors
-	((and (eq action 'closing) (eq pair ?{) c-auto-newline)
-	 (if (looking-at "\\($\\| $\\|\t\\| \\|\n\\)*}")
-	     (progn 
-	       (zap-to-char -1 ?})
-	       (if c-electric-flag
-		   (kill-line))
-	       (forward-jump-to-char 1 ?})
-	       (c-indent-line)
-	       (forward-char))))))
-
+;; (defun autopair-cleanup-closing-brace (action pair pos-before)
+;;   (cond ((and (eq action 'opening)(eq pair ?}) c-auto-newline)
+;; 	 (save-excursion
+;; 	   (open-line 1)
+;; 	   (next-line)
+;; 	   (c-indent-line)
+;; 	   ))
+;; 	; jump to next closing brace and cleanup all these auto
+;; 	; behaviors
+;; 	((and (eq action 'closing) (eq pair ?{) c-auto-newline)
+;; 	 (if (looking-at "\\($\\| $\\|\t\\| \\|\n\\)*}")
+;; 	     (progn 
+;; 	       (zap-to-char -1 ?})
+;; 	       (if c-electric-flag
+;; 		   (kill-line))
+;; 	       (forward-jump-to-char 1 ?})
+;; 	       (c-indent-line)
+;; 	       (forward-char))))))
 
 
 (add-hook 'c-mode-common-hook
@@ -138,10 +128,11 @@
 
 
 ;this is the  c comment-region thing i wrote
-(add-hook 'c-mode-hook
-	  '(lambda ()
-	     (local-set-key "\M-o1" 'make-c-header)
-	     ))
+;; (add-hook 'c-mode-hook
+;; 	  '(lambda ()
+;; 	     (local-set-key "\M-o1" 'make-c-header)
+;; 	     ))
+
 
 (add-hook 'f90-mode-hook
 	  '(lambda()
@@ -154,32 +145,32 @@
 	     ))
 
 
-(add-hook 'text-mode-hook
-	  '(lambda ()
-	     (progn
-	       (define-key text-mode-map "\M-s" 'goto-line)
-	       (toggle-word-wrap 1)
-	       ;(visual-line-mode t)
-	       ; (set-fill-column 68)
-	       ;(auto-fill-mode 1)
-	       (auto-save-mode 1))))
+;; (add-hook 'text-mode-hook
+;; 	  '(lambda ()
+;; 	     (progn
+;; 	       (define-key text-mode-map "\M-s" 'goto-line)
+;; 	       (toggle-word-wrap 1)
+;; 	       ;(visual-line-mode t)
+;; 	       ; (set-fill-column 68)
+;; 	       ;(auto-fill-mode 1)
+;; 	       (auto-save-mode 1))))
 
 
 
-(add-hook 'comint-output-filter-functions
-	  'shell-strip-ctrl-m)
+;; (add-hook 'comint-output-filter-functions
+;; 	  'shell-strip-ctrl-m)
 
 
 
 ;calendar stuff
 ;(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
-(add-hook 'diary-display-hook 'diary-display-todo-file t)
-(add-hook 'diary-display-hook 'fancy-diary-display)
-(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
+;(add-hook 'diary-display-hook 'diary-display-todo-file t)
+;(add-hook 'diary-display-hook 'fancy-diary-display)
+;(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
 
 
-(add-hook 'asm-mode-set-comment-hook '(lambda ()
-					(setq asm-comment-char '?!)))
+;; (add-hook 'asm-mode-set-comment-hook '(lambda ()
+;; 					(setq asm-comment-char '?!)))
 
 ;(add-hook 'sh-mode-hook '(lambda ()
 ;			   (sh-set-shell "zsh")))

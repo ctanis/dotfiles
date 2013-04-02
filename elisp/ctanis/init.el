@@ -17,7 +17,7 @@
 (load-library "modeline-cleanup")
 (load-library "tramp")
 (load-library "autopair")
-
+(load "popper")
 
 
 (setq hippie-expand-try-functions-list
@@ -385,6 +385,8 @@
 (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
 (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
+;; triggering syntax check with newlines is terrible
+(setq flymake-start-syntax-check-on-newline nil)
 
 ; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
