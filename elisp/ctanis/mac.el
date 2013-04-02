@@ -23,10 +23,9 @@
       
 
 ; xcode stuff
-(load-library "xcode")
+;(load-library "xcode")
+(autoload 'xcode-mode "xcode" "xcode minor mode" t)
 
-
-;(add-to-list 'popper-no-pop-buffers "*Completions*")
 
 (setq sql-sqlite-program "sqlite3")
 (setq-default ispell-program-name "aspell")

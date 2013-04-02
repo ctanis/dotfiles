@@ -1,23 +1,17 @@
-;(setq default-frame-alist '((scroll-bar-width . 10)))
-
 ;; start this asap
 (if window-system
     (server-start))
 
 
-
 (load-library "functions")
 (load-library "hooks")
-(load-library "attribute")
 (load-library "ui")
-(load-library "school")
-(load-library "headers")
-(load-library "ispell")
-(load-library "hippie-exp")
 (load-library "modeline-cleanup")
-(load-library "tramp")
 (load-library "autopair")
 
+
+(setq frame-title-format '("" hostname ": %b"))
+(setq icon-title-format '("" hostname ": %b"))
 
 
 (setq hippie-expand-try-functions-list
@@ -32,23 +26,15 @@
 	;try-complete-lisp-symbol
 	))
 
-(setq grep-command "egrep -ni ")
-
-(setq comint-input-ring-size 500)
-
-; always process attribute list(?)
-(setq enable-local-eval 'query)
-;(setq enable-local-eval t)
-
-
 ;; confirm deletions with 'y' or 'n', not 'yes' or 'no'
 (setq dired-deletion-confirmer 'y-or-n-p)
 
 ;(display-time)
 
-
-(setq ange-ftp-generate-anonymous-password nil)
+;(setq ange-ftp-generate-anonymous-password nil)
 (setq initial-scratch-message nil)
+
+(setq enable-local-eval 'query)
 (put 'eval-expression 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -57,53 +43,43 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'scroll-left 'disabled nil)
 
+(setq grep-command "egrep -ni ")
 
-;(resize-minibuffer-mode)
+
 (column-number-mode t)
 (line-number-mode t)
-;(host-name-mode t)
 (setq inhibit-startup-message t)
-
-
 
 
 ;what is this used for, and is it correct?
 (setq comint-prompt-regexp "^[1-9]*:.*M:.*>")
+(setq comint-input-ring-size 1000)
 
 
-(if (file-exists-p "~/.diary")
-    (progn
-      (require 'calendar)
-      (setq mark-diary-entries-in-calendar t)
-      (setq number-of-diary-entries [7 7 6 5 4 3 2])
-      (setq diary-list-include-blanks t)
-      (setq diary-file "~/.diary")
-      ;(setq calendar-daylight-time-zone-name "New Orleans, LA")
-      (setq calendar-daylight-time-zone-name "EDT")
-      (define-key calendar-mode-map "T" 'edit-todo-file)
-;      (setq view-diary-entries-initially t)
-;      (calendar)
-;      (mark-calendar-holidays)
-;      (diary 1)
-      ))
+;; (if (file-exists-p "~/.diary")
+;;     (progn
+;;       (require 'calendar)
+;;       (setq mark-diary-entries-in-calendar t)
+;;       (setq number-of-diary-entries [7 7 6 5 4 3 2])
+;;       (setq diary-list-include-blanks t)
+;;       (setq diary-file "~/.diary")
+;;       ;(setq calendar-daylight-time-zone-name "New Orleans, LA")
+;;       (setq calendar-daylight-time-zone-name "EDT")
+;;       (define-key calendar-mode-map "T" 'edit-todo-file)
+;; ;      (setq view-diary-entries-initially t)
+;; ;      (calendar)
+;; ;      (mark-calendar-holidays)
+;; ;      (diary 1)
+;;       ))
 
 
-;print out characters instead of octal codes
-;; this is obsolete
-;(standard-display-european t)
-
-(setq c-macro-preprocessor "gcc -E -C -")
 
 ;this should cause CVS'ed files to be backuped as normal
-;(setq vc-make-backup-files t)
+(setq vc-make-backup-files t)
 
 ;don't bother asking me if i want to edit through the link or not
 (setq vc-follow-symlinks t)
 
-
-; requires host-name-mode.el
-(setq frame-title-format '("" hostname ": %b"))
-(setq icon-title-format '("" hostname ": %b"))
 
 
 ;make everything fontified
@@ -158,11 +134,10 @@
 ;; KEYBINDINGS
 (global-set-key "\C-x\C-c" 'verify-exit)
 
-;;;boy is this ugly
-(fset 'goto-popper-buffer
-   "\C-u\C-xo")
+(define-prefix-command 'craig-prefix 'craig-prefix-map)
+(global-set-key "\M-o" 'craig-prefix)
 
-(global-set-key "\C-zo" 'goto-popper-buffer)
+
 ;(global-set-key "\M-s" 'goto-line)
 (global-set-key "\M-,"  'ispell-word)
 (global-set-key "\M-j" 'backward-jump-to-char)
@@ -170,21 +145,20 @@
 ;(global-set-key "\C-x!" 'shell)
 (global-set-key "\C-x!" 'shell-current-directory)
 (global-set-key "\C-q" 'base-quoted-insert)
-(global-set-key "\C-h\C-m" 'man)
+;(global-set-key "\C-h\C-m" 'man)
 (global-set-key (read-kbd-macro "M-C->") 'tags-loop-continue)
-;bindings for customized functions
-(define-prefix-command 'craig-prefix 'craig-prefix-map)
-(global-set-key "\M-o" 'craig-prefix)
+
+
 
 (define-key craig-prefix-map " " 'just-no-space)
-(define-key craig-prefix-map "." 'find-tag-other-window)
-(define-key craig-prefix-map "1" 'make-generic-header)
-(define-key craig-prefix-map "2" 'create-attribute-list)
+;(define-key craig-prefix-map "." 'find-tag-other-window)
+;(define-key craig-prefix-map "1" 'make-generic-header)
+;(define-key craig-prefix-map "2" 'create-attribute-list)
 (define-key craig-prefix-map "3" 'executable-set-magic)
 (define-key craig-prefix-map "4" 'make-perl-script)
 (define-key craig-prefix-map "\C-?" 'kill-to-beginning-of-line)
 (define-key craig-prefix-map "\C-a" 'alternate-buffer-in-other-window)
-(define-key craig-prefix-map "\C-d" 'list-and-display-directory)
+;(define-key craig-prefix-map "\C-d" 'list-and-display-directory)
 (define-key craig-prefix-map "\C-o" 'better-display-buffer)
 (define-key craig-prefix-map "\C-w" 'delete-region)
 (define-key craig-prefix-map "\C-x-" 'shrink-other-window-if-larger-than-buffer)
@@ -202,7 +176,7 @@
 (define-key craig-prefix-map "\M-j" 'forward-jump-to-char)
 (define-key craig-prefix-map "\M-k" 'kill-current-buffer)
 (define-key craig-prefix-map "\M-m" 'make-directory)
-(define-key craig-prefix-map "\M-o" 'popper-other-window)
+(define-key craig-prefix-map "\M-o" 'other-window)
 (define-key craig-prefix-map "\M-r" 'rename-buffer)
 (define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
 (define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
@@ -288,6 +262,7 @@
 
 
 ;; UNSET
+(global-unset-key "\C-z") ;; no more suspend/iconify
 (global-unset-key "\C-x\C-z")
 (global-unset-key "\C-h\C-p")		;gnu manifesto
 (global-unset-key "\C-h\C-n")		;emacs news
@@ -301,6 +276,7 @@
 ;(global-unset-key [insert])
 (global-unset-key [prior])
 (global-unset-key [next])
+
 
 
 ;remove an alternate keybinding for undo
@@ -385,6 +361,8 @@
 (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
 (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
+;; triggering syntax check with newlines is terrible
+(setq flymake-start-syntax-check-on-newline nil)
 
 ; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
