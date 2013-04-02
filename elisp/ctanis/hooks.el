@@ -25,19 +25,7 @@
 
 
 
-(setq popper-load-hook 
-     '(lambda ()
-       (setq popper-pop-buffers t)  ; Make popper pop everything temporary
-       (setq popper-buffers-to-skip t) 
-       (setq popper-use-message-buffer nil)
 
-       ;; Make Webster windows default to 12 lines
-       (add-to-list 'popper-min-heights (cons "^\\Webster" 12))
-       (add-to-list 'popper-min-heights (cons "^\\*tail" 25))
-
-       ;; Don't skip over *Buffer List*
-       (setq popper-buffers-no-skip (cons "*Buffer List*" 
-					  popper-buffers-no-skip))))
 
 
 ; C style
@@ -261,16 +249,7 @@
 			    (local-set-key "\M-p" 'scroll-down-slow)))
 
 
-(add-hook 'bookmark-load-hook
-	  '(lambda ()
-	     (popper-wrap 'bookmark-show-annotation
-			  "*Bookmark Annotation*")))
 
-;; (add-hook 'tail-file-hook
-;; 	  '(lambda ()
-;; 	     (popper-wrap 'tail-file "*tail")
-;; 	     (setq tail-display-buffer 'popper-switch)
-;; ))
 
 (add-hook 'sgml-mode-hook
 	  '(lambda ()

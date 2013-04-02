@@ -1,5 +1,9 @@
 ;;  -*- Mode: Emacs-Lisp; -*- 
 
+;; not useful as a mode, but good to remember how to do this kind of
+;; thing...
+
+
 ;;  Copyright 2001, Advance Internet
 
 ;;  Craig Tanis
