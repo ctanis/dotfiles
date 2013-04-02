@@ -36,6 +36,7 @@
   (set-face-background 'flymake-errline "magenta3")
   (set-face-foreground 'flymake-errline "yellow")
   (set-face-background 'flymake-warnline "cyan4")
+  (set-face-foreground 'flymake-warnline "yellow")
 
   (set-face-background 'show-paren-match "wheat2")
   (set-face-foreground 'show-paren-match "purple")
