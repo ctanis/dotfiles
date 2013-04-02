@@ -23,7 +23,8 @@
       
 
 ; xcode stuff
-(load-library "xcode")
+;(load-library "xcode")
+(autoload 'xcode-mode "xcode" "xcode minor mode" t)
 
 
 (setq sql-sqlite-program "sqlite3")

@@ -27,7 +27,7 @@
   (interactive)
   (let ((foo (buffer-name)))
     (bury-buffer)
-    (message (string-append "Buried " foo))
+    (message (concat "Buried " foo))
     (if (not (= (count-windows) 1))
 	(delete-window))))
 
@@ -49,7 +49,7 @@
 			(buffer-list))))
       (kill-buffer
        (let* ((ded-buf (completing-read 
-			(string-append
+			(concat
 			 "Kill (" (buffer-name) "):")
 			lst nil t nil))
 	      (real-ded (if (equal "" ded-buf)
@@ -82,7 +82,7 @@ more than 2 windows are currently displayed."
 		(name (buffer-name buf))
 		(ded-buf
 		 (completing-read 
-		  (string-append "Flip with (" name "): ")
+		  (concat "Flip with (" name "): ")
 		  (mapcar (lambda (a)
 			 (cons (buffer-name a) a))
 		       (buffer-list))
@@ -573,7 +573,7 @@ in the mode line."
   (interactive "MRemove work directories matching: ")
   (setq ido-work-directory-list
 	(filter '(lambda(c) (not
-			     (string-match (string-append "^.*" match) c)))
+			     (string-match (concat "^.*" match) c)))
 		ido-work-directory-list)))
 
 
