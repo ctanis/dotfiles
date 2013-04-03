@@ -81,9 +81,6 @@ function update_repos ()
 	    echo "** $d not found **";
 	fi;
     done;
-
-    # compile elisp
-    cd ~/.dotfiles/elisp/ctanis && byte-them
 }
 
 
