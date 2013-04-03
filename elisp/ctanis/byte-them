@@ -40,3 +40,5 @@ foreach $f (@filelist) {
 # contain the current directory than to hardcode in 'add-current-dir'?
 
 `emacs -batch -f batch-byte-compile @files`;
+
+print "elisp up-to-date\n";
