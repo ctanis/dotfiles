@@ -27,6 +27,7 @@ apps = {
 "alt-,",
 "alt-.",		       
 "cmd-,",
+"cmd-return",
 "control-cmd-left",
 "control-cmd-right",
 "control-cmd-up",
