@@ -2,6 +2,8 @@
 (require 'sml-modeline)
 (require 'flymake)
 
+(setq font-lock-maximum-decoration (list (cons t nil)))
+
 (defun ctanis_colorfy()
   (interactive)
 

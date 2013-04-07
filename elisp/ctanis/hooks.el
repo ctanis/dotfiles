@@ -1,4 +1,11 @@
-(setq font-lock-maximum-decoration (list (cons t nil)))
+(mapcar '(lambda (a)
+	   (add-to-list 'auto-mode-alist a))
+	'(
+	  ("\\.h$" . c++-mode)
+	  ("\\.m$" . octave-mode)
+	  ("\\.md$" . markdown-mode)
+	  ))
+
 
 
 (autoload 'markdown-mode "markdown-mode.el"
@@ -11,17 +18,12 @@
 	     (local-set-key "\C-\M-u" 'backward-up-list)
 	     (local-set-key "\M-p" 'scroll-down-slow)
 	     (local-set-key "\M-n" 'scroll-up-slow)
+	     (local-set-key "\C-\M-f" 'forward-sexp)
+	     (local-set-key "\C-\M-b" 'backward-sexp)
 	     (local-set-key [S-tab] 'markdown-shifttab)
 ))
 
 
-(mapcar '(lambda (a)
-	   (add-to-list 'auto-mode-alist a))
-	'(
-	  ("\\.h$" . c++-mode)
-	  ("\\.m$" . octave-mode)
-	  ("\\.md$" . markdown-mode)
-	  ))
 
 
 
