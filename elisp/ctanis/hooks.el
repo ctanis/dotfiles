@@ -328,3 +328,8 @@
 (add-hook 'erlang-mode-hook
 	  (lambda()
 	    (local-set-key "\C-m" 'newline-and-indent)))
+
+(add-hook 'Info-mode-hook
+	  (lambda()
+	    (local-set-key "\M-n" 'scroll-up-slow)
+	    (local-set-key "\M-p" 'scroll-down-slow)))
