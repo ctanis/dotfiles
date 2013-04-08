@@ -449,6 +449,13 @@ For details of keybindings, see `ido-find-file'."
 (setq autopair-skip-whitespace nil)
 (setq autopair-pair-criteria 'always)
 
+; these characters don't autopair right
+(eval-after-load "text-mode" '(modify-syntax-entry ?\" "\"" text-mode-syntax-table))
+(eval-after-load "markdown-mode" '(modify-syntax-entry ?\" "\"" markdown-mode-syntax-table))
+(eval-after-load "markdown-mode" '(modify-syntax-entry ?` "\"" markdown-mode-syntax-table))
+
+
+
 ;(setq-default abbrev-mode t)
 (setq-default abbrev-mode nil)
 (setq save-abbrevs 'silently)
