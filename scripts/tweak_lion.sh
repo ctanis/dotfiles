@@ -51,7 +51,7 @@ defaults write com.apple.Terminal AppleShowScrollBars -string WhenScrolling
 # defaults write org.gnu.Emacs AppleShowScrollBars -string WhenScrolling
 defaults write com.pixelmatorteam.pixelmator AppleShowScrollBars -string WhenScrolling
 defaults write com.apple.iCal AppleShowScrollBars -string WhenScrolling
-
+defaults write com.apple.Preview AppleShowScrollBars -string WhenScrolling
 
 
 # enable airdrop with older macs -- not enabled by default
