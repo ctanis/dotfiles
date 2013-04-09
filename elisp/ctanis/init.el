@@ -494,6 +494,7 @@ For details of keybindings, see `ido-find-file'."
 
 (add-hook 'after-init-hook
 	  '(lambda ()
+	     (setq yas-snippet-dirs "~/.emacs.d/snippets")
 	     (load-library "yasnippet")
 	     (yas-global-mode 1)
 	     (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
@@ -502,6 +503,7 @@ For details of keybindings, see `ido-find-file'."
 	     ;; (setq undo-tree-mode-lighter nil)
 	     ;; (global-undo-tree-mode)
 	     ))
+
 
 (setq custom-file "~/.emacs.d/projects.el")
 (if (file-readable-p custom-file)
