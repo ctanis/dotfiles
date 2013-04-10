@@ -453,6 +453,7 @@ For details of keybindings, see `ido-find-file'."
 (eval-after-load "text-mode" '(modify-syntax-entry ?\" "\"" text-mode-syntax-table))
 (eval-after-load "markdown-mode" '(modify-syntax-entry ?\" "\"" markdown-mode-syntax-table))
 (eval-after-load "markdown-mode" '(modify-syntax-entry ?` "\"" markdown-mode-syntax-table))
+;(eval-after-load "tex-mode" '(modify-syntax-entry ?$ "\"" latex-mode-syntax-table))
 
 
 
@@ -467,7 +468,12 @@ For details of keybindings, see `ido-find-file'."
 (setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
 (setq org-clock-persist t)
+(setq org-alphabetical-lists t)
 (org-clock-persistence-insinuate)
+
+; don't want to see TOC and postamble in my exported html
+(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
+
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\C-c" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)

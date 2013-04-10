@@ -345,3 +345,9 @@
 	  (lambda()
 	    (local-set-key "\M-n" 'scroll-up-slow)
 	    (local-set-key "\M-p" 'scroll-down-slow)))
+
+(add-hook 'latex-mode-hook
+          #'(lambda ()
+              (set (make-local-variable 'autopair-handle-action-fns)
+                   (list #'autopair-default-handle-action
+                         #'autopair-latex-mode-paired-delimiter-action))))
