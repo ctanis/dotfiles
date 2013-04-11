@@ -547,3 +547,9 @@ For details of keybindings, see `ido-find-file'."
 
 (require 'erlang-start)
 (require 'erlang-flymake)
+
+
+;; dash stuff
+(autoload 'dash-at-point "dash-at-point"
+  "Search the word at point with Dash." t nil)
+(define-key craig-prefix-map "\C-d" 'dash-at-point)
