@@ -470,6 +470,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-clock-persist t)
 (setq org-alphabetical-lists t)
 (org-clock-persistence-insinuate)
+(setq org-export-with-sub-superscripts nil)
 
 ; don't want to see TOC and postamble in my exported html
 (setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
