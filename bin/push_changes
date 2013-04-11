@@ -1,5 +1,6 @@
-#! /bin/sh
-# -*- mode: sh -*-
+#! /bin/sh  
+#  -*- mode: shell-script; -*- 
+
 git commit -a -m "$@";
 git push
 

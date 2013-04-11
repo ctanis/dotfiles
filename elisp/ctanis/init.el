@@ -153,7 +153,7 @@
 (define-key craig-prefix-map " " 'just-no-space)
 ;(define-key craig-prefix-map "." 'find-tag-other-window)
 ;(define-key craig-prefix-map "1" 'make-generic-header)
-;(define-key craig-prefix-map "2" 'create-attribute-list)
+(define-key craig-prefix-map "2" 'create-file-mode)
 (define-key craig-prefix-map "3" 'executable-set-magic)
 (define-key craig-prefix-map "4" 'make-perl-script)
 (define-key craig-prefix-map "\C-?" 'kill-to-beginning-of-line)

@@ -595,3 +595,19 @@ M-x compile.
        (save-some-buffers)
        (revert-buffer t t))
    (call-interactively 'compile)))
+
+
+;; from jennings
+(defun create-file-mode ()
+  "Puts an attribute list at the top of the current buffer.  The
+initial entry is Mode: with the current buffer mode inserted."
+  (interactive nil)
+  (save-excursion
+    (goto-char (point-min))
+    (if (looking-at "#!")
+	(progn
+	  (end-of-line)
+	  (insert "\n")))
+    (insert comment-start " -*- mode: "
+	    (downcase (car (split-string mode-name "/"))) ;; ctanis -- remove minor modes
+	    "; -*- " comment-end "\n")))
