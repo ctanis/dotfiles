@@ -113,3 +113,16 @@
 ;; (define-key dash-snippet-mode-map "\M-v" 'dash-snippet-returntosender)
 ;; (define-key dash-snippet-mode-map "\C-y" 'dash-snippet-returntosender)
 ;; ;(define-key craig-prefix-map "x" 'dash-snippet-get)
+
+
+(defvar speak-process "speech")
+(defun speak-region (beg end)
+  (interactive "r")
+  (let ((proc (or (get-process speak-process)
+		  (start-process speak-process "*speech*" "say")
+		  )))
+    (send-region proc beg end)))
+
+(defun stop-speaking ()
+  (interactive)
+  (kill-process speak-process))
