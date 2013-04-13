@@ -484,7 +484,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
 (setq org-outline-path-complete-in-steps nil)
-(setq org-refile-use-outline-path t)
+(setq org-refile-use-outline-path 'file)
 
 ; don't use so much room...
 (defadvice org-agenda-redo (after shrink-after-redoing
