@@ -145,10 +145,11 @@
     (insert "
 ")
     (process-send-region proc (point-min) (point-max))
+    (process-send-eof proc)
     ))
 
 (defun stop-speaking ()
   (interactive)
   (kill-process speak-process)
-  (kill-buffer speak-buffer)
+;  (kill-buffer speak-buffer)
   )
