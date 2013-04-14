@@ -116,6 +116,7 @@
 
 
 (defvar speak-process "speech")
+(defvar speak-buffer "*speech*")
 ;; (defun speak-region (beg end)
 ;;   (interactive "r")
 ;;   (let ((proc (or (get-process speak-process)
