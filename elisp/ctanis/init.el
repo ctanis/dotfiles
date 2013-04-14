@@ -462,6 +462,9 @@ For details of keybindings, see `ido-find-file'."
 (setq save-abbrevs 'silently)
 
 
+(require 'package)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(package-initialize) ;; trigger elpa packages
 
 ;; org-mode
 (setq org-log-done 'time)
@@ -495,21 +498,14 @@ For details of keybindings, see `ido-find-file'."
 
 
 ;; yasnippet
-
 (setq yas-prompt-functions (list 'yas-ido-prompt))
 (setq yas-verbosity 1)
+(setq yas-snippet-dirs "~/.emacs.d/snippets")
+(load-library "yasnippet")
+(yas-global-mode 1)
+(define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
 
-(add-hook 'after-init-hook
-	  '(lambda ()
-	     (setq yas-snippet-dirs "~/.emacs.d/snippets")
-	     (load-library "yasnippet")
-	     (yas-global-mode 1)
-	     (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
 
-	     ;; (require 'undo-tree)
-	     ;; (setq undo-tree-mode-lighter nil)
-	     ;; (global-undo-tree-mode)
-	     ))
 
 
 (setq custom-file "~/.emacs.d/projects.el")

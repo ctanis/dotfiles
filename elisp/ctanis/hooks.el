@@ -297,9 +297,10 @@
 
 (add-hook 'org-mode-hook
 	  '(lambda()
-	     (local-set-key "\C-\M-p" 'org-backward-heading-same-level)
-	     (local-set-key "\C-\M-n" 'org-forward-heading-same-level)
-	     (local-set-key "\C-\M-u" 'outline-up-heading)
+	     (local-set-key "\C-\M-p" 'org-backward-element)
+	     (local-set-key "\C-\M-n" 'org-forward-element)
+	     (local-set-key "\C-\M-u" 'org-up-element)
+	     (local-set-key "\C-\M-d" 'org-down-element)
 	     (toggle-truncate-lines 0)
 	     (auto-fill-mode 1)))
 
