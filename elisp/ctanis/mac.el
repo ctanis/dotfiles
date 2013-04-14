@@ -137,8 +137,10 @@
     (insert-buffer-substring buf beg end)
     
     (goto-char (point-min))
-    (replace-string "
-" " ")
+    (while (search-forward "
+" nil t)
+      (replace-match " " nil t))
+
     (goto-char (point-max))
     (insert "
 ")
