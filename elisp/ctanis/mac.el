@@ -116,13 +116,36 @@
 
 
 (defvar speak-process "speech")
+;; (defun speak-region (beg end)
+;;   (interactive "r")
+;;   (let ((proc (or (get-process speak-process)
+;; 		  (start-process speak-process "*speech*" "say")
+;; 		  )))
+;;     (send-region proc beg end)))
+
 (defun speak-region (beg end)
   (interactive "r")
   (let ((proc (or (get-process speak-process)
-		  (start-process speak-process "*speech*" "say")
-		  )))
-    (send-region proc beg end)))
+		  (start-process speak-process speak-buffer "say")
+		  ))
+	(buf (current-buffer))
+	)
+
+    (set-buffer speak-buffer)
+    (delete-region (point-min) (point-max))
+    (insert-buffer-substring buf beg end)
+    
+    (goto-char (point-min))
+    (replace-string "
+" " ")
+    (goto-char (point-max))
+    (insert "
+")
+    (process-send-region proc (point-min) (point-max))
+    ))
 
 (defun stop-speaking ()
   (interactive)
-  (kill-process speak-process))
+  (kill-process speak-process)
+  (kill-buffer speak-buffer)
+  )
