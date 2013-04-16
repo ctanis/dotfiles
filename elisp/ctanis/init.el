@@ -483,18 +483,27 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\C-c" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
 
-; Targets include this file and any file contributing to the agenda -
-; up to 9 levels deep
-(setq org-refile-targets (quote ((nil :maxlevel . 9)
-                                 (org-agenda-files :maxlevel . 9))))
-(setq org-outline-path-complete-in-steps t)
-(setq org-refile-use-outline-path 'file)
 
-(defadvice org-refile (around dont-use-ido activate)
-  "don't use ido-completion when refiling"
-  (let ((org-completion-use-ido nil))
+(setq org-outline-path-complete-in-steps t)
+(setq org-refile-targets nil)
+(setq org-refile-use-outline-path t)
+(defalias 'org-refile-fullpath 'org-refile)
+
+;; this one is for refiling to other files in the org-agenda-files
+(defadvice org-refile-fullpath (around use-full-path activate)
+  (let ((org-completion-use-ido nil)
+	(org-refile-use-outline-path 'file)
+	(org-refile-targets (quote ((nil :maxlevel . 9)
+				   (org-agenda-files :maxlevel . 9)))))
     ad-do-it
     ))
+
+;; ; Targets include this file and any file contributing to the agenda -
+;; ; up to 9 levels deep
+;; (setq org-refile-targets (quote ((nil :maxlevel . 9)
+;;                                  (org-agenda-files :maxlevel . 9))))
+;; (setq org-refile-use-outline-path 'file)
+
 
 
 ; don't use so much room...
@@ -502,6 +511,15 @@ For details of keybindings, see `ido-find-file'."
 				 activate compile)
         "minimize buffer after rebuilding agenda"
         (shrink-window-if-larger-than-buffer))
+
+
+(defun org-pass-link-to-system (link)
+  (if (string-match "^[a-zA-Z0-9]+:" link)
+      (shell-command (concat "open " link))
+    nil)
+  )
+
+(add-hook 'org-open-link-functions 'org-pass-link-to-system)
 
 
 

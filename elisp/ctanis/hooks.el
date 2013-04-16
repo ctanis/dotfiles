@@ -301,6 +301,9 @@
 	     (local-set-key "\C-\M-n" 'org-forward-element)
 	     (local-set-key "\C-\M-u" 'org-up-element)
 	     (local-set-key "\C-\M-d" 'org-down-element)
+	     (local-set-key "\C-c\M-w" 'org-refile-fullpath)
+	     ;; rebound since yasnippet eats the previous shortcut
+	     (local-set-key "\C-c\M-b" 'org-mark-ring-goto)
 	     (toggle-truncate-lines 0)
 	     (auto-fill-mode 1)))
 
