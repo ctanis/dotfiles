@@ -472,6 +472,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-log-into-drawer t)
 (setq org-clock-persist t)
 (setq org-alphabetical-lists t)
+(setq org-cycle-separator-lines 1)
 (org-clock-persistence-insinuate)
 (setq org-export-with-sub-superscripts nil)
 
