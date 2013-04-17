@@ -602,6 +602,8 @@ M-x compile.
   "Puts an attribute list at the top of the current buffer.  The
 initial entry is Mode: with the current buffer mode inserted."
   (interactive nil)
+  (let ((comment-start (or comment-start "") )
+	(comment-end (or comment-end "") ))
   (save-excursion
     (goto-char (point-min))
     (if (looking-at "#!")
@@ -610,4 +612,4 @@ initial entry is Mode: with the current buffer mode inserted."
 	  (insert "\n")))
     (insert comment-start " -*- mode: "
 	    (downcase (car (split-string mode-name "/"))) ;; ctanis -- remove minor modes
-	    "; -*- " comment-end "\n")))
+	    "; -*- " comment-end "\n"))))
