@@ -10,10 +10,6 @@
 (load-library "autopair")
 
 
-(setq frame-title-format '("" hostname ": %b"))
-(setq icon-title-format '("" hostname ": %b"))
-
-
 (setq hippie-expand-try-functions-list
       '(;yas/hippie-try-expand
 	try-complete-file-name-partially
@@ -470,7 +466,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
 
 (define-key craig-prefix-map "\C-l" 'org-store-link)
-(define-key craig-prefix-map "\M-r" 'org-capture)
+(define-key craig-prefix-map "\M-s" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
 
 

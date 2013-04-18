@@ -2,6 +2,11 @@
 (require 'sml-modeline)
 (require 'flymake)
 
+(setq frame-title-format '("" hostname ": %b"))
+(setq icon-title-format '("" hostname ": %b"))
+
+
+
 (setq font-lock-maximum-decoration (list (cons t nil)))
 
 (defun ctanis_colorfy()
