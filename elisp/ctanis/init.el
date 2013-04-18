@@ -177,7 +177,7 @@
 (define-key craig-prefix-map "\M-k" 'kill-current-buffer)
 (define-key craig-prefix-map "\M-m" 'make-directory)
 (define-key craig-prefix-map "\M-o" 'other-window)
-(define-key craig-prefix-map "\M-r" 'rename-buffer)
+;(define-key craig-prefix-map "\M-r" 'rename-buffer)
 (define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
 (define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
 (define-key craig-prefix-map "a" 'alternate-buffer)
@@ -480,7 +480,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
 
 (define-key craig-prefix-map "\C-l" 'org-store-link)
-(define-key craig-prefix-map "\C-c" 'org-capture)
+(define-key craig-prefix-map "\M-r" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
 
 
