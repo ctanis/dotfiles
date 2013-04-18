@@ -80,7 +80,10 @@ function update_repos ()
 	else
 	    echo "** $d not found **";
 	fi;
+
     done;
+
+    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
 }
 
 

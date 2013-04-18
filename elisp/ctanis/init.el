@@ -542,8 +542,7 @@ For details of keybindings, see `ido-find-file'."
 (autoload 'turn-off-folding-mode "folding" "Folding mode" t)
 (autoload 'turn-on-folding-mode  "folding" "Folding mode" t)
 
-(defun flymake-get-tex-args (file-name)
-  (list "pdflatex" (list "-file-line-error" "-draftmode" "-interaction=nonstopmode" file-name)))
+
 
 ;; kill the *Compile-Log* buffer
 (add-hook 'emacs-startup-hook
@@ -564,7 +563,3 @@ For details of keybindings, see `ido-find-file'."
 (require 'erlang-flymake)
 
 
-;; dash stuff
-(autoload 'dash-at-point "dash-at-point"
-  "Search the word at point with Dash." t nil)
-(define-key craig-prefix-map "\C-d" 'dash-at-point)

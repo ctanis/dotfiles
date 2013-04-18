@@ -153,3 +153,9 @@
   (kill-process speak-process)
 ;  (kill-buffer speak-buffer)
   )
+
+
+;; dash stuff
+(autoload 'dash-at-point "dash-at-point"
+  "Search the word at point with Dash." t nil)
+(define-key craig-prefix-map "\C-d" 'dash-at-point)
