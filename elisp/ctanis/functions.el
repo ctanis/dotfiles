@@ -613,3 +613,15 @@ initial entry is Mode: with the current buffer mode inserted."
     (insert comment-start " -*- mode: "
 	    (downcase (car (split-string mode-name "/"))) ;; ctanis -- remove minor modes
 	    "; -*- " comment-end "\n"))))
+
+
+(defun monitor-tex (file)
+  (interactive "fRoot Tex File: ")
+  (let* ((buf (generate-new-buffer (concat "*monitor-tex: " file "*")))
+	 (cmd (concat "latexmk -pdf -pvc " file " &")))
+    (save-excursion
+      (switch-to-buffer buf)
+      (setq default-directory (file-name-directory file))
+      (shell-command cmd  buf)
+      (display-buffer buf))))
+
