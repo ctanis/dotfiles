@@ -348,6 +348,7 @@
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
 (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
 ;; triggering syntax check with newlines is terrible
+(setq flymake-log-level 0)
 (setq flymake-start-syntax-check-on-newline nil)
 
 ; don't use ls for dired -- use elisp
