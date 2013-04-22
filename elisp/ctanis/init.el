@@ -459,12 +459,18 @@ For details of keybindings, see `ido-find-file'."
 (setq org-log-into-drawer t)
 (setq org-clock-persist t)
 (setq org-alphabetical-lists t)
+
 (setq org-cycle-separator-lines 1)
 (org-clock-persistence-insinuate)
 (setq org-export-with-sub-superscripts nil)
-
 ; don't want to see TOC and postamble in my exported html
-(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
+(setq org-export-html-postamble nil)
+(setq org-export-with-toc nil)
+(setq org-export-with-section-numbers nil)
+
+;(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
+; original has frame="hside" which  puts bars at the top and bottom
+(setq org-export-html-table-tag  "<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"void\">")
 
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\M-s" 'org-capture)
