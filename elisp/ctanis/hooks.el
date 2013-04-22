@@ -299,7 +299,8 @@
 	  '(lambda()
 	     (local-set-key "\C-\M-p" 'org-backward-element)
 	     (local-set-key "\C-\M-n" 'org-forward-element)
-	     (local-set-key "\C-\M-u" 'org-up-element)
+	     ;(local-set-key "\C-\M-u" 'org-up-element)
+	     (local-set-key "\C-\M-u" 'org-up-list-or-element)
 	     (local-set-key "\C-\M-d" 'org-down-element)
 	     (local-set-key "\C-c\M-w" 'org-refile-fullpath)
 	     ;; rebound since yasnippet eats the previous shortcut

@@ -512,6 +512,18 @@ For details of keybindings, see `ido-find-file'."
     nil)
   )
 
+;; if we are in an sexp, jump to enclosing paren, otherwise run
+;; org-up-element
+(defun org-up-list-or-element ()
+  (interactive)
+  (condition-case nil
+      (up-list -1)
+    (error
+     (condition-case nil
+	 (org-up-element)
+       (error (message "no parent element"))))))
+
+
 (add-hook 'org-open-link-functions 'org-pass-link-to-system)
 
 
