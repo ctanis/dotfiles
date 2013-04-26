@@ -4,6 +4,7 @@
   `(
     (autopair-mode . "Θ")
     (abbrev-mode . "α")
+    (company-mode . "¢")
     (yas-minor-mode . " Υ")
     (org-indent-mode . "⇥")
     (cwarn-mode . "w")

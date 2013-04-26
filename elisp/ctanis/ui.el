@@ -15,7 +15,7 @@
   (set-foreground-color "black")
   (set-background-color "wheat3")
 
-  (set-cursor-color "blue")
+  (set-cursor-color "wheat4")
   (set-face-background 'region "darkgrey")
   (set-face-background 'hl-line "darkgrey")
 
@@ -73,7 +73,6 @@
   (set-face-background 'isearch "orange")
   (set-face-foreground 'isearch "black")
 
-
   ;;   (set-face-foreground font-lock-doc-face "grey40")
   ;; (set-face-foreground font-lock-comment-face "grey40")
   ;; (set-face-foreground font-lock-string-face "darkgreen")
@@ -97,6 +96,12 @@
 	    (set-face-foreground 'org-block "darkred")
 	    (set-face-attribute 'org-document-title nil :height 1.44)
 ))
+
+(add-hook 'sh-mode-hook
+	  '(lambda()
+	     (set-face-foreground 'sh-quoted-exec "purple")
+
+	     ))
 
 (add-hook 'dired-mode-hook
 	  '(lambda ()

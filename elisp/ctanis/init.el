@@ -578,3 +578,7 @@ For details of keybindings, see `ido-find-file'."
 (require 'erlang-flymake)
 
 
+(require 'company)
+(setq company-idle-delay .3)
+(setq company-minimum-prefix-length 1)
+(set-face-background 'company-preview "wheat1")

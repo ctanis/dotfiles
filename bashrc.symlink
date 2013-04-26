@@ -83,7 +83,7 @@ function update_repos ()
 
     done;
 
-    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
+    `/usr/local/bin/emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
 }
 
 
