@@ -94,11 +94,13 @@ function check_repos ()
 	d=`eval echo $i;`
 	if [ -d $d ]; then 
 	    echo $d;
-	   sh -c "cd $d && git status";
+	    sh -c "cd $d && git status";
 	else
 	    echo "** $d not found **";
 	fi;
     done;
+
+    `/usr/local/bin/emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
 }
 
 
