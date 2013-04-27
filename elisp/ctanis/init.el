@@ -506,11 +506,17 @@ For details of keybindings, see `ido-find-file'."
         (shrink-window-if-larger-than-buffer))
 
 
+;; (defun org-pass-link-to-system (link)
+;;   (if (string-match "^[a-zA-Z0-9]+:" link)
+;;       (shell-command (concat "open " link))
+;;     nil)
+;;   )
 (defun org-pass-link-to-system (link)
   (if (string-match "^[a-zA-Z0-9]+:" link)
-      (shell-command (concat "open " link))
+      (browse-url link)
     nil)
   )
+
 
 ;; if we are in an sexp, jump to enclosing paren, otherwise run
 ;; org-up-element
