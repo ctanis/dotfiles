@@ -479,7 +479,7 @@ For details of keybindings, see `ido-find-file'."
 
 
 (setq org-outline-path-complete-in-steps t)
-(setq org-refile-targets nil)
+(setq org-refile-targets (quote ((nil :maxlevel . 9))))
 (setq org-refile-use-outline-path t)
 (defalias 'org-refile-fullpath 'org-refile)
 
