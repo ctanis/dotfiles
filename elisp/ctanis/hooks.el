@@ -1,5 +1,5 @@
-(mapcar '(lambda (a)
-	   (add-to-list 'auto-mode-alist a))
+(mapcar #'(lambda (a)
+	    (add-to-list 'auto-mode-alist a))
 	'(
 	  ("\\.h$" . c++-mode)
 	  ("\\.m$" . octave-mode)
