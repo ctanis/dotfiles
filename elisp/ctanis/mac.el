@@ -116,43 +116,35 @@
 
 
 (defvar speak-process "speech")
-(defvar speak-buffer "*speech*")
-;; (defun speak-region (beg end)
-;;   (interactive "r")
-;;   (let ((proc (or (get-process speak-process)
-;; 		  (start-process speak-process "*speech*" "say")
-;; 		  )))
-;;     (send-region proc beg end)))
 
 (defun speak-region (beg end)
   (interactive "r")
-  (let ((proc (or (get-process speak-process)
-		  (start-process speak-process speak-buffer "say")
-		  ))
-	(buf (current-buffer))
+  (if (get-process speak-process)
+      (stop-speaking)
+    (let ((buf (current-buffer))
+	  (temp (make-temp-file temporary-file-directory))
+	  )
+
+      (with-temp-file temp
+	(insert-buffer-substring buf beg end)
+    
+	(goto-char (point-min))
+	(while (search-forward "
+" nil t)
+	  (replace-match " " nil t))
+
+	(goto-char (point-max))
+	(insert "
+")
 	)
 
-    (set-buffer speak-buffer)
-    (delete-region (point-min) (point-max))
-    (insert-buffer-substring buf beg end)
-    
-    (goto-char (point-min))
-    (while (search-forward "
-" nil t)
-      (replace-match " " nil t))
-
-    (goto-char (point-max))
-    (insert "
-")
-    (process-send-region proc (point-min) (point-max))
-    (process-send-eof proc)
-    ))
+      (start-process speak-process nil "say" (concat "--input-file=" temp))
+      )))
 
 (defun stop-speaking ()
   (interactive)
-  (kill-process speak-process)
-;  (kill-buffer speak-buffer)
-  )
+  (kill-process (get-process speak-process)))
+
 
 
 ;; dash stuff
