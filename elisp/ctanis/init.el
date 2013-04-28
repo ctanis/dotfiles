@@ -442,6 +442,7 @@ For details of keybindings, see `ido-find-file'."
 (eval-after-load "markdown-mode" '(modify-syntax-entry ?` "\"" markdown-mode-syntax-table))
 ;(eval-after-load "tex-mode" '(modify-syntax-entry ?$ "\"" latex-mode-syntax-table))
 
+(setq markdown-command "multimarkdown")
 
 
 ;(setq-default abbrev-mode t)
