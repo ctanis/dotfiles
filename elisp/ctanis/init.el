@@ -377,7 +377,7 @@
 (setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
 (setq ido-use-filename-at-point nil)
 (setq ido-ignore-buffers '("\\` " "\\*"))
-(setq ido-enable-regexp t)
+(setq ido-enable-regexp nil) ;; toggle it if you want it
 (ido-mode 1)
 (ido-everywhere -1)
 (load-library "idomenu")
@@ -461,7 +461,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-clock-persist t)
 (setq org-alphabetical-lists t)
 
-(setq org-cycle-separator-lines 1)
+(setq org-cycle-separator-lines 2)
 (org-clock-persistence-insinuate)
 (setq org-export-with-sub-superscripts nil)
 ; don't want to see TOC and postamble in my exported html
@@ -478,7 +478,7 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\M-a" 'org-agenda)
 
 
-(setq org-outline-path-complete-in-steps t)
+(setq org-outline-path-complete-in-steps nil)
 (setq org-refile-targets (quote ((nil :maxlevel . 9))))
 (setq org-refile-use-outline-path t)
 (defalias 'org-refile-fullpath 'org-refile)
@@ -486,6 +486,7 @@ For details of keybindings, see `ido-find-file'."
 ;; this one is for refiling to other files in the org-agenda-files
 (defadvice org-refile-fullpath (around use-full-path activate)
   (let ((org-completion-use-ido nil)
+	(setq org-outline-path-complete-in-steps t)
 	(org-refile-use-outline-path 'file)
 	(org-refile-targets (quote ((nil :maxlevel . 9)
 				   (org-agenda-files :maxlevel . 9)))))
