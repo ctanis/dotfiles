@@ -78,6 +78,10 @@
 (defun focus-on-emacs ()
   (shell-command "osascript -e 'tell application \"Emacs\" to activate'"))
 
+(defvar dash-at-point-return-to-emacs nil
+  "if true, force the focus back on emacs after calling dash-at-point")
+
+
 (defun dash-at-point ()
   "Call Dash the word at point."
   (interactive)
@@ -91,7 +95,8 @@
 	 (thing-at-point 'symbol))
       (thing-at-point 'symbol))))
   ;; come back to us immediately
-  (focus-on-emacs))
+  (if dash-at-point-return-to-emacs
+      (focus-on-emacs)))
 
 
 ;; (defun dash-at-point ()
