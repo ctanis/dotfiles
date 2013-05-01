@@ -374,7 +374,8 @@
 ;; ------------ ido stuff
 (setq ido-enable-flex-matching t)
 ;(setq ido-everywhere t)
-(setq ido-auto-merge-delay-time 99999);; use M-s to search other work dirs
+(setq ido-auto-merge-delay-time .01);; use M-s to search other work dirs
+(setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-filename-at-point nil)
 (setq ido-ignore-buffers '("\\` " "\\*"))
 (setq ido-enable-regexp nil) ;; toggle it if you want it
