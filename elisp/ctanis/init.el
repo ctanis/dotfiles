@@ -590,3 +590,8 @@ For details of keybindings, see `ido-find-file'."
 (setq company-idle-delay .3)
 (setq company-minimum-prefix-length 1)
 (set-face-background 'company-preview "wheat1")
+
+
+(require 'saveplace)
+(setq save-place-file "~/.emacs.d/saved-places")
+(define-key craig-prefix-map "r" 'toggle-save-place)
