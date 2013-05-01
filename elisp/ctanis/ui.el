@@ -95,9 +95,10 @@
 	    (set-face-background 'org-block "darkgray")
 	    (set-face-foreground 'org-block "darkred")
 	    (set-face-foreground 'org-level-1 "green4")
-	    (set-face-foreground 'org-level-2 "red3")
+	    (set-face-foreground 'org-level-2 "red4")
 	    (set-face-foreground 'org-level-3 "grey28")
-	    (set-face-foreground 'org-level-4 "grey43")
+	    (set-face-foreground 'org-level-4 "goldenrod4")
+	    (set-face-foreground 'org-level-5 "grey43")
 
 	    (set-face-attribute 'org-document-title nil :height 1.44)
 	    ))
