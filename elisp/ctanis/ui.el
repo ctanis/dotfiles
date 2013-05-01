@@ -100,7 +100,7 @@
 (add-hook 'sh-mode-hook
 	  '(lambda()
 	     (set-face-foreground 'sh-quoted-exec "purple")
-
+	     (set-face-foreground 'sh-heredoc "purple3")
 	     ))
 
 (add-hook 'dired-mode-hook
