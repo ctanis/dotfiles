@@ -9,6 +9,9 @@
 ;avoid hiding with M-h
 ;(setq mac-pass-command-to-system nil)
 
+; command-capital-H to hide emacs
+(global-set-key "\M-H" 'ns-do-hide-emacs)
+
 (global-set-key (quote [C-M-backspace]) 'backward-kill-sexp)
 (global-set-key (quote [C-M-delete]) 'backward-kill-sexp)
 
