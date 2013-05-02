@@ -101,6 +101,9 @@
 	      (set-face-foreground 'org-level-4 "goldenrod4")
 	      (set-face-foreground 'org-level-5 "grey43")
 	      (set-face-foreground 'org-verbatim "gray30")
+	      (set-face-foreground 'org-document-info-keyword "gray50")
+	      (set-face-foreground 'org-meta-line "gray50")
+
 
 	      (set-face-attribute 'org-document-title nil :height 1.44)
 	      ))

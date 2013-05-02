@@ -472,7 +472,7 @@ For details of keybindings, see `ido-find-file'."
 (org-clock-persistence-insinuate)
 (setq org-export-with-sub-superscripts nil)
 ; don't want to see TOC and postamble in my exported html
-(setq org-export-html-postamble nil)
+(setq org-html-postamble nil)
 (setq org-export-with-toc nil)
 (setq org-export-with-section-numbers nil)
 
@@ -592,11 +592,13 @@ For details of keybindings, see `ido-find-file'."
 (require 'erlang-start)
 (require 'erlang-flymake)
 
+(set-default 'fill-column 78)
+
 
 (require 'company)
 (setq company-idle-delay .3)
 (setq company-minimum-prefix-length 1)
-(set-face-background 'company-preview "wheat1")
+(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
 
 
 (require 'saveplace)
