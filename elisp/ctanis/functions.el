@@ -313,96 +313,51 @@ multiple times in a row"
 	    (current-time-string)
 	    (or comment-end ""))))
 
-(defun big (how-big)
-  (interactive "p")
-  "Use a bigger font.  Provide a positive number indicating how big."
-  (let ((fonts '(("fixed" . nil)
-		 ("7x13" . nil)
-		 ("8x13" . nil)
-		 ("9x15" . nil)
-		 ("10x20" . nil)
-		 )))
-    (set-default-font (car (nth how-big fonts)))
-    (eval (cdr (nth how-big fonts)))))
-
-
-
-(defvar frame-mitosis-y 62)
-(defvar frame-mitosis-x1 18)
-(defvar frame-mitosis-x2 842)
-
-(defun frame-mitosis()
-  (interactive )
-
-  (let ((width 88)
-	(height 60)
-	(geom-y frame-mitosis-y)
-	(geom-x1 frame-mitosis-x1)
-	(geom-x2 frame-mitosis-x2)
-	(font "9x15"))
-
-    (set-frame-height (selected-frame) height)
-    (set-frame-width (selected-frame) width)
-    (set-frame-position (selected-frame) geom-x2 geom-y)
-    (big 3)
-
-    (let ((after-make-frame-functions (cons '(lambda (frame)
-					       (set-frame-height frame height)
-					       (set-frame-width frame width)
-					       (set-frame-position frame geom-x1 geom-y))
-					    after-make-frame-functions))
-	  (default-frame-alist
-	    (cons (cons 'font font)
-		  default-frame-alist)))
-      (let ((f (new-frame)))
-	(select-frame f)
-	(big 3)
-	(color *color-selection*)))))
-
-
-(defun mono-framify()
-  (interactive)
-  (if (> (length (frame-list)) 1)
-      (delete-frame))
-    
-  (let ((f (car (frame-list))))
-    (set-frame-height f 60)
-    (set-frame-width f 88)
-    (set-frame-position f 309 75)))
+;; (defun big (how-big)
+;;   (interactive "p")
+;;   "Use a bigger font.  Provide a positive number indicating how big."
+;;   (let ((fonts '(("fixed" . nil)
+;; 		 ("7x13" . nil)
+;; 		 ("8x13" . nil)
+;; 		 ("9x15" . nil)
+;; 		 ("10x20" . nil)
+;; 		 )))
+;;     (set-default-font (car (nth how-big fonts)))
+;;     (eval (cdr (nth how-big fonts)))))
 
 
 
 ; have the diary print out the contents of todo file, if the current date is
 ; selected
 
-(defvar todo-file "~/.todo")
+;; (defvar todo-file "~/.todo")
 
-(defun diary-display-todo-file ()
-  (save-excursion
-    (set-buffer "*Calendar*")
-    (if (equal (calendar-current-date)
-	       (calendar-cursor-to-date))
-	(progn
-	  (set-buffer (or (get-buffer fancy-diary-buffer)
-			  (make-fancy-diary-buffer)))
-	  (goto-char (point-max))
-	  (if (file-readable-p todo-file)
-	      (progn
-		(toggle-read-only)
-		(message "Inserting todo-file")
-		(insert "\n\nTODO:\n")			  
-		(insert-file todo-file)
-		(toggle-read-only))))
-      t
-)))
+;; (defun diary-display-todo-file ()
+;;   (save-excursion
+;;     (set-buffer "*Calendar*")
+;;     (if (equal (calendar-current-date)
+;; 	       (calendar-cursor-to-date))
+;; 	(progn
+;; 	  (set-buffer (or (get-buffer fancy-diary-buffer)
+;; 			  (make-fancy-diary-buffer)))
+;; 	  (goto-char (point-max))
+;; 	  (if (file-readable-p todo-file)
+;; 	      (progn
+;; 		(toggle-read-only)
+;; 		(message "Inserting todo-file")
+;; 		(insert "\n\nTODO:\n")			  
+;; 		(insert-file todo-file)
+;; 		(toggle-read-only))))
+;;       t
+;; )))
 
 
-(defun edit-todo-file ()
-  (interactive)
-  (if (and todo-file
-	   (file-readable-p todo-file))
-      (find-file-other-window todo-file)
-    (error "What TODO file?!")))
+;; (defun edit-todo-file ()
+;;   (interactive)
+;;   (if (and todo-file
+;; 	   (file-readable-p todo-file))
+;;       (find-file-other-window todo-file)
+;;     (error "What TODO file?!")))
 
 
 ;; (defun prefix-paragraph ()
