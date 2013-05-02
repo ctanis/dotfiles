@@ -461,6 +461,12 @@ For details of keybindings, see `ido-find-file'."
 (setq org-log-into-drawer t)
 (setq org-clock-persist t)
 (setq org-alphabetical-lists t)
+(setq org-hide-emphasis-markers t)
+
+;; the resulting regexp from numlines (the last piece) >0 was breaking
+;; certain headline emphases
+(setq org-emphasis-regexp-components
+  '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
 
 (setq org-cycle-separator-lines 2)
 (org-clock-persistence-insinuate)
