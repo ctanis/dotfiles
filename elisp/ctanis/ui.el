@@ -92,6 +92,7 @@
 					;	    (set-face-foreground 'org-hide "wheat3")
 	      (set-face-foreground 'org-todo "purple")
 	      (set-face-background 'org-todo "wheat2")
+	      (set-face-background 'org-done "wheat2")
 	      (set-face-background 'org-warning "orange")
 	      (set-face-background 'org-block "darkgray")
 	      (set-face-foreground 'org-block "darkred")
