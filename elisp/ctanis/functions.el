@@ -318,8 +318,11 @@ multiple times in a row"
   (newline)
   (if comment-start
       (insert comment-start))
-  (dotimes (x (- fill-column (current-column)))
-    (insert "-")))
+  (let ((colend (if comment-end comment-end "")))
+    (dotimes (x (- fill-column (+ (current-column) (length colend))))
+      (insert "-"))
+    (insert colend)))
+
 
 ;; (defun big (how-big)
 ;;   (interactive "p")
