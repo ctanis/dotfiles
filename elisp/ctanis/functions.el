@@ -315,7 +315,8 @@ multiple times in a row"
 
 (defun insert-separator ()
   (interactive)
-  (newline)
+  (beginning-of-line)
+  (open-line 1)
   (if comment-start
       (insert comment-start))
   (let ((colend (if comment-end comment-end "")))
