@@ -203,7 +203,8 @@
 (define-key craig-prefix-map (read-kbd-macro "<tab>") 'hs-toggle-hiding)
 (define-key craig-prefix-map "\M-x" 'compile-again)
 (define-key craig-prefix-map "\M-v" 'view-mode)
-
+(define-key craig-prefix-map "-" 'insert-separator)
+;; ---------------------------------------------------------------------------
 (defadvice goto-line (after expand-after-goto-line
                                 activate compile)
         "hideshow-expand affected block when using goto-line in a collapsed buffer"

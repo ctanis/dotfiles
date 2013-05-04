@@ -313,6 +313,14 @@ multiple times in a row"
 	    (current-time-string)
 	    (or comment-end ""))))
 
+(defun insert-separator ()
+  (interactive)
+  (newline)
+  (if comment-start
+      (insert comment-start))
+  (dotimes (x (- fill-column (current-column)))
+    (insert "-")))
+
 ;; (defun big (how-big)
 ;;   (interactive "p")
 ;;   "Use a bigger font.  Provide a positive number indicating how big."
