@@ -460,7 +460,11 @@ For details of keybindings, see `ido-find-file'."
 (setq org-log-done 'time)
 (setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
-(setq org-clock-persist t)
+
+;; revisit this if i ever use an org-clock
+;; (setq org-clock-persist t)
+;; (org-clock-persistence-insinuate)
+
 (setq org-alphabetical-lists t)
 (setq org-hide-emphasis-markers t)
 
@@ -470,7 +474,7 @@ For details of keybindings, see `ido-find-file'."
   '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
 
 (setq org-cycle-separator-lines 2)
-(org-clock-persistence-insinuate)
+
 (setq org-export-with-sub-superscripts nil)
 ; don't want to see TOC and postamble in my exported html
 (setq org-html-postamble nil)

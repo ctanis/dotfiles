@@ -7,6 +7,8 @@
     (company-mode . "¢")
     (yas-minor-mode . " Υ")
     (org-indent-mode . "⇥")
+    (orgtbl-mode . "#")
+    (orgstruct-mode . "⧇")
     (cwarn-mode . "w")
     (hs-minor-mode . "Σ")
     (folding-mode . "F")
