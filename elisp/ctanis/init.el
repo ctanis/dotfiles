@@ -475,6 +475,8 @@ For details of keybindings, see `ido-find-file'."
 
 (setq org-cycle-separator-lines 2)
 
+(setq org-M-RET-may-split-line '((headline . nil) (item . nil) (table . t)))
+
 (setq org-export-with-sub-superscripts nil)
 ; don't want to see TOC and postamble in my exported html
 (setq org-html-postamble nil)
