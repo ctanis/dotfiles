@@ -21,7 +21,7 @@
 	     (local-set-key "\C-\M-f" 'forward-sexp)
 	     (local-set-key "\C-\M-b" 'backward-sexp)
 	     (local-set-key [S-tab] 'markdown-shifttab)
-))
+	     ))
 
 
 
@@ -30,7 +30,7 @@
 
 
 
-; C style
+					; C style
 ;; (setq c-default-style '((c-mode  . "k&r")
 ;; 			(c++-mode . "stroustrup")
 ;; 			(objc-mode . "k&r")
@@ -43,8 +43,8 @@
 			(c-offsets-alist
 			 (case-label . 1)
 			 (access-label . -)
-;			 (cpp-macro . 0)
-;			 (cpp-macro . -)
+					;			 (cpp-macro . 0)
+					;			 (cpp-macro . -)
 			 )
 			(c-hanging-braces-alist
 			 (substatement-open . 'before)
@@ -103,7 +103,7 @@
 	     (c-toggle-hungry-state 1)
 	     (abbrev-mode -1)
 	     (cwarn-mode 1)
-	     ; (local-set-key "}" 'self-insert-command)
+					; (local-set-key "}" 'self-insert-command)
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
 	     (local-set-key "\C-\M-e" 'up-list)
 	     (local-set-key "\M-o\M-e" 'c-end-of-defun)
@@ -117,7 +117,7 @@
 	     ))
 
 
-;this is the  c comment-region thing i wrote
+					;this is the  c comment-region thing i wrote
 ;; (add-hook 'c-mode-hook
 ;; 	  '(lambda ()
 ;; 	     (local-set-key "\M-o1" 'make-c-header)
@@ -152,25 +152,25 @@
 
 
 
-;calendar stuff
-;(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
-;(add-hook 'diary-display-hook 'diary-display-todo-file t)
-;(add-hook 'diary-display-hook 'fancy-diary-display)
-;(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
+					;calendar stuff
+					;(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
+					;(add-hook 'diary-display-hook 'diary-display-todo-file t)
+					;(add-hook 'diary-display-hook 'fancy-diary-display)
+					;(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
 
 
 ;; (add-hook 'asm-mode-set-comment-hook '(lambda ()
 ;; 					(setq asm-comment-char '?!)))
 
-;(add-hook 'sh-mode-hook '(lambda ()
-;			   (sh-set-shell "zsh")))
+					;(add-hook 'sh-mode-hook '(lambda ()
+					;			   (sh-set-shell "zsh")))
 
-;redefinitions of shell-mode keys
+					;redefinitions of shell-mode keys
 (add-hook 'comint-mode-hook
 	  '(lambda ()
 	     ;; (setq comint-use-prompt-regexp t)
 	     ;; (setq comint-prompt-regexp "^[^\$]+\$ ")
-	     ; (setq comint-prompt-read-only t)
+					; (setq comint-prompt-read-only t)
 	     (define-key comint-mode-map
 	       "\M-p" 'comint-previous-matching-input-from-input)
 	     (define-key comint-mode-map
@@ -183,10 +183,10 @@
 
 
 (add-hook 'shell-mode-hook 
-     '(lambda ()
-	; allow the killing of this buffer without prompting
-	(process-kill-without-query (get-buffer-process (current-buffer)))
-	(toggle-truncate-lines 1)))
+	  '(lambda ()
+					; allow the killing of this buffer without prompting
+	     (process-kill-without-query (get-buffer-process (current-buffer)))
+	     (toggle-truncate-lines 1)))
 
 (setq shell-font-lock-keywords
       `(
@@ -203,9 +203,9 @@
 (add-hook 'inferior-octave-mode-hook
 	  '(lambda ()
 	     (local-set-key
-	       "\M-p" 'comint-previous-matching-input-from-input)
+	      "\M-p" 'comint-previous-matching-input-from-input)
 	     (local-set-key
-	       "\M-n" 'comint-next-matching-input-from-input)
+	      "\M-n" 'comint-next-matching-input-from-input)
 	     (local-set-key
 	      "\C-a" 'comint-bol)))
 
@@ -228,7 +228,7 @@
 
 (defalias 'perl-mode 'cperl-mode)
 (setq cperl-invalid-face (quote off))
-;(setq cperl-hairy t)
+					;(setq cperl-hairy t)
 (add-to-list 'font-lock-maximum-decoration (cons 'cperl-mode 1))
 
 
@@ -240,7 +240,7 @@
 	     (local-set-key "\M-o\M-h" 'cperl-perldoc-at-point)
 	     (local-set-key "\M-o\C-H" 'cperl-perldoc)
 	     (local-set-key "\M-o|" 'cperl-lineup)
-))
+	     ))
 
 
 
@@ -272,7 +272,7 @@
 	     (setq comint-prompt-regexp "^[^>]+> ")))
 
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
- 
+
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t) 
 
 
@@ -291,7 +291,7 @@
 	  '(lambda ()
 	     (ibuffer-auto-mode 1)
 	     (local-set-key "\C-x\C-f" 'ido-find-file)
-;	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
+					;	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
 	     (local-unset-key "\M-o")))
 
 
@@ -299,7 +299,7 @@
 	  '(lambda()
 	     (local-set-key "\C-\M-p" 'org-backward-element)
 	     (local-set-key "\C-\M-n" 'org-forward-element)
-	     ;(local-set-key "\C-\M-u" 'org-up-element)
+					;(local-set-key "\C-\M-u" 'org-up-element)
 	     (local-set-key "\C-\M-u" 'org-up-list-or-element)
 	     (local-set-key "\C-\M-d" 'org-down-element)
 	     (local-set-key "\C-c\M-w" 'org-refile-fullpath)
@@ -357,3 +357,41 @@
 	    (set (make-local-variable 'autopair-handle-action-fns)
 		 (list 'autopair-default-handle-action
 		       'autopair-latex-mode-paired-delimiter-action))))
+
+
+
+					; these characters don't autopair right
+(eval-after-load "text-mode" '(modify-syntax-entry ?\" "\"" text-mode-syntax-table))
+(eval-after-load "markdown-mode" '(modify-syntax-entry ?\" "\"" markdown-mode-syntax-table))
+(eval-after-load "markdown-mode" '(modify-syntax-entry ?` "\"" markdown-mode-syntax-table))
+					;(eval-after-load "tex-mode" '(modify-syntax-entry ?$ "\"" latex-mode-syntax-table))
+
+(eval-after-load "org"
+  '(progn
+     (defalias 'org-refile-fullpath 'org-refile)
+
+     ;; this one is for refiling to other files in the org-agenda-files
+     (defadvice org-refile-fullpath (around use-full-path activate)
+       (let ((org-completion-use-ido nil)
+	     (setq org-outline-path-complete-in-steps t)
+	     (org-refile-use-outline-path 'file)
+	     (org-refile-targets (quote ((nil :maxlevel . 9)
+					 (org-agenda-files :maxlevel . 9)))))
+	 ad-do-it
+	 ))
+
+     ;; ; Targets include this file and any file contributing to the agenda -
+     ;; ; up to 9 levels deep
+     ;; (setq org-refile-targets (quote ((nil :maxlevel . 9)
+     ;;                                  (org-agenda-files :maxlevel . 9))))
+     ;; (setq org-refile-use-outline-path 'file)
+
+
+
+					; don't use so much room...
+     (defadvice org-agenda-redo (after shrink-after-redoing
+				       activate compile)
+       "minimize buffer after rebuilding agenda"
+       (shrink-window-if-larger-than-buffer))
+
+     ))
