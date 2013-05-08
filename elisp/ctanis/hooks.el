@@ -395,3 +395,9 @@
        (shrink-window-if-larger-than-buffer))
 
      ))
+
+
+
+(add-hook 'folding-mode-hook
+	  (lambda ()
+	    (local-set-key (read-kbd-macro "M-o <tab>") 'folding-toggle-show-hide)))
