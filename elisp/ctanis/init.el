@@ -495,6 +495,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-targets (quote ((nil :maxlevel . 9))))
 (setq org-refile-use-outline-path t)
+(require 'org)
 (defalias 'org-refile-fullpath 'org-refile)
 
 ;; this one is for refiling to other files in the org-agenda-files
