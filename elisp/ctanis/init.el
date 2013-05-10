@@ -381,6 +381,8 @@
 (setq ido-ignore-buffers '("\\` " "\\*"))
 (setq ido-enable-regexp nil) ;; toggle it if you want it
 (ido-mode 1)
+(add-to-list 'ido-ignore-files "`\\.DS_Store")
+(add-to-list 'ido-ignore-files "`\\.git")
 (ido-everywhere -1)
 (load-library "idomenu")
 (setq imenu-auto-rescan t)
