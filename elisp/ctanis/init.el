@@ -438,7 +438,9 @@ For details of keybindings, see `ido-find-file'."
 (setq autopair-blink nil)
 					;(setq autopair-skip-whitespace t)
 (setq autopair-skip-whitespace nil)
-(setq autopair-pair-criteria 'always)
+
+(setq autopair-pair-criteria 'help-balance) ;; 'always
+(setq autopair-skip-criteria 'help-balance)
 
 (setq markdown-command "multimarkdown")
 
