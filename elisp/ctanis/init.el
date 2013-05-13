@@ -523,7 +523,7 @@ For details of keybindings, see `ido-find-file'."
 (defun org-up-list-or-element ()
   (interactive)
   (let* ((start (point))
-	 (orgparent (progn (org-up-heading-safe) (point)))
+	 (orgparent (progn (org-up-element) (point)))
 	 (liststart
 	  (progn
 	    (goto-char start)
