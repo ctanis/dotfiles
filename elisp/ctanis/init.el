@@ -510,14 +510,29 @@ For details of keybindings, see `ido-find-file'."
 
 ;; if we are in an sexp, jump to enclosing paren, otherwise run
 ;; org-up-element
+;; (defun org-up-list-or-element ()
+;;   (interactive)
+;;   (condition-case nil
+;;       (up-list -1)
+;;     (error
+;;      (condition-case nil
+;; 	 (org-up-element)
+;;        (error (message "no parent element"))))))
+
+;; this version won't up-list past the start of the current element
 (defun org-up-list-or-element ()
   (interactive)
-  (condition-case nil
-      (up-list -1)
-    (error
-     (condition-case nil
-	 (org-up-element)
-       (error (message "no parent element"))))))
+  (let* ((start (point))
+	 (orgparent (progn (org-up-heading-safe) (point)))
+	 (liststart
+	  (progn
+	    (goto-char start)
+	    (condition-case nil
+		(progn
+		  (up-list -1)
+		  (point))
+	      (error 0)))))
+    (goto-char (max orgparent liststart))))
 
 
 (add-hook 'org-open-link-functions 'org-pass-link-to-system)
