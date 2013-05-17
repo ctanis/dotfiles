@@ -181,6 +181,10 @@
 	     (define-key comint-mode-map "\M-}" 'comint-next-prompt)
 	     ))
 
+;what is this used for, and is it correct?
+;; (setq comint-prompt-regexp "^[1-9]*:.*M:.*>")
+;; (setq comint-input-ring-size 1000)
+
 
 (add-hook 'shell-mode-hook 
 	  '(lambda ()
@@ -401,3 +405,21 @@
 (add-hook 'folding-mode-hook
 	  (lambda ()
 	    (local-set-key (read-kbd-macro "M-o <tab>") 'folding-toggle-show-hide)))
+
+(eval-after-load "hideshow"
+  '(progn
+     (defadvice goto-line (after expand-after-goto-line
+				 activate compile)
+       "hideshow-expand affected block when using goto-line in a collapsed buffer"
+       (save-excursion
+	 (hs-show-block)))
+
+
+     (defadvice idomenu (after expand-after-goto-line
+			       activate compile)
+       "hideshow-expand affected subroutine when using idomenu"
+       (if hs-block-start-regexp
+	   (save-excursion
+	     (search-forward-regexp hs-block-start-regexp)
+	     (hs-show-block))))
+     ))

@@ -7,11 +7,11 @@
 (load-library "hooks")
 (load-library "ui")
 (load-library "modeline-cleanup")
-(load-library "autopair")
 
 
 (setq hippie-expand-try-functions-list
-      '(;yas/hippie-try-expand
+      '(
+	;yas/hippie-try-expand
 	try-complete-file-name-partially
 	try-complete-file-name
 	try-expand-list
@@ -19,18 +19,15 @@
 	try-expand-list-all-buffers
 	try-expand-line-all-buffers
 	try-expand-dabbrev-from-kill
-					;try-complete-lisp-symbol
+	;try-complete-lisp-symbol
 	))
 
-;; confirm deletions with 'y' or 'n', not 'yes' or 'no'
-(setq dired-deletion-confirmer 'y-or-n-p)
-
-					;(display-time)
-
-					;(setq ange-ftp-generate-anonymous-password nil)
+; on startup...
+(setq inhibit-default-init t)			;; don't load system init
+(setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 
-(setq enable-local-eval 'query)
+; enable functionality
 (put 'eval-expression 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -39,90 +36,53 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'scroll-left 'disabled nil)
 
-(setq grep-command "egrep -ni ")
-
-
+(setq dired-deletion-confirmer 'y-or-n-p)
+(setq enable-local-eval 'query)
 (column-number-mode t)
 (line-number-mode t)
-(setq inhibit-startup-message t)
-
-
-					;what is this used for, and is it correct?
-(setq comint-prompt-regexp "^[1-9]*:.*M:.*>")
-(setq comint-input-ring-size 1000)
-
-
-;; (if (file-exists-p "~/.diary")
-;;     (progn
-;;       (require 'calendar)
-;;       (setq mark-diary-entries-in-calendar t)
-;;       (setq number-of-diary-entries [7 7 6 5 4 3 2])
-;;       (setq diary-list-include-blanks t)
-;;       (setq diary-file "~/.diary")
-;;       ;(setq calendar-daylight-time-zone-name "New Orleans, LA")
-;;       (setq calendar-daylight-time-zone-name "EDT")
-;;       (define-key calendar-mode-map "T" 'edit-todo-file)
-;; ;      (setq view-diary-entries-initially t)
-;; ;      (calendar)
-;; ;      (mark-calendar-holidays)
-;; ;      (diary 1)
-;;       ))
-
-
-
-					;this should cause CVS'ed files to be backuped as normal
-(setq vc-make-backup-files t)
-
-					;don't bother asking me if i want to edit through the link or not
-(setq vc-follow-symlinks t)
-
-
-
-					;make everything fontified
 (global-font-lock-mode t)
-
 (setq-default search-highlight t)
 
-;; expansions always respect case
-(setq dabbrev-case-fold-search nil)
 
-					;so next-line doesn't add newline
+;; command tweaks
+(setq grep-command "egrep -ni ")
+(setq vc-make-backup-files t) ;; backup as normal
+(setq vc-follow-symlinks t) ;; transparently follow
+
+
+(setq dabbrev-case-fold-search nil) ;; expansions always respect case
+
+
 (setq next-line-add-newlines nil)
+(setq require-final-newline nil)
 
-					; no help!
+
+; no help!
 (defun no-help (a) nil)
 (setq show-help-function 'no-help)
 
 
-					; a file can end with whatever is appropriate, dammit!
-(setq require-final-newline nil)
-
-					; don't load system init
-(setq inhibit-default-init t)
-
-
-
 
 ;; set up the mode-line
-					; put (purecopy '(host-name-mode hostname)) where in the modeline
-					; you want the information
-					; (setq-default mode-line-format
-					;   (list (purecopy "")
-					;    'mode-line-modified
-					;    'mode-line-buffer-identification
-					;    (purecopy "   ")
-					;    'global-mode-string
-					;    (purecopy "   %[(")
-					;    'mode-name 'mode-line-process 'minor-mode-alist
-					;    (purecopy "%n")
-					;    (purecopy ")%]--")
-					;    (purecopy '(host-name-mode hostname))
-					;    (purecopy '(host-name-mode "--"))
-					;    (purecopy '(line-number-mode "L%l--"))
-					;    (purecopy '(column-number-mode "C%c--"))
-					;    (purecopy '(-3 . "%p--"))
-					;    (purecopy "-%-")))
-					; 
+; put (purecopy '(host-name-mode hostname)) where in the modeline
+; you want the information
+; (setq-default mode-line-format
+;   (list (purecopy "")
+;    'mode-line-modified
+;    'mode-line-buffer-identification
+;    (purecopy "   ")
+;    'global-mode-string
+;    (purecopy "   %[(")
+;    'mode-name 'mode-line-process 'minor-mode-alist
+;    (purecopy "%n")
+;    (purecopy ")%]--")
+;    (purecopy '(host-name-mode hostname))
+;    (purecopy '(host-name-mode "--"))
+;    (purecopy '(line-number-mode "L%l--"))
+;    (purecopy '(column-number-mode "C%c--"))
+;    (purecopy '(-3 . "%p--"))
+;    (purecopy "-%-")))
+; 
 
 
 
@@ -132,29 +92,24 @@
 
 (define-prefix-command 'craig-prefix 'craig-prefix-map)
 (global-set-key "\M-o" 'craig-prefix)
-
-
-					;(global-set-key "\M-s" 'goto-line)
+;(global-set-key "\M-s" 'goto-line)
 (global-set-key "\M-,"  'ispell-word)
 (global-set-key "\M-j" 'backward-jump-to-char)
 (global-set-key "\C-xz" 'calendar)
-					;(global-set-key "\C-x!" 'shell)
+;(global-set-key "\C-x!" 'shell)
 (global-set-key "\C-x!" 'shell-current-directory)
 (global-set-key "\C-q" 'base-quoted-insert)
-					;(global-set-key "\C-h\C-m" 'man)
+;(global-set-key "\C-h\C-m" 'man)
 (global-set-key (read-kbd-macro "M-C->") 'tags-loop-continue)
-
-
-
 (define-key craig-prefix-map " " 'just-no-space)
-					;(define-key craig-prefix-map "." 'find-tag-other-window)
-					;(define-key craig-prefix-map "1" 'make-generic-header)
+;(define-key craig-prefix-map "." 'find-tag-other-window)
+;(define-key craig-prefix-map "1" 'make-generic-header)
 (define-key craig-prefix-map "2" 'create-file-mode)
 (define-key craig-prefix-map "3" 'executable-set-magic)
 (define-key craig-prefix-map "4" 'make-perl-script)
 (define-key craig-prefix-map "\C-?" 'kill-to-beginning-of-line)
 (define-key craig-prefix-map "\C-a" 'alternate-buffer-in-other-window)
-					;(define-key craig-prefix-map "\C-d" 'list-and-display-directory)
+;(define-key craig-prefix-map "\C-d" 'list-and-display-directory)
 (define-key craig-prefix-map "\C-o" 'better-display-buffer)
 (define-key craig-prefix-map "\C-w" 'delete-region)
 (define-key craig-prefix-map "\C-x-" 'shrink-other-window-if-larger-than-buffer)
@@ -163,23 +118,23 @@
 (define-key craig-prefix-map "\M-b" 'sink-buffer)
 (define-key craig-prefix-map "\M-c" 'make-tmp-code)
 (define-key craig-prefix-map "\M-d" 'selectively-delete-lines)
-					;(define-key craig-prefix-map "\M-e" 'end-of-defun)
+;(define-key craig-prefix-map "\M-e" 'end-of-defun)
 (define-key craig-prefix-map "\M-e" 'end-of-defun)
 (global-set-key "\C-\M-e" 'up-list)
-					;(define-key craig-prefix-map "\M-f" 'find-dired)
+;(define-key craig-prefix-map "\M-f" 'find-dired)
 (define-key craig-prefix-map "\M-h" 'hl-line-mode)
-					;(define-key craig-prefix-map "\M-i" 'imenu)
+;(define-key craig-prefix-map "\M-i" 'imenu)
 (define-key craig-prefix-map "\M-j" 'forward-jump-to-char)
 (define-key craig-prefix-map "\M-k" 'kill-current-buffer)
 (define-key craig-prefix-map "\M-m" 'make-directory)
 (define-key craig-prefix-map "\M-o" 'other-window)
-					;(define-key craig-prefix-map "\M-r" 'rename-buffer)
+;(define-key craig-prefix-map "\M-r" 'rename-buffer)
 (define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
 (define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
 (define-key craig-prefix-map "a" 'alternate-buffer)
 (define-key craig-prefix-map "b" 'switch-to-buffer-other-window)
 (define-key craig-prefix-map "c" 'center-line)
-					;(define-key craig-prefix-map "d" 'dired-other-window)
+;(define-key craig-prefix-map "d" 'dired-other-window)
 (define-key craig-prefix-map "f" 'find-file-other-window)
 (define-key craig-prefix-map "h" 'split-window-vertically)
 (define-key craig-prefix-map "i" 'delete-window)
@@ -192,57 +147,32 @@
 (define-key craig-prefix-map "t" 'insert-time-stamp)
 (define-key craig-prefix-map "v" 'split-window-horizontally)
 (define-key craig-prefix-map "w" 'write-region)
-					;(define-key craig-prefix-map "\C-f" 'find-and-display-file)
-					;(define-key craig-prefix-map "\C-g" 'find-grep-dired)
-					;(define-key craig-prefix-map "\C-xh" 'open-file-in-hidden-buffer)
-					;(define-key craig-prefix-map "\M-." 'online-dictionary-lookup)
-					;(define-key craig-prefix-map "n" 'send-region-to-netscape)
-					;(define-key craig-prefix-map "r" 'undo-undo-window-config-change)
-					;(define-key craig-prefix-map "u" 'undo-window-config-change)
+;(define-key craig-prefix-map "\C-f" 'find-and-display-file)
+;(define-key craig-prefix-map "\C-g" 'find-grep-dired)
+;(define-key craig-prefix-map "\C-xh" 'open-file-in-hidden-buffer)
+;(define-key craig-prefix-map "\M-." 'online-dictionary-lookup)
+;(define-key craig-prefix-map "n" 'send-region-to-netscape)
+;(define-key craig-prefix-map "r" 'undo-undo-window-config-change)
+;(define-key craig-prefix-map "u" 'undo-window-config-change)
 (define-key craig-prefix-map "u" 'revert-buffer)
 (define-key craig-prefix-map (read-kbd-macro "<tab>") 'hs-toggle-hiding)
 (define-key craig-prefix-map "\M-x" 'compile-again)
 (define-key craig-prefix-map "\M-v" 'view-mode)
 (define-key craig-prefix-map "-" 'insert-separator)
-;; ---------------------------------------------------------------------------
-(defadvice goto-line (after expand-after-goto-line
-			    activate compile)
-  "hideshow-expand affected block when using goto-line in a collapsed buffer"
-  (save-excursion
-    (hs-show-block)))
 
-
-(defadvice idomenu (after expand-after-goto-line
-			  activate compile)
-  "hideshow-expand affected subroutine when using idomenu"
-  (if hs-block-start-regexp
-      (save-excursion
-	(search-forward-regexp hs-block-start-regexp)
-	(hs-show-block))))
-
-
-					;(global-set-key "\C-x\M-q" 'prefix-paragraph)
-					;(global-set-key "\C-xrv" 'invert-rectangle)
-
-					;why would i want to SUSPEND EMACS!  
-					;(global-set-key "\M-\C-z" 'suspend-emacs)
-
-					;(global-set-key [M-tab] 'hippie-expand)
 (global-set-key "\M-?" 'hippie-expand)
 
-					; some redundant keystrokes to bridge gap between linux and mac
-
+; some redundant keystrokes to bridge gap between linux and mac
 (global-set-key "\M-`" 'other-frame)
 
-					; this one should be \C-M-/
+; this one should be \C-M-/
 (global-set-key (quote [201326639]) (quote hippie-expand))
 
 
 (global-set-key "\M-/" 'dabbrev-expand)
-
 (define-key ctl-x-map ";" 'comment-region)
 
-					;for jumping around in a file quicker
+;for jumping around in a file quicker
 (global-set-key "\M-p" 'scroll-down-slow)
 (global-set-key "\M-n" 'scroll-up-slow)
 
@@ -254,8 +184,8 @@
 
 (setq visible-bell t)
 
-					;(setq kill-whole-line t) ;; ctrl-k also grabs newline at end
-					;(setq c-auto-newline t)	 ;; auto newline after close-brace, and semicolon
+(setq kill-whole-line t) ;; ctrl-k also grabs newline at end
+
 
 
 ;; UNSET
@@ -270,23 +200,25 @@
 (global-unset-key [f1])
 (global-unset-key [end])
 (global-unset-key [home])
-					;(global-unset-key [insert])
+;(global-unset-key [insert])
 (global-unset-key [prior])
 (global-unset-key [next])
 
 
 
-					;remove an alternate keybinding for undo
-					;(global-unset-key "\C-/")
+;remove an alternate keybinding for undo
+;(global-unset-key "\C-/")
 (global-unset-key (quote [67108911]))
 
 
-					; don't highlight region
+; don't highlight region
 (transient-mark-mode 0)
 
-					;(setq x-stretch-cursor t)
+;next/previous line should respect wrapped lines!!
+(setq line-move-visual nil)
 
-					; stick all ~ files in one place
+
+; stick all ~ files in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 (setq scroll-preserve-screen-position t) ;; nicer screen scrolling
@@ -304,9 +236,6 @@
 	'minibuffer-complete-word)))
 
 
-					;next/previous line should respect wrapped lines!!
-(setq line-move-visual nil)
-(transient-mark-mode 0)
 
 (if window-system
     (progn
@@ -315,8 +244,8 @@
       (auto-image-file-mode 1)))
 
 
-					; display buffer will not open a new window if it shows up in another
-					; frame..  specifically this is for compilations!
+; display buffer will not open a new window if it shows up in another
+; frame..  specifically this is for compilations!
 (setq-default display-buffer-reuse-frames t)
 
 (defadvice display-buffer (around  display-buffer-return-to-sender activate)
@@ -343,7 +272,7 @@
 
 
 
-					; don't have to use the mouse to get flymake feedback
+; don't have to use the mouse to get flymake feedback
 (load-library "flycursor")
 (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
 (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
@@ -352,7 +281,7 @@
 (setq flymake-log-level 0)
 (setq flymake-start-syntax-check-on-newline nil)
 
-					; don't use ls for dired -- use elisp
+; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
 (require 'ls-lisp)
 
@@ -367,14 +296,14 @@
 (setq ibuffer-expert t)
 (define-key craig-prefix-map "\C-x\C-b" 'ibuffer-other-window)
 
-					; inhibit ffap- in dired mode, expose other controls
-					;(load-library "ffap-")
+; inhibit ffap- in dired mode, expose other controls
+;(load-library "ffap-")
 
 
 
 ;; ------------ ido stuff
 (setq ido-enable-flex-matching t)
-					;(setq ido-everywhere t)
+;(setq ido-everywhere t)
 (setq ido-auto-merge-delay-time .01);; use M-s to search other work dirs
 (setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-filename-at-point nil)
@@ -406,7 +335,7 @@ For details of keybindings, see `ido-find-file'."
 
 
 
-					; ignore certain files in the list
+; ignore certain files in the list
 (mapcar (lambda (x) (add-to-list 'completion-ignored-extensions x))
 	'(".ctxt"
 	  ".DS_Store"
@@ -422,7 +351,7 @@ For details of keybindings, see `ido-find-file'."
 (setenv "PAGER" "/bin/cat")
 
 (setq gdb-show-main t)
-					;(setq gdb-many-windows t)
+;(setq gdb-many-windows t)
 
 (setq compilation-scroll-output t)
 
@@ -434,18 +363,21 @@ For details of keybindings, see `ido-find-file'."
     (cd "~/")	;; assume it was launchd
   (global-font-lock-mode 0)) ;; no colors in the terminal
 
+
+(require 'autopair)
 (autopair-global-mode)
 (setq autopair-blink nil)
-					;(setq autopair-skip-whitespace t)
+;(setq autopair-skip-whitespace t)
 (setq autopair-skip-whitespace nil)
-
 (setq autopair-pair-criteria 'help-balance) ;; 'always
 (setq autopair-skip-criteria 'help-balance)
+
+
 
 (setq markdown-command "multimarkdown")
 
 
-					;(setq-default abbrev-mode t)
+;(setq-default abbrev-mode t)
 (setq-default abbrev-mode nil)
 (setq save-abbrevs 'silently)
 
@@ -477,13 +409,13 @@ For details of keybindings, see `ido-find-file'."
 (setq org-cycle-global-at-bob t)
 
 (setq org-export-with-sub-superscripts nil)
-					; don't want to see TOC and postamble in my exported html
+; don't want to see TOC and postamble in my exported html
 (setq org-html-postamble nil)
 (setq org-export-with-toc nil)
 (setq org-export-with-section-numbers nil)
 
-					;(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
-					; original has frame="hside" which  puts bars at the top and bottom
+;(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
+; original has frame="hside" which  puts bars at the top and bottom
 (setq org-export-html-table-tag  "<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"void\">")
 
 (define-key craig-prefix-map "\C-l" 'org-store-link)
@@ -559,7 +491,7 @@ For details of keybindings, see `ido-find-file'."
 ;;   (setq auto-mode-alist (remove (rassoc 'nroff-mode auto-mode-alist)
 ;; 				auto-mode-alist)))
 
-					; remove only the *.1 mapping for nroff
+; remove only the *.1 mapping for nroff
 (setq auto-mode-alist
       (remove  (assoc "\\.[1-9]\\'" auto-mode-alist) auto-mode-alist))
 
@@ -585,18 +517,19 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\C-\M-h" 'hide-all-this-level)
 
 
-(require 'erlang-start)
-(require 'erlang-flymake)
+;; (require 'erlang-start)
+;; (require 'erlang-flymake)
 
 (set-default 'fill-column 78)
 
 
-(require 'company)
+;(require 'company)
 (setq company-idle-delay .3)
 (setq company-minimum-prefix-length 1)
-(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
+(eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
+		 )
 
-
-(require 'saveplace)
+;(require 'saveplace)
+(autoload 'toggle-save-place "saveplace" )
 (setq save-place-file "~/.emacs.d/saved-places")
 (define-key craig-prefix-map "r" 'toggle-save-place)
