@@ -46,5 +46,8 @@
   (local-set-key "\C-\M-n" 'splatt-log-next-trace)
   (toggle-truncate-lines 1)
   (auto-revert-mode)
+  (setq auto-revert-verbose nil)
+  (setq auto-revert-interval 1)
+  (auto-revert-set-timer)
   )
 
