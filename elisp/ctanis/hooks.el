@@ -309,6 +309,10 @@
 	     (local-set-key "\C-c\M-w" 'org-refile-fullpath)
 	     ;; rebound since yasnippet eats the previous shortcut
 	     (local-set-key "\C-c\M-b" 'org-mark-ring-goto)
+
+	     (local-set-key "\C-c\M-n" 'org-next-block)
+	     (local-set-key "\C-c\M-p" 'org-previous-block)
+
 	     (toggle-truncate-lines 0)
 	     (auto-fill-mode 1)))
 
