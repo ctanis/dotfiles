@@ -445,9 +445,9 @@ For details of keybindings, see `ido-find-file'."
 ;; (package-initialize) ;; trigger elpa packages
 
 
-(require 'helm)
-(define-key craig-prefix-map "\C-\M-i" 'helm-imenu-anywhere)
-
+;; (require 'helm)
+;; (define-key craig-prefix-map "\C-\M-i" 'helm-imenu-anywhere)
+(define-key craig-prefix-map "\C-\M-i" 'imenu-anywhere)
 
 ;; org-mode
 (setq org-log-done 'time)
