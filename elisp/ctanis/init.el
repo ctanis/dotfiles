@@ -382,11 +382,72 @@ For details of keybindings, see `ido-find-file'."
 (setq-default abbrev-mode nil)
 (setq save-abbrevs 'silently)
 
+(setq custom-file "~/.emacs.d/projects.el")
+(if (file-readable-p custom-file)
+    (load-file custom-file))
 
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/" ))
-(package-initialize) ;; trigger elpa packages
+;; remove nroff bindings
+;; (while (rassoc 'nroff-mode auto-mode-alist)
+;;   (setq auto-mode-alist (remove (rassoc 'nroff-mode auto-mode-alist)
+;; 				auto-mode-alist)))
+
+; remove only the *.1 mapping for nroff
+(setq auto-mode-alist
+      (remove  (assoc "\\.[1-9]\\'" auto-mode-alist) auto-mode-alist))
+
+
+(autoload 'folding-mode          "folding" "Folding mode" t)
+(autoload 'turn-off-folding-mode "folding" "Folding mode" t)
+(autoload 'turn-on-folding-mode  "folding" "Folding mode" t)
+
+
+;; ;; kill the *Compile-Log* buffer
+;; (add-hook 'emacs-startup-hook
+;;           (lambda ()
+;;             (let ((compile-log-buffer (get-buffer "*Compile-Log*")))
+;;               (when compile-log-buffer
+;;                 (kill-buffer compile-log-buffer)))))
+
+
+;; this keyboard macro narrows to the region defined by enclosing
+;; braces, hs-hides-all and then widens
+(fset 'hide-all-this-level
+      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217749 14 1 67108896 67108896 134217749 134217734 16 5 24 110 110 3 64 134217736 24 110 119 24 24 12] 0 "%d")) arg)))
+(define-key craig-prefix-map "\C-\M-h" 'hide-all-this-level)
+
+
+;; (require 'erlang-start)
+;; (require 'erlang-flymake)
+
+(set-default 'fill-column 78)
+
+
+;(require 'company)
+(setq company-idle-delay .3)
+(setq company-minimum-prefix-length 1)
+(eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
+		 )
+
+;(require 'saveplace)
+(autoload 'toggle-save-place "saveplace" )
+(setq save-place-file "~/.emacs.d/saved-places")
+(define-key craig-prefix-map "r" 'toggle-save-place)
+
+
+;; from this point on, it may abort if packages are not set up in my standard way
+
+
+(load-library "package-load.el")
+
+;; (require 'package)
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/" ))
+;; (package-initialize) ;; trigger elpa packages
+
+
+(require 'helm)
+(define-key craig-prefix-map "\C-\M-i" 'helm-imenu-anywhere)
+
 
 ;; org-mode
 (setq org-log-done 'time)
@@ -484,54 +545,3 @@ For details of keybindings, see `ido-find-file'."
 
 
 
-(setq custom-file "~/.emacs.d/projects.el")
-(if (file-readable-p custom-file)
-    (load-file custom-file))
-
-;; remove nroff bindings
-;; (while (rassoc 'nroff-mode auto-mode-alist)
-;;   (setq auto-mode-alist (remove (rassoc 'nroff-mode auto-mode-alist)
-;; 				auto-mode-alist)))
-
-; remove only the *.1 mapping for nroff
-(setq auto-mode-alist
-      (remove  (assoc "\\.[1-9]\\'" auto-mode-alist) auto-mode-alist))
-
-
-(autoload 'folding-mode          "folding" "Folding mode" t)
-(autoload 'turn-off-folding-mode "folding" "Folding mode" t)
-(autoload 'turn-on-folding-mode  "folding" "Folding mode" t)
-
-
-
-;; kill the *Compile-Log* buffer
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (let ((compile-log-buffer (get-buffer "*Compile-Log*")))
-              (when compile-log-buffer
-                (kill-buffer compile-log-buffer)))))
-
-
-;; this keyboard macro narrows to the region defined by enclosing
-;; braces, hs-hides-all and then widens
-(fset 'hide-all-this-level
-      (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([134217749 14 1 67108896 67108896 134217749 134217734 16 5 24 110 110 3 64 134217736 24 110 119 24 24 12] 0 "%d")) arg)))
-(define-key craig-prefix-map "\C-\M-h" 'hide-all-this-level)
-
-
-;; (require 'erlang-start)
-;; (require 'erlang-flymake)
-
-(set-default 'fill-column 78)
-
-
-;(require 'company)
-(setq company-idle-delay .3)
-(setq company-minimum-prefix-length 1)
-(eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
-		 )
-
-;(require 'saveplace)
-(autoload 'toggle-save-place "saveplace" )
-(setq save-place-file "~/.emacs.d/saved-places")
-(define-key craig-prefix-map "r" 'toggle-save-place)

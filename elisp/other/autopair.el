@@ -181,6 +181,9 @@
 ;; requires
 (require 'cl)
 
+;; defined here to avoid compilation warning
+(defvar autopair-mode nil)
+
 ;; variables
 (defvar autopair-pair-criteria 'help-balance
   "How to decide whether to pair opening brackets or quotes.
