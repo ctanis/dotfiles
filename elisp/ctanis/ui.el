@@ -17,7 +17,9 @@
   (set-foreground-color "black")
   (set-background-color "wheat3")
 
-  (set-cursor-color "wheat4")
+  ;(set-cursor-color "wheat4")
+  (set-cursor-color "yellow")
+  ;(set-default 'cursor-type 'hbar)
   (set-face-background 'region "darkgrey")
   (set-face-background 'hl-line "darkgrey")
 
@@ -47,7 +49,8 @@
   (set-face-background 'flymake-warnline "cyan4")
   (set-face-foreground 'flymake-warnline "yellow")
 
-  (set-face-background 'show-paren-match "wheat2")
+  ;(set-face-background 'show-paren-match "wheat2")
+  (set-face-background 'show-paren-match "orange")
   (set-face-foreground 'show-paren-match "purple")
   (set-face-background 'show-paren-mismatch "red")
 

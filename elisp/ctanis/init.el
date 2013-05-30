@@ -184,7 +184,7 @@
 
 (setq visible-bell t)
 
-(setq kill-whole-line t) ;; ctrl-k also grabs newline at end
+;(setq kill-whole-line t) ;; ctrl-k also grabs newline at end
 
 
 
