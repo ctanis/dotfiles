@@ -316,7 +316,7 @@
 (ido-everywhere -1)
 (load-library "idomenu")
 (setq imenu-auto-rescan t)
-(define-key craig-prefix-map "\M-i" 'idomenu)
+;(define-key craig-prefix-map "\M-i" 'idomenu)
 
 (defun ido-dired-other-window ()
   "Call `dired-other-window' the ido way.
@@ -447,7 +447,8 @@ For details of keybindings, see `ido-find-file'."
 
 ;; (require 'helm)
 ;; (define-key craig-prefix-map "\C-\M-i" 'helm-imenu-anywhere)
-(define-key craig-prefix-map "\C-\M-i" 'imenu-anywhere)
+;(define-key craig-prefix-map "\C-\M-i" 'imenu-anywhere)
+(define-key craig-prefix-map "\M-i" 'imenu-anywhere)
 
 ;; org-mode
 (setq org-log-done 'time)
