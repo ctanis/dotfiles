@@ -50,7 +50,7 @@
   (set-face-foreground 'flymake-warnline "yellow")
 
   ;(set-face-background 'show-paren-match "wheat2")
-  (set-face-background 'show-paren-match "orange")
+  (set-face-background 'show-paren-match "green")
   (set-face-foreground 'show-paren-match "purple")
   (set-face-background 'show-paren-mismatch "red")
 
