@@ -18,7 +18,7 @@
   (set-background-color "wheat3")
 
   ;(set-cursor-color "wheat4")
-  (set-cursor-color "yellow")
+  (set-cursor-color "black")
   ;(set-default 'cursor-type 'hbar)
   (set-face-background 'region "darkgrey")
   (set-face-background 'hl-line "darkgrey")
