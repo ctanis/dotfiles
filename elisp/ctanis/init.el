@@ -547,5 +547,6 @@ For details of keybindings, see `ido-find-file'."
 
 ;; powerline
 (powerline-default-theme)
+(message nil)
 
 
