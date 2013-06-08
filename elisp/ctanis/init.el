@@ -356,8 +356,8 @@ For details of keybindings, see `ido-find-file'."
 
 (setq compilation-scroll-output t)
 
-(require 'sml-modeline)
-(sml-modeline-mode 1)
+;; (require 'sml-modeline)
+;; (sml-modeline-mode 1)
 
 ;; start this asap
 (if window-system
@@ -370,7 +370,7 @@ For details of keybindings, see `ido-find-file'."
 (setq autopair-blink nil)
 ;(setq autopair-skip-whitespace t)
 (setq autopair-skip-whitespace nil)
-(setq autopair-pair-criteria 'help-balance) ;; 'always
+(setq autopair-pair-criteria 'always)
 (setq autopair-skip-criteria 'help-balance)
 
 
@@ -545,5 +545,7 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
 
 
+;; powerline
+(powerline-default-theme)
 
 
