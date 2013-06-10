@@ -427,3 +427,8 @@
 	     (search-forward-regexp hs-block-start-regexp)
 	     (hs-show-block))))
      ))
+
+
+(add-hook 'diff-mode-hook
+	  (lambda ()
+	    (local-set-key "\M-o" 'craig-prefix)))
