@@ -11,7 +11,7 @@
   '(("^<<.*" . splatt-log-face)
     ("^(.*" . splatt-debug-face)
     ("ERROR.*" . splatt-error-face)
-    ("^T.*" . splatt-trace-face)
+    ("^T(.*" . splatt-trace-face)
     ))
 
 (set-face-background 'splatt-log-face "grey")
