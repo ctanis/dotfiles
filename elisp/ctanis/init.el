@@ -483,6 +483,11 @@ For details of keybindings, see `ido-find-file'."
 ; original has frame="hside" which  puts bars at the top and bottom
 (setq org-export-html-table-tag  "<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"void\">")
 
+;; constants -- org-table uses these
+(autoload 'constants-insert "constants" "Insert constants into source." t)
+(autoload 'constants-get "constants" "Get the value of a constant." t)
+(autoload 'constants-replace "constants" "Replace name of a constant." t)
+
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\M-s" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
