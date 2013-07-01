@@ -492,6 +492,11 @@ For details of keybindings, see `ido-find-file'."
 (setq org-refile-targets (quote ((nil :maxlevel . 9))))
 (setq org-refile-use-outline-path t)
 
+(org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
+							 (perl . t)
+							 (C . t)
+							 (java . t)
+							 (python . t)))
 
 ;; (defun org-pass-link-to-system (link)
 ;;   (if (string-match "^[a-zA-Z0-9]+:" link)
