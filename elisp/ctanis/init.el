@@ -436,6 +436,16 @@ For details of keybindings, see `ido-find-file'."
 
 ;; from this point on, it may abort if packages are not set up in my standard way
 
+;; expected packages
+;; 1. company
+;; 2. imenu-anywhere
+;; 3. num3-mode
+;; 4. org
+;; 5. powerline
+;; 6. vlfi
+;; 7. yasnippet
+
+
 
 (load-library "package-load.el")
 
