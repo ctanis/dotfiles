@@ -471,6 +471,7 @@ For details of keybindings, see `ido-find-file'."
 
 (setq org-alphabetical-lists t)
 (setq org-hide-emphasis-markers t)
+(setq org-use-speed-commands t)
 
 ;; the resulting regexp from numlines (the last piece) >0 was breaking
 ;; certain headline emphases
@@ -511,7 +512,12 @@ For details of keybindings, see `ido-find-file'."
 							 (perl . t)
 							 (C . t)
 							 (java . t)
-							 (python . t)))
+							 (python . t)
+							 (ditaa . t)
+							 (dot . t)
+							 (gnuplot . t)
+							 (octave . t)
+							 (calc . t)))
 
 ;; (defun org-pass-link-to-system (link)
 ;;   (if (string-match "^[a-zA-Z0-9]+:" link)
@@ -550,6 +556,11 @@ For details of keybindings, see `ido-find-file'."
 		  (point))
 	      (error 0)))))
     (goto-char (max orgparent liststart))))
+
+(defun org-blindly-eval-babel ()
+  (interactive)
+  (make-variable-buffer-local 'org-confirm-babel-evaluate)
+  (setq org-confirm-babel-evaluate nil))
 
 
 (add-hook 'org-open-link-functions 'org-pass-link-to-system)
