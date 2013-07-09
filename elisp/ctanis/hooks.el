@@ -381,7 +381,7 @@
      ;; this one is for refiling to other files in the org-agenda-files
      (defadvice org-refile-fullpath (around use-full-path activate)
        (let ((org-completion-use-ido nil)
-	     (setq org-outline-path-complete-in-steps t)
+	     (org-outline-path-complete-in-steps t)
 	     (org-refile-use-outline-path 'file)
 	     (org-refile-targets (quote ((nil :maxlevel . 9)
 					 (org-agenda-files :maxlevel . 9)))))
@@ -408,6 +408,8 @@
 
 (add-hook 'folding-mode-hook
 	  (lambda ()
+	    (local-set-key "\C-M-n" 'folding-next-visible-heading)
+	    (local-set-key "\C-M-p" 'folding-previous-visible-heading)
 	    (local-set-key (read-kbd-macro "M-o <tab>") 'folding-toggle-show-hide)))
 
 (eval-after-load "hideshow"
@@ -426,9 +428,22 @@
 	   (save-excursion
 	     (search-forward-regexp hs-block-start-regexp)
 	     (hs-show-block))))
+     
+     (defadvice imenu-anywhere (after expand-after-goto-line
+				      activate compile)
+       "hideshow-expand affected subroutine when using idomenu"
+       (if hs-block-start-regexp
+	   (save-excursion
+	     (search-forward-regexp hs-block-start-regexp)
+	     (hs-show-block))))
      ))
 
 
 (add-hook 'diff-mode-hook
 	  (lambda ()
 	    (local-set-key "\M-o" 'craig-prefix)))
+
+
+(add-hook 'calc-mode-hook
+	  (lambda ()
+	    (yas-minor-mode -1)))
