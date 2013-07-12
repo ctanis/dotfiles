@@ -16,10 +16,18 @@
 (global-set-key (quote [C-M-delete]) 'backward-kill-sexp)
 
 (setq latex-run-command "pdflatex")
+(defvar tex-last-action nil)
+(defadvice tex-file (after choose-output activate)
+  (setq tex-last-action nil))
+(defadvice tex-buffer (after choose-output activate)
+  (setq tex-last-action 'temp))
+(defadvice tex-region (after choose-output activate)
+  (setq tex-last-action 'temp))
 (defun fake-dvi-view()
   (interactive)
   (let ((pdffile
-	 (concat (file-name-sans-extension (or tex-last-temp-file
+	 (concat (file-name-sans-extension (if tex-last-action
+					       tex-last-temp-file
 					       (buffer-file-name tex-last-buffer-texed)))
 		 ".pdf")))
     (call-process-shell-command "open" nil nil nil pdffile)))
