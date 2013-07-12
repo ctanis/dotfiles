@@ -408,8 +408,8 @@
 
 (add-hook 'folding-mode-hook
 	  (lambda ()
-	    (local-set-key "\C-M-n" 'folding-next-visible-heading)
-	    (local-set-key "\C-M-p" 'folding-previous-visible-heading)
+	    (local-set-key "\C-\M-n" 'folding-next-visible-heading)
+	    (local-set-key "\C-\M-p" 'folding-previous-visible-heading)
 	    (local-set-key (read-kbd-macro "M-o <tab>") 'folding-toggle-show-hide)))
 
 (eval-after-load "hideshow"

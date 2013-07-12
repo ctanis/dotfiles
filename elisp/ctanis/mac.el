@@ -18,7 +18,14 @@
 (setq latex-run-command "pdflatex")
 (defun fake-dvi-view()
   (interactive)
-  (call-process-shell-command "open" nil nil nil (concat (file-name-sans-extension (buffer-file-name tex-last-buffer-texed)) ".pdf")))
+  (let ((pdffile
+	 (concat (file-name-sans-extension (or tex-last-temp-file
+					       (buffer-file-name tex-last-buffer-texed)))
+		 ".pdf")))
+    (call-process-shell-command "open" nil nil nil pdffile)))
+;; (defun fake-dvi-view()
+;;   (interactive)
+;;   (call-process-shell-command "open" nil nil nil (concat (file-name-sans-extension (buffer-file-name tex-last-buffer-texed)) ".pdf")))
 
 (add-hook 'latex-mode-hook
 	  '(lambda ()
