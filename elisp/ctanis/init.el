@@ -522,7 +522,8 @@ For details of keybindings, see `ido-find-file'."
 							 (dot . t)
 							 (gnuplot . t)
 							 (octave . t)
-							 (calc . t)))
+							 (calc . t)
+							 (sh . t)))
 
 ;; (defun org-pass-link-to-system (link)
 ;;   (if (string-match "^[a-zA-Z0-9]+:" link)
