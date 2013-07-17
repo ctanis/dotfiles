@@ -593,6 +593,9 @@ For details of keybindings, see `ido-find-file'."
 
 ;; powerline
 ;(powerline-default-theme)
+(set-face-background 'powerline-active1 "wheat4")
+(set-face-foreground 'powerline-active1 "wheat3")
+(set-face-foreground 'powerline-active2 "lightblue3")
 (defun powerline-ctanis-theme ()
   "Setup the default mode-line."
   (interactive)
