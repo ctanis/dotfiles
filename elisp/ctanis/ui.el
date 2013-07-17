@@ -1,6 +1,6 @@
 
 (require 'hl-line)
-(require 'sml-modeline)
+;(require 'sml-modeline)
 (require 'flymake)
 
 (setq frame-title-format '("" hostname ": %b"))
@@ -10,6 +10,13 @@
 
 (setq font-lock-maximum-decoration (list (cons t nil)))
 (defvar last_colorfy nil)
+
+(custom-set-faces
+   '(modeline-inactive ((t (:box (:line-width 1 :color "black"))))))
+
+(custom-set-faces
+   '(mode-line ((t (:box (:line-width 1 :color "black"))))))
+
 
 (defun ctanis_colorfy()
   (interactive)
@@ -27,15 +34,15 @@
   (set-face-foreground 'fringe "darkslateblue")
 
   (set-face-foreground 'mode-line-inactive "wheat3")
-  (set-face-background 'mode-line-inactive "darkslategrey")
+  (set-face-background 'mode-line-inactive "wheat4")
   (set-face-background 'mode-line "darkred")
   (set-face-foreground 'mode-line "goldenrod")
 
   
-  (set-face-background 'sml-modeline-end-face "wheat4")
-  (set-face-background 'sml-modeline-vis-face "black")
-  (set-face-foreground 'sml-modeline-end-face "wheat3")
-  (set-face-foreground 'sml-modeline-vis-face "wheat3")
+  ;; (set-face-background 'sml-modeline-end-face "wheat4")
+  ;; (set-face-background 'sml-modeline-vis-face "black")
+  ;; (set-face-foreground 'sml-modeline-end-face "wheat3")
+  ;; (set-face-foreground 'sml-modeline-vis-face "wheat3")
 
 
   (set-face-foreground 'ido-first-match "cyan4")
@@ -141,6 +148,7 @@
   )
 
 
+
 (defun ctanis_colorfy_dark()
   (interactive)
 
@@ -160,10 +168,10 @@
   (set-face-foreground 'mode-line "goldenrod2")
 
   
-  (set-face-background 'sml-modeline-end-face "royalblue3")
-  (set-face-background 'sml-modeline-vis-face "black")
-  (set-face-foreground 'sml-modeline-end-face "goldenrod2")
-  (set-face-foreground 'sml-modeline-vis-face "goldenrod3")
+  ;; (set-face-background 'sml-modeline-end-face "royalblue3")
+  ;; (set-face-background 'sml-modeline-vis-face "black")
+  ;; (set-face-foreground 'sml-modeline-end-face "goldenrod2")
+  ;; (set-face-foreground 'sml-modeline-vis-face "goldenrod3")
 
 
   (set-face-foreground 'ido-first-match "cyan4")
