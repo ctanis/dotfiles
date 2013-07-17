@@ -586,6 +586,10 @@ For details of keybindings, see `ido-find-file'."
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+; indent will not use tabs
+(setq-default indent-tabs-mode nil)
+
+
 
 ;; powerline
 (powerline-default-theme)
