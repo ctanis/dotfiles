@@ -582,6 +582,11 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
 
 
+; makes saner names for buffers with same filename in diff. directories
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+
 ;; powerline
 (powerline-default-theme)
 (message nil)
