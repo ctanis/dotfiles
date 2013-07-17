@@ -303,6 +303,9 @@
 	  '(lambda()
 	     (local-set-key "\C-\M-p" 'org-backward-element)
 	     (local-set-key "\C-\M-n" 'org-forward-element)
+	     (local-set-key "\M-{" 'backward-paragraph)
+	     (local-set-key "\M-}" 'forward-paragraph)
+
 					;(local-set-key "\C-\M-u" 'org-up-element)
 	     (local-set-key "\C-\M-u" 'org-up-list-or-element)
 	     (local-set-key "\C-\M-d" 'org-down-element)
