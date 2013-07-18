@@ -469,6 +469,7 @@ For details of keybindings, see `ido-find-file'."
 (setq org-log-done 'time)
 (setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
+(setq org-catch-invisible-edits 'smart)
 
 ;; revisit this if i ever use an org-clock
 ;; (setq org-clock-persist t)
