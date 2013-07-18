@@ -595,7 +595,7 @@ For details of keybindings, see `ido-find-file'."
 ;; powerline
 ;(powerline-default-theme)
 (set-face-background 'powerline-active1 "wheat4")
-(set-face-foreground 'powerline-active1 "wheat3")
+(set-face-foreground 'powerline-active1 "khaki2")
 (set-face-foreground 'powerline-active2 "lightblue3")
 (defun powerline-ctanis-theme ()
   "Setup the default mode-line."
@@ -635,7 +635,7 @@ For details of keybindings, see `ido-find-file'."
                                      (powerline-raw "%4l" face1 'l)
                                      (powerline-raw ":" face1 'l)
                                      (powerline-raw "%3c" face1 'r)
-                                     (funcall separator-right face1 mode-line)
+                                     ;(funcall separator-right face1 mode-line)
                                      (powerline-raw " ")
                                      (powerline-raw "%6p" nil 'r)
                                      (powerline-hud face2 face1))))

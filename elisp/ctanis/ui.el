@@ -33,10 +33,10 @@
   (set-face-background 'fringe "burlywood3")
   (set-face-foreground 'fringe "darkslateblue")
 
-  (set-face-foreground 'mode-line-inactive "wheat3")
+  (set-face-foreground 'mode-line-inactive "khaki2")
   (set-face-background 'mode-line-inactive "wheat4")
-  (set-face-background 'mode-line "darkred")
-  (set-face-foreground 'mode-line "goldenrod")
+  (set-face-background 'mode-line "darkgreen")
+  (set-face-foreground 'mode-line "khaki2")
 
   
   ;; (set-face-background 'sml-modeline-end-face "wheat4")
