@@ -439,6 +439,13 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "r" 'toggle-save-place)
 
 
+; skip calc trail windows with next-window
+(defadvice calc-trail-display (after skip-trail-window activate)
+  "set the no-other-window property on calc trail windows"
+  (set-window-parameter (get-buffer-window (get-buffer "*Calc Trail*"))
+                                   'no-other-window t))
+
+
 ;; from this point on, it may abort if packages are not set up in my standard way
 
 ;; expected packages
