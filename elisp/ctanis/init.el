@@ -427,11 +427,6 @@ For details of keybindings, see `ido-find-file'."
 (set-default 'fill-column 78)
 
 
-;(require 'company)
-(setq company-idle-delay .3)
-(setq company-minimum-prefix-length 1)
-(eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
-		 )
 
 ;(require 'saveplace)
 (autoload 'toggle-save-place "saveplace" )
@@ -446,6 +441,16 @@ For details of keybindings, see `ido-find-file'."
                                    'no-other-window t))
 
 
+
+; makes saner names for buffers with same filename in diff. directories
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+; indent will not use tabs
+(setq-default indent-tabs-mode nil)
+
+
+
 ;; from this point on, it may abort if packages are not set up in my standard way
 
 ;; expected packages
@@ -458,7 +463,6 @@ For details of keybindings, see `ido-find-file'."
 ;; 7. yasnippet
 
 
-
 (load-library "package-load.el")
 
 ;; (require 'package)
@@ -466,191 +470,36 @@ For details of keybindings, see `ido-find-file'."
 ;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/" ))
 ;; (package-initialize) ;; trigger elpa packages
 
+;; imenu-anywhere
+(when (require 'imenu-anywhere nil 'noerror)
+  (define-key craig-prefix-map "\M-i" 'imenu-anywhere))
 
-;; (require 'helm)
-;; (define-key craig-prefix-map "\C-\M-i" 'helm-imenu-anywhere)
-;(define-key craig-prefix-map "\C-\M-i" 'imenu-anywhere)
-(define-key craig-prefix-map "\M-i" 'imenu-anywhere)
-
-;; org-mode
-(setq org-log-done 'time)
-(setq org-completion-use-ido t)
-(setq org-log-into-drawer t)
-(setq org-catch-invisible-edits 'smart)
-
-;; revisit this if i ever use an org-clock
-;; (setq org-clock-persist t)
-;; (org-clock-persistence-insinuate)
-
-(setq org-alphabetical-lists t)
-(setq org-hide-emphasis-markers t)
-(setq org-use-speed-commands t)
-
-;; the resulting regexp from numlines (the last piece) >0 was breaking
-;; certain headline emphases
-(setq org-emphasis-regexp-components
-      '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
-
-(setq org-cycle-separator-lines 2)
-
-;(setq org-M-RET-may-split-line '((headline . nil) (item . nil) (table . t)))
-(setq org-cycle-global-at-bob t)
-(setq org-goto-interface 'outline-path-completion)
-
-(setq org-export-with-sub-superscripts nil)
-; don't want to see TOC and postamble in my exported html
-(setq org-html-postamble nil)
-(setq org-export-with-toc nil)
-(setq org-export-with-section-numbers nil)
-
-;(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
-; original has frame="hside" which  puts bars at the top and bottom
-(setq org-export-html-table-tag  "<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"void\">")
-
-;; constants -- org-table uses these
-(autoload 'constants-insert "constants" "Insert constants into source." t)
-(autoload 'constants-get "constants" "Get the value of a constant." t)
-(autoload 'constants-replace "constants" "Replace name of a constant." t)
-
-(define-key craig-prefix-map "\C-l" 'org-store-link)
-(define-key craig-prefix-map "\M-s" 'org-capture)
-(define-key craig-prefix-map "\M-a" 'org-agenda)
-
-
-(setq org-outline-path-complete-in-steps nil)
-(setq org-refile-targets (quote ((nil :maxlevel . 9))))
-(setq org-refile-use-outline-path t)
-
-(org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
-							 (perl . t)
-							 (C . t)
-							 (java . t)
-							 (python . t)
-							 (ditaa . t)
-							 (dot . t)
-							 (gnuplot . t)
-							 (octave . t)
-							 (calc . t)
-							 (sh . t)))
-
-;; (defun org-pass-link-to-system (link)
-;;   (if (string-match "^[a-zA-Z0-9]+:" link)
-;;       (shell-command (concat "open " link))
-;;     nil)
-;;   )
-(defun org-pass-link-to-system (link)
-  (if (string-match "^[a-zA-Z0-9]+:" link)
-      (browse-url link)
-    nil)
-  )
-
-
-;; if we are in an sexp, jump to enclosing paren, otherwise run
-;; org-up-element
-;; (defun org-up-list-or-element ()
-;;   (interactive)
-;;   (condition-case nil
-;;       (up-list -1)
-;;     (error
-;;      (condition-case nil
-;; 	 (org-up-element)
-;;        (error (message "no parent element"))))))
-
-;; this version won't up-list past the start of the current element
-(defun org-up-list-or-element ()
-  (interactive)
-  (let* ((start (point))
-	 (orgparent (progn (org-up-element) (point)))
-	 (liststart
-	  (progn
-	    (goto-char start)
-	    (condition-case nil
-		(progn
-		  (up-list -1)
-		  (point))
-	      (error 0)))))
-    (goto-char (max orgparent liststart))))
-
-(defun org-blindly-eval-babel ()
-  (interactive)
-  (make-variable-buffer-local 'org-confirm-babel-evaluate)
-  (setq org-confirm-babel-evaluate nil))
-
-
-(add-hook 'org-open-link-functions 'org-pass-link-to-system)
-
+(load-library "myorg")
 
 
 ;; yasnippet
-(setq yas-prompt-functions (list 'yas-ido-prompt))
-(setq yas-verbosity 1)
-(setq yas-snippet-dirs "~/.emacs.d/snippets")
-(load-library "yasnippet")
-(yas-global-mode 1)
-(define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
+(when (require 'yasnippet nil 'noerror)
+  (setq yas-prompt-functions (list 'yas-ido-prompt))
+  (setq yas-verbosity 1)
+  (setq yas-snippet-dirs "~/.emacs.d/snippets")
+  (load-library "yasnippet")
+  (yas-global-mode 1)
+  (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
+  )
+
+;; deft
+(when (require 'deft nil 'noerror)
+  (setq deft-directory "~/Dropbox/notes")
+  (setq deft-text-mode 'org-mode)
+  (setq deft-use-filename-as-title t)
+  (define-key craig-prefix-map "\M-0" 'deft))
 
 
-; makes saner names for buffers with same filename in diff. directories
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
+;; company
 
-; indent will not use tabs
-(setq-default indent-tabs-mode nil)
-
-
-
-;; powerline
-;(powerline-default-theme)
-(set-face-background 'powerline-active1 "wheat4")
-(set-face-foreground 'powerline-active1 "khaki2")
-(set-face-foreground 'powerline-active2 "lightblue3")
-(defun powerline-ctanis-theme ()
-  "Setup the default mode-line."
-  (interactive)
-  (setq-default mode-line-format
-                '("%e"
-                  (:eval
-                   (let* ((active (powerline-selected-window-active))
-                          (mode-line (if active 'mode-line 'mode-line-inactive))
-                          (face1 (if active 'powerline-active1 'powerline-inactive1))
-                          (face2 (if active 'powerline-active2 'powerline-inactive2))
-                          (separator-left (intern (format "powerline-%s-%s"
-                                                          powerline-default-separator
-                                                          (car powerline-default-separator-dir))))
-                          (separator-right (intern (format "powerline-%s-%s"
-                                                           powerline-default-separator
-                                                           (cdr powerline-default-separator-dir))))
-                          (lhs (list (powerline-raw "%*" nil 'l)
-                                     (powerline-buffer-size nil 'l)
-                                     (powerline-raw mode-line-mule-info nil 'l)
-                                     (powerline-buffer-id nil 'l)
-                                     (when (and (boundp 'which-func-mode) which-func-mode)
-                                       (powerline-raw which-func-format nil 'l))
-                                     (powerline-raw " ")
-                                        ;                                     (funcall separator-left mode-line face1)
-                                     (when (boundp 'erc-modified-channels-object)
-                                       (powerline-raw erc-modified-channels-object face1 'l))
-                                     (powerline-major-mode face1 'l)
-                                     (powerline-process face1)
-                                     (powerline-minor-modes face1 'l)
-                                     (powerline-narrow face1 'l)
-                                     (powerline-raw " " face1)
-                                     (funcall separator-left face1 face2)
-                                     (powerline-vc face2 'r)))
-                          (rhs (list (powerline-raw global-mode-string face2 'r)
-                                     (funcall separator-right face2 face1)
-                                     (powerline-raw "%4l" face1 'l)
-                                     (powerline-raw ":" face1 'l)
-                                     (powerline-raw "%3c" face1 'r)
-                                     ;(funcall separator-right face1 mode-line)
-                                     (powerline-raw " ")
-                                     (powerline-raw "%6p" nil 'r)
-                                     (powerline-hud face2 face1))))
-                     (concat (powerline-render lhs)
-                             (powerline-fill face2 (powerline-width rhs))
-                             (powerline-render rhs)))))))
-(powerline-ctanis-theme)
-(message nil)
-
-
-
+;(require 'company)
+(when (require 'company nil 'noerror)
+  (setq company-idle-delay .3)
+  (setq company-minimum-prefix-length 1)
+  (eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
+                   ))
