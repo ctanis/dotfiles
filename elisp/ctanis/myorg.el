@@ -3,6 +3,7 @@
 (setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
 (setq org-catch-invisible-edits 'smart)
+(setq org-image-actual-width nil)
 
 ;; revisit this if i ever use an org-clock
 ;; (setq org-clock-persist t)

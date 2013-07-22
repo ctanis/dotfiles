@@ -5,7 +5,6 @@
 
 (load-library "functions")
 (load-library "hooks")
-(load-library "ui")
 (load-library "modeline-cleanup")
 
 
@@ -503,3 +502,11 @@ For details of keybindings, see `ido-find-file'."
   (setq company-minimum-prefix-length 1)
   (eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
                    ))
+
+;; browse-kill-ring
+(when (require 'browse-kill-ring nil 'noerror)
+  (browse-kill-ring-default-keybindings)
+  (setq browse-kill-ring-quit-action 'save-and-restore))
+
+
+(load-library "ui")
