@@ -462,6 +462,15 @@ For details of keybindings, see `ido-find-file'."
 ;; 7. yasnippet
 
 
+(defun require-verbose (feature)
+  (if (require feature nil 'noerror)
+       'feature
+     (progn
+       (message (concat "could not load " (symbol-name feature)))
+       nil
+       )))
+
+
 (load-library "package-load.el")
 
 ;; (require 'package)
@@ -470,7 +479,7 @@ For details of keybindings, see `ido-find-file'."
 ;; (package-initialize) ;; trigger elpa packages
 
 ;; imenu-anywhere
-(when (require 'imenu-anywhere nil 'noerror)
+(when (require-verbose 'imenu-anywhere)
   (define-key craig-prefix-map "\M-i" 'imenu-anywhere))
 
 (load-library "myorg")
@@ -487,7 +496,7 @@ For details of keybindings, see `ido-find-file'."
   )
 
 ;; deft
-(when (require 'deft nil 'noerror)
+(when (require-verbose 'deft)
   (setq deft-directory "~/Dropbox/notes")
   (setq deft-text-mode 'org-mode)
   (setq deft-use-filename-as-title t)
@@ -497,14 +506,14 @@ For details of keybindings, see `ido-find-file'."
 ;; company
 
 ;(require 'company)
-(when (require 'company nil 'noerror)
+(when (require-verbose 'company)
   (setq company-idle-delay .3)
   (setq company-minimum-prefix-length 1)
   (eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
                    ))
 
 ;; browse-kill-ring
-(when (require 'browse-kill-ring nil 'noerror)
+(when (require-verbose 'browse-kill-ring)
   (browse-kill-ring-default-keybindings)
   (setq browse-kill-ring-quit-action 'save-and-restore))
 
