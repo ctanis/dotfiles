@@ -171,8 +171,11 @@
 (define-key craig-prefix-map "\C-d" 'dash-at-point)
 
 ;; org stuff
-(require 'org-mac-link-grabber)
-(setq org-mac-grab-Firefox-app-p nil)
-(setq org-mac-grab-Chrome-app-p nil)
-(add-hook 'org-mode-hook (lambda ()
-			   (define-key org-mode-map (kbd "C-c g") 'omlg-grab-link)))
+(eval-after-load 'org
+  '(progn
+     (require 'org-mac-link-grabber)
+     (setq org-mac-grab-Firefox-app-p nil)
+     (setq org-mac-grab-Chrome-app-p nil)
+     (add-hook 'org-mode-hook (lambda ()
+                                (define-key org-mode-map (kbd "C-c g") 'omlg-grab-link)))
+     ))

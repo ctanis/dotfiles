@@ -482,7 +482,8 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'imenu-anywhere)
   (define-key craig-prefix-map "\M-i" 'imenu-anywhere))
 
-(load-library "myorg")
+(eval-after-load 'org
+  '(load-library "myorg"))
 
 
 ;; yasnippet

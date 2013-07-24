@@ -1,4 +1,5 @@
 ;; org-mode
+(require 'org)
 (setq org-log-done 'time)
 (setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
@@ -105,3 +106,13 @@
 
 
 (add-hook 'org-open-link-functions 'org-pass-link-to-system)
+
+
+;; promoting and demoting multiple subtrees keeps the region active
+(defadvice org-do-promote (after dont-deactivate-region activate)
+  "org-do-promote keeps region intact"
+  (setq deactivate-mark nil))
+
+(defadvice org-do-demote (after dont-deactivate-region activate)
+  "org-do-demote keeps region intact"
+  (setq deactivate-mark nil))
