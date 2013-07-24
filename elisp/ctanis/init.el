@@ -213,6 +213,10 @@
 ; don't highlight region
 (transient-mark-mode 0)
 
+; c-spc after C-u C-spc pops
+(setq set-mark-command-repeat-pop t)
+
+
 ;next/previous line should respect wrapped lines!!
 (setq line-move-visual nil)
 
