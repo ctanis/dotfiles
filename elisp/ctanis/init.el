@@ -411,7 +411,6 @@ For details of keybindings, see `ido-find-file'."
 (autoload 'turn-off-folding-mode "folding" "Folding mode" t)
 (autoload 'turn-on-folding-mode  "folding" "Folding mode" t)
 
-
 ;; ;; kill the *Compile-Log* buffer
 ;; (add-hook 'emacs-startup-hook
 ;;           (lambda ()
