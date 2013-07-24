@@ -272,13 +272,16 @@
 
 
 ; don't have to use the mouse to get flymake feedback
-(load-library "flycursor")
-(define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
-(define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
-(define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
-;; triggering syntax check with newlines is terrible
-(setq flymake-log-level 0)
-(setq flymake-start-syntax-check-on-newline nil)
+(eval-after-load 'flymake
+'(progn
+   (load-library "flycursor")
+   (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
+   (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
+   (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
+   ;; triggering syntax check with newlines is terrible
+   (setq flymake-log-level 0)
+   (setq flymake-start-syntax-check-on-newline nil)
+   ))
 
 ; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
@@ -484,7 +487,7 @@ For details of keybindings, see `ido-find-file'."
 
 (eval-after-load 'org
   '(load-library "myorg"))
-
+(autoload 'orgtbl-mode "org-table.el" "org-table mode" t)
 
 ;; yasnippet
 (when (require 'yasnippet nil 'noerror)

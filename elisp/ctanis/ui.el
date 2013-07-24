@@ -1,7 +1,7 @@
 
 (require 'hl-line)
 ;(require 'sml-modeline)
-(require 'flymake)
+;(require 'flymake)
 
 (setq frame-title-format '("" hostname ": %b"))
 (setq icon-title-format '("" hostname ": %b"))
@@ -51,10 +51,6 @@
   (set-face-background 'ido-only-match  "green")
   (set-face-foreground 'ido-subdir  "orangered4")
 
-  (set-face-background 'flymake-errline "magenta3")
-  (set-face-foreground 'flymake-errline "yellow")
-  (set-face-background 'flymake-warnline "cyan4")
-  (set-face-foreground 'flymake-warnline "yellow")
 
   ;(set-face-background 'show-paren-match "wheat2")
   (set-face-background 'show-paren-match "green")
@@ -73,15 +69,6 @@
   (set-face-foreground font-lock-function-name-face "blue3")
   (set-face-foreground font-lock-variable-name-face "red4")
 
-  (set-face-foreground 'compilation-info "white")
-
-  (set-face-background 'error "red")
-  (set-face-foreground 'error "white")
-  (set-face-background 'compilation-mode-line-fail "yellow1")
-  (set-face-foreground 'compilation-mode-line-fail "red")
-  (set-face-foreground 'warning "cyan3")
-  (set-face-background 'warning "wheat2")
-
   (set-face-background 'isearch "orange")
   (set-face-foreground 'isearch "black")
 
@@ -97,8 +84,29 @@
   ;; (set-face-foreground font-lock-variable-name-face "deepskyblue4")
 
 
-  (add-hook 'org-mode-hook
-	    (lambda()
+  (eval-after-load 'compile
+    '(progn
+       (set-face-foreground 'compilation-info "white")
+       (set-face-background 'error "red")
+       (set-face-foreground 'error "white")
+       (set-face-background 'compilation-mode-line-fail "yellow1")
+       (set-face-foreground 'compilation-mode-line-fail "red")
+       (set-face-foreground 'warning "cyan3")
+       (set-face-background 'warning "wheat2")
+       ))
+
+
+  (eval-after-load 'flymake
+    '(progn
+       (set-face-background 'flymake-errline "magenta3")
+       (set-face-foreground 'flymake-errline "yellow")
+       (set-face-background 'flymake-warnline "cyan4")
+       (set-face-foreground 'flymake-warnline "yellow")
+       ))
+
+
+  (eval-after-load 'org
+    '(progn
 					;	    (set-face-foreground 'org-hide "wheat3")
 	      (set-face-foreground 'org-todo "purple")
 	      (set-face-background 'org-todo "wheat2")
@@ -149,132 +157,132 @@
 
 
 
-(defun ctanis_colorfy_dark()
-  (interactive)
+;; (defun ctanis_colorfy_dark()
+;;   (interactive)
 
-  (set-foreground-color "lightyellow3")
-  (set-background-color "gray12")
+;;   (set-foreground-color "lightyellow3")
+;;   (set-background-color "gray12")
 
-  (set-cursor-color "olivedrab3")
-  (set-face-background 'region "gray17")
-  (set-face-background 'hl-line "gray20")
+;;   (set-cursor-color "olivedrab3")
+;;   (set-face-background 'region "gray17")
+;;   (set-face-background 'hl-line "gray20")
 
-  (set-face-background 'fringe "gray10")
-  (set-face-foreground 'fringe "yellow")
+;;   (set-face-background 'fringe "gray10")
+;;   (set-face-foreground 'fringe "yellow")
 
-  (set-face-foreground 'mode-line-inactive "goldenrod4")
-  (set-face-background 'mode-line-inactive "darkslategrey")
-  (set-face-background 'mode-line "royalblue4")
-  (set-face-foreground 'mode-line "goldenrod2")
-
-  
-  ;; (set-face-background 'sml-modeline-end-face "royalblue3")
-  ;; (set-face-background 'sml-modeline-vis-face "black")
-  ;; (set-face-foreground 'sml-modeline-end-face "goldenrod2")
-  ;; (set-face-foreground 'sml-modeline-vis-face "goldenrod3")
-
-
-  (set-face-foreground 'ido-first-match "cyan4")
-  (set-face-background 'ido-first-match  "wheat2")
-  (set-face-foreground 'ido-only-match  "black")
-  (set-face-background 'ido-only-match  "green")
-  (set-face-foreground 'ido-subdir  "orangered4")
-
-  (set-face-background 'flymake-errline "magenta4")
-  (set-face-foreground 'flymake-errline "yellow")
-  (set-face-background 'flymake-warnline "cyan4")
-  (set-face-foreground 'flymake-warnline "yellow")
-
-  (set-face-background 'show-paren-match "olivedrab1")
-  (set-face-foreground 'show-paren-match "purple")
-  (set-face-background 'show-paren-mismatch "red")
-
-  (set-face-foreground font-lock-doc-face "grey45")
-  (set-face-foreground font-lock-comment-face "grey45")
-  (set-face-foreground font-lock-string-face "lightyellow4")
-  (set-face-background font-lock-string-face "gray20")
-  (set-face-foreground font-lock-constant-face "dodgerblue3")
-  (set-face-foreground font-lock-type-face "azure4")
-  (set-face-foreground font-lock-preprocessor-face "magenta4")
-  (set-face-foreground font-lock-keyword-face "goldenrod4")
-  (set-face-foreground font-lock-builtin-face "goldenrod4")
-  (set-face-foreground font-lock-function-name-face "slateblue3")
-  (set-face-foreground font-lock-variable-name-face "red4")
-
-  (set-face-foreground 'compilation-info "white")
-
-  (set-face-background 'error "red")
-  (set-face-foreground 'error "white")
-  (set-face-background 'compilation-mode-line-fail "yellow1")
-  (set-face-foreground 'compilation-mode-line-fail "red")
-  (set-face-foreground 'warning "cyan3")
-  (set-face-background 'warning "wheat2")
-
-  (set-face-background 'isearch "orange")
-  (set-face-foreground 'isearch "black")
-
-  ;;   (set-face-foreground font-lock-doc-face "grey40")
-  ;; (set-face-foreground font-lock-comment-face "grey40")
-  ;; (set-face-foreground font-lock-string-face "darkgreen")
-  ;; (set-face-foreground font-lock-constant-face "blue4")
-  ;; (set-face-foreground font-lock-type-face "darkcyan")
-  ;; (set-face-foreground font-lock-preprocessor-face "chartreuse4")
-  ;; (set-face-foreground font-lock-keyword-face "firebrick4")
-  ;; (set-face-foreground font-lock-builtin-face "blue3")
-  ;; (set-face-foreground font-lock-function-name-face "blue3")
-  ;; (set-face-foreground font-lock-variable-name-face "deepskyblue4")
-
-
-  (add-hook 'org-mode-hook
-	    (lambda()
-	      (set-face-foreground 'org-todo "purple")
-	      (set-face-background 'org-todo "wheat2")
-	      (set-face-background 'org-warning "orange")
-	      (set-face-background 'org-block "darkgray")
-	      (set-face-foreground 'org-block "darkred")
-	      (set-face-foreground 'org-level-1 "green4")
-	      (set-face-foreground 'org-level-2 "firebrick")
-	      (set-face-foreground 'org-level-3 "grey60")
-	      (set-face-foreground 'org-level-4 "goldenrod4")
-	      (set-face-foreground 'org-level-5 "grey43")
-	      (set-face-foreground 'org-document-title "dodgerblue2")
-	      (set-face-foreground 'org-document-info-keyword "slateblue3")
-	      (set-face-foreground 'org-link "dodgerblue2")
-
-	      (set-face-attribute 'org-document-title nil :height 1.44)
-	      ))
-
-  (add-hook 'sh-mode-hook
-	    '(lambda()
-	       (set-face-foreground 'sh-quoted-exec "purple")
-	       (set-face-foreground 'sh-heredoc "purple3")
-	       ))
+;;   (set-face-foreground 'mode-line-inactive "goldenrod4")
+;;   (set-face-background 'mode-line-inactive "darkslategrey")
+;;   (set-face-background 'mode-line "royalblue4")
+;;   (set-face-foreground 'mode-line "goldenrod2")
 
   
-  (add-hook 'dired-mode-hook
-	    '(lambda ()
-	       (set-face-foreground 'dired-directory "dodgerblue2")
-	       (set-face-foreground 'dired-header "dodgerblue2")
-	       (set-face-background 'dired-marked "gray20")
-	       (set-face-foreground 'dired-marked "green1")
-	       ))
-
-  (add-hook 'initial-calendar-window-hook
-	    (lambda ()
-	      (set-face-background 'holiday-face "darkslategray")
-	      (set-face-foreground 'calendar-today-face "yellow")
-	      (set-face-foreground 'diary-face "orange")
-	      (set-face-foreground 'holiday-face "cyan")))
+;;   ;; (set-face-background 'sml-modeline-end-face "royalblue3")
+;;   ;; (set-face-background 'sml-modeline-vis-face "black")
+;;   ;; (set-face-foreground 'sml-modeline-end-face "goldenrod2")
+;;   ;; (set-face-foreground 'sml-modeline-vis-face "goldenrod3")
 
 
-  (add-hook 'cperl-mode-hook
-	    '(lambda ()
-	       (set-face-foreground 'cperl-nonoverridable-face "darkblue")
-	       ))
+;;   (set-face-foreground 'ido-first-match "cyan4")
+;;   (set-face-background 'ido-first-match  "wheat2")
+;;   (set-face-foreground 'ido-only-match  "black")
+;;   (set-face-background 'ido-only-match  "green")
+;;   (set-face-foreground 'ido-subdir  "orangered4")
+
+;;   (set-face-background 'flymake-errline "magenta4")
+;;   (set-face-foreground 'flymake-errline "yellow")
+;;   (set-face-background 'flymake-warnline "cyan4")
+;;   (set-face-foreground 'flymake-warnline "yellow")
+
+;;   (set-face-background 'show-paren-match "olivedrab1")
+;;   (set-face-foreground 'show-paren-match "purple")
+;;   (set-face-background 'show-paren-mismatch "red")
+
+;;   (set-face-foreground font-lock-doc-face "grey45")
+;;   (set-face-foreground font-lock-comment-face "grey45")
+;;   (set-face-foreground font-lock-string-face "lightyellow4")
+;;   (set-face-background font-lock-string-face "gray20")
+;;   (set-face-foreground font-lock-constant-face "dodgerblue3")
+;;   (set-face-foreground font-lock-type-face "azure4")
+;;   (set-face-foreground font-lock-preprocessor-face "magenta4")
+;;   (set-face-foreground font-lock-keyword-face "goldenrod4")
+;;   (set-face-foreground font-lock-builtin-face "goldenrod4")
+;;   (set-face-foreground font-lock-function-name-face "slateblue3")
+;;   (set-face-foreground font-lock-variable-name-face "red4")
+
+;;   (set-face-foreground 'compilation-info "white")
+
+;;   (set-face-background 'error "red")
+;;   (set-face-foreground 'error "white")
+;;   (set-face-background 'compilation-mode-line-fail "yellow1")
+;;   (set-face-foreground 'compilation-mode-line-fail "red")
+;;   (set-face-foreground 'warning "cyan3")
+;;   (set-face-background 'warning "wheat2")
+
+;;   (set-face-background 'isearch "orange")
+;;   (set-face-foreground 'isearch "black")
+
+;;   ;;   (set-face-foreground font-lock-doc-face "grey40")
+;;   ;; (set-face-foreground font-lock-comment-face "grey40")
+;;   ;; (set-face-foreground font-lock-string-face "darkgreen")
+;;   ;; (set-face-foreground font-lock-constant-face "blue4")
+;;   ;; (set-face-foreground font-lock-type-face "darkcyan")
+;;   ;; (set-face-foreground font-lock-preprocessor-face "chartreuse4")
+;;   ;; (set-face-foreground font-lock-keyword-face "firebrick4")
+;;   ;; (set-face-foreground font-lock-builtin-face "blue3")
+;;   ;; (set-face-foreground font-lock-function-name-face "blue3")
+;;   ;; (set-face-foreground font-lock-variable-name-face "deepskyblue4")
 
 
-  (setq last_colorfy 'ctanis_colorfy_dark)
-  )
+;;   (add-hook 'org-mode-hook
+;; 	    (lambda()
+;; 	      (set-face-foreground 'org-todo "purple")
+;; 	      (set-face-background 'org-todo "wheat2")
+;; 	      (set-face-background 'org-warning "orange")
+;; 	      (set-face-background 'org-block "darkgray")
+;; 	      (set-face-foreground 'org-block "darkred")
+;; 	      (set-face-foreground 'org-level-1 "green4")
+;; 	      (set-face-foreground 'org-level-2 "firebrick")
+;; 	      (set-face-foreground 'org-level-3 "grey60")
+;; 	      (set-face-foreground 'org-level-4 "goldenrod4")
+;; 	      (set-face-foreground 'org-level-5 "grey43")
+;; 	      (set-face-foreground 'org-document-title "dodgerblue2")
+;; 	      (set-face-foreground 'org-document-info-keyword "slateblue3")
+;; 	      (set-face-foreground 'org-link "dodgerblue2")
+
+;; 	      (set-face-attribute 'org-document-title nil :height 1.44)
+;; 	      ))
+
+;;   (add-hook 'sh-mode-hook
+;; 	    '(lambda()
+;; 	       (set-face-foreground 'sh-quoted-exec "purple")
+;; 	       (set-face-foreground 'sh-heredoc "purple3")
+;; 	       ))
+
+  
+;;   (add-hook 'dired-mode-hook
+;; 	    '(lambda ()
+;; 	       (set-face-foreground 'dired-directory "dodgerblue2")
+;; 	       (set-face-foreground 'dired-header "dodgerblue2")
+;; 	       (set-face-background 'dired-marked "gray20")
+;; 	       (set-face-foreground 'dired-marked "green1")
+;; 	       ))
+
+;;   (add-hook 'initial-calendar-window-hook
+;; 	    (lambda ()
+;; 	      (set-face-background 'holiday-face "darkslategray")
+;; 	      (set-face-foreground 'calendar-today-face "yellow")
+;; 	      (set-face-foreground 'diary-face "orange")
+;; 	      (set-face-foreground 'holiday-face "cyan")))
+
+
+;;   (add-hook 'cperl-mode-hook
+;; 	    '(lambda ()
+;; 	       (set-face-foreground 'cperl-nonoverridable-face "darkblue")
+;; 	       ))
+
+
+;;   (setq last_colorfy 'ctanis_colorfy_dark)
+;;   )
 
 
   
