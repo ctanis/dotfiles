@@ -120,6 +120,7 @@
 	      (set-face-foreground 'org-level-4 "darkcyan")
 	      (set-face-foreground 'org-level-5 "grey28")
 	      (set-face-foreground 'org-level-6 "grey43")
+	      (set-face-foreground 'org-verbatim "gray20")
 	      (set-face-foreground 'org-verbatim "gray30")
 	      (set-face-foreground 'org-document-info-keyword "gray50")
 	      (set-face-foreground 'org-meta-line "gray50")

@@ -42,9 +42,6 @@
 (autoload 'constants-get "constants" "Get the value of a constant." t)
 (autoload 'constants-replace "constants" "Replace name of a constant." t)
 
-(define-key craig-prefix-map "\C-l" 'org-store-link)
-(define-key craig-prefix-map "\M-s" 'org-capture)
-(define-key craig-prefix-map "\M-a" 'org-agenda)
 
 
 (setq org-outline-path-complete-in-steps nil)

@@ -492,6 +492,10 @@ For details of keybindings, see `ido-find-file'."
 (eval-after-load 'org
   '(load-library "myorg"))
 (autoload 'orgtbl-mode "org-table.el" "org-table mode" t)
+(define-key craig-prefix-map "\C-l" 'org-store-link)
+(define-key craig-prefix-map "\M-s" 'org-capture)
+(define-key craig-prefix-map "\M-a" 'org-agenda)
+
 
 ;; yasnippet
 (when (require 'yasnippet nil 'noerror)
