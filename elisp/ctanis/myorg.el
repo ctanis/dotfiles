@@ -14,10 +14,12 @@
 (setq org-hide-emphasis-markers t)
 (setq org-use-speed-commands t)
 
-;; the resulting regexp from numlines (the last piece) >0 was breaking
-;; certain headline emphases
-(setq org-emphasis-regexp-components
-      '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
+;; is this fixed??
+;; ;; the resulting regexp from numlines (the last piece) >0 was breaking
+;; ;; certain headline emphases
+;; (setq org-emphasis-regexp-components
+;;       '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
+
 
 (setq org-cycle-separator-lines 2)
 
