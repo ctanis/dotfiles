@@ -84,18 +84,38 @@
 ;;        (error (message "no parent element"))))))
 
 ;; this version won't up-list past the start of the current element
+;; (defun org-up-list-or-element ()
+;;   (interactive)
+;;   (let* ((start (point))
+;; 	 (orgparent (progn (org-up-element) (point)))
+;; 	 (liststart
+;; 	  (progn
+;; 	    (goto-char start)
+;; 	    (condition-case nil
+;; 		(progn
+;; 		  (up-list -1)
+;; 		  (point))
+;; 	      (error 0)))))
+;;     (goto-char (max orgparent liststart))))
+
 (defun org-up-list-or-element ()
+  "combination of backward-up-list and org-up-element, doing the
+most localized thing"
   (interactive)
   (let* ((start (point))
-	 (orgparent (progn (org-up-element) (point)))
+	 (orgparent (condition-case nil
+                        (progn 
+                          (org-up-element)
+                          (point))
+                      (error point)))
 	 (liststart
-	  (progn
-	    (goto-char start)
-	    (condition-case nil
-		(progn
-		  (up-list -1)
-		  (point))
-	      (error 0)))))
+          (condition-case nil
+              (progn
+                (goto-char start)
+                (up-list -1)
+                (point))
+            (error 0))))
+
     (goto-char (max orgparent liststart))))
 
 (defun org-blindly-eval-babel ()
