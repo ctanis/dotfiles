@@ -529,4 +529,10 @@ For details of keybindings, see `ido-find-file'."
   (setq browse-kill-ring-quit-action 'save-and-restore))
 
 
+;; vc-check-status
+(when (require-verbose 'vc-check-status)
+  (vc-check-status-activate 1)
+  )
+
+
 (load-library "ui")
