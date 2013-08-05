@@ -5,6 +5,7 @@
 (setq org-log-into-drawer t)
 (setq org-catch-invisible-edits 'smart)
 (setq org-image-actual-width nil)
+(setq org-archive-default-command 'org-toggle-archive-tag)
 
 ;; revisit this if i ever use an org-clock
 ;; (setq org-clock-persist t)

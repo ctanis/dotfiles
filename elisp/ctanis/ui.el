@@ -114,8 +114,8 @@
        (set-face-background 'org-todo "wheat2")
        (set-face-background 'org-done "gray")
        (set-face-background 'org-warning "orange")
-       (set-face-background 'org-block "darkgray")
-       (set-face-foreground 'org-block "darkred")
+       (set-face-background 'org-block "wheat2")
+       (set-face-foreground 'org-block "black")
 
        (set-face-foreground 'org-archived "burlywood1")
 
@@ -144,8 +144,8 @@
        (set-face-attribute 'org-block nil :font "courier")
        (set-face-attribute 'org-block nil :height 1.1)
 
-       (set-face-foreground 'org-meta-line "darkgoldenrod3")
-       (set-face-foreground 'org-document-info-keyword "darkgoldenrod3")
+       (set-face-foreground 'org-meta-line "cyan4")
+       (set-face-foreground 'org-document-info-keyword "cyan4")
 
 
        (set-face-attribute 'org-document-title nil :height 1.44)
