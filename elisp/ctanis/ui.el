@@ -72,6 +72,11 @@
   (set-face-background 'isearch "orange")
   (set-face-foreground 'isearch "black")
 
+  (set-face-background 'error "red")
+  (set-face-foreground 'error "white")
+  (set-face-foreground 'warning "darkslateblue")
+  (set-face-background 'warning "wheat1")
+
   ;;   (set-face-foreground font-lock-doc-face "grey40")
   ;; (set-face-foreground font-lock-comment-face "grey40")
   ;; (set-face-foreground font-lock-string-face "darkgreen")
@@ -87,12 +92,9 @@
   (eval-after-load 'compile
     '(progn
        (set-face-foreground 'compilation-info "white")
-       (set-face-background 'error "red")
-       (set-face-foreground 'error "white")
        (set-face-background 'compilation-mode-line-fail "yellow1")
        (set-face-foreground 'compilation-mode-line-fail "red")
-       (set-face-foreground 'warning "cyan3")
-       (set-face-background 'warning "wheat2")
+       
        ))
 
 
@@ -137,7 +139,8 @@
 
   (add-hook 'dired-mode-hook
 	    '(lambda ()
-	       (set-face-foreground 'dired-marked "darkgreen")
+	       (set-face-foreground 'dired-marked "darkslateblue")
+               (set-face-background 'dired-marked "wheat1")
 	       ))
 
   (add-hook 'initial-calendar-window-hook
