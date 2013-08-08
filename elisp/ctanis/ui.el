@@ -92,8 +92,8 @@
   (eval-after-load 'compile
     '(progn
        (set-face-foreground 'compilation-info "white")
-       (set-face-background 'compilation-mode-line-fail "yellow1")
-       (set-face-foreground 'compilation-mode-line-fail "red")
+       ;; (set-face-background 'compilation-mode-line-fail "yellow1")
+       ;; (set-face-foreground 'compilation-mode-line-fail "red")
        
        ))
 

@@ -535,4 +535,10 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
+(defun ddg-search (str)
+  (interactive "MSearch term: ")
+  (browse-url (concat "https://duckduckgo.com/?q=" str)))
+(define-key 'craig-prefix "\M-g" 'ddg-search)
+
+
 (load-library "ui")
