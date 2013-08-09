@@ -393,9 +393,6 @@ For details of keybindings, see `ido-find-file'."
 (setq-default abbrev-mode nil)
 (setq save-abbrevs 'silently)
 
-(setq custom-file "~/.emacs.d/projects.el")
-(if (file-readable-p custom-file)
-    (load-file custom-file))
 
 ;; remove nroff bindings
 ;; (while (rassoc 'nroff-mode auto-mode-alist)
