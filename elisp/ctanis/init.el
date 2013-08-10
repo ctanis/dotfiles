@@ -531,6 +531,11 @@ For details of keybindings, see `ido-find-file'."
   (vc-check-status-activate 1)
   )
 
+;; magit
+(when (require-verbose 'magit)
+  (defalias 'magit 'magit-status )
+  )
+
 
 ;; (defun ddg-search (str)
 ;;   (interactive "MSearch term: ")
