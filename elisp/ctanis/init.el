@@ -532,9 +532,20 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
-(defun ddg-search (str)
-  (interactive "MSearch term: ")
-  (browse-url (concat "https://duckduckgo.com/?q=" str)))
+;; (defun ddg-search (str)
+;;   (interactive "MSearch term: ")
+;;   (browse-url (concat "https://duckduckgo.com/?q=" str)))
+
+(defun ddg-search (prefix str)
+  (interactive "P\nMSearch term: ")
+  (let ((arg
+         (if (region-active-p)
+             (concat str (if prefix " \"" " ")
+                     (buffer-substring (region-beginning) (region-end))
+                     (if prefix "\""))
+           str)))
+  (browse-url (concat "https://duckduckgo.com/?q=" (url-hexify-string arg)))))
+
 (define-key 'craig-prefix "\M-g" 'ddg-search)
 
 
