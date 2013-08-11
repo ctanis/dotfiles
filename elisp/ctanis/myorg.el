@@ -136,3 +136,13 @@ most localized thing"
 (defadvice org-do-demote (after dont-deactivate-region activate)
   "org-do-demote keeps region intact"
   (setq deactivate-mark nil))
+
+(defun org-wrap-with-self ()
+  (interactive)
+  (if (region-active-p)
+      (wrap-region-with-char last-input-event)
+    (call-interactively 'org-self-insert-command)))
+
+;; wrap-with-self defined in functions.el
+(dolist (ch (mapcar 'car org-emphasis-alist))
+  (define-key org-mode-map ch 'org-wrap-with-self))

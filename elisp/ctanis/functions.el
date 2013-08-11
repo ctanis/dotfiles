@@ -592,3 +592,16 @@ initial entry is Mode: with the current buffer mode inserted."
       (shell-command cmd  buf)
       (display-buffer buf))))
 
+(defun wrap-region-with-char (c)
+  (interactive "cWrap with character: ")
+  (if (region-active-p)
+      (progn (save-excursion
+               (let ((start (min (region-beginning) (region-end)))
+                     (end (max (region-beginning) (region-end))))
+                 (setq deactivate-mark nil)
+                 (goto-char end)
+                 (insert c)
+                 (goto-char start)
+                 (insert c)))
+             (forward-char))
+    (insert c)))
