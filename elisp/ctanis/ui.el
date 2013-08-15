@@ -149,6 +149,9 @@
 
 
        (set-face-attribute 'org-document-title nil :height 1.44)
+
+       (set-face-background 'org-agenda-date-today "wheat2")
+
        ))
 
   (add-hook 'sh-mode-hook
