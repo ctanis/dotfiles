@@ -101,9 +101,9 @@
   (eval-after-load 'flymake
     '(progn
        (set-face-background 'flymake-errline "magenta3")
-       (set-face-foreground 'flymake-errline "yellow")
+       (set-face-foreground 'flymake-errline "black")
        (set-face-background 'flymake-warnline "cyan4")
-       (set-face-foreground 'flymake-warnline "yellow")
+       (set-face-foreground 'flymake-warnline "black")
        ))
 
 
