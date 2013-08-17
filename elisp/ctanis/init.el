@@ -325,6 +325,7 @@
 (setq imenu-auto-rescan t)
 ;(define-key craig-prefix-map "\M-i" 'idomenu)
 
+
 (defun ido-dired-other-window ()
   "Call `dired-other-window' the ido way.
 The directory is selected interactively by typing a substring.
@@ -485,6 +486,10 @@ For details of keybindings, see `ido-find-file'."
 ;; imenu-anywhere
 (when (require-verbose 'imenu-anywhere)
   (define-key craig-prefix-map "\M-i" 'imenu-anywhere))
+
+; set here since it needs to happen before org is loaded
+(setq org-emphasis-regexp-components
+      '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
 
 (eval-after-load 'org
   '(load-library "myorg"))
