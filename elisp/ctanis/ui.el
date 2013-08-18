@@ -53,8 +53,8 @@
 
 
   ;(set-face-background 'show-paren-match "wheat2")
-  (set-face-background 'show-paren-match "green")
-  (set-face-foreground 'show-paren-match "purple")
+  (set-face-background 'show-paren-match "green3")
+  (set-face-foreground 'show-paren-match "white")
   (set-face-background 'show-paren-mismatch "red")
 
   (set-face-foreground font-lock-doc-face "grey25")
@@ -100,10 +100,10 @@
 
   (eval-after-load 'flymake
     '(progn
-       (set-face-background 'flymake-errline "magenta3")
-       (set-face-foreground 'flymake-errline "black")
-       (set-face-background 'flymake-warnline "cyan4")
-       (set-face-foreground 'flymake-warnline "black")
+       (set-face-background 'flymake-errline "pink")
+       (set-face-foreground 'flymake-errline "red")
+       (set-face-background 'flymake-warnline "lightblue")
+       (set-face-foreground 'flymake-warnline "cyan4")
        ))
 
 

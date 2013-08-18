@@ -475,6 +475,9 @@ For details of keybindings, see `ido-find-file'."
        nil
        )))
 
+(setq auto-insert-alist nil)
+(auto-insert-mode)
+
 
 (load-library "package-load.el")
 
