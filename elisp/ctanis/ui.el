@@ -47,8 +47,8 @@
 
   (set-face-foreground 'ido-first-match "cyan4")
   (set-face-background 'ido-first-match  "wheat2")
-  (set-face-foreground 'ido-only-match  "black")
-  (set-face-background 'ido-only-match  "green")
+  (set-face-foreground 'ido-only-match  "yellow")
+  (set-face-background 'ido-only-match  "green4")
   (set-face-foreground 'ido-subdir  "orangered4")
 
 
