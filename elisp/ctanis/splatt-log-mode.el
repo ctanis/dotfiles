@@ -34,6 +34,17 @@
   (search-forward-regexp "^T\(")
   (beginning-of-line))
 
+(defun splatt-log-bury ()
+  (interactive)
+  (auto-revert-mode -1)
+  (sink-buffer)
+  )
+
+(defun splatt-log-restart ()
+  (interactive)
+  (auto-revert-mode 1)
+  )
+
 
 (define-derived-mode splatt-log-mode fundamental-mode
   "splatt-log" "Color highlighting for Splatter logs. \\{splatt-log-mode-map}"
@@ -42,8 +53,6 @@
 			     t
 			     t))
   
-  (local-set-key "\C-\M-p" 'splatt-log-previous-trace)
-  (local-set-key "\C-\M-n" 'splatt-log-next-trace)
   (toggle-truncate-lines 1)
   (auto-revert-mode)
   (setq auto-revert-verbose nil)
@@ -51,3 +60,12 @@
   (auto-revert-set-timer)
   )
 
+
+(define-key splatt-log-mode-map "p" 'splatt-log-previous-trace)
+(define-key splatt-log-mode-map "n" 'splatt-log-next-trace)
+(define-key splatt-log-mode-map "q" 'splatt-log-bury)
+(define-key splatt-log-mode-map "r" 'splatt-log-restart)
+(define-key splatt-log-mode-map "/" 'isearch-backward)
+
+
+(provide 'splatt-log-mode)
