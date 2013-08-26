@@ -28,7 +28,7 @@
   (set-cursor-color "black")
   ;(set-default 'cursor-type 'hbar)
   (set-face-background 'region "darkgrey")
-  (set-face-background 'hl-line "darkgrey")
+  (set-face-background 'hl-line "khaki")
 
   (set-face-background 'fringe "burlywood3")
   (set-face-foreground 'fringe "darkslateblue")
