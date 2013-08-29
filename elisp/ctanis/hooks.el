@@ -450,3 +450,14 @@
 (add-hook 'calc-mode-hook
 	  (lambda ()
 	    (yas-minor-mode -1)))
+
+
+;; java flymake
+(require 'flymake)
+(defun my-java-flymake-init ()
+  (list "javac" (list (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-with-folder-structure))))
+
+(add-hook 'java-mode-hook 'flymake-mode-on)
+
+(add-to-list 'flymake-allowed-file-name-masks '("\\.java$" my-java-flymake-init flymake-simple-cleanup))
