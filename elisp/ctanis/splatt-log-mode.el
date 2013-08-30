@@ -58,6 +58,8 @@
   (setq auto-revert-verbose nil)
   (setq auto-revert-interval 1)
   (auto-revert-set-timer)
+  (setq buffer-read-only t)
+  (buffer-disable-undo)
   )
 
 
