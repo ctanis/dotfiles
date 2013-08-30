@@ -94,7 +94,7 @@ function update_repos ()
 
     done;
 
-    `/usr/local/bin/emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
+    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
 }
 
 
@@ -111,7 +111,7 @@ function check_repos ()
 	fi;
     done;
 
-    `/usr/local/bin/emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
+    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
 }
 
 
