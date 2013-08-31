@@ -323,7 +323,7 @@
 (ido-everywhere -1)
 (load-library "idomenu")
 (setq imenu-auto-rescan t)
-;(define-key craig-prefix-map "\M-i" 'idomenu)
+(define-key craig-prefix-map "\M-i" 'idomenu)
 
 
 (defun ido-dired-other-window ()
@@ -488,7 +488,7 @@ For details of keybindings, see `ido-find-file'."
 
 ;; imenu-anywhere
 (when (require-verbose 'imenu-anywhere)
-  (define-key craig-prefix-map "\M-i" 'imenu-anywhere))
+  (define-key craig-prefix-map (kbd "M-TAB") 'imenu-anywhere))
 
 ; set here since it needs to happen before org is loaded
 (setq org-emphasis-regexp-components
