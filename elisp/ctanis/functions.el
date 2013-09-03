@@ -570,7 +570,7 @@ M-x compile."
  (let ((oldbuf (get-buffer "*compilation*")))
    (if (and oldbuf (eq pfx 1))
        (progn
-         (set-buffer compilation-last-buffer)
+         (set-buffer oldbuf)
          (save-some-buffers)
          (revert-buffer t t))
      (call-interactively 'compile))))
