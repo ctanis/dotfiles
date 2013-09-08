@@ -491,8 +491,8 @@ For details of keybindings, see `ido-find-file'."
   (define-key craig-prefix-map (kbd "M-TAB") 'imenu-anywhere))
 
 ; set here since it needs to happen before org is loaded
-(setq org-emphasis-regexp-components
-      '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
+;; (setq org-emphasis-regexp-components
+;;       '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
 
 (eval-after-load 'org
   '(load-library "myorg"))
