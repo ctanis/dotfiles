@@ -33,6 +33,8 @@ apps = {
 "control-cmd-up",
 "control-cmd-down",
 "control-cmd-return",
+"control-cmd-/",
+"shift-control-cmd-/",
 "shift-control-cmd-left",
 "shift-control-cmd-right",
 "shift-control-cmd-up",
