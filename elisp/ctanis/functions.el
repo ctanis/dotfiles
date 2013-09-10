@@ -42,8 +42,7 @@
 (defun kill-other-buffer ()
   "kill a buffer other than the current one, and stay in current buffer"
   (interactive)
-  (save-excursion
-    (set-buffer (window-buffer (next-window)))
+  (with-current-buffer (window-buffer (next-window))
     (let* ((lst (mapcar (lambda (a)
 			  (cons (buffer-name a) a))
 			(buffer-list))))
@@ -230,7 +229,7 @@ when called with a prefix argument."
 (defun just-no-space ()
   (interactive)
   (just-one-space)
-  (delete-backward-char 1))
+  (delete-char -1))
 
 
 (defun zap-backwards (arg char)
@@ -458,24 +457,24 @@ a prefix arg, run it in another window"
   (perl-mode))
 
 
-;; hostname mode
-(defvar hostname (let ((str (or (getenv "HOSTNAME") "")))
-  (substring  str 0 (string-match "\\." str))))
+;; ;; hostname mode
+;; (defvar ctanis/hostname (let ((str (or (getenv "HOSTNAME") "")))
+;;   (substring  str 0 (string-match "\\." str))))
 
-;modified from code for column-number-mode
-(defvar host-name-mode nil
-  "*Non-nil means display host name in mode line.")
+;; ;modified from code for column-number-mode
+;; (defvar host-name-mode nil
+;;   "*Non-nil means display host name in mode line.")
 
-(defun host-name-mode (arg)
-  "Toggle Host Name mode.
-With arg, turn Host Name  mode on iff arg is positive.
-When Host Name mode is enabled, the column number appears
-in the mode line."
-  (interactive "P")
-  (setq host-name-mode
-	(if (null arg) (not host-name-mode)
-	  (> (prefix-numeric-value arg) 0)))
-  (force-mode-line-update))
+;; (defun host-name-mode (arg)
+;;   "Toggle Host Name mode.
+;; With arg, turn Host Name  mode on iff arg is positive.
+;; When Host Name mode is enabled, the column number appears
+;; in the mode line."
+;;   (interactive "P")
+;;   (setq host-name-mode
+;; 	(if (null arg) (not host-name-mode)
+;; 	  (> (prefix-numeric-value arg) 0)))
+;;   (force-mode-line-update))
 
 
 (defun filter (pred ls)
@@ -545,23 +544,36 @@ in the mode line."
 
 
 
-(setq compilation-last-buffer nil)
+;; (defun compile-again (pfx)
+;;   """Run the same compile as the last time.
+
+;; If there was no last time, or there is a prefix argument, this acts like
+;; M-x compile.
+;; """
+;;  (interactive "p")
+;;  (if (and (eq pfx 1)
+;; 	  compilation-last-buffer
+;; 	  (string= (buffer-name compilation-last-buffer) "*compilation*")
+;; 	  )
+;;      (progn
+;;        (set-buffer compilation-last-buffer)
+;;        (save-some-buffers)
+;;        (revert-buffer t t))
+;;    (call-interactively 'compile)))
+
 (defun compile-again (pfx)
-  """Run the same compile as the last time.
+  "Run the same compile as the last time.
 
 If there was no last time, or there is a prefix argument, this acts like
-M-x compile.
-"""
+M-x compile."
  (interactive "p")
- (if (and (eq pfx 1)
-	  compilation-last-buffer
-	  (string= (buffer-name compilation-last-buffer) "*compilation*")
-	  )
-     (progn
-       (set-buffer compilation-last-buffer)
-       (save-some-buffers)
-       (revert-buffer t t))
-   (call-interactively 'compile)))
+ (let ((oldbuf (get-buffer "*compilation*")))
+   (if (and oldbuf (eq pfx 1))
+       (progn
+         (set-buffer oldbuf)
+         (save-some-buffers)
+         (revert-buffer t t))
+     (call-interactively 'compile))))
 
 
 ;; from jennings

@@ -441,8 +441,10 @@ For details of keybindings, see `ido-find-file'."
 ; skip calc trail windows with next-window
 (defadvice calc-trail-display (after skip-trail-window activate)
   "set the no-other-window property on calc trail windows"
-  (set-window-parameter (get-buffer-window (get-buffer "*Calc Trail*"))
-                                   'no-other-window t))
+  (let ((win (get-buffer-window (get-buffer "*Calc Trail*"))))
+    (if win
+        (set-window-parameter win
+                              'no-other-window t))))
 
 
 
@@ -491,8 +493,8 @@ For details of keybindings, see `ido-find-file'."
   (define-key craig-prefix-map (kbd "M-TAB") 'imenu-anywhere))
 
 ; set here since it needs to happen before org is loaded
-(setq org-emphasis-regexp-components
-      '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
+;; (setq org-emphasis-regexp-components
+;;       '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
 
 (eval-after-load 'org
   '(load-library "myorg"))

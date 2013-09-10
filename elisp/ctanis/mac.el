@@ -173,7 +173,7 @@
 ;; org stuff
 (eval-after-load 'org
   '(progn
-     (require 'org-mac-link-grabber)
+     (require 'org-mac-link)
      (setq org-mac-grab-Firefox-app-p nil)
      (setq org-mac-grab-Chrome-app-p nil)
      (add-hook 'org-mode-hook (lambda ()

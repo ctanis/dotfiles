@@ -125,7 +125,7 @@
        (set-face-background 'org-level-2 "wheat3")
        (set-face-foreground 'org-level-3 "slateblue4")
        (set-face-background 'org-level-3 "wheat3")
-       (set-face-foreground 'org-level-4 "gray30")
+       (set-face-foreground 'org-level-4 "gray20")
        (set-face-background 'org-level-4 "wheat3")
        (set-face-foreground 'org-level-5 "gray35")
        (set-face-background 'org-level-5 "wheat3")
