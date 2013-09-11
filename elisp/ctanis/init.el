@@ -548,6 +548,17 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
+(when (require-verbose 'ace-jump-mode)
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+  (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+  (setq ace-jump-mode-submode-list
+        '(ace-jump-char-mode
+          ace-jump-line-mode
+          ace-jump-word-mode
+          ))
+  )
+
+
 ;; (defun ddg-search (str)
 ;;   (interactive "MSearch term: ")
 ;;   (browse-url (concat "https://duckduckgo.com/?q=" str)))
