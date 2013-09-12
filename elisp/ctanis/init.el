@@ -551,6 +551,8 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'ace-jump-mode)
   (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
   (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+  (set-face-foreground 'ace-jump-face-foreground "black")
+  (set-face-background 'ace-jump-face-foreground "wheat")
   (setq ace-jump-mode-submode-list
         '(ace-jump-char-mode
           ace-jump-line-mode

@@ -317,7 +317,10 @@
 	     (local-set-key "\C-c\M-p" 'org-previous-block)
 
 	     (toggle-truncate-lines 0)
-	     (auto-fill-mode 1)))
+	     (auto-fill-mode 1)
+
+             (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
+             ))
 
 ;; yasnippet and org-mode
 (defun yas/org-very-safe-expand ()
