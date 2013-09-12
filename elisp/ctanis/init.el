@@ -321,9 +321,7 @@
 (add-to-list 'ido-ignore-files "`\\.DS_Store")
 (add-to-list 'ido-ignore-files "`\\.git")
 (ido-everywhere -1)
-(load-library "idomenu")
 (setq imenu-auto-rescan t)
-(define-key craig-prefix-map "\M-i" 'idomenu)
 
 
 (defun ido-dired-other-window ()
@@ -558,6 +556,14 @@ For details of keybindings, see `ido-find-file'."
           ace-jump-line-mode
           ace-jump-word-mode
           ))
+  )
+
+(when (require-verbose 'idomenu)
+;  (load-library "idomenu")
+  (define-key craig-prefix-map "\M-i" 'idomenu)
+  )
+
+(when (require-verbose 'markdown-mode)
   )
 
 
