@@ -352,7 +352,8 @@
 	    (define-key ido-file-dir-completion-map "\M-b" 'backword-word)
 
 	    (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
-	    ))
+	    (local-unset-key "\M-r")
+            ))
 
 
 
