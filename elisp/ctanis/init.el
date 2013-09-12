@@ -552,9 +552,9 @@ For details of keybindings, see `ido-find-file'."
   (set-face-foreground 'ace-jump-face-foreground "black")
   (set-face-background 'ace-jump-face-foreground "wheat")
   (setq ace-jump-mode-submode-list
-        '(ace-jump-char-mode
+        '(ace-jump-word-mode
+          ace-jump-char-mode
           ace-jump-line-mode
-          ace-jump-word-mode
           ))
   )
 
