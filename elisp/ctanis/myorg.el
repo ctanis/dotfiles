@@ -1,5 +1,6 @@
 ;; org-mode
 (require 'org)
+(require 'org-agenda)
 (setq org-log-done 'time)
 (setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
