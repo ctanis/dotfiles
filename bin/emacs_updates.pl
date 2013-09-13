@@ -11,6 +11,6 @@ if ($msg > 0) {
   close GROWL;
 
 }
-else  {
-  print STDERR "no updates\n";
-}
+# else  {
+#   print STDERR "no updates\n";
+# }
