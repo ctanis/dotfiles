@@ -109,7 +109,7 @@ most localized thing"
                         (progn 
                           (org-up-element)
                           (point))
-                      (error point)))
+                      (error (point))))
 	 (liststart
           (condition-case nil
               (progn
