@@ -430,9 +430,9 @@ For details of keybindings, see `ido-find-file'."
 
 
 
+(setq save-place-file "~/.emacs.d/saved-places")
 (require 'saveplace)
 (autoload 'toggle-save-place "saveplace" )
-(setq save-place-file "~/.emacs.d/saved-places")
 (define-key craig-prefix-map "r" 'toggle-save-place)
 
 
