@@ -9,7 +9,7 @@
 (setq org-archive-default-command 'org-toggle-archive-tag)
 
 ;; ctrl-a/e on heading defaults to text
-(setq org-special-ctrl-a/e t)
+(setq org-special-ctrl-a/e 'reversed)
 
 ;; revisit this if i ever use an org-clock
 ;; (setq org-clock-persist t)
