@@ -159,6 +159,7 @@
 (define-key craig-prefix-map "\M-v" 'view-mode)
 (define-key craig-prefix-map "-" 'insert-separator)
 (define-key craig-prefix-map "[" 'wrap-region-with-char)
+(define-key craig-prefix-map "\M-u" 'calc-dispatch)
 
 (global-set-key "\M-?" 'hippie-expand)
 
