@@ -455,6 +455,11 @@
 	  (lambda ()
 	    (yas-minor-mode -1)))
 
+(eval-after-load "calc"
+  '(define-key calc-dispatch-map "\M-u" 'calc-same-interface)
+  )
+
+
 
 ;; java flymake
 (require 'flymake)
