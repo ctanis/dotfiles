@@ -1,8 +1,13 @@
 (add-to-list 'load-path "~/.dotfiles/elisp/ctanis")
 (add-to-list 'load-path "~/.dotfiles/elisp/other")
 (load-library "init")
-(if (file-readable-p "~/.emacs-local")
-    (load-file "~/.emacs-local"))
-(setq custom-file "~/.emacs.d/projects.el")
+
+(setq custom-file "~/.emacs.d/custom.el")
 (if (file-readable-p custom-file)
     (load-file custom-file))
+
+(if (file-readable-p "~/.emacs-local")
+    (load-file "~/.emacs-local"))
+
+(if (file-readable-p "~/.emacs.d/projects.el")
+	(load-file "~/.emacs.d/projects.el"))
