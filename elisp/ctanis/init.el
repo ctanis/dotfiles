@@ -567,6 +567,12 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'markdown-mode)
   )
 
+(when (require-verbose 'eimp)
+    (autoload 'eimp-mode "eimp" "Emacs Image Manipulation Package." t)
+    (add-hook 'image-mode-hook 'eimp-mode)
+    (setq eimp-enable-undo t)
+)
+
 
 ;; (defun ddg-search (str)
 ;;   (interactive "MSearch term: ")
