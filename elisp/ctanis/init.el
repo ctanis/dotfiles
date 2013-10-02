@@ -377,13 +377,6 @@ For details of keybindings, see `ido-find-file'."
   (global-font-lock-mode 0)) ;; no colors in the terminal
 
 
-(require 'autopair)
-(autopair-global-mode)
-(setq autopair-blink nil)
-;(setq autopair-skip-whitespace t)
-(setq autopair-skip-whitespace nil)
-(setq autopair-pair-criteria 'always)
-(setq autopair-skip-criteria 'help-balance)
 
 
 
@@ -572,6 +565,14 @@ For details of keybindings, see `ido-find-file'."
     (add-hook 'image-mode-hook 'eimp-mode)
     (setq eimp-enable-undo t)
 )
+
+;; (when (require-verbose 'autopair)
+;;   (autopair-global-mode)
+;;   (setq autopair-blink nil)
+;;   (setq autopair-skip-whitespace nil)
+;;   (setq autopair-pair-criteria 'always)
+;;   (setq autopair-skip-criteria 'help-balance))
+
 
 
 ;; (defun ddg-search (str)
