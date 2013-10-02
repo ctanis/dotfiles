@@ -7,6 +7,7 @@
 (setq org-catch-invisible-edits 'smart)
 (setq org-image-actual-width nil)
 (setq org-archive-default-command 'org-toggle-archive-tag)
+(setq org-yank-folded-subtrees nil)
 
 ;; ctrl-a/e on heading defaults to text
 (setq org-special-ctrl-a/e 'reversed)
