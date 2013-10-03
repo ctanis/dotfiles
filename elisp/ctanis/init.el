@@ -502,6 +502,7 @@ For details of keybindings, see `ido-find-file'."
   (setq yas-verbosity 1)
   (setq yas-snippet-dirs "~/.emacs.d/snippets")
   (load-library "yasnippet")
+  (setq yas-expand-only-for-last-commands '(self-insert-command org-self-insert-command))
   (yas-global-mode 1)
   (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
   )
@@ -566,12 +567,12 @@ For details of keybindings, see `ido-find-file'."
     (setq eimp-enable-undo t)
 )
 
-;; (when (require-verbose 'autopair)
-;;   (autopair-global-mode)
-;;   (setq autopair-blink nil)
-;;   (setq autopair-skip-whitespace nil)
-;;   (setq autopair-pair-criteria 'always)
-;;   (setq autopair-skip-criteria 'help-balance))
+(when (require-verbose 'autopair)
+  (autopair-global-mode)
+  (setq autopair-blink nil)
+  (setq autopair-skip-whitespace nil)
+  (setq autopair-pair-criteria 'always)
+  (setq autopair-skip-criteria 'help-balance))
 
 
 
