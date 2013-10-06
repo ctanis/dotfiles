@@ -8,18 +8,6 @@
 (load-library "modeline-cleanup")
 
 
-(setq hippie-expand-try-functions-list
-      '(
-	;yas/hippie-try-expand
-	try-complete-file-name-partially
-	try-complete-file-name
-	try-expand-list
-	try-expand-line
-	try-expand-list-all-buffers
-	try-expand-line-all-buffers
-	try-expand-dabbrev-from-kill
-	;try-complete-lisp-symbol
-	))
 
 ; on startup...
 (setq inhibit-default-init t)			;; don't load system init
@@ -567,12 +555,43 @@ For details of keybindings, see `ido-find-file'."
     (setq eimp-enable-undo t)
 )
 
+
+(setq hippie-expand-try-functions-list
+      '(
+	;yas/hippie-try-expand
+	try-complete-file-name-partially
+	try-complete-file-name
+	try-expand-list
+	try-expand-line
+	try-expand-list-all-buffers
+	try-expand-line-all-buffers
+	try-expand-dabbrev-from-kill
+	;try-complete-lisp-symbol
+	))
+
+
+
 (when (require-verbose 'autopair)
   (autopair-global-mode)
   (setq autopair-blink nil)
   (setq autopair-skip-whitespace nil)
   (setq autopair-pair-criteria 'always)
-  (setq autopair-skip-criteria 'help-balance))
+  (setq autopair-skip-criteria 'help-balance)
+
+  (defun apair-try-expand-list (old)
+    (let ((rval (try-expand-list old)))
+      (if (and rval autopair-mode)
+          (backward-delete-char 1))
+      rval))
+
+  (defun apair-try-expand-list-all-buffers (old)
+    (let ((rval (try-expand-list-all-buffers old)))
+      (if (and rval autopair-mode)
+          (backward-delete-char 1))
+      rval))
+
+  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name apair-try-expand-list try-expand-line apair-try-expand-list-all-buffers try-expand-line-all-buffers try-expand-dabbrev-from-kill))
+  )
 
 
 
