@@ -11,13 +11,6 @@
 (setq font-lock-maximum-decoration (list (cons t nil)))
 (defvar last_colorfy nil)
 
-(custom-set-faces
-   '(modeline-inactive ((t (:box (:line-width 1 :color "black"))))))
-
-(custom-set-faces
-   '(mode-line ((t (:box (:line-width 1 :color "black"))))))
-
-
 (defun ctanis_colorfy()
   (interactive)
 
@@ -76,6 +69,12 @@
   (set-face-foreground 'error "white")
   (set-face-foreground 'warning "darkslateblue")
   (set-face-background 'warning "wheat1")
+
+
+  (set-face-attribute 'modeline-inactive nil :box '(:line-width 1 :color "black"))
+  (set-face-attribute 'mode-line nil :box '(:line-width 1 :color "black"))
+
+
 
   ;;   (set-face-foreground font-lock-doc-face "grey40")
   ;; (set-face-foreground font-lock-comment-face "grey40")
