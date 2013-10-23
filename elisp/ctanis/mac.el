@@ -1,6 +1,6 @@
 ;; mac stuff
 
-(setq mac-option-modifier 'none)
+(setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
 
