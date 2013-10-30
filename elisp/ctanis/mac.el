@@ -68,23 +68,24 @@
 (defun launch ()
   "launch current file with OS"
   (interactive)
-  (shell-command (concat os-launcher-cmd " "
-			 (shell-quote-argument (buffer-file-name)))))
+  (if (equal major-mode 'dired-mode)
+      (call-interactively 'launch-dired)
+    (shell-command (concat os-launcher-cmd " "
+			 (shell-quote-argument (buffer-file-name))))))
 (define-key craig-prefix-map "\M-l" 'launch)
 
-(require 'dired)
-(defun launch-dired ()
-  "launch current marked files in dired buffer"
-  (interactive)
-  (mapcar
-   (lambda (x)
-     (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
-   (dired-get-marked-files)))
-
-(add-hook 'dired-mode-hook
-	   '(lambda ()
-	      (local-set-key "\M-o\M-l" 'launch-dired)))
-
+(eval-after-load 'dired
+  '(progn
+     (define-key dired-mode-map "\M-o" 'craig-prefix)
+     (defun launch-dired ()
+       "launch current marked files in dired buffer"
+       (interactive)
+       (message "in launch-dired")
+       (mapcar
+        (lambda (x)
+          (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
+        (dired-get-marked-files)))
+     ))
 
 ;; ;; some stuff for dealing with Dash.app
 ;; (define-derived-mode dash-snippet-mode fundamental-mode

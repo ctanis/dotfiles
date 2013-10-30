@@ -78,7 +78,8 @@
 (global-set-key "\C-x\C-c" 'verify-exit)
 
 (define-prefix-command 'craig-prefix 'craig-prefix-map)
-(global-set-key "\M-o" 'craig-prefix)
+(define-key global-map "\M-o" 'craig-prefix)
+;(global-set-key "\M-o" 'craig-prefix)
 ;(global-set-key "\M-s" 'goto-line)
 (global-set-key "\M-,"  'ispell-word)
 (global-set-key "\M-j" 'backward-jump-to-char)
