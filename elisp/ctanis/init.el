@@ -594,6 +594,10 @@ For details of keybindings, see `ido-find-file'."
   (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name apair-try-expand-list try-expand-line apair-try-expand-list-all-buffers try-expand-line-all-buffers try-expand-dabbrev-from-kill))
   )
 
+(when (require-verbose 'num3-mode)
+  (set-face-attribute 'num3-face-even nil :underline nil :weight 'normal :background "wheat2")
+  )
+
 
 
 ;; (defun ddg-search (str)
