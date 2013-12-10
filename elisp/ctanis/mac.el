@@ -80,7 +80,7 @@
      (defun launch-dired ()
        "launch current marked files in dired buffer"
        (interactive)
-       (message "in launch-dired")
+;       (message "in launch-dired")
        (mapcar
         (lambda (x)
           (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
