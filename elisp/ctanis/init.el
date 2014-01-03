@@ -489,7 +489,7 @@ For details of keybindings, see `ido-find-file'."
 (when (require 'yasnippet nil 'noerror)
   (setq yas-prompt-functions (list 'yas-ido-prompt))
   (setq yas-verbosity 1)
-  (setq yas-snippet-dirs "~/.emacs.d/snippets")
+;  (setq yas-snippet-dirs "~/.emacs.d/snippets")
   (load-library "yasnippet")
   (setq yas-expand-only-for-last-commands '(self-insert-command org-self-insert-command))
   (yas-global-mode 1)
