@@ -474,4 +474,14 @@
           (lambda ()
             (if (locate-dominating-file default-directory "build.xml")
                 (set (make-local-variable 'compile-command)
-                     "ant -s build.xml -e"))))
+                     "ant -s build.xml -e "))))
+
+;; ibuffer -- group dired buffers with filenames
+(eval-after-load "ibuf-ext"
+      '(define-ibuffer-filter filename
+         "Toggle current view to buffers with file or directory name matching QUALIFIER."
+         (:description "filename"
+          :reader (read-from-minibuffer "Filter by file/directory name (regexp): "))
+         (ibuffer-awhen (or (buffer-local-value 'buffer-file-name buf)
+                            (buffer-local-value 'dired-directory buf))
+           (string-match qualifier it))))
