@@ -317,6 +317,7 @@
 	     (local-set-key "\C-c\M-p" 'org-previous-block)
 
 	     (auto-fill-mode 1)
+             (toggle-truncate-lines -1)
 
              (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
              ))
