@@ -617,3 +617,7 @@ initial entry is Mode: with the current buffer mode inserted."
                  (insert c)))
              (forward-char))
     (insert c)))
+
+(defun ca-with-comment (s)
+  (insert comment-start s comment-end)
+  )
