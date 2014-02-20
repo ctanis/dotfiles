@@ -475,7 +475,9 @@
           (lambda ()
             (if (locate-dominating-file default-directory "build.xml")
                 (set (make-local-variable 'compile-command)
-                     "ant -s build.xml -e "))))
+                     "ant -s build.xml -e ")
+              (set (make-local-variable 'compile-command)
+                     (concat "javac " (file-name-nondirectory buffer-file-name))))))
 
 ;; ibuffer -- group dired buffers with filenames
 (eval-after-load "ibuf-ext"
