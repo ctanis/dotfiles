@@ -1,6 +1,6 @@
 ;; mac stuff
 
-(setq mac-option-modifier 'super)
+;(setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
 
@@ -178,5 +178,5 @@
      (setq org-mac-grab-Firefox-app-p nil)
      (setq org-mac-grab-Chrome-app-p nil)
      (add-hook 'org-mode-hook (lambda ()
-                                (define-key org-mode-map (kbd "C-c g") 'omlg-grab-link)))
+                                (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
      ))
