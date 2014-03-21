@@ -527,6 +527,7 @@ For details of keybindings, see `ido-find-file'."
 ;; magit
 (when (require-verbose 'magit)
   (defalias 'magit 'magit-status )
+  ; hide mode-line crap
   (setq magit-auto-revert-mode-lighter nil)
   )
 
