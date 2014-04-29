@@ -176,6 +176,8 @@
 
 ;(setq kill-whole-line t) ;; ctrl-k also grabs newline at end
 
+; dired - guess destination when 2 dired windows are visible
+(setq dired-dwim-target t)
 
 
 ;; UNSET
@@ -490,7 +492,9 @@ For details of keybindings, see `ido-find-file'."
   (setq yas-prompt-functions (list 'yas-ido-prompt))
   (setq yas-verbosity 1)
 ;  (setq yas-snippet-dirs "~/.emacs.d/snippets")
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/stock-snippets"))
   (load-library "yasnippet")
+
   (setq yas-expand-only-for-last-commands '(self-insert-command org-self-insert-command))
   (yas-global-mode 1)
   (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
