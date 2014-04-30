@@ -11,7 +11,7 @@ if [ ! -f $1 ]; then
 fi
 
 INPUTFILE=$*
-TMPOUT=`mktemp -u -t codepdf`
+TMPOUT=`mktemp -u -t codepdf.XXX`
 # set this variable to control output filename
 [ -z "$PDFOUTPUT" ] && PDFOUTPUT=`basename $1`.pdf
 
