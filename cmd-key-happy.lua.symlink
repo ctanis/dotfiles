@@ -34,6 +34,7 @@ apps = {
 "control-cmd-down",
 "control-cmd-return",
 "control-cmd-/",
+"control-alt-/",
 "shift-control-cmd-/",
 "shift-control-cmd-left",
 "shift-control-cmd-right",
@@ -89,7 +90,7 @@ apps = {
 "shift-alt-w",
 "shift-alt-x",
 "shift-alt-y",
-"shift-alt-z"
+"shift-alt-z",
 
 
 }}}
