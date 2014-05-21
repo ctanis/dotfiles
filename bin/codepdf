@@ -1,23 +1,24 @@
 #! /bin/sh 
 
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
     echo "usage error"
     exit
 fi
 
-if [ ! -f $1 ]; then
+if [ ! -f "$1" ]; then
     echo "file not found: $1"
     exit
 fi
 
-INPUTFILE=$*
+INPUTFILE="$@"
+echo "-> $INPUTFILE"
 TMPOUT=`mktemp -u -t codepdf.XXX`
 # set this variable to control output filename
-[ -z "$PDFOUTPUT" ] && PDFOUTPUT=`basename $1`.pdf
+[ -z "$PDFOUTPUT" ] && PDFOUTPUT=`basename "$1"`.pdf
 
 # -C is line-numbers=5
 #a2ps -1 -B -M letter -R -C -L75 $INPUTFILE -o $TMPOUT
-a2ps -1 -B -M letter -R -L75 $INPUTFILE -o $TMPOUT
+a2ps -1 -B -M letter -R -L75 "$@" -o $TMPOUT
 ps2pdf  $TMPOUT $PDFOUTPUT
 #set CODEPDFQUIET to inhibit open
 [ -z "$CODEPDFQUIET" ] && open $PDFOUTPUT
