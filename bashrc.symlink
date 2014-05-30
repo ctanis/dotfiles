@@ -5,7 +5,8 @@
 if [ -z $INSIDE_EMACS ]; then
 # not in emacs
 export EDITOR=vi
-export PAGER=most
+#export PAGER=most
+export PAGER=less
 else
 # in emacs
 export EDITOR=emacsclient
@@ -14,6 +15,7 @@ fi
 
 export GNUTERM=X11
 export TEXINPUTS="~/.tex:.:$TEXINPUTS"
+export LESS="-X"
 
 
 # may need to override this in a bash-local
