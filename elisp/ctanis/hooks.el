@@ -190,7 +190,8 @@
 	  '(lambda ()
 					; allow the killing of this buffer without prompting
 	     (process-kill-without-query (get-buffer-process (current-buffer)))
-	     (toggle-truncate-lines 1)))
+	     (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
+             (toggle-truncate-lines 0)))
 
 (setq shell-font-lock-keywords
       `(
