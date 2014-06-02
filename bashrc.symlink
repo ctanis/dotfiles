@@ -15,7 +15,7 @@ fi
 
 export GNUTERM=X11
 export TEXINPUTS="~/.tex:.:$TEXINPUTS"
-export LESS="-X"
+export LESS="-erX"
 
 
 # may need to override this in a bash-local
