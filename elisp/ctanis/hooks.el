@@ -348,9 +348,9 @@
 	    (define-key ido-file-dir-completion-map "\M-t" 'ido-toggle-regexp)
 
 
-	    (define-key ido-file-completion-map "\M-b" 'backward-word)
-	    (define-key ido-buffer-completion-map "\M-b" 'backward-word)
-	    (define-key ido-file-dir-completion-map "\M-b" 'backward-word)
+	    ;; (define-key ido-file-completion-map "\M-b" 'backward-word)
+	    ;; (define-key ido-buffer-completion-map "\M-b" 'backward-word)
+	    ;; (define-key ido-file-dir-completion-map "\M-b" 'backward-word)
 
 	    (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
 	    (local-unset-key "\M-r")
