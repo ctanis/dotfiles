@@ -86,6 +86,16 @@ function edit()
 }
 fi; 
 
+if [ $PLATFORM == 'Darwin' ]; then
+    # select a random color scheme from terminal options specified in TERM_COLOR_CHOICES
+    function rand_term {
+        local OPTION=${TERM_COLOR_CHOICES[$RANDOM % ${#TERM_COLOR_CHOICES[@]}]}
+        osascript -e 'tell application "Terminal" to set current settings of first window to settings set '$OPTION
+    }
+fi
+
+
+
 function update_repos ()
 {
     for i in `cat ~/.active_repos`; do
