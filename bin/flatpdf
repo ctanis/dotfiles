@@ -1,0 +1,19 @@
+#!/bin/bash
+
+IN=$1
+
+OUT=$2
+
+if [ -z $OUT ]; then
+   OUT=`basename $1 .pdf`-flat.pdf
+fi
+
+if [ -d $OUT ]; then
+    OUT="$OUT/$IN"
+fi
+
+# echo $IN
+# echo $OUT
+
+pdf2ps $IN - | ps2pdf - $OUT
+

@@ -628,3 +628,6 @@ For details of keybindings, see `ido-find-file'."
 
 
 (load-library "ui")
+
+;; shell should run as a login shell (load rc)
+(setq explicit-bash-args '("--noediting" "-il"))
