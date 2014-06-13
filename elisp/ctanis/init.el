@@ -316,7 +316,7 @@
 (ido-mode 1)
 (add-to-list 'ido-ignore-files "`\\.DS_Store")
 (add-to-list 'ido-ignore-files "`\\.git")
-(ido-everywhere -1)
+(ido-everywhere t)
 (setq imenu-auto-rescan t)
 
 
