@@ -12,3 +12,4 @@ startup_message off
 termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
 defhstatus "screen ^E (^Et) | $USER@^EH"
 hardstatus off
+

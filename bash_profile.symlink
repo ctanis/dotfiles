@@ -26,9 +26,14 @@ if [ $WINDOW ]; then
 export SCREEN_WINDOW="(screen $WINDOW) "
 fi
 
+
+function parse_git_branch {
+        git branch --no-color 2> /dev/null | sed -e 's/* \(.*\)\s*/ \<\1\> /'
+}
+
 if [ $TERM != 'dumb' ]; then
 #export PS1='\h:\W\$ \[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
-export PS1='\[\e[1;10m\]\h:\W$ \[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
+export PS1='\[\e[1;10m\]\h:\W$ \[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
 else
 #mostly for emacs shell...
 export PS1='\h:\W\$ '
@@ -132,7 +137,6 @@ function check_repos ()
 if [ -f ~/.bash-local ]; then
 	source ~/.bash-local
 fi
-
 
 
 
