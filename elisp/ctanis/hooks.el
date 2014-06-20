@@ -176,6 +176,7 @@
 	     (define-key comint-mode-map
 	       "\M-n" 'comint-next-matching-input-from-input)
 	     (define-key comint-mode-map "\C-a" 'comint-bol)
+             (define-key comint-mode-map "\C-r" 'comint-history-isearch-backward)
 	     (define-key comint-mode-map "\M-o\C-?" 'comint-kill-input)
 	     (define-key comint-mode-map "\M-{" 'comint-previous-prompt)
 	     (define-key comint-mode-map "\M-}" 'comint-next-prompt)

@@ -19,7 +19,7 @@
 
 (setq org-alphabetical-lists t)
 (setq org-hide-emphasis-markers t)
-(setq org-use-speed-commands t)
+(setq org-use-speed-commands nil)
 
 ;; is this fixed??
 ;; ;; the resulting regexp from numlines (the last piece) >0 was breaking
