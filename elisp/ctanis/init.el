@@ -348,6 +348,7 @@ For details of keybindings, see `ido-find-file'."
 	  ".fls"
 	  ".brf"
 	  ".nlo"
+          ".class"
 	  ))
 
 
