@@ -180,6 +180,11 @@
 	       ))
   
   (setq last_colorfy 'ctanis_colorfy)
+
+  
+  (setq ansi-color-names-vector ["black" "red" "green4" "gold4" "blue" "magenta" "cyan4" "white"])
+  (setq ansi-color-map (ansi-color-make-color-map))
+
   )
 
 
