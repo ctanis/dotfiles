@@ -311,8 +311,18 @@
 (setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-filename-at-point nil)
 (setq ido-default-buffer-method 'selected-window)
-(setq ido-ignore-buffers '("\\` " "\\*"))
+;(setq ido-ignore-buffers '("\\` " "\\*"))
+
+(defun my-buffer-filter (name)
+  (not (or (string-match "\\*Man" name)
+           (with-current-buffer name (string= mode-name "Shell"))
+           (not (string-match "\\*" name)))))
+
+(setq ido-ignore-buffers '(my-buffer-filter))
+
+
 (setq ido-enable-regexp nil) ;; toggle it if you want it
+(setq ido-enable-prefix t) ;; toggle it if you want it
 (ido-mode 1)
 (add-to-list 'ido-ignore-files "`\\.DS_Store")
 (add-to-list 'ido-ignore-files "`\\.git")
