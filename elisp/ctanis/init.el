@@ -577,6 +577,21 @@ For details of keybindings, see `ido-find-file'."
     (setq eimp-enable-undo t)
 )
 
+(when (require-verbose 'js2-mode)
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (define-key js2-mode-map "\C-m" 'newline-and-indent)
+  )
+
+;; (when (require-verbose 'js3-mode)
+;;   (add-hook 'js3-mode-hook (lambda()
+;;                                         ; it's nice for commas to right themselves.
+;;                              (setq js3-auto-indent-p t)      
+;;                                         ; don't need to push tab before typing
+;;                              (setq js3-enter-indents-newline t)
+;;                              (setq js3-indent-on-enter-key t)
+;;                              )))
+
+
 
 (setq hippie-expand-try-functions-list
       '(
@@ -596,9 +611,12 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'autopair)
   (autopair-global-mode)
   (setq autopair-blink nil)
-  (setq autopair-skip-whitespace nil)
-  (setq autopair-pair-criteria 'always)
+  (setq autopair-pair-criteria 'help-balance)
   (setq autopair-skip-criteria 'help-balance)
+  (setq autopair-skip-whitespace t)
+  ; (setq autopair-pair-criteria 'help-balance)
+  ; (setq autopair-skip-criteria 'help-balance)
+
 
   (defun apair-try-expand-list (old)
     (let ((rval (try-expand-list old)))

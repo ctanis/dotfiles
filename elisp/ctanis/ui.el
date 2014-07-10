@@ -96,6 +96,11 @@
        
        ))
 
+  (eval-after-load 'js3-mode
+    '(progn
+       (set-face-foreground 'js3-external-variable-face "purple")
+       ))
+
 
   (eval-after-load 'flymake
     '(progn

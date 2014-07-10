@@ -108,7 +108,7 @@ function update_repos ()
 	d=`eval echo $i;`
 	if [ -d $d ]; then 
 	    echo $d;
-	   sh -c "cd $d && git pull";
+	   sh -c "cd $d && git fetch";
 	else
 	    echo "** $d not found **";
 	fi;
