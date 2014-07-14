@@ -47,7 +47,7 @@
 
   ;(set-face-background 'show-paren-match "wheat2")
   (set-face-background 'show-paren-match "green3")
-  (set-face-foreground 'show-paren-match "white")
+  (set-face-foreground 'show-paren-match "black")
   (set-face-background 'show-paren-mismatch "red")
 
   (set-face-foreground font-lock-doc-face "grey25")
