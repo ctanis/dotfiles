@@ -92,7 +92,6 @@ apps = {
 "shift-alt-y",
 "shift-alt-z",
 
-
 }}}
 
 -- Return true to swap cmd/alt, otherwise false.

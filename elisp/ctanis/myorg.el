@@ -39,6 +39,7 @@
 (setq org-html-postamble nil)
 (setq org-export-with-toc nil)
 (setq org-export-with-section-numbers nil)
+(setq org-export-with-archived-trees nil)
 
 ;(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
 ; original has frame="hside" which  puts bars at the top and bottom
@@ -154,3 +155,8 @@ most localized thing"
   (define-key org-mode-map ch 'org-wrap-with-self))
 
 (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field)
+
+
+(require 'ox-odt
+(require 'ox-beamer)
+(require 'ox-md)
