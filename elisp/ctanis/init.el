@@ -307,11 +307,21 @@
 ;; ------------ ido stuff
 (setq ido-enable-flex-matching t)
 ;(setq ido-everywhere t)
-(setq ido-auto-merge-delay-time 9999);; use M-s to search other work dirs
+(setq ido-auto-merge-delay-time .3)
+;(setq ido-auto-merge-delay-time 9999);; use M-s to search other work dirs
 (setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-filename-at-point nil)
 (setq ido-default-buffer-method 'selected-window)
 ;(setq ido-ignore-buffers '("\\` " "\\*"))
+
+
+(setq ido-enable-regexp t) ;; toggle it if you don't want it
+(setq ido-enable-prefix nil) ;; toggle it if you want it
+(ido-mode 1)
+(add-to-list 'ido-ignore-files "`\\.DS_Store")
+(add-to-list 'ido-ignore-files "`\\.git")
+(ido-everywhere -1)
+(setq imenu-auto-rescan t)
 
 (defun my-buffer-filter (name)
   (with-current-buffer name
@@ -322,14 +332,6 @@
 
 (setq ido-ignore-buffers '(my-buffer-filter))
 
-
-(setq ido-enable-regexp nil) ;; toggle it if you want it
-(setq ido-enable-prefix t) ;; toggle it if you want it
-(ido-mode 1)
-(add-to-list 'ido-ignore-files "`\\.DS_Store")
-(add-to-list 'ido-ignore-files "`\\.git")
-(ido-everywhere -1)
-(setq imenu-auto-rescan t)
 
 
 (defun ido-dired-other-window ()
