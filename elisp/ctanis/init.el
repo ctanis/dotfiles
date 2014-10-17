@@ -575,11 +575,6 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'markdown-mode)
   )
 
-(when (require-verbose 'eimp)
-    (autoload 'eimp-mode "eimp" "Emacs Image Manipulation Package." t)
-    (add-hook 'image-mode-hook 'eimp-mode)
-    (setq eimp-enable-undo t)
-)
 
 (when (require-verbose 'js2-mode)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
