@@ -546,6 +546,7 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'company)
   (setq company-idle-delay .3)
   (setq company-minimum-prefix-length 1)
+  (add-hook 'after-init-hook 'global-company-mode)
   (eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
                    ))
 
