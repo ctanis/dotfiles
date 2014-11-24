@@ -7,8 +7,6 @@
 (load-library "hooks")
 (load-library "modeline-cleanup")
 
-
-
 ; on startup...
 (setq inhibit-default-init t)			;; don't load system init
 (setq inhibit-startup-message t)
@@ -475,13 +473,12 @@ For details of keybindings, see `ido-find-file'."
 ;; from this point on, it may abort if packages are not set up in my standard way
 
 ;; expected packages
-;; 1. company
-;; 2. imenu-anywhere
-;; 3. num3-mode
-;; 4. org
+
+;; 1. imenu-anywhere
+;; 2. num3-mode
+;; 3. org
+;; 4. vlfi
 ;; 5. powerline
-;; 6. vlfi
-;; 7. yasnippet
 
 
 (defun require-verbose (feature)
@@ -519,19 +516,6 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\M-a" 'org-agenda)
 
 
-;; yasnippet
-(when (require 'yasnippet nil 'noerror)
-  (setq yas-prompt-functions (list 'yas-ido-prompt))
-  (setq yas-verbosity 1)
-;  (setq yas-snippet-dirs "~/.emacs.d/snippets")
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/stock-snippets"))
-  (load-library "yasnippet")
-
-  (setq yas-expand-only-for-last-commands '(self-insert-command org-self-insert-command))
-  (yas-global-mode 1)
-  (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
-  )
-
 ;; deft
 (when (require-verbose 'deft)
   (setq deft-directory "~/Dropbox/notes")
@@ -539,16 +523,6 @@ For details of keybindings, see `ido-find-file'."
   (setq deft-use-filename-as-title t)
   (define-key craig-prefix-map "\M-0" 'deft))
 
-
-;; company
-
-;(require 'company)
-(when (require-verbose 'company)
-  (setq company-idle-delay .3)
-  (setq company-minimum-prefix-length 1)
-  (add-hook 'after-init-hook 'global-company-mode)
-  (eval-after-load "company.el"  '(set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
-                   ))
 
 ;; browse-kill-ring
 (when (require-verbose 'browse-kill-ring)
@@ -673,3 +647,6 @@ For details of keybindings, see `ido-find-file'."
 
 ;; shell should run as a login shell (load rc)
 (setq explicit-bash-args '("--noediting" "-il"))
+
+;; do this last since it involve stuff from packages
+(load-library "my-completions")
