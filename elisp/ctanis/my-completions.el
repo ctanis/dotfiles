@@ -31,6 +31,14 @@
 ;; (add-hook 'org-mode-hook 'org-company-mode-setup)
 
 
+(setq company-backends '(company-semantic
+                         company-clang
+                         company-dabbrev-code
+                         company-keywords
+                         company-math-symbols-latex
+                         ))
+
+
 (setq company-tooltip-align-annotations t)
 (setq company-idle-delay .3)
 (setq company-minimum-prefix-length 1)
