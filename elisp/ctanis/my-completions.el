@@ -31,11 +31,23 @@
 ;; (add-hook 'org-mode-hook 'org-company-mode-setup)
 
 
+(defun company-modified-math-symbols-latex (command &optional arg &rest ignored)
+  "Company backend for LaTeX mathematical symbols."
+  (interactive (list 'interactive))
+  (case command
+    (interactive (company-begin-backend 'company-math-symbols-latex))
+    (prefix (company-math--prefix company-math-allow-latex-symbols-in-faces
+				    company-math-disallow-latex-symbols-in-faces))
+    (annotation (concat " " (get-text-property 0 :symbol arg)))
+    (candidates (all-completions arg company-math--symbols))))
+
+
 (setq company-backends '(company-semantic
                          company-clang
-                         company-dabbrev-code
-                         company-keywords
-                         company-math-symbols-latex
+                         (company-keywords company-dabbrev-code)
+                         company-files
+                         company-modified-math-symbols-latex
+                         company-dabbrev
                          ))
 
 
@@ -71,4 +83,7 @@
   (eclim-mode))
 
 (global-company-mode t)
-(global-set-key (read-kbd-macro "S-<tab>") 'company-complete)
+                                        ;(global-set-key (read-kbd-macro "s-<return>") 'company-complete)
+(global-set-key "\M-/" 'company-complete)
+
+
