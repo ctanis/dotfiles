@@ -18,7 +18,8 @@ TMPOUT=`mktemp -u -t codepdf.XXX`
 
 # -C is line-numbers=5
 #a2ps -1 -B -M letter -R -C -L75 $INPUTFILE -o $TMPOUT
-a2ps -1 -B -M letter -R -L75 "$@" -o $TMPOUT
+#a2ps -1 -B -M letter -R -L75 "$@" -o $TMPOUT
+a2ps -1 -B --header=`basename $PDFOUTPUT .pdf` -M letter -R -L75 "$@" -o $TMPOUT
 ps2pdf  $TMPOUT $PDFOUTPUT
 #set CODEPDFQUIET to inhibit open
 [ -z "$CODEPDFQUIET" ] && open $PDFOUTPUT

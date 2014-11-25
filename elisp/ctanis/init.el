@@ -148,13 +148,14 @@
 (define-key craig-prefix-map "[" 'wrap-region-with-char)
 (define-key craig-prefix-map "\M-u" 'calc-dispatch)
 
-(global-set-key "\M-?" 'hippie-expand)
+;(global-set-key "\M-?" 'hippie-expand)
+;(global-set-key "\M-/" 'hippie-expand)
 
 ; some redundant keystrokes to bridge gap between linux and mac
 (global-set-key "\M-`" 'other-frame)
 
 ; this one should be \C-M-/
-(global-set-key (quote [201326639]) (quote hippie-expand))
+;(global-set-key (quote [201326639]) (quote hippie-expand))
 
 
 (global-set-key "\M-/" 'dabbrev-expand)
@@ -583,6 +584,7 @@ For details of keybindings, see `ido-find-file'."
 (setq hippie-expand-try-functions-list
       '(
 	;yas/hippie-try-expand
+        try-expand-dabbrev
 	try-complete-file-name-partially
 	try-complete-file-name
 	try-expand-list
@@ -617,8 +619,15 @@ For details of keybindings, see `ido-find-file'."
           (backward-delete-char 1))
       rval))
 
-  (setq hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name apair-try-expand-list try-expand-line apair-try-expand-list-all-buffers try-expand-line-all-buffers try-expand-dabbrev-from-kill))
-  )
+  (setq hippie-expand-try-functions-list
+        '(try-expand-dabbrev
+          try-complete-file-name-partially
+          try-complete-file-name
+          apair-try-expand-list
+          try-expand-line
+          apair-try-expand-list-all-buffers
+          try-expand-line-all-buffers
+          try-expand-dabbrev-from-kill)))
 
 (when (require-verbose 'num3-mode)
   (set-face-attribute 'num3-face-even nil :underline nil :weight 'normal :background "wheat2")

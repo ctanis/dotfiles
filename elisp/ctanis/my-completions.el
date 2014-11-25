@@ -30,6 +30,7 @@
 ;; (add-hook 'latex-mode-hook 'latex-company-mode-setup)
 ;; (add-hook 'org-mode-hook 'org-company-mode-setup)
 
+(require-verbose 'company-math)
 
 (defun company-modified-math-symbols-latex (command &optional arg &rest ignored)
   "Company backend for LaTeX mathematical symbols."
@@ -42,13 +43,15 @@
     (candidates (all-completions arg company-math--symbols))))
 
 
+
+
 (setq company-backends '(company-semantic
                          company-clang
                          (company-keywords company-dabbrev-code)
                          company-files
                          company-modified-math-symbols-latex
-                         company-dabbrev
-                         ))
+;                         company-dabbrev
+                        ))
 
 
 (setq company-tooltip-align-annotations t)
@@ -84,6 +87,5 @@
 
 (global-company-mode t)
                                         ;(global-set-key (read-kbd-macro "s-<return>") 'company-complete)
-(global-set-key "\M-/" 'company-complete)
-
-
+(global-set-key "\M-?" 'company-complete)
+(global-set-key "\M-/" 'hippie-expand)
