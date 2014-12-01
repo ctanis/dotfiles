@@ -180,3 +180,7 @@
      (add-hook 'org-mode-hook (lambda ()
                                 (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
      ))
+
+; fix mac colors for powerline
+(setq ns-use-srgb-colorspace nil)
+

@@ -89,3 +89,8 @@
                                         ;(global-set-key (read-kbd-macro "s-<return>") 'company-complete)
 (global-set-key "\M-?" 'company-complete)
 (global-set-key "\M-/" 'hippie-expand)
+
+
+(semantic-mode 1)
+(global-semantic-stickyfunc-mode 1)
+(setq global-semantic-mru-bookmark-mode 1)
