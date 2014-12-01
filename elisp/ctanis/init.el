@@ -634,6 +634,12 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
+(when (require-verbose 'exec-path-from-shell)
+     (exec-path-from-shell-initialize)
+)
+
+
+
 
 ;; (defun ddg-search (str)
 ;;   (interactive "MSearch term: ")
