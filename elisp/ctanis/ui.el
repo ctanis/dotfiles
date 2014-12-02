@@ -17,6 +17,8 @@
   (set-foreground-color "black")
   (set-background-color "wheat3")
 
+  (set-face-background 'header-line "wheat2")
+
   ;(set-cursor-color "wheat4")
   (set-cursor-color "black")
   ;(set-default 'cursor-type 'hbar)
