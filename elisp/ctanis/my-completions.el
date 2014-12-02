@@ -91,6 +91,28 @@
 (global-set-key "\M-/" 'hippie-expand)
 
 
+;; semantic
+
+
+
+;; (add-hook 'mode-hook
+;;           (lambda ()
+;;             (setq imenu-create-index-function 'semantic-create-imenu-index)
+;;             ))
+
+
+(add-hook 'java-mode-hook
+          (lambda ()
+            (setq imenu-create-index-function 'semantic-create-imenu-index)
+            ))
+(add-hook 'c-mode-hook
+          (lambda ()
+            (setq imenu-create-index-function 'semantic-create-imenu-index)
+            ))
+
+
+
+
 (semantic-mode 1)
 (global-semantic-stickyfunc-mode 1)
 (setq global-semantic-mru-bookmark-mode 1)
