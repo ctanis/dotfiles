@@ -95,6 +95,15 @@
 ;; 	       (forward-char))))))
 
 
+(defvar ctanis-dflt-c-compiler "gcc -Wall ")
+(defvar ctanis-dflt-cpp-compiler "g++ -Wall ")
+
+
+(defun ctanis-choose-compiler (mode)
+  (cond
+   ((eq mode 'c-mode) ctanis-dflt-c-compiler)
+   ((t) ctanis-dflt-cpp-compiler)))
+
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
 	     (local-set-key "\C-c\C-c" 'compile)
@@ -107,6 +116,13 @@
 	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
 	     (local-set-key "\C-\M-e" 'up-list)
 	     (local-set-key "\M-o\M-e" 'c-end-of-defun)
+
+             
+             (if (not (locate-dominating-file default-directory "Makefile"))
+                 (if buffer-file-name
+                     (set (make-local-variable 'compile-command)
+                          (concat (ctanis-choose-compiler major-mode)
+                                  (file-name-nondirectory buffer-file-name)))))
 
 	     ;; so autopair works with electric braces and auto newline
 	     ;; (make-variable-buffer-local 'autopair-pair-criteria)
