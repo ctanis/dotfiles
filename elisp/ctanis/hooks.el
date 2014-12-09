@@ -102,7 +102,7 @@
 (defun ctanis-choose-compiler (mode)
   (cond
    ((eq mode 'c-mode) ctanis-dflt-c-compiler)
-   ((t) ctanis-dflt-cpp-compiler)))
+   (t ctanis-dflt-cpp-compiler)))
 
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
