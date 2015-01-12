@@ -118,4 +118,6 @@
 ;(setq global-semantic-mru-bookmark-mode 1)
 (global-semantic-mru-bookmark-mode 1)
 (define-key craig-prefix-map "\M-." 'semantic-mrub-switch-tags)
-(global-set-key "\M-." 'semantic-complete-local)
+(global-set-key "\M-." 'semantic-complete-jump)
+(set-default 'semantic-imenu-bucketize-file nil)
+
