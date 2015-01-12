@@ -115,5 +115,7 @@
 
 (semantic-mode 1)
 (global-semantic-stickyfunc-mode 1)
-(setq global-semantic-mru-bookmark-mode 1)
-(global-set-key "\M-." 'semantic-complete-jump)
+;(setq global-semantic-mru-bookmark-mode 1)
+(global-semantic-mru-bookmark-mode 1)
+(define-key craig-prefix-map "\M-." 'semantic-mrub-switch-tags)
+(global-set-key "\M-." 'semantic-complete-local)
