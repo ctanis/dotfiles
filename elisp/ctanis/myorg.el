@@ -153,6 +153,7 @@ most localized thing"
 ;; wrap-with-self defined in functions.el
 (dolist (ch (mapcar 'car org-emphasis-alist))
   (define-key org-mode-map ch 'org-wrap-with-self))
+(define-key org-mode-map "$" 'org-wrap-with-self)
 
 (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field)
 
