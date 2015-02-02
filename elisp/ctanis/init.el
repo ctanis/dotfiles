@@ -9,7 +9,7 @@
 
 ; on startup...
 (setq inhibit-default-init t)			;; don't load system init
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message t)               
 (setq initial-scratch-message nil)
 
 ; enable functionality
@@ -20,9 +20,11 @@
 (put 'set-goal-column 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'scroll-left 'disabled nil)
-
-(setq dired-deletion-confirmer 'y-or-n-p)
 (setq enable-local-eval 'query)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq dired-deletion-confirmer 'y-or-n-p)
+
 (column-number-mode t)
 (line-number-mode t)
 (global-font-lock-mode t)
@@ -37,7 +39,7 @@
 
 (setq dabbrev-case-fold-search nil) ;; expansions always respect case
 
-
+;; be careful at the end of the file
 (setq next-line-add-newlines nil)
 (setq require-final-newline nil)
 
@@ -47,55 +49,18 @@
 (setq show-help-function 'no-help)
 
 
-
-;; set up the mode-line
-; put (purecopy '(host-name-mode hostname)) where in the modeline
-; you want the information
-; (setq-default mode-line-format
-;   (list (purecopy "")
-;    'mode-line-modified
-;    'mode-line-buffer-identification
-;    (purecopy "   ")
-;    'global-mode-string
-;    (purecopy "   %[(")
-;    'mode-name 'mode-line-process 'minor-mode-alist
-;    (purecopy "%n")
-;    (purecopy ")%]--")
-;    (purecopy '(host-name-mode hostname))
-;    (purecopy '(host-name-mode "--"))
-;    (purecopy '(line-number-mode "L%l--"))
-;    (purecopy '(column-number-mode "C%c--"))
-;    (purecopy '(-3 . "%p--"))
-;    (purecopy "-%-")))
-; 
-
-
-
-
 ;; KEYBINDINGS
 (global-set-key "\C-x\C-c" 'verify-exit)
 
 (define-prefix-command 'craig-prefix 'craig-prefix-map)
+
 (define-key global-map "\M-o" 'craig-prefix)
-;(global-set-key "\M-o" 'craig-prefix)
-;(global-set-key "\M-s" 'goto-line)
-(global-set-key "\M-,"  'ispell-word)
-(global-set-key "\M-j" 'backward-jump-to-char)
-(global-set-key "\C-xz" 'calendar)
-;(global-set-key "\C-x!" 'shell)
-(global-set-key "\C-x!" 'shell-current-directory)
-(global-set-key "\C-q" 'base-quoted-insert)
-;(global-set-key "\C-h\C-m" 'man)
-(global-set-key (read-kbd-macro "M-C->") 'tags-loop-continue)
 (define-key craig-prefix-map " " 'just-no-space)
-;(define-key craig-prefix-map "." 'find-tag-other-window)
-;(define-key craig-prefix-map "1" 'make-generic-header)
 (define-key craig-prefix-map "2" 'create-file-mode)
 (define-key craig-prefix-map "3" 'executable-set-magic)
 (define-key craig-prefix-map "4" 'make-perl-script)
 (define-key craig-prefix-map "\C-?" 'kill-to-beginning-of-line)
 (define-key craig-prefix-map "\C-a" 'alternate-buffer-in-other-window)
-;(define-key craig-prefix-map "\C-d" 'list-and-display-directory)
 (define-key craig-prefix-map "\C-o" 'better-display-buffer)
 (define-key craig-prefix-map "\C-w" 'delete-region)
 (define-key craig-prefix-map "\C-x-" 'shrink-other-window-if-larger-than-buffer)
@@ -104,23 +69,18 @@
 (define-key craig-prefix-map "\M-b" 'sink-buffer)
 (define-key craig-prefix-map "\M-c" 'make-tmp-code)
 (define-key craig-prefix-map "\M-d" 'selectively-delete-lines)
-;(define-key craig-prefix-map "\M-e" 'end-of-defun)
 (define-key craig-prefix-map "\M-e" 'end-of-defun)
-(global-set-key "\C-\M-e" 'up-list)
-;(define-key craig-prefix-map "\M-f" 'find-dired)
 (define-key craig-prefix-map "\M-h" 'hl-line-mode)
-;(define-key craig-prefix-map "\M-i" 'imenu)
 (define-key craig-prefix-map "\M-j" 'forward-jump-to-char)
 (define-key craig-prefix-map "\M-k" 'kill-current-buffer)
 (define-key craig-prefix-map "\M-m" 'make-directory)
 (define-key craig-prefix-map "\M-o" 'other-window)
-;(define-key craig-prefix-map "\M-r" 'rename-buffer)
 (define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
-(define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
+;(define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
 (define-key craig-prefix-map "a" 'alternate-buffer)
 (define-key craig-prefix-map "b" 'switch-to-buffer-other-window)
-(define-key craig-prefix-map "c" 'center-line)
-;(define-key craig-prefix-map "d" 'dired-other-window)
+;(define-key craig-prefix-map "c" 'center-line)
+(define-key craig-prefix-map "d" 'dired-other-window)
 (define-key craig-prefix-map "f" 'find-file-other-window)
 (define-key craig-prefix-map "h" 'split-window-vertically)
 (define-key craig-prefix-map "i" 'delete-window)
@@ -133,13 +93,6 @@
 (define-key craig-prefix-map "t" 'insert-time-stamp)
 (define-key craig-prefix-map "v" 'split-window-horizontally)
 (define-key craig-prefix-map "w" 'write-region)
-;(define-key craig-prefix-map "\C-f" 'find-and-display-file)
-;(define-key craig-prefix-map "\C-g" 'find-grep-dired)
-;(define-key craig-prefix-map "\C-xh" 'open-file-in-hidden-buffer)
-;(define-key craig-prefix-map "\M-." 'online-dictionary-lookup)
-;(define-key craig-prefix-map "n" 'send-region-to-netscape)
-;(define-key craig-prefix-map "r" 'undo-undo-window-config-change)
-;(define-key craig-prefix-map "u" 'undo-window-config-change)
 (define-key craig-prefix-map "u" 'revert-buffer)
 (define-key craig-prefix-map (read-kbd-macro "<tab>") 'hs-toggle-hiding)
 (define-key craig-prefix-map "\M-x" 'compile-again)
@@ -148,17 +101,20 @@
 (define-key craig-prefix-map "[" 'wrap-region-with-char)
 (define-key craig-prefix-map "\M-u" 'calc-dispatch)
 
-;(global-set-key "\M-?" 'hippie-expand)
-;(global-set-key "\M-/" 'hippie-expand)
+
+
+(global-set-key "\M-j" 'backward-jump-to-char)
+(global-set-key "\M-,"  'ispell-word)
+
+(global-set-key "\C-xz" 'calendar)
+(global-set-key "\C-x!" 'shell-current-directory)
+(global-set-key "\C-q" 'base-quoted-insert)
+
+(global-set-key "\C-\M-e" 'up-list)
 
 ; some redundant keystrokes to bridge gap between linux and mac
 (global-set-key "\M-`" 'other-frame)
 
-; this one should be \C-M-/
-;(global-set-key (quote [201326639]) (quote hippie-expand))
-
-
-(global-set-key "\M-/" 'dabbrev-expand)
 (define-key ctl-x-map ";" 'comment-region)
 
 ;for jumping around in a file quicker
@@ -171,12 +127,7 @@
 (global-set-key "\M-\C-y" 'repeat-complex-command)
 (global-set-key "\M-\C-g" 'grep)
 
-(setq visible-bell t)
-
-;(setq kill-whole-line t) ;; ctrl-k also grabs newline at end
-
-; dired - guess destination when 2 dired windows are visible
-(setq dired-dwim-target t)
+(global-set-key "\C-l" 'recenter)
 
 
 ;; UNSET
@@ -195,12 +146,15 @@
 (global-unset-key [prior])
 (global-unset-key [next])
 
-
-
 ;remove an alternate keybinding for undo
 ;(global-unset-key "\C-/")
 (global-unset-key (quote [67108911]))
 
+; visible bell
+(setq visible-bell t)
+
+; dired - guess destination when 2 dired windows are visible
+(setq dired-dwim-target t)
 
 ; don't highlight region
 (transient-mark-mode 0)
@@ -208,10 +162,8 @@
 ; c-spc after C-u C-spc pops
 (setq set-mark-command-repeat-pop t)
 
-
 ;next/previous line should respect wrapped lines!!
 (setq line-move-visual nil)
-
 
 ; stick all ~ files in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -229,7 +181,6 @@
 
       (define-key minibuffer-local-must-match-filename-map (kbd "SPC")
 	'minibuffer-complete-word)))
-
 
 
 (if window-system
@@ -262,8 +213,6 @@
 ;;   (dired d))
 ;; (global-set-key "\C-xd" 'my-dired)
 
-
-(global-set-key "\C-l" 'recenter)
 
 
 
@@ -367,7 +316,7 @@ For details of keybindings, see `ido-find-file'."
 
 
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+
 (show-paren-mode 1)
 
 (defadvice show-paren-function

@@ -45,7 +45,7 @@
 
 
 
-(setq company-backends '(company-semantic
+(setq company-backends '(;company-semantic
                          company-clang
                          (company-keywords company-dabbrev-code)
                          company-files
@@ -87,6 +87,7 @@
 
 (global-company-mode t)
                                         ;(global-set-key (read-kbd-macro "s-<return>") 'company-complete)
+(global-set-key (read-kbd-macro "M-C-/") 'company-semantic)
 (global-set-key "\M-?" 'company-complete)
 (global-set-key "\M-/" 'hippie-expand)
 
