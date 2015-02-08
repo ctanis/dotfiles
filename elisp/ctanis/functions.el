@@ -621,3 +621,8 @@ initial entry is Mode: with the current buffer mode inserted."
 (defun ca-with-comment (s)
   (insert comment-start s comment-end)
   )
+
+(defun switch-to-previous-window ()
+      (interactive)
+      (switch-to-buffer-other-window (other-buffer (current-buffer) 1)))
+
