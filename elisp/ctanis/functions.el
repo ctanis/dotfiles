@@ -622,7 +622,14 @@ initial entry is Mode: with the current buffer mode inserted."
   (insert comment-start s comment-end)
   )
 
+;; (defun switch-to-previous-window ()
+;;       (interactive)
+;;       (switch-to-buffer-other-window (other-buffer (current-buffer) 1)))
+
+
+
+(defvar **other-window-mult** -1)
 (defun switch-to-previous-window ()
       (interactive)
-      (switch-to-buffer-other-window (other-buffer (current-buffer) 1)))
-
+      (setq other-window-mult (* other-window-mult -1))
+      (other-window other-window-mult))
