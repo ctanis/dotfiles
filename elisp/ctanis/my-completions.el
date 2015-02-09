@@ -102,19 +102,38 @@
 ;;             ))
 
 
-(add-hook 'java-mode-hook
-          (lambda ()
-            (setq imenu-create-index-function 'semantic-create-imenu-index)
-            ))
-(add-hook 'c-mode-hook
-          (lambda ()
-            (setq imenu-create-index-function 'semantic-create-imenu-index)
-            ))
+;; (defvar my-semantic-create-imenu-index 'semantic-create-imenu-index)
+
+;; (defun my-imenu-function (&optional stream)
+;;   (funcall my-semantic-create-imenu-index stream)
+;;   )
+
+;; (add-hook 'java-mode-hook
+;;           (lambda ()
+;;             (setq imenu-create-index-function 'my-imenu-function)
+;;             ))
+;; (add-hook 'c-mode-hook
+;;           (lambda ()
+;;             (setq imenu-create-index-function 'my-imenu-function)
+;;             ))
 
 
+;; (defun my-semantic-enable()
+;;   (interactive)
+;;   (semantic-mode 1)
+;;   (setq my-semantic-create-imenu-index 'semantic-create-imenu-index)
+;;   )
+
+;; (defun my-semantic-disable()
+;;   (interactive)
+;;   (semantic-mode -1)
+;;   (setq my-semantic-create-imenu-index 'imenu-default-create-index-function)
+;;   )
 
 
-(semantic-mode 1)
+;; (my-semantic-enable)
+
+
 (global-semantic-stickyfunc-mode 1)
 ;(setq global-semantic-mru-bookmark-mode 1)
 (global-semantic-mru-bookmark-mode 1)
