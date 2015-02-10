@@ -51,7 +51,7 @@
                          company-semantic
                          company-files
                          company-modified-math-symbols-latex
-                         company-dabbrev
+                         ; company-dabbrev
                          ))
 
 
