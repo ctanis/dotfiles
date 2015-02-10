@@ -45,13 +45,14 @@
 
 
 
-(setq company-backends '(company-semantic
+(setq company-backends '(
                          ; company-clang
                          (company-keywords company-dabbrev-code)
+                         company-semantic
                          company-files
                          company-modified-math-symbols-latex
-;                         company-dabbrev
-                        ))
+                         company-dabbrev
+                         ))
 
 
 (setq company-tooltip-align-annotations t)
@@ -134,6 +135,7 @@
 ;; (my-semantic-enable)
 
 
+(semantic-mode 1)
 (global-semantic-stickyfunc-mode 1)
 ;(setq global-semantic-mru-bookmark-mode 1)
 (global-semantic-mru-bookmark-mode 1)
