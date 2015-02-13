@@ -34,7 +34,7 @@
 (setq org-cycle-global-at-bob t)
 (setq org-goto-interface 'outline-path-completion)
 
-;(setq org-export-with-sub-superscripts nil)
+(setq org-export-with-sub-superscripts nil) ;; flip with ^:t
 ; don't want to see TOC and postamble in my exported html
 (setq org-html-postamble nil)
 (setq org-export-with-toc nil)
