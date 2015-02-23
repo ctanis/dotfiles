@@ -40,10 +40,11 @@
 (setq org-export-with-toc nil)
 (setq org-export-with-section-numbers nil)
 (setq org-export-with-archived-trees nil)
+(setq org-export-with-smart-quotes t) ;; flip with ':nil
 
 ;(setq org-export-html-style "<style type=\"text/css\">#table-of-contents{display:none} #postamble{display:none}</style>")
 ; original has frame="hside" which  puts bars at the top and bottom
-(setq org-export-html-table-tag  "<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"void\">")
+;(setq org-export-html-table-tag  "<table border=\"2\" cellspacing=\"0\" cellpadding=\"6\" rules=\"groups\" frame=\"void\">")
 
 ;; constants -- org-table uses these
 (autoload 'constants-insert "constants" "Insert constants into source." t)
