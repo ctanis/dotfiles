@@ -487,6 +487,7 @@ For details of keybindings, see `ido-find-file'."
   )
 
 ;; magit
+(setq magit-last-seen-setup-instructions "1.4.0")
 (when (require-verbose 'magit)
   (defalias 'magit 'magit-status )
   ; hide mode-line crap
