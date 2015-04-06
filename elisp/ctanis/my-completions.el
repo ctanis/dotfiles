@@ -45,19 +45,19 @@
 
 
 
-(setq company-backends '(
-                         ; company-clang
-                         company-semantic
-                         (company-keywords company-dabbrev-code)
-                         company-files
-                         company-modified-math-symbols-latex
-                         ; company-dabbrev
-                         ))
+;; (setq company-backends '(
+;;                          ; company-clang
+;;                          company-semantic
+;;                          (company-keywords company-dabbrev-code)
+;;                          company-files
+;;                          company-modified-math-symbols-latex
+;;                          ; company-dabbrev
+;;                          ))
 
 
 (setq company-tooltip-align-annotations t)
-(setq company-idle-delay .3)
-(setq company-minimum-prefix-length 1)
+;; (setq company-idle-delay .3)
+;; (setq company-minimum-prefix-length 1)
 
 (when (require-verbose 'company-yasnippet)
   (define-key craig-prefix-map "\M-y" 'company-yasnippet))
