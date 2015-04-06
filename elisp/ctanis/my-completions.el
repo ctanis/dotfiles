@@ -47,8 +47,8 @@
 
 (setq company-backends '(
                          ; company-clang
-                         (company-keywords company-dabbrev-code)
                          company-semantic
+                         (company-keywords company-dabbrev-code)
                          company-files
                          company-modified-math-symbols-latex
                          ; company-dabbrev
