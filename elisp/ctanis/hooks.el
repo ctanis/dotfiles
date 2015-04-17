@@ -515,3 +515,6 @@
            (string-match qualifier it))))
 
 
+(add-hook 'js2-mode-hook
+          (lambda()
+            (define-key js2-mode-map "\M-j" 'backward-jump-to-char)))

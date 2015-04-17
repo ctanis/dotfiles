@@ -54,6 +54,13 @@
 ;;                          ; company-dabbrev
 ;;                          ))
 
+(setq company-backends '(
+                         (company-semantic company-css) ;; 
+                         (company-cmake company-xcode company-clang)
+                         (company-keywords company-dabbrev-code)
+                         (company-files company-dabbrev)
+                         ))
+
 
 (setq company-tooltip-align-annotations t)
 ;; (setq company-idle-delay .3)
