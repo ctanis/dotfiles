@@ -58,7 +58,7 @@
                          (company-semantic company-css) ;; 
                          (company-cmake company-xcode company-clang)
                          (company-keywords company-dabbrev-code)
-                         (company-files company-dabbrev)
+                         company-files
                          ))
 
 
