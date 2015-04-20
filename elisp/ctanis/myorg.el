@@ -158,6 +158,8 @@ most localized thing"
 
 (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field)
 
+(setq org-latex-pdf-process '("latexmk -pdf -f  %f"))
+
 
 ;(require 'ox-odt)
 ;(require 'ox-beamer)
