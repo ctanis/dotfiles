@@ -502,7 +502,7 @@
                      "ant -s build.xml -e ")
               (if buffer-file-name
                   (set (make-local-variable 'compile-command)
-                       (concat "javac " (file-name-nondirectory buffer-file-name)))))))
+                       (concat "javac -Xlint " (file-name-nondirectory buffer-file-name)))))))
 
 ;; ibuffer -- group dired buffers with filenames
 (eval-after-load "ibuf-ext"
