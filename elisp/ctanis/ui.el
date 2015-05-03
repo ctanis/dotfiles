@@ -98,9 +98,9 @@
        
        ))
 
-  (eval-after-load 'js3-mode
+  (eval-after-load 'js2-mode
     '(progn
-       (set-face-foreground 'js3-external-variable-face "purple")
+       (set-face-foreground 'js2-external-variable "purple")
        ))
 
 
