@@ -340,6 +340,20 @@
              (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
              ))
 
+
+;; redefine local autopair emulation
+;; list to ignore autopair-newline, when in org-mode
+(defadvice autopair--set-emulation-bindings (after autopair-org-no-return activate)
+  "remove autopair-newline in org-mode"
+  (if (eq major-mode 'org-mode)
+      (setq autopair--emulation-alist
+            (list (delq (assoc '13 (car autopair--emulation-alist))
+                        (car autopair--emulation-alist)
+                        )))
+    )
+  )
+
+
 ;; yasnippet and org-mode
 (defun yas/org-very-safe-expand ()
   (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
