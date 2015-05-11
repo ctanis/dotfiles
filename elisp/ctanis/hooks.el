@@ -531,4 +531,6 @@
 
 (add-hook 'js2-mode-hook
           (lambda()
+            (make-local-variable 'autopair-skip-criteria)
+            (setq autopair-skip-criteria 'always)
             (define-key js2-mode-map "\M-j" 'backward-jump-to-char)))
