@@ -590,7 +590,8 @@ For details of keybindings, see `ido-find-file'."
 )
 
 (when (require-verbose 'unfill)
-;  (define-key craig-prefix-map "\M-q" 'toggle-fill-unfill))
+                                        ;  (define-key craig-prefix-map "\M-q" 'toggle-fill-unfill)
+  )
 
 
 
