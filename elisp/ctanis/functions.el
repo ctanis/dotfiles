@@ -633,3 +633,20 @@ initial entry is Mode: with the current buffer mode inserted."
       (interactive)
       (setq **other-window-mult** (* **other-window-mult** -1))
       (other-window **other-window-mult**))
+
+
+(defun copy-region-for-paste (prefix start end)
+  "save the region without formatting.  with prefix arg, also delete blank lines"
+  (interactive "P\nr")
+  (let ((orig (current-buffer)))
+    (with-temp-buffer
+      (insert-buffer-substring orig start end)
+      (let ((fill-column most-positive-fixnum))
+        (fill-region (point-min) (point-max)))
+      (indent-rigidly (point-min) (point-max) -10000000)
+      (if prefix
+          (delete-non-matching-lines "." (point-min) (point-max)))
+      
+      (copy-region-as-kill (point-min) (point-max))
+      (message "processed region is now in clipboard")
+      )))

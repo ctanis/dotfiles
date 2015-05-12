@@ -101,7 +101,7 @@
 (define-key craig-prefix-map "-" 'insert-separator)
 (define-key craig-prefix-map "[" 'wrap-region-with-char)
 (define-key craig-prefix-map "\M-u" 'calc-dispatch)
-
+(define-key craig-prefix-map "\M-r" 'copy-region-for-paste)
 
 
 (global-set-key "\M-j" 'backward-jump-to-char)
@@ -589,6 +589,8 @@ For details of keybindings, see `ido-find-file'."
      (exec-path-from-shell-initialize)
 )
 
+(when (require-verbose 'unfill)
+;  (define-key craig-prefix-map "\M-q" 'toggle-fill-unfill))
 
 
 
