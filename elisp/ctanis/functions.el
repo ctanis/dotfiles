@@ -520,7 +520,8 @@ a prefix arg, run it in another window"
   (let* ((str (file-name-sans-extension fname))
 	 (dir (concat tmp-code-dir "/" str))
 	 (file (concat dir "/" fname)))
-    (mkdir dir)
+    (ignore-errors
+      (mkdir dir))
     (find-file file)))
 
 
