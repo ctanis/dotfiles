@@ -46,3 +46,4 @@ xcuserdata
 #other dev
 Make.depend
 *.a
+a.out
