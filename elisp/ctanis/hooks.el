@@ -533,4 +533,6 @@
           (lambda()
             (make-local-variable 'autopair-skip-criteria)
             (setq autopair-skip-criteria 'always)
-            (define-key js2-mode-map "\M-j" 'backward-jump-to-char)))
+            (define-key js2-mode-map "\M-j" 'backward-jump-to-char)
+            (electric-layout-mode 1)
+            ))
