@@ -651,3 +651,9 @@ initial entry is Mode: with the current buffer mode inserted."
       (copy-region-as-kill (point-min) (point-max))
       (message "processed region is now in clipboard")
       )))
+
+
+(defun save-file-local-variable (v)
+  "put current value of variable v in local variable list at end of buffer"
+  (interactive "vVariable: ")
+  (add-file-local-variable v (symbol-value v)))
