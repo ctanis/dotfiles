@@ -267,8 +267,9 @@
 (setq ido-enable-regexp nil) ;; toggle it if you want it
 (setq ido-enable-prefix nil) ;; toggle it if you want it
 (ido-mode 1)
-(add-to-list 'ido-ignore-files "`\\.DS_Store")
-(add-to-list 'ido-ignore-files "`\\.git")
+;; (add-to-list 'ido-ignore-files "`\\.DS_Store")
+;; (add-to-list 'ido-ignore-files "`\\.git")
+(add-to-list 'ido-ignore-files "`\\.") ;; no dotfiles
 (ido-everywhere -1)
 (setq imenu-auto-rescan t)
 
