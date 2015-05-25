@@ -51,8 +51,8 @@
 			 (class-open . 'before)
 			 (defun-open . 'before)
 			 (block-open . 'before)
-			 (brace-list-open . 'before)
-			 (brace-entry-open . 'before)
+			 (brace-list-open)
+			 (brace-entry-open)
 			 (statement-case-open . 'before)
 			 (extern-lang-open . 'before)
 			 (namespace-open . 'before)
@@ -108,7 +108,7 @@
 	  '(lambda ()
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
-	     (c-toggle-auto-newline 1)
+	     (c-toggle-auto-newline -1)
 	     (c-toggle-hungry-state 1)
 	     (abbrev-mode -1)
 	     (cwarn-mode 1)
@@ -130,6 +130,10 @@
 	     ;; (setq autopair-handle-action-fns
 	     ;; 	   (list 'autopair-default-handle-action
 	     ;; 		 'autopair-cleanup-closing-brace))
+
+             (local-set-key "}" 'self-insert-command) ;; electric-brace
+                                                      ;; doesn't play well
+                                                      ;; with autopair
 	     ))
 
 
