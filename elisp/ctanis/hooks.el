@@ -109,7 +109,7 @@
 	     (local-set-key "\C-c\C-c" 'compile)
 	     (local-set-key "\C-m" 'newline-and-indent)
 	     (c-toggle-auto-newline 1)
-	     (c-toggle-hungry-state 1)
+	     (c-toggle-hungry-state -1)
 	     (abbrev-mode -1)
 	     (cwarn-mode 1)
 					; (local-set-key "}" 'self-insert-command)
