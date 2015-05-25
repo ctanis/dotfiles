@@ -2,7 +2,7 @@
 
 (defun better-display-buffer(arg)
   "a better display buffer"
-  (interactive "B")
+  (interactive (list (ido-read-buffer "Buffer: ")))
   (let ((b (current-buffer)))
     (switch-to-buffer-other-window arg)
     (switch-to-buffer-other-window b)))
@@ -202,13 +202,13 @@ when called with a prefix argument."
    (list (read-buffer "Switch to buffer other window: " (other-buffer) 
                       (null current-prefix-arg)))))
 
-(defadvice better-display-buffer 
-  (before existing-buffers-only activate)
-  "When called interactively display existing buffers only, unless 
-when called with a prefix argument."
-  (interactive 
-   (list (read-buffer "Display buffer: " (other-buffer) 
-                      (null current-prefix-arg)))))
+;; (defadvice better-display-buffer 
+;;   (before existing-buffers-only activate)
+;;   "When called interactively display existing buffers only, unless 
+;; when called with a prefix argument."
+;;   (interactive 
+;;    (list (read-buffer "Display buffer: " (other-buffer) 
+;;                       (null current-prefix-arg)))))
 
 (defadvice display-buffer (around  display-buffer-return-to-sender activate)
   "displaying a buffer in another frame should not change the frame we are currently in!"
