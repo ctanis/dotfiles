@@ -157,7 +157,7 @@ most localized thing"
 (define-key org-mode-map "$" 'org-wrap-with-self)
 
 (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field)
-
+(define-key org-mode-map "\C-m" 'org-return-indent)
 
 ;(require 'ox-odt)
 ;(require 'ox-beamer)
