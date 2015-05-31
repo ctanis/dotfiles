@@ -539,10 +539,10 @@ For details of keybindings, see `ido-find-file'."
         try-expand-dabbrev
 	try-complete-file-name-partially
 	try-complete-file-name
-	try-expand-list
 	try-expand-line
-	try-expand-list-all-buffers
+        try-expand-list
 	try-expand-line-all-buffers
+        try-expand-list-all-buffers
 	try-expand-dabbrev-from-kill
 	;try-complete-lisp-symbol
 	))

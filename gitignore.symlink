@@ -47,3 +47,4 @@ xcuserdata
 Make.depend
 *.a
 a.out
+node_modules
