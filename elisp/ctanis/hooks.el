@@ -281,7 +281,12 @@
 
 (add-hook 'sgml-mode-hook
 	  '(lambda ()
-	     (auto-fill-mode nil)))
+	     (auto-fill-mode -1)))
+
+(add-hook 'html-mode-hook
+          '(lambda()
+              (auto-fill-mode -1)))
+
 
 (add-hook 'dired-mode-hook
 	  '(lambda ()

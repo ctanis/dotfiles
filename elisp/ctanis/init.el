@@ -155,7 +155,7 @@
 (setq visible-bell t)
 
 ; dired - guess destination when 2 dired windows are visible
-(setq dired-dwim-target t)
+; (setq dired-dwim-target t)
 
 ; don't highlight region
 (transient-mark-mode 0)
@@ -533,19 +533,19 @@ For details of keybindings, see `ido-find-file'."
 
 
 
-(setq hippie-expand-try-functions-list
-      '(
-	;yas/hippie-try-expand
-        try-expand-dabbrev
-	try-complete-file-name-partially
-	try-complete-file-name
-	try-expand-line
-        try-expand-list
-	try-expand-line-all-buffers
-        try-expand-list-all-buffers
-	try-expand-dabbrev-from-kill
-	;try-complete-lisp-symbol
-	))
+;; (setq hippie-expand-try-functions-list
+;;       '(
+;; 	;yas/hippie-try-expand
+;;         try-expand-dabbrev
+;; 	try-complete-file-name-partially
+;; 	try-complete-file-name
+;; 	try-expand-line
+;;         try-expand-list
+;; 	try-expand-line-all-buffers
+;;         try-expand-list-all-buffers
+;; 	try-expand-dabbrev-from-kill
+;; 	;try-complete-lisp-symbol
+;; 	))
 
 
 
@@ -554,7 +554,7 @@ For details of keybindings, see `ido-find-file'."
   (setq autopair-blink nil)
   (setq autopair-pair-criteria 'help-balance)
   (setq autopair-skip-criteria 'help-balance)
-  (setq autopair-skip-whitespace t)
+  (setq autopair-skip-whitespace nil)
   ; (setq autopair-pair-criteria 'help-balance)
   ; (setq autopair-skip-criteria 'help-balance)
 
