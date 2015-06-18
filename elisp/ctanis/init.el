@@ -620,3 +620,17 @@ For details of keybindings, see `ido-find-file'."
 
 ;; do this last since it involve stuff from packages
 (load-library "my-completions")
+
+
+;; embarrassing protection against keyboard misfiring
+(defadvice downcase-region (around downcase-only-when-active activate)
+  (if (region-active-p)
+      ad-do-it))
+
+(defadvice upcase-region (around upcase-only-when-active activate)
+  (if (region-active-p)
+      ad-do-it))
+
+
+
+
