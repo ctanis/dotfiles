@@ -155,7 +155,7 @@
 (setq visible-bell t)
 
 ; dired - guess destination when 2 dired windows are visible
-; (setq dired-dwim-target t)
+(setq dired-dwim-target t)
 
 ; don't highlight region
 (transient-mark-mode 0)
