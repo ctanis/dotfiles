@@ -57,6 +57,7 @@ apps = {
 "alt-`",
 "cmd-tab",
 "alt-tab",
+"control-alt-tab",
 "cmd-space",
 "control-cmd-space",
 "alt-space",
