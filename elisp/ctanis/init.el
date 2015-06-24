@@ -555,7 +555,7 @@ For details of keybindings, see `ido-find-file'."
   (setq autopair-blink nil)
   (setq autopair-pair-criteria 'help-balance)
   (setq autopair-skip-criteria 'help-balance)
-  (setq autopair-skip-whitespace nil)
+  (setq autopair-skip-whitespace t)
   ; (setq autopair-pair-criteria 'help-balance)
   ; (setq autopair-skip-criteria 'help-balance)
 
@@ -574,6 +574,7 @@ For details of keybindings, see `ido-find-file'."
 
   (setq hippie-expand-try-functions-list
         '(try-expand-dabbrev
+          try-expand-dabbrev-all-buffers
           try-complete-file-name-partially
           try-complete-file-name
           apair-try-expand-list

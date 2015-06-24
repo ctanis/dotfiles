@@ -542,6 +542,8 @@
           (lambda()
             (make-local-variable 'autopair-skip-criteria)
             (setq autopair-skip-criteria 'always)
+            (make-local-variable 'autopair-skip-whitespace)
+            (setq autopair-skip-whitespace nil)
             (define-key js2-mode-map "\M-j" 'backward-jump-to-char)
             ; (electric-layout-mode 1)
             ))
