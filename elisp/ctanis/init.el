@@ -155,7 +155,26 @@
 (setq visible-bell t)
 
 ; dired - guess destination when 2 dired windows are visible
-(setq dired-dwim-target t)
+(setq dired-dwim-target nil)
+(eval-after-load 'dired
+  '(progn
+     (defun dired-do-copy-other-window ()
+       (interactive)
+       (let ((dired-dwim-target t))
+         (call-interactively 'dired-do-copy)))
+
+     (defun dired-do-rename-other-window ()
+       (interactive)
+       (let ((dired-dwim-target t))
+         (call-interactively 'dired-do-rename)))
+
+
+     (define-key dired-mode-map "\C-cc" 'dired-do-copy-other-window)
+     (define-key dired-mode-map "\C-cr" 'dired-do-rename-other-window)
+     )
+  )
+
+
 
 ; don't highlight region
 (transient-mark-mode 0)
