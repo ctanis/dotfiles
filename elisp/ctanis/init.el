@@ -593,13 +593,16 @@ For details of keybindings, see `ido-find-file'."
 
   (setq hippie-expand-try-functions-list
         '(try-expand-dabbrev
-          try-expand-dabbrev-all-buffers
-          try-complete-file-name-partially
-          try-complete-file-name
           apair-try-expand-list
           try-expand-line
+          
+          try-complete-file-name-partially
+          try-complete-file-name
+
+          try-expand-dabbrev-all-buffers
           apair-try-expand-list-all-buffers
           try-expand-line-all-buffers
+
           try-expand-dabbrev-from-kill)))
 
 (when (require-verbose 'num3-mode)
