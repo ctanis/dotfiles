@@ -103,6 +103,7 @@
 (define-key craig-prefix-map "\M-u" 'calc-dispatch)
 (define-key craig-prefix-map "\M-r" 'copy-region-for-paste)
 (define-key craig-prefix-map "\M-2" 'save-file-local-variable)
+(define-key craig-prefix-map "\M-q" 'slide-line-left)
 
 (global-set-key "\M-j" 'backward-jump-to-char)
 (global-set-key "\M-,"  'ispell-word)

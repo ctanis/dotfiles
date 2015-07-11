@@ -236,6 +236,15 @@ when called with a prefix argument."
   (interactive "p\ncZap backwards to char: ")
   (zap-to-char (- (prefix-numeric-value arg)) char))
 
+(defun slide-line-left ()
+  (interactive)
+  (push-mark)
+  (beginning-of-line)
+  (just-no-space)
+  (goto-char (mark))
+  (pop-mark)
+  )
+
 
 ;; MOVEMENT
 
