@@ -494,6 +494,11 @@ For details of keybindings, see `ido-find-file'."
   (setq deft-directory "~/Dropbox/notes")
   (setq deft-text-mode 'org-mode)
   (setq deft-use-filename-as-title t)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-file-naming-rules '((noslash . "-")
+                                 (nospace . "_")
+                                 (case-fn . downcase)))
+
   (define-key craig-prefix-map "\M-0" 'deft))
 
 
