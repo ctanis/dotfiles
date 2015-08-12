@@ -169,9 +169,15 @@
        (let ((dired-dwim-target t))
          (call-interactively 'dired-do-rename)))
 
+     (defun dired-do-symlink-other-window ()
+       (interactive)
+       (let ((dired-dwim-target t))
+         (call-interactively 'dired-do-symlink)))
+
 
      (define-key dired-mode-map "\C-cc" 'dired-do-copy-other-window)
      (define-key dired-mode-map "\C-cr" 'dired-do-rename-other-window)
+     (define-key dired-mode-map "\C-cs" 'dired-do-symlink-other-window)
      )
   )
 
