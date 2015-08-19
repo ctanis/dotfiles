@@ -510,10 +510,35 @@
 
 ;; java flymake
 (require 'flymake)
+
+;; requires...
+  ;; <target name="check-syntax" depends="init" description="check for errors">
+  ;;   <javac destdir="${build}" 
+  ;;          classpathref="project.class.path" 
+  ;;          includeantruntime="false">
+  ;;     <src path="${CHK_SOURCES}" />
+  ;;   </javac>
+    
+  ;; </target>
+
+
+(defun flymake-get-ant-cmdline (source base-dir)
+  (list "ant"
+	(list "-file"
+	      (concat base-dir "/" "build.xml")
+	      (concat "-DCHK_SOURCES=" (file-name-directory source))
+	      "check-syntax")))
+
+;; it couldn't find the build.xml before
+(defun flymake-simple-ant-java-init ()
+  (flymake-simple-make-init-impl 'flymake-create-temp-with-folder-structure t nil "build.xml" 'flymake-get-ant-cmdline))
+
 (defun my-java-flymake-init ()
-  (list "javac"  (list "-Xlint:unchecked"
+  (if (locate-dominating-file default-directory "build.xml")
+      (flymake-simple-ant-java-init)
+    (list "javac"  (list "-Xlint:unchecked"
                        (flymake-init-create-temp-buffer-copy
-                        'flymake-create-temp-with-folder-structure))))
+                        'flymake-create-temp-with-folder-structure)))))
 
 
 (add-to-list 'flymake-allowed-file-name-masks '("\\.java$" my-java-flymake-init flymake-simple-cleanup))
