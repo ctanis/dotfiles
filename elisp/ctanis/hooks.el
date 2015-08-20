@@ -511,38 +511,42 @@
 ;; java flymake
 (require 'flymake)
 
-;; requires...
+;; flymake requires something like this in the build.xml:
   ;; <target name="check-syntax" depends="init" description="check for errors">
   ;;   <javac destdir="${build}" 
   ;;          classpathref="project.class.path" 
   ;;          includeantruntime="false">
   ;;     <src path="${CHK_SOURCES}" />
+  ;;     <compilerarg value="-Xlint" />
   ;;   </javac>
     
   ;; </target>
 
 
-(defun flymake-get-ant-cmdline (source base-dir)
+(defun flymake-fixed-get-ant-cmdline (source base-dir)
   (list "ant"
 	(list "-file"
 	      (concat base-dir "/" "build.xml")
-	      (concat "-DCHK_SOURCES=" (file-name-directory source))
+
+              ;; scan the whole directory. fix this??
+	      (concat "-DCHK_SOURCES=" (file-name-directory source)) 
+
 	      "check-syntax")))
 
-;; it couldn't find the build.xml before
-(defun flymake-simple-ant-java-init ()
-  (flymake-simple-make-init-impl 'flymake-create-temp-with-folder-structure t nil "build.xml" 'flymake-get-ant-cmdline))
-
 (defun my-java-flymake-init ()
+  "flymake using build.xml if there is one, otherwise javac with lint"
   (if (locate-dominating-file default-directory "build.xml")
-      (flymake-simple-ant-java-init)
+      (flymake-simple-make-init-impl 'flymake-create-temp-with-folder-structure
+                                     t nil "build.xml" 'flymake-fixed-get-ant-cmdline)
     (list "javac"  (list "-Xlint:unchecked"
                        (flymake-init-create-temp-buffer-copy
                         'flymake-create-temp-with-folder-structure)))))
 
 
-(add-to-list 'flymake-allowed-file-name-masks '("\\.java$" my-java-flymake-init flymake-simple-cleanup))
+(add-to-list 'flymake-allowed-file-name-masks
+             '("\\.java$" my-java-flymake-init flymake-simple-cleanup))
 
+;; choose an appropriate compile-command
 (add-hook 'java-mode-hook
           (lambda ()
             (add-hook 'java-mode-hook 'flymake-mode-on)
