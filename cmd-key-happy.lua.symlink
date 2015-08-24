@@ -65,6 +65,7 @@ apps = {
 "shift-cmd-space",
 "alt-escape",
 "shift-control-alt-p",	
+"shift-control-alt-i",	
 "shift-alt-a",
 "shift-alt-b",
 "shift-alt-c",
