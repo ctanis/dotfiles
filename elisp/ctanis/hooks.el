@@ -552,7 +552,7 @@
             (add-hook 'java-mode-hook 'flymake-mode-on)
             (if (locate-dominating-file default-directory "build.xml")
                 (set (make-local-variable 'compile-command)
-                     "ant -s build.xml -e ")
+                     "ant -emacs -s build.xml -e ")
               (if buffer-file-name
                   (set (make-local-variable 'compile-command)
                        (concat "javac -Xlint " (file-name-nondirectory buffer-file-name)))))))
