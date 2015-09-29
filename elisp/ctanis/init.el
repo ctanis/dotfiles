@@ -299,6 +299,29 @@
 (ido-everywhere -1)
 (setq imenu-auto-rescan t)
 
+(setq ido-file-extensions-order '(".org" ".html" ".tex" ".log"))
+
+;; redefinition of this to respect file extensions
+(defun ido-sort-merged-list (items promote)
+  ;; Input is list of ("file" . "dir") cons cells.
+  ;; Output is sorted list of ("file "dir" ...) lists
+  (let ((l (sort items (lambda (a b) (ido-file-extension-lessp (car b) (car a)))))
+	res a cur)
+    (while l
+      (setq a (car l)
+	    l (cdr l))
+      (if (and res (string-equal (car (car res)) (car a)))
+	  (progn
+	    (setcdr (car (if cur (cdr res) res)) (cons (cdr a) (cdr (car res))))
+	    (if (and promote (string-equal ido-current-directory (cdr a)))
+		(setq cur t)))
+	(setq res (cons (list (car a) (cdr a)) res)
+	      cur nil)))
+    res))
+
+
+
+
 (defun my-buffer-filter (name)
   (with-current-buffer name
     (let ((n (buffer-name)))
