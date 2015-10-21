@@ -655,6 +655,11 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
+(when (require-verbose 'elpy)
+  (elpy-enable))
+
+
+
 
 ;; (defun ddg-search (str)
 ;;   (interactive "MSearch term: ")
