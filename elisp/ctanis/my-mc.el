@@ -22,7 +22,7 @@
   ;; (global-set-key (kbd "C-s") 'phi-search)
   ;; (global-set-key (kbd "C-r") 'phi-search-backward)
 
-  (define-key dired-mode-map (kbd "/") 'phi-search-dired)
+  ; (define-key dired-mode-map (kbd "/") 'phi-search-dired)
   
   (define-key craig-prefix-map "\M-.\M-l" 'mc/edit-lines)
   (define-key craig-prefix-map "\M-.\M-." 'mc/mark-next-like-this)
