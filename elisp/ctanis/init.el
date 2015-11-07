@@ -101,7 +101,7 @@
 (define-key craig-prefix-map "-" 'insert-separator)
 (define-key craig-prefix-map "[" 'wrap-region-with-char)
 (define-key craig-prefix-map "\M-u" 'calc-dispatch)
-(define-key craig-prefix-map "\M-r" 'copy-region-for-paste)
+(define-key craig-prefix-map "\C-r" 'copy-region-for-paste)
 (define-key craig-prefix-map "\M-2" 'save-file-local-variable)
 (define-key craig-prefix-map "\M-q" 'slide-line-left)
 
@@ -656,7 +656,8 @@ For details of keybindings, see `ido-find-file'."
 
 
 (when (require-verbose 'elpy)
-  (elpy-enable))
+  (elpy-enable)
+  )
 
 
 
@@ -685,7 +686,7 @@ For details of keybindings, see `ido-find-file'."
 
 ;; do this last since it involve stuff from packages
 (load-library "my-completions")
-
+(load-library "my-mc")
 
 ;; embarrassing protection against keyboard misfiring
 (defadvice downcase-region (around downcase-only-when-active activate)
