@@ -37,6 +37,7 @@
   (define-key craig-prefix-map "\M-.<" 'mc/mark-sgml-tag-pair)
 
   (define-key mc/keymap (kbd "M-.") 'mc/mark-next-like-this)
+  (define-key mc/keymap (kbd "M-.") 'mc/mark-previous-like-this)
   (define-key mc/keymap (kbd "C-*") 'mc/mark-all-like-this)
   (define-key mc/keymap (kbd "C-. C-d") 'mc/remove-current-cursor)
   (define-key mc/keymap (kbd "C-. d")   'mc/remove-duplicated-cursors)
@@ -56,6 +57,7 @@
 
   (defadvice phi-search-from-isearch-mc/setup-keys
       (after for-terminal activate)
+    (define-key isearch-mode-map (kbd "M-!") 'phi-search-from-isearch-mc/mark-all)
     (define-key isearch-mode-map (kbd "M-.") phi-search-from-isearch-mc/ctl-map))
   
 
