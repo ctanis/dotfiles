@@ -58,7 +58,7 @@
   (defadvice phi-search-from-isearch-mc/setup-keys
       (after for-terminal activate)
     (define-key isearch-mode-map (kbd "M-!") 'phi-search-from-isearch-mc/mark-all)
-    (define-key isearch-mode-map (kbd "M-.") phi-search-from-isearch-mc/ctl-map))
+    (define-key isearch-mode-map (kbd "M-.") 'phi-search-from-isearch-mc/mark-next))
   
 
   (define-key phi-search-default-map (kbd "M-.") 'phi-search-mc/mark-next)
