@@ -92,6 +92,7 @@ apps = {
 "shift-alt-w",
 "shift-alt-x",
 "shift-alt-y",
+"cmd-y",
 "shift-alt-z",
 
 }}}
