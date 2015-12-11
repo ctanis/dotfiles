@@ -45,6 +45,24 @@
   (define-key mc/keymap (kbd "C-. #") 'mc/insert-numbers)
   (define-key mc/keymap (kbd "C-. C-r") 'mc/reverse-regions)
   (define-key mc/keymap (kbd "C-. C-s") 'mc/sort-regions)
+  (define-key mc/keymap (kbd "M-j") 'mc/backward-jump-to-char)
+
+(defun mc/backward-jump-to-char (arg char)
+  "jump backward to ARGth previous CHAR (mc edition).  doesn't
+prompt when ran multiple times in a row"
+  (interactive "p\ncBackward jump to char: ")
+  
+  (setq last-jumped-to-char char)
+  (backward-jump-to-char arg char)
+  (mc/for-each-fake-cursor
+     (save-excursion
+       (mc/execute-command-for-fake-cursor
+        (lambda ()
+          (interactive)
+          (search-forward (char-to-string char) nil t (- arg)))
+        cursor))))
+
+
 
   (defvar phi-search-from-isearch-mc/ctl-map
     (let ((map (make-sparse-keymap)))
