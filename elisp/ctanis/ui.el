@@ -481,3 +481,5 @@
 
 
 
+; to fix weird obscuring-cursor problems in the cocoa build Mon Jan 11 10:53:11 2016
+(set-default 'cursor-in-non-selected-windows '(hbar . 2))
