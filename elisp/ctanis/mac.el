@@ -184,3 +184,11 @@
 ; fix mac colors for powerline
 (setq ns-use-srgb-colorspace nil)
 
+(defun dired-quick-look()
+  (interactive)
+  (save-window-excursion
+    (let ((max-mini-window-height 0))
+      (dired-do-shell-command "qlmanage -p" nil (dired-get-marked-files))
+      )))
+
+(define-key dired-mode-map "\M-y" 'dired-quick-look)
