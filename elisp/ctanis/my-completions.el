@@ -14,6 +14,40 @@
 (yas-global-mode 1)
 (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
 
+
+;; yas overlay fix in org-mode
+(defun yas--on-field-overlay-modification (overlay after? _beg _end &optional _length)
+  "Clears the field and updates mirrors, conditionally.
+
+Only clears the field if it hasn't been modified and point is at
+field start.  This hook does nothing if an undo is in progress."
+  (unless (or yas--inhibit-overlay-hooks
+              (not (overlayp yas--active-field-overlay)) ; Avoid Emacs bug #21824.
+              (yas--undo-in-progress))
+    (let* ((field (overlay-get overlay 'yas--field))
+           (snippet (overlay-get yas--active-field-overlay 'yas--snippet)))
+      (cond (after?
+             (yas--advance-end-maybe field (overlay-end overlay))
+             (save-excursion
+               (yas--field-update-display field))
+             (yas--update-mirrors snippet))
+            (field
+             (when (and (or (eq this-command 'self-insert-command)
+                            (eq this-command 'org-self-insert-command)
+                            )
+                        (not (yas--field-modified-p field))
+                        (= (point) (yas--field-start field)))
+               (yas--skip-and-clear field))
+             (setf (yas--field-modified-p field) t))))))
+
+
+(when (require-verbose 'auto-yasnippet)
+  (global-set-key (read-kbd-macro "<backtab>") 'aya-expand)
+  (define-key craig-prefix-map (read-kbd-macro "<backtab>") 'aya-create)
+
+  )
+
+
 ;; company
 
 
