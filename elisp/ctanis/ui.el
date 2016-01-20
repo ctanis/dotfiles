@@ -20,7 +20,8 @@
   (set-face-background 'header-line "wheat2")
 
   ;(set-cursor-color "wheat4")
-  (set-cursor-color "black")
+  ;(set-cursor-color "black")
+  (set-cursor-color "red")
   ;(set-default 'cursor-type 'hbar)
   (set-face-background 'region "darkgrey")
   (set-face-background 'hl-line "khaki")
