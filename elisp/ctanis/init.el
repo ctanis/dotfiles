@@ -95,7 +95,7 @@
 (define-key craig-prefix-map "v" 'split-window-horizontally)
 (define-key craig-prefix-map "w" 'write-region)
 (define-key craig-prefix-map "u" 'revert-buffer)
-(define-key craig-prefix-map (read-kbd-macro "<tab>") 'hs-toggle-hiding)
+(define-key craig-prefix-map "\M-$" 'hs-toggle-hiding)
 (define-key craig-prefix-map "\M-x" 'compile-again)
 (define-key craig-prefix-map "\M-v" 'view-mode)
 (define-key craig-prefix-map "-" 'insert-separator)

@@ -42,8 +42,8 @@ field start.  This hook does nothing if an undo is in progress."
 
 
 (when (require-verbose 'auto-yasnippet)
-  (global-set-key (read-kbd-macro "<C-tab>") 'aya-expand)
-  (define-key craig-prefix-map (read-kbd-macro "<C-tab>") 'aya-create)
+  (define-key craig-prefix-map (read-kbd-macro "<tab>") 'aya-expand)
+  (define-key craig-prefix-map (read-kbd-macro "<backtab>") 'aya-create)
   )
 
 
