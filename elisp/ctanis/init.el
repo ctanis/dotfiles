@@ -131,7 +131,7 @@
 
 (global-set-key "\C-l" 'recenter)
 
-(global-set-key (kbd "M-S-SPC") 'cycle-spacing)
+;(global-set-key (kbd "M-S-SPC") 'cycle-spacing)
 
 ;; UNSET
 (global-unset-key "\C-z") ;; no more suspend/iconify
