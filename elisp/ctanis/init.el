@@ -650,6 +650,7 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
+(setq exec-path-from-shell-check-startup-files nil)
 (when (require-verbose 'exec-path-from-shell)
      (exec-path-from-shell-initialize)
 )
