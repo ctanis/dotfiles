@@ -55,7 +55,7 @@
 (define-prefix-command 'craig-prefix 'craig-prefix-map)
 
 (define-key global-map "\M-o" 'craig-prefix)
-;(define-key craig-prefix-map " " 'just-no-space)
+(define-key craig-prefix-map " " 'just-no-space)
 (define-key craig-prefix-map "2" 'create-file-mode)
 (define-key craig-prefix-map "3" 'executable-set-magic)
 (define-key craig-prefix-map "4" 'make-perl-script)
@@ -555,7 +555,7 @@ For details of keybindings, see `ido-find-file'."
 
 
 (when (require-verbose 'ace-jump-mode)
-  (define-key craig-prefix-map " " 'ace-jump-mode)
+  (define-key craig-prefix-map "j" 'ace-jump-mode)
   ;(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
   ;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
   (setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
