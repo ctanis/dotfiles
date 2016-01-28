@@ -228,7 +228,7 @@ when called with a prefix argument."
 
 (defun just-no-space ()
   (interactive)
-  (just-one-space)
+  (just-one-space -1)
   (delete-char -1))
 
 

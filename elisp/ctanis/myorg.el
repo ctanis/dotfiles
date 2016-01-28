@@ -108,6 +108,26 @@
 ;; 	      (error 0)))))
 ;;     (goto-char (max orgparent liststart))))
 
+;; (defun org-up-list-or-element ()
+;;   "combination of backward-up-list and org-up-element, doing the
+;; most localized thing"
+;;   (interactive)
+;;   (let* ((start (point))
+;; 	 (orgparent (condition-case nil
+;;                         (progn 
+;;                           (org-up-element)
+;;                           (point))
+;;                       (error (point))))
+;; 	 (liststart
+;;           (condition-case nil
+;;               (progn
+;;                 (goto-char start)
+;;                 (up-list -1)
+;;                 (point))
+;;             (error 0))))
+
+;;     (goto-char (max orgparent liststart))))
+
 (defun org-up-list-or-element ()
   "combination of backward-up-list and org-up-element, doing the
 most localized thing"
@@ -117,16 +137,24 @@ most localized thing"
                         (progn 
                           (org-up-element)
                           (point))
-                      (error (point))))
+                      (error nil)))
 	 (liststart
           (condition-case nil
               (progn
                 (goto-char start)
                 (up-list -1)
                 (point))
-            (error 0))))
+            (error nil))))
 
-    (goto-char (max orgparent liststart))))
+    (goto-char
+     (cond
+      ((and (not orgparent) liststart) liststart)
+      ((and (not liststart) orgparent) orgparent)
+      ((and liststart orgparent) (max orgparent liststart))
+      (t (progn
+           (message "no containing list or element")
+           (point)))))))
+
 
 (defun org-blindly-eval-babel ()
   (interactive)
@@ -157,7 +185,8 @@ most localized thing"
   (define-key org-mode-map ch 'org-wrap-with-self))
 (define-key org-mode-map "$" 'org-wrap-with-self)
 
-(define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field)
+                                        ;(define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field)
+(define-key org-mode-map (read-kbd-macro "<C-backspace>") 'org-table-blank-field)
 (define-key org-mode-map "\C-m" 'org-return-indent)
 
 ;(require 'ox-odt)
