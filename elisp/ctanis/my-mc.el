@@ -22,7 +22,7 @@
   (require 'phi-search-mc)
   ;; (require 'phi-search-dired)
 
-  (global-set-key "\M-%" 'phi-replace-query)
+  ; (global-set-key "\M-%" 'phi-replace-query)
 
   ;; (global-set-key (kbd "C-s") 'phi-search)
   ;; (global-set-key (kbd "C-r") 'phi-search-backward)
