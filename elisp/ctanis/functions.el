@@ -226,9 +226,11 @@ when called with a prefix argument."
       (beginning-of-line)
       (kill-region (point) p1))))
 
-(defun just-no-space ()
-  (interactive)
-  (just-one-space -1)
+(defun just-no-space (arg)
+  (interactive "P")
+  (if arg
+      (just-one-space -1)
+    (just-one-space 1))
   (delete-char -1))
 
 
