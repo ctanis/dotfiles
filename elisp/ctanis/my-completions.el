@@ -185,3 +185,8 @@
 (global-set-key "\M-." 'semantic-complete-jump)
 (set-default 'semantic-imenu-bucketize-file nil)
 
+;; make sure semantic works for non-standard langauges
+(add-to-list 'semantic-new-buffer-setup-functions
+             '(js2-mode . wisent-javascript-setup-parser))
+(add-to-list 'semantic-new-buffer-setup-functions
+             '(emacs-lisp-mode . semantic-default-elisp-setup))
