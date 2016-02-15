@@ -242,7 +242,7 @@ when called with a prefix argument."
   (interactive)
   (push-mark)
   (beginning-of-line)
-  (just-no-space)
+  (just-no-space nil)
   (goto-char (mark))
   (pop-mark)
   )
