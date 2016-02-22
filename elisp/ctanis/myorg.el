@@ -68,7 +68,9 @@
 							 (gnuplot . t)
 							 (octave . t)
 							 (calc . t)
-							 (sh . t)))
+							 (sh . t)
+                                                         (scheme .t)
+                                                                 ))
 
 ;; (defun org-pass-link-to-system (link)
 ;;   (if (string-match "^[a-zA-Z0-9]+:" link)
@@ -192,3 +194,12 @@ most localized thing"
 ;(require 'ox-odt)
 ;(require 'ox-beamer)
 ;(require 'ox-md)
+
+
+;; ob-scheme has a tendency of spontaneously opening windows when not run in session mode
+
+(defadvice org-babel-execute:scheme
+    (around leave-windows-alone activate)
+  (let ((cfg (current-window-configuration)))
+    ad-do-it
+    (set-window-configuration cfg)))
