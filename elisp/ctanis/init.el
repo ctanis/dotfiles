@@ -326,9 +326,14 @@
 (defun my-buffer-filter (name)
   (with-current-buffer name
     (let ((n (buffer-name)))
-      (not (or (string-match "\\*Man" n)
+      (or
+       ;; never show these
+       (string-match "temp" n)
+       ;; always show these...
+       (not (or (string-match "\\*Man" n)
                (string= (format-mode-line mode-name) "Shell")
-               (not (string-match "\\*" n)))))))
+               (string= "* Guile REPL *" n)
+               (not (string-match "\\*" n))))))))
 
 (setq ido-ignore-buffers '(my-buffer-filter))
 
