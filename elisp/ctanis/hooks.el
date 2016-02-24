@@ -12,6 +12,12 @@
               (setq autopair-dont-activate t)
               (autopair-mode -1)))
 
+(add-hook 'geiser-repl-mode-hook
+          #'(lambda ()
+              (setq autopair-dont-activate t)
+              (autopair-mode -1))
+          )
+
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 
