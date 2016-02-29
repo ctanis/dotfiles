@@ -203,3 +203,19 @@ most localized thing"
   (let ((cfg (current-window-configuration)))
     ad-do-it
     (set-window-configuration cfg)))
+
+;; listings config for when (setq org-latex-listings t)
+;; see also (setq org-latex-caption-above '(table))
+;; see also #+LATEX_HEADER:\usepackage[labelformat=empty]{caption}
+(setq org-latex-listings t)
+(add-to-list 'org-latex-packages-alist '("" "listings"))
+(setq org-latex-listings-options
+      '(("numbers" "none")
+        ("frame" "single")
+        ("basicstyle" "\\singlespacing\\ttfamily")
+        ("commentstyle" "")
+        ("keywordstyle" "")
+        ("showspaces" "false")
+        ("showstringspaces" "false")
+        ("belowcaptionskip" ".5in")
+        ))
