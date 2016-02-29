@@ -208,15 +208,24 @@ most localized thing"
 ;; see also (setq org-latex-caption-above '(table))
 ;; see also #+LATEX_HEADER:\usepackage[labelformat=empty]{caption}
 (setq org-latex-listings t)
+(setq org-latex-prefer-user-labels t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (setq org-latex-listings-options
       '(("numbers" "none")
         ("frame" "single")
-        ("basicstyle" "\\singlespacing\\ttfamily")
-        ("commentstyle" "")
-        ("keywordstyle" "")
+        ("basicstyle" "\\ttfamily")
         ("showspaces" "false")
         ("showstringspaces" "false")
         ("aboveskip" ".5in")
         ("belowcaptionskip" ".5in")
         ))
+
+;; note, you may need an org block like the following
+;;
+;; #+BEGIN_LaTeX
+;; \lstdefinelanguage{text}{}
+;; \lstdefinelanguage{scheme}{}
+;; #+END_LaTeX
+;;
+;; if you are using cross-referencing, since undefined languages interrupt the
+;; pdf build process
