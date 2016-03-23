@@ -260,8 +260,17 @@
 
 (add-hook 'perl-mode-hook
 	  '(lambda ()
-	     (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
+
+             (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
 	     (local-set-key "\C-m" 'newline-and-indent)))
+
+(add-hook 'cperl-mode-hook
+          '(lambda ()
+             (make-local-variable autopair-skip-criteria)
+             (setq autopair-skip-criteria 'always)
+             ))
+
+
 
 (defalias 'perl-mode 'cperl-mode)
 (setq cperl-invalid-face (quote off))
