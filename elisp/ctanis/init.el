@@ -333,6 +333,7 @@
        (not (or (string-match "\\*Man" n)
                (string= (format-mode-line mode-name) "Shell")
                (string= "* Guile REPL *" n)
+               (string= "*Python*" n)
                (not (string-match "\\*" n))))))))
 
 (setq ido-ignore-buffers '(my-buffer-filter))
