@@ -711,4 +711,4 @@ For details of keybindings, see `ido-find-file'."
 
 
 
-
+(setq python-shell-interpreter "python3")
