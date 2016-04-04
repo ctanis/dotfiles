@@ -109,6 +109,11 @@
 
      ))
 
+;; lord, not in shell-mode
+(add-hook 'shell-mode-hook
+          '(lambda ()
+             (company-mode -1)))
+
 
 
 ;; semantic / cedet
