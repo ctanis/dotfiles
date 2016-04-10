@@ -667,9 +667,9 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
-(when (require-verbose 'elpy)
-  (elpy-enable)
-  )
+;; (when (require-verbose 'elpy)
+;;   (elpy-enable)
+;;   )
 
 
 
