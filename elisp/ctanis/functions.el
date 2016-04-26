@@ -616,6 +616,28 @@ initial entry is Mode: with the current buffer mode inserted."
       (shell-command cmd  buf)
       (display-buffer buf))))
 
+(defvar wrap-nice-pairs
+  '((?\" . ?\") (?\( . ?\) ) (?{ . ?})  (?\< . ?\>)))
+
+(defun wrap-nice-input-pair (c)
+  (assoc c wrap-nice-pairs))
+
+(defun wrap-nice ()
+  (interactive)
+  (if (region-active-p)
+      (progn (save-excursion
+               (let ((start (min (region-beginning) (region-end)))
+                     (end (max (region-beginning) (region-end)))
+                     (pair (wrap-nice-input-pair last-input-event)))
+                 (setq deactivate-mark nil)
+                 (goto-char end)
+                 (insert (cdr pair))
+                 (goto-char start)
+                 (insert (car pair))))
+             (forward-char 1))
+    (insert last-input-event)))
+        
+
 (defun wrap-region-with-char (c)
   (interactive "cWrap with character: ")
   (if (region-active-p)
