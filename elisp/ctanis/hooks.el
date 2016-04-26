@@ -329,6 +329,11 @@
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t) 
 
 
+(add-hook 'python-mode-hook
+	  '(lambda()
+             (when (require-verbose 'flymake-python-pyflakes)
+               (flymake-python-pyflakes-load))))
+
 
 ;; (add-hook 'inferior-python-mode-hook
 ;; 	  '(lambda ()

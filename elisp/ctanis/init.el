@@ -256,9 +256,19 @@
    (setq flymake-start-syntax-check-on-newline nil)
    ))
 
-(defun flymake-display-warning (warning) 
-  "Display a warning to the user, using lwarn"
-  (message warning))
+
+  ;; flymake-css        
+  ;; flymake-cursor     
+  ;; flymake-easy       
+  ;; flymake-perlcritic
+  ;; flymake-python-...
+  ;; flymake-ruby
+  ;; flymake-shell
+
+
+;; (defun flymake-display-warning (warning) 
+;;   "Display a warning to the user, using lwarn"
+;;   (message warning))
 
 ; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
