@@ -442,7 +442,8 @@
 (add-hook 'latex-mode-hook
           (lambda ()
 	    (add-to-list 'tex-verbatim-environments "lstlisting")
-	    (set (make-local-variable 'autopair-handle-action-fns)
+	    (set (make-local-variable 'autopair-skip-criteria) 'always)
+            (set (make-local-variable 'autopair-handle-action-fns)
 		 (list 'autopair-default-handle-action
 		       'autopair-latex-mode-paired-delimiter-action))))
 
