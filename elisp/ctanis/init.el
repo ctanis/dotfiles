@@ -541,6 +541,7 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'deft)
   (setq deft-directory "~/Dropbox/notes")
   (setq deft-text-mode 'org-mode)
+  (setq deft-default-extension "org")
   (setq deft-use-filename-as-title t)
   (setq deft-use-filter-string-for-filename t)
   (setq deft-file-naming-rules '((noslash . "-")
