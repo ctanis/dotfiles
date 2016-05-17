@@ -1,7 +1,10 @@
 ;; mac stuff
 
-(setq mac-option-modifier 'super)
+;; (setq mac-option-modifier 'super)
+;(setq mac-command-modifier 'meta)
 (setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'meta)
+
 
 
 ; we have to comment this or we lose meta-tick!
