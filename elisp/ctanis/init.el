@@ -548,7 +548,13 @@ For details of keybindings, see `ido-find-file'."
                                  (nospace . "_")
                                  (case-fn . downcase)))
 
-  (define-key craig-prefix-map "\M-0" 'deft))
+  (define-key craig-prefix-map "\M-0" 'deft)
+
+  (add-hook 'deft-mode-hook
+            (lambda ()
+              (hl-line-mode 1)))
+
+)
 
 
 ;; browse-kill-ring
