@@ -194,7 +194,7 @@ most localized thing"
 ;(require 'ox-odt)
 ;(require 'ox-beamer)
 ;(require 'ox-md)
-
+;(require 'ox-koma-letter)
 
 ;; ob-scheme has a tendency of spontaneously opening windows when not run in session mode
 
