@@ -535,6 +535,7 @@ For details of keybindings, see `ido-find-file'."
 (define-key craig-prefix-map "\C-l" 'org-store-link)
 (define-key craig-prefix-map "\M-s" 'org-capture)
 (define-key craig-prefix-map "\M-a" 'org-agenda)
+(require 'org)
 
 
 ;; deft
