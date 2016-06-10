@@ -180,14 +180,13 @@
 ;; (my-semantic-enable)
 
 
-(semantic-mode 1)
+;(semantic-mode 1)
 (global-semantic-stickyfunc-mode 1)
 ;(setq global-semantic-mru-bookmark-mode 1)
 (global-semantic-mru-bookmark-mode 1)
 
-(define-key craig-prefix-map "\C-j" 'semantic-ia-fast-jump)
-
-(global-set-key "\M-." 'semantic-complete-jump)
+;(define-key craig-prefix-map "\C-j" 'semantic-ia-fast-jump)
+;(global-set-key "\M-." 'semantic-complete-jump)
 (set-default 'semantic-imenu-bucketize-file nil)
 
 ;; make sure semantic works for non-standard langauges
@@ -195,3 +194,5 @@
              '(js2-mode . wisent-javascript-setup-parser))
 (add-to-list 'semantic-new-buffer-setup-functions
              '(emacs-lisp-mode . semantic-default-elisp-setup))
+
+;; semantic seems less cool than gnu-global
