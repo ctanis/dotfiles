@@ -211,8 +211,10 @@
 	     (define-key comint-mode-map "\M-o\C-?" 'comint-kill-input)
 	     (define-key comint-mode-map "\M-{" 'comint-previous-prompt)
 	     (define-key comint-mode-map "\M-}" 'comint-next-prompt)
-             (setq autopair-dont-activate t)
-             (autopair-mode -1)
+
+             ;; can't remember why I had this disabled...
+             ;; (setq autopair-dont-activate t)
+             ;; (autopair-mode -1)
 	     ))
 
 ;what is this used for, and is it correct?
