@@ -564,10 +564,10 @@ For details of keybindings, see `ido-find-file'."
   (setq browse-kill-ring-quit-action 'save-and-restore))
 
 
-;; vc-check-status
-(when (require-verbose 'vc-check-status)
-  (vc-check-status-activate 1)
-  )
+;; ;; vc-check-status
+;; (when (require-verbose 'vc-check-status)
+;;   (vc-check-status-activate 1)
+;;   )
 
 ;; magit
 (setq magit-last-seen-setup-instructions "1.4.0")
