@@ -18,7 +18,7 @@
 (global-set-key (quote [C-M-backspace]) 'backward-kill-sexp)
 (global-set-key (quote [C-M-delete]) 'backward-kill-sexp)
 
-;(setq latex-run-command "pdflatex")
+(setq latex-run-command "pdflatex")
 (defvar tex-last-action nil)
 (defadvice tex-file (after choose-output activate)
   (setq tex-last-action nil))
