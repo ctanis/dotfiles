@@ -126,6 +126,9 @@
 
        (set-face-foreground 'org-archived "burlywood1")
 
+       (set-face-foreground 'org-checkbox-statistics-todo "darkgreen")
+       (set-face-background 'org-checkbox-statistics-todo "darkgray")
+
        (set-face-foreground 'org-level-1 "blue4")
        ;(set-face-background 'org-level-1 "wheat3")
        (set-face-foreground 'org-level-2 "red4")
