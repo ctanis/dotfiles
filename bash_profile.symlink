@@ -19,7 +19,7 @@ export LESS="-erX"
 
 # may need to override this in a bash-local
 export TEXBIN=/usr/local/texlive/2012/bin/universal-darwin
-export PATH=.:~/bin:~/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$TEXBIN:/Users/ctanis/cdpr7/_cdp/_cdprogs
+export PATH=.:~/bin:~/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$TEXBIN
 
 
 if [ $WINDOW ]; then
