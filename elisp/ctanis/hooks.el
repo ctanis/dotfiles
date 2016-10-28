@@ -606,3 +606,10 @@
             (define-key js2-mode-map "\M-j" 'backward-jump-to-char)
             ; (electric-layout-mode 1)
             ))
+
+
+(add-hook 'cuda-mode-hook
+          (lambda()
+            (setq imenu-generic-expression cc-imenu-c++-generic-expression)
+            ))
+
