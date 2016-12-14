@@ -747,3 +747,5 @@ For details of keybindings, see `ido-find-file'."
   (define-key craig-prefix-map "'" 'operate-on-number-at-point)
 
   )
+
+(require-verbose 'cuda-mode)
