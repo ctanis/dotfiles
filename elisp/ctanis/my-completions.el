@@ -63,17 +63,17 @@
 ;; (add-hook 'latex-mode-hook 'latex-company-mode-setup)
 ;; (add-hook 'org-mode-hook 'org-company-mode-setup)
 
-(require-verbose 'company-math)
+;; (require-verbose 'company-math)
 
-(defun company-modified-math-symbols-latex (command &optional arg &rest ignored)
-  "Company backend for LaTeX mathematical symbols."
-  (interactive (list 'interactive))
-  (case command
-    (interactive (company-begin-backend 'company-math-symbols-latex))
-    (prefix (company-math--prefix company-math-allow-latex-symbols-in-faces
-				    company-math-disallow-latex-symbols-in-faces))
-    (annotation (concat " " (get-text-property 0 :symbol arg)))
-    (candidates (all-completions arg company-math--symbols))))
+;; (defun company-modified-math-symbols-latex (command &optional arg &rest ignored)
+;;   "Company backend for LaTeX mathematical symbols."
+;;   (interactive (list 'interactive))
+;;   (case command
+;;     (interactive (company-begin-backend 'company-math-symbols-latex))
+;;     (prefix (company-math--prefix company-math-allow-latex-symbols-in-faces
+;; 				    company-math-disallow-latex-symbols-in-faces))
+;;     (annotation (concat " " (get-text-property 0 :symbol arg)))
+;;     (candidates (all-completions arg company-math--symbols))))
 
 
 
