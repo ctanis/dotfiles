@@ -229,3 +229,7 @@ most localized thing"
 ;;
 ;; if you are using cross-referencing, since undefined languages interrupt the
 ;; pdf build process
+
+
+;; bigger latex fragment
+(plist-put org-format-latex-options :scale 1.7)
