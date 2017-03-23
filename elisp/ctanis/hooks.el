@@ -610,6 +610,7 @@
 
 (add-hook 'cuda-mode-hook
           (lambda()
+            (yas-activate-extra-mode 'c-mode)
             (setq imenu-generic-expression cc-imenu-c++-generic-expression)
             ))
 
