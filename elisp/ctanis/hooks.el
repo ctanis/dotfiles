@@ -457,36 +457,6 @@
 (eval-after-load "markdown-mode" '(modify-syntax-entry ?` "\"" markdown-mode-syntax-table))
 					;(eval-after-load "tex-mode" '(modify-syntax-entry ?$ "\"" latex-mode-syntax-table))
 
-(eval-after-load "org"
-  '(progn
-     (defalias 'org-refile-fullpath 'org-refile)
-
-     ;; this one is for refiling to other files in the org-agenda-files
-     (defadvice org-refile-fullpath (around use-full-path activate)
-       (let ((org-completion-use-ido nil)
-	     (org-outline-path-complete-in-steps t)
-	     (org-refile-use-outline-path 'file)
-	     (org-refile-targets (quote ((nil :maxlevel . 9)
-					 (org-agenda-files :maxlevel . 9)))))
-	 ad-do-it
-	 ))
-
-     ;; ; Targets include this file and any file contributing to the agenda -
-     ;; ; up to 9 levels deep
-     ;; (setq org-refile-targets (quote ((nil :maxlevel . 9)
-     ;;                                  (org-agenda-files :maxlevel . 9))))
-     ;; (setq org-refile-use-outline-path 'file)
-
-
-
-					; don't use so much room...
-     (defadvice org-agenda-redo (after shrink-after-redoing
-				       activate compile)
-       "minimize buffer after rebuilding agenda"
-       (shrink-window-if-larger-than-buffer))
-
-     ))
-
 
 
 (add-hook 'folding-mode-hook
