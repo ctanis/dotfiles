@@ -690,3 +690,14 @@ initial entry is Mode: with the current buffer mode inserted."
   "put current value of variable v in local variable list at end of buffer"
   (interactive "vVariable: ")
   (add-file-local-variable v (symbol-value v)))
+
+(defun clone-indirect-in-place ()
+  "clone current buffer and move to current point"
+  (interactive)
+  (let ((pt (point))
+        (m (mark))
+        (n (clone-indirect-buffer nil nil)))
+    (switch-to-buffer n)
+    (set-mark m)
+    (goto-char pt)
+  ))
