@@ -1,3 +1,7 @@
 # osascript -e "tell application \"Terminal\" to activate"
-osascript -e "tell application \"Terminal\" to do script with command \"cd \\\"$1\\\"\""
-osascript -e "tell application \"Terminal\" to activate"
+# osascript -e "tell application \"Terminal\" to do script with command \"cd \\\"$1\\\"\""
+# osascript -e "tell application \"Terminal\" to activate"
+
+osascript -e "tell application \"iTerm2\" to create window with default profile"
+osascript -e "tell application \"iTerm2\" to tell the first window to tell current session to write text \"cd \\\"$1\\\"\""
+#osascript -e "tell application \"Terminal\" to activate"
