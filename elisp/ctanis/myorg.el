@@ -191,6 +191,8 @@ most localized thing"
 (define-key org-mode-map (read-kbd-macro "<C-backspace>") 'org-table-blank-field)
 (define-key org-mode-map "\C-m" 'org-return-indent)
 
+(define-key org-mode-map (kbd "C-,") 'org-occur-in-agenda-files)
+
 ;(require 'ox-odt)
 ;(require 'ox-beamer)
 ;(require 'ox-md)
