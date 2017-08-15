@@ -753,4 +753,5 @@ For details of keybindings, see `ido-find-file'."
 (require-verbose 'cuda-mode)
 
 ; tramp exec use remote path
+(require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
