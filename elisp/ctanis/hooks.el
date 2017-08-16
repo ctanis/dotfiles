@@ -378,6 +378,10 @@
              (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
              ))
 
+(add-hook 'org-agenda-mode-hook
+          '(lambda ()
+             (local-set-key "\C-c\M-w" 'org-agenda-refile-fullpath)))
+
 
 ;; redefine local autopair emulation
 ;; list to ignore autopair-newline, when in org-mode

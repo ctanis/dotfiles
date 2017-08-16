@@ -265,9 +265,20 @@ most localized thing"
 (eval-after-load "org"
   '(progn
      (defalias 'org-refile-fullpath 'org-refile)
+     (defalias 'org-agenda-refile-fullpath 'org-agenda-refile)
 
      ;; this one is for refiling to other files in the org-agenda-files
      (defadvice org-refile-fullpath (around use-full-path activate)
+       (let ((org-completion-use-ido nil)
+	     (org-outline-path-complete-in-steps t)
+	     (org-refile-use-outline-path 'file)
+	     (org-refile-targets (quote ((nil :maxlevel . 9)
+					 (org-agenda-files :maxlevel . 9)))))
+	 ad-do-it
+	 ))
+
+     ;; this one is for refiling to other files in the org-agenda-files
+     (defadvice org-agenda-refile-fullpath (around use-full-path activate)
        (let ((org-completion-use-ido nil)
 	     (org-outline-path-complete-in-steps t)
 	     (org-refile-use-outline-path 'file)
