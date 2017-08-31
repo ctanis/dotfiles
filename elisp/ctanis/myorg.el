@@ -9,7 +9,8 @@
 (setq org-archive-default-command 'org-toggle-archive-tag)
 (setq org-yank-folded-subtrees nil)
 (setq org-startup-folded nil)
-(setq org-src-fontify-natively nil)
+;;(setq org-src-fontify-natively nil)
+(setq org-src-fontify-natively t)
 
 ;; ctrl-a/e on heading defaults to text
 (setq org-special-ctrl-a/e 'reversed)
