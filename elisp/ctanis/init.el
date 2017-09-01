@@ -567,7 +567,7 @@ For details of keybindings, see `ido-find-file'."
         (let ((deft-filter-regexp "."))
           (deft-filter-clear))
       ))
-  (define-key deft-mode-map "\C-[" 'rotate-deft-dirs)
+  (define-key deft-mode-map "\C-c [" 'rotate-deft-dirs)
 
   (defvar deft-dirs '(("~/Dropbox/notes" "txt") ("~/Dropbox/work_notes" "org")))
   ;(rotate-deft-dirs)
