@@ -194,6 +194,11 @@ most localized thing"
 
 (define-key org-mode-map (kbd "C-,") 'org-occur-in-agenda-files)
 
+; ignore this aspect of agenda files
+(define-key org-mode-map (kbd "C-'") nil)
+(define-key org-mode-map (kbd "C-c [") nil)
+(define-key org-mode-map (kbd "C-c ]") nil)
+
 ;(require 'ox-odt)
 ;(require 'ox-beamer)
 ;(require 'ox-md)

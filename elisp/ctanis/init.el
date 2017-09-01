@@ -541,7 +541,6 @@ For details of keybindings, see `ido-find-file'."
 
 ;; deft
 (when (require-verbose 'deft)
-  (setq deft-directory "~/Dropbox/notes")
   (setq deft-text-mode 'org-mode)
   (setq deft-default-extension "txt")
   (setq deft-use-filename-as-title t)
@@ -556,7 +555,23 @@ For details of keybindings, see `ido-find-file'."
             (lambda ()
               (hl-line-mode 1)))
 
-)
+
+  ;; support multiple deft directories
+  (defun rotate-deft-dirs ()
+    (interactive)
+    (let ((mode (car deft-dirs)))
+      (setq deft-directory (car mode))
+      (setq deft-default-extension (cadr mode)))
+    (setq deft-dirs (append (cdr deft-dirs) (list (car deft-dirs))))
+    (if (called-interactively-p)
+        (let ((deft-filter-regexp "."))
+          (deft-filter-clear))
+      ))
+  (define-key deft-mode-map "\C-[" 'rotate-deft-dirs)
+
+  (defvar deft-dirs '(("~/Dropbox/notes" "txt") ("~/Dropbox/work_notes" "org")))
+  ;(rotate-deft-dirs)
+  )
 
 
 ;; browse-kill-ring
