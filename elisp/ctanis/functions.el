@@ -390,18 +390,18 @@ multiple times in a row"
 ;;     (refill-paragraph)))
 
 
-(defvar tail-display-buffer 'display-buffer)
-(defun tail-file (pre file)
-  (interactive "P\nfTail file:")
-  (let* ((args (if pre
-		   (read-from-minibuffer "Tail switches :" "-F")
-		 "-F"))
-	 (buf (generate-new-buffer
-	       (concat "*tail " file "*"))))
-    (shell-command (concat "tail " args " " file " &") buf)
-    (run-hooks 'tail-file-hook);
-    (funcall tail-display-buffer buf)
-))
+;; (defvar tail-display-buffer 'display-buffer)
+;; (defun tail-file (pre file)
+;;   (interactive "P\nfTail file:")
+;;   (let* ((args (if pre
+;; 		   (read-from-minibuffer "Tail switches :" "-F")
+;; 		 "-F"))
+;; 	 (buf (generate-new-buffer
+;; 	       (concat "*tail " file "*"))))
+;;     (shell-command (concat "tail " args " " file " &") buf)
+;;     (run-hooks 'tail-file-hook);
+;;     (funcall tail-display-buffer buf)
+;; ))
 
 
 (defun shrink-other-window-if-larger-than-buffer ()

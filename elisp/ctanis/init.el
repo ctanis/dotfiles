@@ -770,3 +770,9 @@ For details of keybindings, see `ido-find-file'."
 ; tramp exec use remote path
 (eval-after-load 'tramp
   '(add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+
+(when (require-verbose 'itail)
+  (defalias 'tail-file 'itail))
+
+(when (require-verbose 'immortal-scratch)
+  (immortal-scratch-mode))
