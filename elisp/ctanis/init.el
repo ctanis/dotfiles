@@ -10,7 +10,7 @@
 ; on startup...
 (setq inhibit-default-init t)			;; don't load system init
 (setq inhibit-startup-message t)               
-(setq initial-scratch-message nil)
+(setq initial-scratch-message "") ;; was nil, but this broke immortal-scratch
 
 ; enable functionality
 (put 'eval-expression 'disabled nil)
