@@ -199,6 +199,9 @@ most localized thing"
 (define-key org-mode-map (kbd "C-c [") nil)
 (define-key org-mode-map (kbd "C-c ]") nil)
 
+; to tag TODO's in capture mode
+(eval-after-load "org-capture" '(define-key org-capture-mode-map "\C-c\C-t" 'org-ctrl-c-ctrl-c))
+
 ;(require 'ox-odt)
 ;(require 'ox-beamer)
 ;(require 'ox-md)
