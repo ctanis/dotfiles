@@ -382,6 +382,11 @@
           '(lambda ()
              (local-set-key "\C-c\M-w" 'org-agenda-refile-fullpath)))
 
+(add-hook 'org-agenda-finalize-hook
+          '(lambda()
+             (hl-line-mode nil)))
+
+
 
 ;; redefine local autopair emulation
 ;; list to ignore autopair-newline, when in org-mode
