@@ -541,6 +541,7 @@ For details of keybindings, see `ido-find-file'."
 
 ;; deft
 (when (require-verbose 'deft)
+  (setq deft-auto-save-interval 0)
   (setq deft-text-mode 'org-mode)
   (setq deft-default-extension "txt")
   (setq deft-use-filename-as-title t)
