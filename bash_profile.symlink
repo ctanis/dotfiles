@@ -153,3 +153,10 @@ fi
 # if [ "$TERM_PROGRAM" = Apple_Terminal ]; then
 # 	~/.dotfiles/scripts/terminal_color.sh
 # fi
+
+
+if [ "$TERM" == "xterm-256color" ]; then
+    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+fi
+
+
