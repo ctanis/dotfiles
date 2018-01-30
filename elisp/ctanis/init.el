@@ -403,8 +403,8 @@ For details of keybindings, see `ido-find-file'."
 
 (setenv "PAGER" "/bin/cat")
 
-(setq gdb-show-main t)
-;(setq gdb-many-windows t)
+;(setq gdb-show-main t)
+(setq gdb-many-windows t)
 
 (setq compilation-scroll-output t)
 
