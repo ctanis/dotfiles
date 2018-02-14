@@ -183,38 +183,38 @@ and go there."
 
 (require 'advice)
 ;-----------------------------------------------------------------------------
-;i stole this stuff from eric beuscher.  i'm sick of creating buffers on
-;accident, and then having to kill them!
+;; ;i stole this stuff from eric beuscher.  i'm sick of creating buffers on
+;; ;accident, and then having to kill them!
 
-(defadvice switch-to-buffer 
-  (before existing-buffers-only activate)
-  "When called interactively switch to existing buffers only, unless 
-when called with a prefix argument."
-  (interactive 
-   (list (read-buffer "Switch to buffer: " (other-buffer) 
-                      (null current-prefix-arg)))))
-
-(defadvice switch-to-buffer-other-window 
-  (before existing-buffers-only activate)
-  "When called interactively switch to existing buffers only, unless 
-when called with a prefix argument."
-  (interactive 
-   (list (read-buffer "Switch to buffer other window: " (other-buffer) 
-                      (null current-prefix-arg)))))
-
-;; (defadvice better-display-buffer 
+;; (defadvice switch-to-buffer 
 ;;   (before existing-buffers-only activate)
-;;   "When called interactively display existing buffers only, unless 
+;;   "When called interactively switch to existing buffers only, unless 
 ;; when called with a prefix argument."
 ;;   (interactive 
-;;    (list (read-buffer "Display buffer: " (other-buffer) 
+;;    (list (read-buffer "Switch to buffer: " (other-buffer) 
 ;;                       (null current-prefix-arg)))))
 
-(defadvice display-buffer (around  display-buffer-return-to-sender activate)
-  "displaying a buffer in another frame should not change the frame we are currently in!"
-  (let ((f (window-frame (selected-window))))
-    ad-do-it
-    (raise-frame f)))
+;; (defadvice switch-to-buffer-other-window 
+;;   (before existing-buffers-only activate)
+;;   "When called interactively switch to existing buffers only, unless 
+;; when called with a prefix argument."
+;;   (interactive 
+;;    (list (read-buffer "Switch to buffer other window: " (other-buffer) 
+;;                       (null current-prefix-arg)))))
+
+;; ;; (defadvice better-display-buffer 
+;; ;;   (before existing-buffers-only activate)
+;; ;;   "When called interactively display existing buffers only, unless 
+;; ;; when called with a prefix argument."
+;; ;;   (interactive 
+;; ;;    (list (read-buffer "Display buffer: " (other-buffer) 
+;; ;;                       (null current-prefix-arg)))))
+
+;; (defadvice display-buffer (around  display-buffer-return-to-sender activate)
+;;   "displaying a buffer in another frame should not change the frame we are currently in!"
+;;   (let ((f (window-frame (selected-window))))
+;;     ad-do-it
+;;     (raise-frame f)))
 
 
 ;; EDITING
