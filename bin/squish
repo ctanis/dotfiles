@@ -15,7 +15,7 @@ for $file (@ARGV) {
 
   if ($file =~ /\.pdf$/i) {
     push @actual, "$file";
-  } elsif ($file =~ /\.(gif|png|jpg)/i) {
+  } elsif ($file =~ /\.(gif|png|jpg|jpeg)/i) {
     `convert -density 250 $file $fileout.pdf`; # arbitrary 250!
     push @actual, "$fileout.pdf";
   } else {
