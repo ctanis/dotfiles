@@ -1,0 +1,32 @@
+#!/usr/bin/perl -w
+
+
+@actual=();
+$output = shift @ARGV;
+
+for $file (@ARGV) {
+
+  $fileout = $file;
+  $fileout =~ s/ //g;
+
+  $file =~ s/ /\\ /g;
+
+  print STDERR "convert $file --> $fileout\n";
+
+  if ($file =~ /\.pdf$/i) {
+    push @actual, "$file";
+  } elsif ($file =~ /\.(gif|png|jpg)/i) {
+    `convert -density 250 $file $fileout.pdf`; # arbitrary 250!
+    push @actual, "$fileout.pdf";
+  } else {
+    `CODEPDFQUIET=1 PDFOUTPUT=$fileout.pdf codepdf $file`;
+    push @actual, "$fileout.pdf";
+  }
+  
+}
+
+`pdfunite @actual $output`;
+
+# for (@actual) {
+#   print "--> $_\n";
+# }
