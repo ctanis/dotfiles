@@ -14,9 +14,16 @@
 
 (add-hook 'geiser-repl-mode-hook
           #'(lambda ()
+              (define-key geiser-repl-mode-map "\M-`" nil)
               (setq autopair-dont-activate t)
               (autopair-mode -1))
           )
+
+(add-hook 'geiser-mode-hook
+          #'(lambda ()
+              (define-key geiser-mode-map "\M-`" nil))
+          )
+
 
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)

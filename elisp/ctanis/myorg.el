@@ -228,6 +228,7 @@ most localized thing"
         ("showspaces" "false")
         ("showstringspaces" "false")
         ("aboveskip" ".5in")
+        ("belowskip" ".5in")
         ("belowcaptionskip" ".5in")
         ))
 
