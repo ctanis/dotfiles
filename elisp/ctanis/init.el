@@ -782,3 +782,6 @@ For details of keybindings, see `ido-find-file'."
 
 (when (require-verbose 'immortal-scratch)
   (immortal-scratch-mode))
+
+(when (require-verbose 'dictionary)
+  (define-key craig-prefix-map "\M-w" 'dictionary-lookup-definition))
