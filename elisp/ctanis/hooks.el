@@ -60,8 +60,8 @@
 			(c-offsets-alist
 			 (case-label . 1)
 			 (access-label . -)
-					;			 (cpp-macro . 0)
-					;			 (cpp-macro . -)
+                                        ; (cpp-macro . 0)
+					; (cpp-macro . -)
 			 )
 			(c-hanging-braces-alist
 			 (substatement-open . 'before)

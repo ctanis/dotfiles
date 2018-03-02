@@ -700,4 +700,15 @@ initial entry is Mode: with the current buffer mode inserted."
     (switch-to-buffer n)
     (set-mark m)
     (goto-char pt)
-  ))
+    ))
+
+(defun indent-omp-pragmas ()
+  (interactive)
+  (c-set-offset (quote cpp-macro) 0)
+  (save-excursion
+    (goto-char (point-min))
+    (insert comment-start " -*- mode: "
+	    (downcase (car (split-string mode-name "/"))) ;; ctanis -- remove minor modes
+	    "; eval: (c-set-offset (quote cpp-macro) 0)-*- " comment-end "\n")
+
+    ))
