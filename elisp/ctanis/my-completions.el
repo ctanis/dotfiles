@@ -180,7 +180,7 @@
 ;; (my-semantic-enable)
 
 
-(semantic-mode 1)
+;(semantic-mode 1)
 (global-semantic-stickyfunc-mode 1)
 ;(setq global-semantic-mru-bookmark-mode 1)
 (global-semantic-mru-bookmark-mode 1)
