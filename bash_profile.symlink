@@ -160,3 +160,5 @@ if [ "$TERM" == "xterm-256color" ]; then
 fi
 
 
+#brew install rename
+function nospace { rename 's/[ \t]+/_/g' "$1"; }
