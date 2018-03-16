@@ -62,6 +62,7 @@
 			 (access-label . -)
                                         ; (cpp-macro . 0)
 					; (cpp-macro . -)
+                         (innamespace . [0])
 			 )
 			(c-hanging-braces-alist
 			 (substatement-open . 'before)
@@ -72,7 +73,8 @@
 			 (brace-entry-open)
 			 (statement-case-open . 'before)
 			 (extern-lang-open . 'before)
-			 (namespace-open . 'before)
+			 (namespace-open . 'after)
+                         (namespace-close . 'before)
 			 (inline-open)
 			 (class-close)
 			 )
