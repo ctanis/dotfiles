@@ -74,7 +74,7 @@
 			 (statement-case-open . 'before)
 			 (extern-lang-open . 'before)
 			 (namespace-open . 'after)
-                         (namespace-close . 'before)
+                         (namespace-close)
 			 (inline-open)
 			 (class-close)
 			 )
