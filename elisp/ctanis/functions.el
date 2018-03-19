@@ -110,9 +110,11 @@ more than 2 windows are currently displayed."
   "This is the alist of codes to buffer names for use in switch-to-common-buffer")
 
 
+(defvar is-common-buffer nil)
+
 ;; tweaked to work with shell-current-directory.el
 (defun switch-to-common-buffer (buf-id)
-  "Jump-to-existing-buffer with name corresponding to buf-id in
+  "do-jump-to-common-buffer with name corresponding to buf-id in
 common-buffers alist"
   ;; TODO: build the string of options from the items in common-buffers
   (interactive "cSwitch to indexed buffer (lsc): ")
@@ -123,10 +125,10 @@ common-buffers alist"
 	    (progn 
 	      (message buff)
 	      (setq shell-last-shell buff)
-	      (jump-to-existing-buffer (get-buffer buff))
+	      (do-jump-to-common-buffer (get-buffer buff))
 	      )
 	  (if (and shell-last-shell (get-buffer shell-last-shell))
-	      (jump-to-existing-buffer shell-last-shell)
+	      (do-jump-to-common-buffer shell-last-shell)
 	    (error "no shell for current directory"))))
     (let* ((entry (assoc (char-to-string buf-id)
 			 (filter '(lambda (i)
@@ -134,11 +136,30 @@ common-buffers alist"
 				 common-buffers)))
 	   (bufname (and entry (cdr entry))))
       (if bufname
-	  (jump-to-existing-buffer bufname)
-	(error "Selection not available")))))
+	  (do-jump-to-common-buffer bufname)
+	(error "Selection not available"))
+      (set (make-local-variable 'is-common-buffer) t)
+                                          )))
 
 
-(defun jump-to-existing-buffer (bufname)
+;; (defun jump-to-existing-buffer (bufname)
+;;   "Jump to buffer BUFNAME.  If visible go there.  Otherwise make it visible
+;; and go there."
+;;   (let ((buf (get-buffer bufname)))
+;;     (if buf
+;; 	(cond
+;; 	 ((equal buf (current-buffer)) t)
+;; 	 ((get-buffer-window buf t)
+;; 	  (let ((win (select-window (get-buffer-window buf t))))
+;; 	    (select-frame (window-frame win))
+;; 	    (other-frame 0) ; switch to the selected frame?
+;; 	    (select-window win)))
+;; 	 ((equal (count-windows) 1)
+;; 	  (switch-to-buffer-other-window buf))
+;; 	 (t (switch-to-buffer bufname))))))
+
+;; this version always jumps to it in another window
+(defun do-jump-to-common-buffer (bufname)
   "Jump to buffer BUFNAME.  If visible go there.  Otherwise make it visible
 and go there."
   (let ((buf (get-buffer bufname)))
@@ -148,11 +169,11 @@ and go there."
 	 ((get-buffer-window buf t)
 	  (let ((win (select-window (get-buffer-window buf t))))
 	    (select-frame (window-frame win))
-	    (other-frame 0) ; switch to the selected frame?
+	    (other-frame 0)             ; switch to the selected frame?
 	    (select-window win)))
-	 ((equal (count-windows) 1)
-	  (switch-to-buffer-other-window buf))
-	 (t (switch-to-buffer bufname))))))
+	 (t (if is-common-buffer
+                (switch-to-buffer bufname)
+              (switch-to-buffer-other-window bufname)))))))
 
 
 ;; modifications of shell-current-directory.el by Daniel Polani
@@ -173,7 +194,7 @@ and go there."
   (let ((shell-buffer-name (directory-shell-buffer-name)))
     (setq shell-last-shell shell-buffer-name)
     (if (get-buffer shell-buffer-name)
-	(jump-to-existing-buffer shell-buffer-name)
+	(do-jump-to-common-buffer shell-buffer-name)
       (shell)
       (rename-buffer (directory-shell-buffer-name) t))))
 
