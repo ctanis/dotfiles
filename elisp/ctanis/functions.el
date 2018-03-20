@@ -196,6 +196,7 @@ and go there."
     (if (get-buffer shell-buffer-name)
 	(do-jump-to-common-buffer shell-buffer-name)
       (shell)
+      (set (make-local-variable 'is-common-buffer) t)
       (rename-buffer (directory-shell-buffer-name) t))))
 
 
