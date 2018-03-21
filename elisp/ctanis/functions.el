@@ -114,6 +114,9 @@ more than 2 windows are currently displayed."
 
 (defvar is-common-buffer nil)
 
+;; how to use this for the switch-to-common-buffer prompt
+;;(apply (function concat) (mapcar (function car) common-buffers))
+
 ;; tweaked to work with shell-current-directory.el
 (defun switch-to-common-buffer (buf-id)
   "do-jump-to-common-buffer with name corresponding to buf-id in
