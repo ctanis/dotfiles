@@ -121,10 +121,17 @@ more than 2 windows are currently displayed."
 (defun switch-to-common-buffer (buf-id)
   "do-jump-to-common-buffer with name corresponding to buf-id in
 common-buffers alist"
-  ;; TODO: build the string of options from the items in common-buffers
-  ; (interactive "cSwitch to indexed buffer (lsc): ")
 
-  (interactive "cSwitch to indexed buffer: ")
+  ;; (interactive "cSwitch to indexed buffer (lsc): ")
+  ;; (interactive "cSwitch to indexed buffer: ")
+
+  ;; prompt now includes options
+  (interactive (list (read-char (concat "Switch to indexed buffer ("
+                                        (apply (function concat)
+                                               (mapcar (function car) common-buffers))
+                                        "): "
+                                        )
+                                )))
 
   (if (string= (char-to-string buf-id) "l")
       (let ((buff (directory-shell-buffer-name)))
@@ -146,7 +153,7 @@ common-buffers alist"
 	  (do-jump-to-common-buffer bufname)
 	(error "Selection not available"))
       (set (make-local-variable 'is-common-buffer) t)
-                                          )))
+      )))
 
 
 ;; (defun jump-to-existing-buffer (bufname)
