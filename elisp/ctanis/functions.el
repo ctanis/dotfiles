@@ -171,7 +171,7 @@ and go there."
 	    (select-frame (window-frame win))
 	    (other-frame 0)             ; switch to the selected frame?
 	    (select-window win)))
-	 (t (if is-common-buffer
+	 (t (if (and is-common-buffer (> (count-windows) 1))
                 (switch-to-buffer bufname)
               (switch-to-buffer-other-window bufname)))))))
 
