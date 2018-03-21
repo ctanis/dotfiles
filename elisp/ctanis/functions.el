@@ -119,7 +119,9 @@ more than 2 windows are currently displayed."
   "do-jump-to-common-buffer with name corresponding to buf-id in
 common-buffers alist"
   ;; TODO: build the string of options from the items in common-buffers
-  (interactive "cSwitch to indexed buffer (lsc): ")
+  ; (interactive "cSwitch to indexed buffer (lsc): ")
+
+  (interactive "cSwitch to indexed buffer: ")
 
   (if (string= (char-to-string buf-id) "l")
       (let ((buff (directory-shell-buffer-name)))
