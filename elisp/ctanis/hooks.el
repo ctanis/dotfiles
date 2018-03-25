@@ -10,7 +10,7 @@
 (add-hook 'scheme-mode-hook
           #'(lambda ()
               (setq autopair-dont-activate t)
-              (set (make-local-variable 'autopair-skip-whitespace) 'chomp))
+              (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
               ;;(autopair-mode -1)
               ))
 
