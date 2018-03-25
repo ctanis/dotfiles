@@ -661,7 +661,8 @@ For details of keybindings, see `ido-find-file'."
   (setq autopair-blink nil)
   (setq autopair-pair-criteria 'help-balance)
   (setq autopair-skip-criteria 'help-balance)
-  (setq autopair-skip-whitespace t)
+  ;;(setq autopair-skip-whitespace t)
+  (setq autopair-skip-whitespace nil)
   ; (setq autopair-pair-criteria 'help-balance)
   ; (setq autopair-skip-criteria 'help-balance)
 

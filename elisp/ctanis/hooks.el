@@ -10,13 +10,16 @@
 (add-hook 'scheme-mode-hook
           #'(lambda ()
               (setq autopair-dont-activate t)
-              (autopair-mode -1)))
+              (set (make-local-variable 'autopair-skip-whitespace) 'chomp))
+              ;;(autopair-mode -1)
+              ))
 
 (add-hook 'geiser-repl-mode-hook
           #'(lambda ()
               (define-key geiser-repl-mode-map "\M-`" nil)
-              (setq autopair-dont-activate t)
-              (autopair-mode -1))
+              ;; (setq autopair-dont-activate t)
+              (set (make-local-variable 'autopair-skip-whitespace) 'chomp))
+              ;;(autopair-mode -1)
           )
 
 (add-hook 'geiser-mode-hook
@@ -263,7 +266,8 @@
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (setq comment-start ";; ")
-	     (local-set-key "\C-m" 'newline-and-indent)))
+	     (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
+             (local-set-key "\C-m" 'newline-and-indent)))
 
 (add-hook 'lisp-interaction-mode-hook
 	  '(lambda ()
