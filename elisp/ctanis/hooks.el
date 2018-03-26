@@ -602,3 +602,6 @@
             (setq imenu-generic-expression cc-imenu-c++-generic-expression)
             ))
 
+(add-hook 'compilation-mode-hook
+          (lambda()
+            (set (make-local-variable 'is-common-buffer) t)))
