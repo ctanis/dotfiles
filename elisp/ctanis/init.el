@@ -659,9 +659,10 @@ For details of keybindings, see `ido-find-file'."
 (when (require-verbose 'autopair)
   (autopair-global-mode)
   (setq autopair-blink nil)
-  (setq autopair-pair-criteria 'help-balance)
-  (setq autopair-skip-criteria 'help-balance)
-  (setq autopair-skip-whitespace t)
+  ;;(setq autopair-pair-criteria 'help-balance)
+  (setq autopair-skip-criteria 'always)
+  ;;(setq autopair-skip-whitespace t)
+  (setq autopair-skip-whitespace nil)
   ; (setq autopair-pair-criteria 'help-balance)
   ; (setq autopair-skip-criteria 'help-balance)
 
