@@ -158,26 +158,24 @@ common-buffers alist"
       )))
 
 
-;; (defun jump-to-existing-buffer (bufname)
-;;   "Jump to buffer BUFNAME.  If visible go there.  Otherwise make it visible
-;; and go there."
-;;   (let ((buf (get-buffer bufname)))
-;;     (if buf
-;; 	(cond
-;; 	 ((equal buf (current-buffer)) t)
-;; 	 ((get-buffer-window buf t)
-;; 	  (let ((win (select-window (get-buffer-window buf t))))
-;; 	    (select-frame (window-frame win))
-;; 	    (other-frame 0) ; switch to the selected frame?
-;; 	    (select-window win)))
-;; 	 ((equal (count-windows) 1)
-;; 	  (switch-to-buffer-other-window buf))
-;; 	 (t (switch-to-buffer bufname))))))
+(defun replace-visible-common-buffer (buffer)
+  (let ((win 
+         (save-excursion
+           (get-window-with-predicate (lambda (win)
+                                        (select-window win)
+                                        is-common-buffer)))))
+    (if win
+        (progn
+          (select-window win)
+          (switch-to-buffer buffer)
+          t)
+      nil)))
 
-;; this version always jumps to it in another window
+
 (defun do-jump-to-common-buffer (bufname)
-  "Jump to buffer BUFNAME.  If visible go there.  Otherwise make it visible
-and go there."
+  "Jump to buffer BUFNAME.  If visible go there.  Otherwise make
+it visible (prioritizing the replacement of a different
+common-buffer) and go there."
   (let ((buf (get-buffer bufname)))
     (if buf
 	(cond
@@ -187,9 +185,8 @@ and go there."
 	    (select-frame (window-frame win))
 	    (other-frame 0)             ; switch to the selected frame?
 	    (select-window win)))
-	 (t (if (or is-common-buffer (> (count-windows) 1)) ;; changed from and
-                (switch-to-buffer bufname)
-              (switch-to-buffer-other-window bufname)))))))
+	 ((replace-visible-common-buffer buf) t)
+         (t (switch-to-buffer-other-window bufname))))))
 
 
 ;; modifications of shell-current-directory.el by Daniel Polani
