@@ -185,6 +185,7 @@ common-buffer) and go there."
 	    (select-frame (window-frame win))
 	    (other-frame 0)             ; switch to the selected frame?
 	    (select-window win)))
+         ((eq (count-windows) 1) (switch-to-buffer-other-window bufname)) ;; always split a window
 	 ((replace-visible-common-buffer buf) t)
          (t (switch-to-buffer-other-window bufname))))))
 

@@ -157,6 +157,9 @@
 ; visible bell
 (setq visible-bell t)
 
+;; don't spontaneously split vertical
+(setq split-width-threshold nil)
+
 ; dired - guess destination when 2 dired windows are visible
 (setq dired-dwim-target nil)
 (eval-after-load 'dired
