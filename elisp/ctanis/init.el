@@ -374,6 +374,7 @@ For details of keybindings, see `ido-find-file'."
 
 (load-library "ffap")
 (define-key craig-prefix-map "\C-f" 'find-file-at-point)
+(define-key craig-prefix-map "\C-\M-f" 'find-and-display-file)
 
 
 
