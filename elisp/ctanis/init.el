@@ -353,6 +353,7 @@
                (string= (format-mode-line mode-name) "Shell")
                (string= "* Guile REPL *" n)
                (string= "*Python*" n)
+               (string= "*erlang*" n)
                (not (string-match "\\*" n))))))))
 
 (setq ido-ignore-buffers '(my-buffer-filter))

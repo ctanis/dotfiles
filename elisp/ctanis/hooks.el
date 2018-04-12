@@ -18,6 +18,7 @@
           #'(lambda ()
               (define-key geiser-repl-mode-map "\M-`" nil)
               ;; (setq autopair-dont-activate t)
+              (add-to-list 'common-buffers '("g" . "* Guile REPL *"))
               (set (make-local-variable 'autopair-skip-whitespace) 'chomp))
               ;;(autopair-mode -1)
           )
@@ -344,6 +345,11 @@
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t) 
 
 
+(add-hook 'inferior-python-mode-hook
+          '(lambda()
+             (add-to-list 'common-buffers '("p" . "*Python*"))
+             ))
+
 (add-hook 'python-mode-hook
 	  '(lambda()
              (when (require-verbose 'flymake-python-pyflakes)
@@ -453,10 +459,15 @@
             ))
 
 
+(add-hook 'erlang-shell-mode-hook
+          '(lambda()
+             (add-to-list 'common-buffers '("e" . "*erlang*"))
+             ))
+
 
 (add-hook 'erlang-mode-hook
 	  (lambda()
-	    (local-set-key "\C-m" 'newline-and-indent)))
+            (local-set-key "\C-m" 'newline-and-indent)))
 
 (add-hook 'Info-mode-hook
 	  (lambda()
@@ -608,4 +619,5 @@
 
 (add-hook 'compilation-mode-hook
           (lambda()
+            (add-to-list 'common-buffers '("c" . "*compilation*"))
             (set (make-local-variable 'is-common-buffer) t)))

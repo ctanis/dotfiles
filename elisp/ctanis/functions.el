@@ -106,8 +106,6 @@ more than 2 windows are currently displayed."
 
 (defvar common-buffers '(("l" . "*shell*")
 			 ("s" . "*scratch*")
-			 ("c" . "*compilation*")
-                         ("g" . "* Guile REPL *")
                          )
   "This is the alist of codes to buffer names for use in switch-to-common-buffer")
 
