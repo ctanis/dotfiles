@@ -196,8 +196,8 @@ most localized thing"
 
 ; ignore this aspect of agenda files
 (define-key org-mode-map (kbd "C-'") nil)
-(define-key org-mode-map (kbd "C-c [") nil)
-(define-key org-mode-map (kbd "C-c ]") nil)
+;; (define-key org-mode-map (kbd "C-c [") nil)
+;; (define-key org-mode-map (kbd "C-c ]") nil)
 
 ; to tag TODO's in capture mode
 (eval-after-load "org-capture" '(define-key org-capture-mode-map "\C-c\C-t" 'org-ctrl-c-ctrl-c))
