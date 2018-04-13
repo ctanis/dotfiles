@@ -462,6 +462,7 @@
 (add-hook 'erlang-shell-mode-hook
           '(lambda()
              (add-to-list 'common-buffers '("e" . "*erlang*"))
+             (setq comint-process-echoes t)
              ))
 
 
