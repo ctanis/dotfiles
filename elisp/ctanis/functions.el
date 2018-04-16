@@ -115,6 +115,12 @@ more than 2 windows are currently displayed."
 ;; how to use this for the switch-to-common-buffer prompt
 ;;(apply (function concat) (mapcar (function car) common-buffers))
 
+(defun get-all-shell-buffers()
+  (filter (lambda (c)
+            (with-current-buffer c
+              (eq major-mode 'shell-mode)))
+          (buffer-list)))
+
 ;; tweaked to work with shell-current-directory.el
 (defun switch-to-common-buffer (buf-id)
   "do-jump-to-common-buffer with name corresponding to buf-id in
@@ -142,8 +148,12 @@ common-buffers alist"
 	  (if (and shell-last-shell (get-buffer shell-last-shell))
 	      (do-jump-to-common-buffer shell-last-shell)
 	    ;;(error "no shell for current directory")
-            (shell-current-directory)
-                                                    )))
+
+            (if (get-all-shell-buffers)
+                ;;(error "which shell?")
+                ;; don't create a new shell if any exist
+                (do-jump-to-common-buffer (car (get-all-shell-buffers)))
+              (shell-current-directory)))))
     (let* ((entry (assoc (char-to-string buf-id)
 			 (filter '(lambda (i)
 				    (get-buffer (cdr i)))
