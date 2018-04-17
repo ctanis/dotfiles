@@ -233,9 +233,13 @@ common-buffer) and go there."
     (setq shell-last-shell shell-buffer-name)
     (if (get-buffer shell-buffer-name)
 	(do-jump-to-common-buffer shell-buffer-name)
-      (shell)
-      (set (make-local-variable 'is-common-buffer) t)
-      (rename-buffer (directory-shell-buffer-name) t))))
+      (progn (save-window-excursion
+               (shell)
+               (rename-buffer (directory-shell-buffer-name) t)
+               (set (make-local-variable 'is-common-buffer) t)
+               )
+             (do-jump-to-common-buffer shell-buffer-name)
+             ))))
 
 
 

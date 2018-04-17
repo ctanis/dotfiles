@@ -19,9 +19,10 @@
               (define-key geiser-repl-mode-map "\M-`" nil)
               ;; (setq autopair-dont-activate t)
               (add-to-list 'common-buffers '("g" . "* Guile REPL *"))
-              (set (make-local-variable 'autopair-skip-whitespace) 'chomp))
+              (set (make-local-variable 'is-common-buffer) t)
+              (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
               ;;(autopair-mode -1)
-          )
+          ))
 
 (add-hook 'geiser-mode-hook
           #'(lambda ()
@@ -348,6 +349,7 @@
 (add-hook 'inferior-python-mode-hook
           '(lambda()
              (add-to-list 'common-buffers '("p" . "*Python*"))
+             (set (make-local-variable 'is-common-buffer) t)
              ))
 
 (add-hook 'python-mode-hook
@@ -461,9 +463,9 @@
 
 (add-hook 'erlang-shell-mode-hook
           '(lambda()
-             (add-to-list 'common-buffers '("e" . "*erlang*"))
-             (setq comint-process-echoes t)
-             ))
+             (set (make-local-variable 'is-common-buffer) t)
+	     (add-to-list 'common-buffers '("e" . "*erlang*"))
+	     (setq comint-process-echoes t)))
 
 
 (add-hook 'erlang-mode-hook
@@ -572,8 +574,8 @@
       (flymake-simple-make-init-impl 'flymake-create-temp-with-folder-structure
                                      t nil "build.xml" 'flymake-fixed-get-ant-cmdline)
     (list "javac"  (list "-Xlint:unchecked"
-                       (flymake-init-create-temp-buffer-copy
-                        'flymake-create-temp-with-folder-structure)))))
+			 (flymake-init-create-temp-buffer-copy
+			  'flymake-create-temp-with-folder-structure)))))
 
 
 (add-to-list 'flymake-allowed-file-name-masks
@@ -608,7 +610,7 @@
             (make-local-variable 'autopair-skip-whitespace)
             (setq autopair-skip-whitespace nil)
             (define-key js2-mode-map "\M-j" 'backward-jump-to-char)
-            ; (electric-layout-mode 1)
+	    ;; (electric-layout-mode 1)
             ))
 
 
