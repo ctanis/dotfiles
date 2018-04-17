@@ -129,7 +129,7 @@ more than 2 windows are currently displayed."
       (add-to-list 'common-buffers (cons (char-to-string k) (buffer-name) )))))
 
 (defun active-common-buffers ()
-  (cons '("l" . "*shell*")
+  (cons '("l" . "SHELL_PLACEHOLDER")
         (filter (lambda (c) (get-buffer (cdr c))) common-buffers)))
 
 ;; tweaked to work with shell-current-directory.el
@@ -174,41 +174,44 @@ common-buffers alist"
              (bufname (and entry (cdr entry))))
         (if bufname
             (do-jump-to-common-buffer bufname)
-          (error "Selection not available"))
-        (set (make-local-variable 'is-common-buffer) t)
-        ))))
+          (error (concat "Selection not available" bufname)))
+        (set (make-local-variable 'is-common-buffer) t)))))
 
 
 (defun replace-visible-common-buffer (buffer)
-  (let ((win 
-         (save-excursion
-           (get-window-with-predicate (lambda (win)
-                                        (select-window win)
-                                        is-common-buffer)))))
-    (if win
-        (progn
-          (select-window win)
-          (switch-to-buffer buffer)
-          t)
-      nil)))
+  (if is-common-buffer
+      (switch-to-buffer buffer)
+    (let ((win 
+           (save-excursion
+             (get-window-with-predicate (lambda (win)
+                                          (select-window win)
+                                          is-common-buffer)))))
+      (if win
+          (progn
+            (select-window win)
+            (switch-to-buffer buffer)
+            t)
+        nil))))
 
 
 (defun do-jump-to-common-buffer (bufname)
   "Jump to buffer BUFNAME.  If visible go there.  Otherwise make
 it visible (prioritizing the replacement of a different
 common-buffer) and go there."
-  (let ((buf (get-buffer bufname)))
-    (if buf
-	(cond
-	 ((equal buf (current-buffer)) t)
-	 ((get-buffer-window buf t)
-	  (let ((win (select-window (get-buffer-window buf t))))
-	    (select-frame (window-frame win))
-	    (other-frame 0)             ; switch to the selected frame?
-	    (select-window win)))
-         ((eq (count-windows) 1) (switch-to-buffer-other-window bufname)) ;; always split a window
-	 ((replace-visible-common-buffer buf) t)
-         (t (switch-to-buffer-other-window bufname))))))
+  (if current-prefix-arg ;; always open in other window
+      (switch-to-buffer-other-window bufname)
+    (let ((buf (get-buffer bufname)))
+      (if buf
+          (cond
+           ((equal buf (current-buffer)) t)
+           ((get-buffer-window buf t)
+            (let ((win (select-window (get-buffer-window buf t))))
+              (select-frame (window-frame win))
+              (other-frame 0)           ; switch to the selected frame?
+              (select-window win)))
+           ((eq (count-windows) 1) (switch-to-buffer-other-window bufname)) ;; always split a window
+           ((replace-visible-common-buffer buf) t)
+           (t (switch-to-buffer-other-window bufname)))))))
 
 
 ;; modifications of shell-current-directory.el by Daniel Polani
