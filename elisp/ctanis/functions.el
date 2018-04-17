@@ -128,6 +128,10 @@ more than 2 windows are currently displayed."
                       (equal (cdr c) b)) common-buffers)
       (add-to-list 'common-buffers (cons (char-to-string k) (buffer-name) )))))
 
+(defun active-common-buffers ()
+  (cons '("l" . "*shell*")
+        (filter (lambda (c) (get-buffer (cdr c))) common-buffers)))
+
 ;; tweaked to work with shell-current-directory.el
 (defun switch-to-common-buffer (buf-id)
   "do-jump-to-common-buffer with name corresponding to buf-id in
@@ -139,7 +143,7 @@ common-buffers alist"
   ;; prompt now includes options
   (interactive (list (read-char (concat "Switch to indexed buffer ("
                                         (apply (function concat)
-                                               (mapcar (function car) common-buffers))
+                                               (mapcar (function car) (active-common-buffers)))
                                         "): "
                                         )
                                 )))
@@ -166,7 +170,7 @@ common-buffers alist"
       (let* ((entry (assoc (char-to-string buf-id)
                            (filter '(lambda (i)
                                       (get-buffer (cdr i)))
-                                   common-buffers)))
+                                   (active-common-buffers))))
              (bufname (and entry (cdr entry))))
         (if bufname
             (do-jump-to-common-buffer bufname)
