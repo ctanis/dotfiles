@@ -132,6 +132,14 @@ more than 2 windows are currently displayed."
   (cons '("l" . "SHELL_PLACEHOLDER")
         (filter (lambda (c) (get-buffer (cdr c))) common-buffers)))
 
+(defun remove-current-from-common-buffers (doit)
+  (interactive "cAre you sure?")
+  (if (equal (char-to-string doit) "y")
+      (setq common-buffers
+            (filter (lambda (b)
+                      (not (equal (cdr b) (buffer-name)))) common-buffers))))
+
+
 ;; tweaked to work with shell-current-directory.el
 (defun switch-to-common-buffer (buf-id)
   "do-jump-to-common-buffer with name corresponding to buf-id in
@@ -150,32 +158,34 @@ common-buffers alist"
 
   (if (string= (char-to-string buf-id) "!")
       (call-interactively 'add-current-to-common-buffers)
-    (if (string= (char-to-string buf-id) "l")
-        (let ((buff (directory-shell-buffer-name)))
-          (if (get-buffer buff)
-              (progn 
-                (message buff)
-                (setq shell-last-shell buff)
-                (do-jump-to-common-buffer (get-buffer buff))
-                )
-            (if (and shell-last-shell (get-buffer shell-last-shell))
-                (do-jump-to-common-buffer shell-last-shell)
-              ;;(error "no shell for current directory")
+    (if (string= (char-to-string buf-id) "\t")
+        (call-interactively 'remove-current-from-common-buffers)
+      (if (string= (char-to-string buf-id) "l")
+          (let ((buff (directory-shell-buffer-name)))
+            (if (get-buffer buff)
+                (progn 
+                  (message buff)
+                  (setq shell-last-shell buff)
+                  (do-jump-to-common-buffer (get-buffer buff))
+                  )
+              (if (and shell-last-shell (get-buffer shell-last-shell))
+                  (do-jump-to-common-buffer shell-last-shell)
+                ;;(error "no shell for current directory")
 
-              (if (get-all-shell-buffers)
-                  ;;(error "which shell?")
-                  ;; don't create a new shell if any exist
-                  (do-jump-to-common-buffer (car (get-all-shell-buffers)))
-                (shell-current-directory)))))
-      (let* ((entry (assoc (char-to-string buf-id)
-                           (filter '(lambda (i)
-                                      (get-buffer (cdr i)))
-                                   (active-common-buffers))))
-             (bufname (and entry (cdr entry))))
-        (if bufname
-            (do-jump-to-common-buffer bufname)
-          (error (concat "Selection not available" bufname)))
-        (set (make-local-variable 'is-common-buffer) t)))))
+                (if (get-all-shell-buffers)
+                    ;;(error "which shell?")
+                    ;; don't create a new shell if any exist
+                    (do-jump-to-common-buffer (car (get-all-shell-buffers)))
+                  (shell-current-directory)))))
+        (let* ((entry (assoc (char-to-string buf-id)
+                             (filter '(lambda (i)
+                                        (get-buffer (cdr i)))
+                                     (active-common-buffers))))
+               (bufname (and entry (cdr entry))))
+          (if bufname
+              (do-jump-to-common-buffer bufname)
+            (error (concat "Selection not available" bufname)))
+          (set (make-local-variable 'is-common-buffer) t))))))
 
 
 (defun replace-visible-common-buffer (buffer)

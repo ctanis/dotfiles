@@ -18,7 +18,7 @@
           #'(lambda ()
               (define-key geiser-repl-mode-map "\M-`" nil)
               ;; (setq autopair-dont-activate t)
-              (add-to-list 'common-buffers '("g" . "* Guile REPL *"))
+              ;(add-to-list 'common-buffers '("g" . "* Guile REPL *"))
               (set (make-local-variable 'is-common-buffer) t)
               (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
               ;;(autopair-mode -1)
@@ -348,7 +348,7 @@
 
 (add-hook 'inferior-python-mode-hook
           '(lambda()
-             (add-to-list 'common-buffers '("p" . "*Python*"))
+             ;(add-to-list 'common-buffers '("p" . "*Python*"))
              (set (make-local-variable 'is-common-buffer) t)
              ))
 
@@ -464,7 +464,7 @@
 (add-hook 'erlang-shell-mode-hook
           '(lambda()
              (set (make-local-variable 'is-common-buffer) t)
-	     (add-to-list 'common-buffers '("e" . "*erlang*"))
+	     ;(add-to-list 'common-buffers '("e" . "*erlang*"))
 	     (setq comint-process-echoes t)))
 
 
