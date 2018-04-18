@@ -136,9 +136,11 @@ more than 2 windows are currently displayed."
 (defun remove-current-from-common-buffers (doit)
   (interactive "cAre you sure?")
   (if (equal (char-to-string doit) "y")
-      (setq common-buffers
-            (filter (lambda (b)
-                      (not (equal (cdr b) (buffer-name)))) common-buffers))))
+      (progn
+        (set (make-local-variable 'is-common-buffer) nil)
+        (setq common-buffers
+              (filter (lambda (b)
+                        (not (equal (cdr b) (buffer-name)))) common-buffers)))))
 
 
 ;; tweaked to work with shell-current-directory.el
