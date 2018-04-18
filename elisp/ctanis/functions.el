@@ -124,6 +124,7 @@ more than 2 windows are currently displayed."
 (defun add-current-to-common-buffers (k)
   (interactive "cWhich quick key?")
   (let ((b (buffer-name)))
+    (set (make-local-variable 'is-common-buffer) t)
     (unless (filter (lambda (c)
                       (equal (cdr c) b)) common-buffers)
       (add-to-list 'common-buffers (cons (char-to-string k) (buffer-name) )))))
