@@ -342,22 +342,23 @@
 
 
 
-(defun my-buffer-filter (name)
-  (with-current-buffer name
-    (let ((n (buffer-name)))
-      (or
-       ;; never show these
-       (string-match "temp" n)
-       ;; always show these...
-       (not (or (string-match "\\*Man" n)
-               (string= (format-mode-line mode-name) "Shell")
-               (string= "* Guile REPL *" n)
-               (string= "*Python*" n)
-               (string= "*erlang*" n)
-               (not (string-match "\\*" n))))))))
+;; (defun my-buffer-filter (name)
+;;   (with-current-buffer name
+;;     (let ((n (buffer-name)))
+;;       (or
+;;        ;; never show these
+;;        (string-match "temp" n)
+;;        ;; always show these...
+;;        (not (or (string-match "\\*Man" n)
+;;                (string= (format-mode-line mode-name) "Shell")
+;;                (string= "* Guile REPL *" n)
+;;                (string= "*Python*" n)
+;;                (string= "*erlang*" n)
+;;                (not (string-match "\\*" n))))))))
 
-(setq ido-ignore-buffers '(my-buffer-filter))
+;; (setq ido-ignore-buffers '(my-buffer-filter))
 
+(setq ido-use-virtual-buffers t)
 
 
 (defun ido-dired-other-window ()
