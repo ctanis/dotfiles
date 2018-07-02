@@ -44,6 +44,7 @@ fi
 
 # export PERL5LIB=~/.perl/local
 
+shopt -s checkwinsize
 
        
 ## configure bash history stuff
@@ -51,6 +52,7 @@ shopt -s histappend
 shopt -s cmdhist
 shopt -s histverify
 shopt -s histreedit
+
 
 export HISTIGNORE="&:history*"
 export HISTFILESIZE=1000
