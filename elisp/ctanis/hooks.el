@@ -58,7 +58,21 @@
 ;; 			(objc-mode . "k&r")
 ;; 			(other . "ellemtel")))
 
+;; this should be somewhere other than hooks.el
 
+(defun c-semi&comma-no-newline-amidst-content ()
+  "Controls newline insertion after semicolons.
+If a comma was inserted, no determination is made.  If a semicolon was
+inserted, and we are not at the end of a block, no newline is inserted.
+Otherwise, no determination is made."
+  (if (= (c-last-command-char) ?\;)
+      (if (save-excursion
+            (skip-syntax-forward "->")
+            (or (= (point-max) (point))
+                (= (char-syntax (char-after)) ?\) )))
+            t
+        'stop)
+    nil))
 
 (c-add-style "ctanis" '("ellemtel"
 			(c-basic-offset . 4)
@@ -84,7 +98,9 @@
 			 (class-close)
 			 )
 			(c-hanging-semi&comma-criteria .
-						       (c-semi&comma-no-newlines-before-nonblanks
+						       (c-semi&comma-no-newline-amidst-content
+                                                        c-semi&comma-no-newlines-for-oneline-inliners
+                                                        c-semi&comma-no-newlines-before-nonblanks
 							c-semi&comma-inside-parenlist))
                         ;(c-hanging-semi&comma-criteria . nil)
 			))
