@@ -83,10 +83,10 @@
 			 (inline-open)
 			 (class-close)
 			 )
-			;; (c-hanging-semi&comma-criteria .
-			;; 			       (c-semi&comma-no-newlines-before-nonblanks
-			;; 				c-semi&comma-inside-parenlist))
-                        (c-hanging-semi&comma-criteria . nil)
+			(c-hanging-semi&comma-criteria .
+						       (c-semi&comma-no-newlines-before-nonblanks
+							c-semi&comma-inside-parenlist))
+                        ;(c-hanging-semi&comma-criteria . nil)
 			))
 (setq c-default-style "ctanis")
 
