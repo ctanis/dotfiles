@@ -98,9 +98,10 @@ Otherwise, no determination is made."
 			 (class-close)
 			 )
 			(c-hanging-semi&comma-criteria .
-						       (c-semi&comma-no-newline-amidst-content
-                                                        c-semi&comma-no-newlines-for-oneline-inliners
+						       (
                                                         c-semi&comma-no-newlines-before-nonblanks
+                                                        c-semi&comma-no-newline-amidst-content
+                                                        c-semi&comma-no-newlines-for-oneline-inliners
 							c-semi&comma-inside-parenlist))
                         ;(c-hanging-semi&comma-criteria . nil)
 			))
