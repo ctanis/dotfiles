@@ -789,3 +789,14 @@ initial entry is Mode: with the current buffer mode inserted."
 	    "; eval: (c-set-offset (quote cpp-macro) 0)-*- " comment-end "\n")
 
     ))
+
+
+(defun tildefy-path (path)
+  "replace home directory with tilde in path, for platform
+agnostic agenda-file management"
+  (let* ((h (getenv "HOME"))
+        (term (if (string-suffix-p "/" h)
+                  "/" ""                  )))
+    (if (string-prefix-p h path)
+        (concat "~" term (substring path (length h)))
+      path)))
