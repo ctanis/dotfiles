@@ -663,42 +663,82 @@ For details of keybindings, see `ido-find-file'."
 
 
 
-(when (require-verbose 'autopair)
-  (autopair-global-mode)
-  (setq autopair-blink nil)
-  ;;(setq autopair-pair-criteria 'help-balance)
-  (setq autopair-skip-criteria 'always)
-  ;;(setq autopair-skip-whitespace t)
-  (setq autopair-skip-whitespace nil)
-  ; (setq autopair-pair-criteria 'help-balance)
-  ; (setq autopair-skip-criteria 'help-balance)
+;; (when (require-verbose 'autopair)
+;;   (autopair-global-mode)
+;;   (setq autopair-blink nil)
+;;   ;;(setq autopair-pair-criteria 'help-balance)
+;;   (setq autopair-skip-criteria 'always)
+;;   ;;(setq autopair-skip-whitespace t)
+;;   (setq autopair-skip-whitespace nil)
+;;   ; (setq autopair-pair-criteria 'help-balance)
+;;   ; (setq autopair-skip-criteria 'help-balance)
 
 
-  (defun apair-try-expand-list (old)
-    (let ((rval (try-expand-list old)))
-      (if (and rval autopair-mode)
-          (backward-delete-char 1))
-      rval))
+;;   (defun apair-try-expand-list (old)
+;;     (let ((rval (try-expand-list old)))
+;;       (if (and rval autopair-mode)
+;;           (backward-delete-char 1))
+;;       rval))
 
-  (defun apair-try-expand-list-all-buffers (old)
-    (let ((rval (try-expand-list-all-buffers old)))
-      (if (and rval autopair-mode)
-          (backward-delete-char 1))
-      rval))
+;;   (defun apair-try-expand-list-all-buffers (old)
+;;     (let ((rval (try-expand-list-all-buffers old)))
+;;       (if (and rval autopair-mode)
+;;           (backward-delete-char 1))
+;;       rval))
 
-  (setq hippie-expand-try-functions-list
-        '(try-expand-dabbrev
-          apair-try-expand-list
-          try-expand-line
+;;   (setq hippie-expand-try-functions-list
+;;         '(try-expand-dabbrev
+;;           apair-try-expand-list
+;;           try-expand-line
           
-          try-complete-file-name-partially
-          try-complete-file-name
+;;           try-complete-file-name-partially
+;;           try-complete-file-name
 
-          try-expand-dabbrev-all-buffers
-          apair-try-expand-list-all-buffers
-          try-expand-line-all-buffers
+;;           try-expand-dabbrev-all-buffers
+;;           apair-try-expand-list-all-buffers
+;;           try-expand-line-all-buffers
 
-          try-expand-dabbrev-from-kill)))
+;;           try-expand-dabbrev-from-kill)))
+
+;; is this better?
+(electric-pair-mode)
+(add-to-list 'minor-mode-alist (list 'electric-pair-mode "Θ"))
+(defun ctanis_electric_pair_inhibitor (char)
+  (or
+   (eq char (char-after))
+   (eq (char-syntax (following-char)) ?w)
+   (eq (char-syntax (following-char)) ?\()
+   ))
+
+(setq electric-pair-inhibit-predicate 'ctanis_electric_pair_inhibitor)
+
+(defun apair-try-expand-list (old)
+  (let ((rval (try-expand-list old)))
+    (if (and rval electric-pair-mode)
+        (backward-delete-char 1))
+    rval))
+
+(defun apair-try-expand-list-all-buffers (old)
+  (let ((rval (try-expand-list-all-buffers old)))
+    (if (and rval electric-pair-mode)
+        (backward-delete-char 1))
+    rval))
+
+(setq hippie-expand-try-functions-list
+      '(try-expand-dabbrev
+        apair-try-expand-list
+        try-expand-line
+          
+        try-complete-file-name-partially
+        try-complete-file-name
+
+        try-expand-dabbrev-all-buffers
+        apair-try-expand-list-all-buffers
+        try-expand-line-all-buffers
+
+        try-expand-dabbrev-from-kill))
+
+
 
 (when (require-verbose 'num3-mode)
   (set-face-attribute 'num3-face-even nil :underline nil :weight 'normal :background "wheat2")
