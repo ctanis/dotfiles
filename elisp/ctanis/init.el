@@ -1,4 +1,4 @@
-r;; start this asap
+;; start this asap
 (if window-system
     (server-start))
 
@@ -495,7 +495,8 @@ For details of keybindings, see `ido-find-file'."
 
 ; makes saner names for buffers with same filename in diff. directories
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
 
 ; indent will not use tabs
 (setq-default indent-tabs-mode nil)
