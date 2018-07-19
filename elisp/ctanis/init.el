@@ -1,4 +1,4 @@
-;; start this asap
+r;; start this asap
 (if window-system
     (server-start))
 
@@ -477,12 +477,11 @@ For details of keybindings, see `ido-find-file'."
 (set-default 'fill-column 78)
 
 
-
-(setq save-place-file "~/.emacs.d/saved-places")
+;; saveplace
 (require 'saveplace)
-(autoload 'toggle-save-place "saveplace" )
-(define-key craig-prefix-map "r" 'toggle-save-place)
-
+(setq save-place-file "~/.emacs.d/saved-places")
+(save-place--setup-hooks 'add)
+(define-key craig-prefix-map "r" 'save-place-local-mode)
 
 ; skip calc trail windows with next-window
 (defadvice calc-trail-display (after skip-trail-window activate)
