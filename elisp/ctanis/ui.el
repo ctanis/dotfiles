@@ -346,16 +346,15 @@
 			       "9x15"
 			       ))
 
-(defun fix-second-frame ()
-  (interactive)
-  (set-frame-font  ctanis_font)
+(defun reset-window (num)
+  (interactive "P")
+  (set-frame-font ctanis_font)
   (set-frame-width (selected-frame) (car frame-mitosis-config))
   (set-frame-height (selected-frame) (cadr frame-mitosis-config))
   (set-frame-position (selected-frame)
-                      (cadddr frame-mitosis-config)
-                      (caddr frame-mitosis-config))
-
-  )
+                      (nth (if num 3 4) frame-mitosis-config)
+                      (nth 2 frame-mitosis-config))
+  (ctanis_colorfy))
 
 (defun frame-mitosis()
   (interactive)
@@ -385,7 +384,7 @@
       (let ((f (new-frame)))
 	;(sleep-for 5)
         (select-frame f)
-	(fix-second-frame)
+	(reset-window t)
         (funcall last_colorfy)))))
 
 
@@ -394,10 +393,7 @@
   (while (> (length (frame-list)) 1)
   	 (delete-frame))
     
-  (let ((f (car (frame-list))))
-    (set-frame-height f 42)
-    (set-frame-width f 87)
-    (set-frame-position f 309 0)))
+  (reset-window nil))
 
 
 
