@@ -800,3 +800,8 @@ agnostic agenda-file management"
     (if (string-prefix-p h path)
         (concat "~" term (substring path (length h)))
       path)))
+
+;; x-windows clipboard
+(defun system-yank ()
+  (interactive)
+  (insert (gui-get-primary-selection)))

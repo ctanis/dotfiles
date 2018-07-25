@@ -346,6 +346,16 @@
 			       "9x15"
 			       ))
 
+(defun fix-second-frame ()
+  (interactive)
+  (set-frame-font  ctanis_font)
+  (set-frame-width (selected-frame) (car frame-mitosis-config))
+  (set-frame-height (selected-frame) (cadr frame-mitosis-config))
+  (set-frame-position (selected-frame)
+                      (cadddr frame-mitosis-config)
+                      (caddr frame-mitosis-config))
+
+  )
 
 (defun frame-mitosis()
   (interactive)
@@ -373,8 +383,10 @@
       (set-default-font font)
 
       (let ((f (new-frame)))
-	(select-frame f)
-	(funcall last_colorfy)))))
+	;(sleep-for 5)
+        (select-frame f)
+	(fix-second-frame)
+        (funcall last_colorfy)))))
 
 
 (defun mono-framify()
