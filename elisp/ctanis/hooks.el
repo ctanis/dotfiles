@@ -7,12 +7,12 @@
 	  ))
 
 
-(add-hook 'scheme-mode-hook
-          #'(lambda ()
-              (setq autopair-dont-activate t)
-              (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
-              ;;(autopair-mode -1)
-              ))
+;; (add-hook 'scheme-mode-hook
+;;           #'(lambda ()
+;;               (setq autopair-dont-activate t)
+;;               (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
+;;               ;;(autopair-mode -1)
+;;               ))
 
 (add-hook 'geiser-repl-mode-hook
           #'(lambda ()
@@ -20,7 +20,7 @@
               ;; (setq autopair-dont-activate t)
               ;(add-to-list 'common-buffers '("g" . "* Guile REPL *"))
               ;;(set (make-local-variable 'is-common-buffer) t)
-              (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
+              ;;(set (make-local-variable 'autopair-skip-whitespace) 'chomp)
               ;;(autopair-mode -1)
           ))
 
@@ -173,9 +173,10 @@ Otherwise, no determination is made."
 	     ;; 	   (list 'autopair-default-handle-action
 	     ;; 		 'autopair-cleanup-closing-brace))
 
-             (local-set-key "}" 'self-insert-command) ;; electric-brace
-                                                      ;; doesn't play well
-                                                      ;; with autopair
+             ;; (local-set-key "}" 'self-insert-command) ;; electric-brace
+             ;;                                          ;; doesn't play well
+             ;;                                          ;; with autopair
+
 	     ))
 
 
@@ -285,7 +286,7 @@ Otherwise, no determination is made."
 (add-hook 'emacs-lisp-mode-hook
 	  '(lambda ()
 	     (setq comment-start ";; ")
-	     (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
+	     ;; (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
              (local-set-key "\C-m" 'newline-and-indent)))
 
 (add-hook 'lisp-interaction-mode-hook
@@ -300,11 +301,11 @@ Otherwise, no determination is made."
              (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
 	     (local-set-key "\C-m" 'newline-and-indent)))
 
-(add-hook 'cperl-mode-hook
-          '(lambda ()
-             (make-local-variable autopair-skip-criteria)
-             (setq autopair-skip-criteria 'always)
-             ))
+;; (add-hook 'cperl-mode-hook
+;;           '(lambda ()
+;;              (make-local-variable autopair-skip-criteria)
+;;              (setq autopair-skip-criteria 'always)
+;;              ))
 
 
 
@@ -497,18 +498,19 @@ Otherwise, no determination is made."
 (add-hook 'latex-mode-hook
           (lambda ()
 	    (add-to-list 'tex-verbatim-environments "lstlisting")
-	    (set (make-local-variable 'autopair-skip-criteria) 'always)
-            (set (make-local-variable 'autopair-handle-action-fns)
-		 (list 'autopair-default-handle-action
-		       'autopair-latex-mode-paired-delimiter-action))))
+	    ;; (set (make-local-variable 'autopair-skip-criteria) 'always)
+            ;; (set (make-local-variable 'autopair-handle-action-fns)
+	    ;;      (list 'autopair-default-handle-action
+	    ;;            'autopair-latex-mode-paired-delimiter-action))
+                                                                     ))
 
 
 
-					; these characters don't autopair right
-(eval-after-load "text-mode" '(modify-syntax-entry ?\" "\"" text-mode-syntax-table))
-(eval-after-load "markdown-mode" '(modify-syntax-entry ?\" "\"" markdown-mode-syntax-table))
-(eval-after-load "markdown-mode" '(modify-syntax-entry ?` "\"" markdown-mode-syntax-table))
-					;(eval-after-load "tex-mode" '(modify-syntax-entry ?$ "\"" latex-mode-syntax-table))
+;; 					; these characters don't autopair right
+;; (eval-after-load "text-mode" '(modify-syntax-entry ?\" "\"" text-mode-syntax-table))
+;; (eval-after-load "markdown-mode" '(modify-syntax-entry ?\" "\"" markdown-mode-syntax-table))
+;; (eval-after-load "markdown-mode" '(modify-syntax-entry ?` "\"" markdown-mode-syntax-table))
+;; 					;(eval-after-load "tex-mode" '(modify-syntax-entry ?$ "\"" latex-mode-syntax-table))
 
 
 
@@ -622,10 +624,10 @@ Otherwise, no determination is made."
 
 (add-hook 'js2-mode-hook
           (lambda()
-            (make-local-variable 'autopair-skip-criteria)
-            (setq autopair-skip-criteria 'always)
-            (make-local-variable 'autopair-skip-whitespace)
-            (setq autopair-skip-whitespace nil)
+            ;;(make-local-variable 'autopair-skip-criteria)
+            ;;(setq autopair-skip-criteria 'always)
+            ;;(make-local-variable 'autopair-skip-whitespace)
+            ;;(setq autopair-skip-whitespace nil)
             (define-key js2-mode-map "\M-j" 'backward-jump-to-char)
 	    ;; (electric-layout-mode 1)
             ))
