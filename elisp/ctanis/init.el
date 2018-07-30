@@ -830,7 +830,7 @@ For details of keybindings, see `ido-find-file'."
   '(add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 (setq tramp-default-method "ssh")
-(setq tramp-histfile-override t)
+;(setq tramp-histfile-override t)
 
 
 (when (require-verbose 'itail)
