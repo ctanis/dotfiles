@@ -829,6 +829,10 @@ For details of keybindings, see `ido-find-file'."
 (eval-after-load 'tramp
   '(add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
+(setq tramp-default-method "ssh")
+(setq tramp-histfile-override t)
+
+
 (when (require-verbose 'itail)
   (defalias 'tail-file 'itail))
 
