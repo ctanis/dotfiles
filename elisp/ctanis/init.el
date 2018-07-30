@@ -184,6 +184,7 @@
      (put 'dired-do-rename-other-window 'ido 'ignore)
      (put 'dired-do-symlink-other-window 'ido 'ignore)
      (put 'dired-do-symlink 'ido 'ignore)
+     (put 'dired-create-directory 'ido 'ignore)
 
      (define-key dired-mode-map "\C-cc" 'dired-do-copy-other-window)
      (define-key dired-mode-map "\C-cr" 'dired-do-rename-other-window)
