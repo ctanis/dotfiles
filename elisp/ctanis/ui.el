@@ -338,6 +338,13 @@
 (setq-default indicate-empty-lines t)
 
 
+(defun frame-mitosis-toggle ()
+  (interactive)
+  (if (< 1 (length (frame-list)))
+      (call-interactively 'mono-framify)
+    (call-interactively 'frame-mitosis)))
+
+
 (defvar frame-mitosis-config '(75  ;; width
 			       49  ;; height
 			       0   ;; geom-y

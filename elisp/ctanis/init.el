@@ -65,8 +65,8 @@
 (define-key craig-prefix-map "\C-o" 'better-display-buffer)
 (define-key craig-prefix-map "\C-w" 'delete-region)
 (define-key craig-prefix-map "\C-x-" 'shrink-other-window-if-larger-than-buffer)
-(define-key craig-prefix-map "\C-x1" 'mono-framify)
-(define-key craig-prefix-map "\C-x2" 'frame-mitosis)
+;(define-key craig-prefix-map "\C-x1" 'mono-framify)
+(define-key craig-prefix-map "\C-x2" 'frame-mitosis-toggle)
 (define-key craig-prefix-map "\M-b" 'sink-buffer)
 (define-key craig-prefix-map "\M-c" 'make-tmp-code)
 (define-key craig-prefix-map "\M-d" 'selectively-delete-lines)
@@ -293,7 +293,7 @@
 (defalias 'list-buffers 'ibuffer)
 (setq ibuffer-show-empty-filter-groups nil)
 (setq ibuffer-expert t)
-(define-key craig-prefix-map "\C-x\C-b" 'ibuffer-other-window)
+(define-key craig-prefix-map "\C-xb" 'ibuffer-other-window)
 
 ; inhibit ffap- in dired mode, expose other controls
 ;(load-library "ffap-")
