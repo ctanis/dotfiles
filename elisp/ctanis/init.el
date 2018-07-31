@@ -705,16 +705,18 @@ For details of keybindings, see `ido-find-file'."
 ;; is this better?
 (electric-pair-mode)
 (add-to-list 'minor-mode-alist (list 'electric-pair-mode "Θ"))
-(defun ctanis_electric_pair_inhibitor (char)
-  (or
-   (eq char (char-after))
-   (eq (char-syntax (following-char)) ?w)
-   (eq (char-syntax (following-char)) ?\()
-   ;; don't add a second quote if this insertion closed a string
-   (and (eq char ?\") (save-excursion (backward-char 1) (nth 3 (syntax-ppss))))
-   ))
 
-(setq electric-pair-inhibit-predicate 'ctanis_electric_pair_inhibitor)
+;; not needed in emacs 26
+;; (defun ctanis_electric_pair_inhibitor (char)
+;;   (or
+;;    (eq char (char-after))
+;;    (eq (char-syntax (following-char)) ?w)
+;;    (eq (char-syntax (following-char)) ?\()
+;;    ;; don't add a second quote if this insertion closed a string
+;;    (and (eq char ?\") (save-excursion (backward-char 1) (nth 3 (syntax-ppss))))
+;;    ))
+
+;; (setq electric-pair-inhibit-predicate 'ctanis_electric_pair_inhibitor)
 
 (defun apair-try-expand-list (old)
   (let ((rval (try-expand-list old)))
