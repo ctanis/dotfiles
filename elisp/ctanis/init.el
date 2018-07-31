@@ -1,4 +1,4 @@
-;; start this asap
+o;; start this asap
 (require 'server)
 (if (and window-system (not (server-running-p)))
     (server-start))
@@ -832,7 +832,10 @@ For details of keybindings, see `ido-find-file'."
   '(add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 (setq tramp-default-method "ssh")
-;(setq tramp-histfile-override t)
+
+;; this is not good on a laptop that requires VPN..
+(setq ido-enable-tramp-completion nil)
+
 
 
 (when (require-verbose 'itail)
@@ -843,3 +846,6 @@ For details of keybindings, see `ido-find-file'."
 
 (when (require-verbose 'dictionary)
   (define-key craig-prefix-map "\C-\M-w" 'dictionary-lookup-definition))
+
+;; emacs 26
+(setq comint-move-point-for-matching-input 'end-of-line)
