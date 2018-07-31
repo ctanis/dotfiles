@@ -54,10 +54,11 @@ shopt -s histverify
 shopt -s histreedit
 
 
-export HISTIGNORE="&:history*"
-export HISTFILESIZE=1000
-export HISTSIZE=1000
+#export HISTIGNORE="&:history*"
+export HISTFILESIZE=2000
+export HISTSIZE=2000
 export PROMPT_COMMAND="history -a"
+export HISTCONTROL=ignoreboth
 
 # no colors in my ls
 export LS_OPTIONS='-p'
