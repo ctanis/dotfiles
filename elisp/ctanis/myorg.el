@@ -69,7 +69,7 @@
 							 (gnuplot . t)
 							 (octave . t)
 							 (calc . t)
-							 (sh . t)
+							 (shell . t)
                                                          (scheme .t)
                                                                  ))
 

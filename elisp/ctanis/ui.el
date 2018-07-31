@@ -75,7 +75,7 @@
   (set-face-background 'warning "wheat1")
 
 
-  (set-face-attribute 'modeline-inactive nil :box '(:line-width 1 :color "black"))
+  (set-face-attribute 'mode-line-inactive nil :box '(:line-width 1 :color "black"))
   (set-face-attribute 'mode-line nil :box '(:line-width 1 :color "black"))
 
 

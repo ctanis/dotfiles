@@ -311,8 +311,8 @@ Otherwise, no determination is made."
 
 (defalias 'perl-mode 'cperl-mode)
 (setq cperl-invalid-face (quote off))
-					;(setq cperl-hairy t)
-(add-to-list 'font-lock-maximum-decoration (cons 'cperl-mode 1))
+;;(setq cperl-hairy t)
+;;(add-to-list 'font-lock-maximum-decoration (cons 'cperl-mode 1))
 
 
 (add-hook 'cperl-mode-hook
