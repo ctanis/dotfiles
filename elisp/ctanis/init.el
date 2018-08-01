@@ -201,7 +201,7 @@
 (setq set-mark-command-repeat-pop t)
 
 ;next/previous line should respect wrapped lines!!
-(setq line-move-visual nil)
+(setq line-move-visual t)
 
 ; stick all ~ files in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -303,9 +303,9 @@
 ;; ------------ ido stuff
 (setq ido-enable-flex-matching t)
 ;(setq ido-everywhere t)
-(setq ido-auto-merge-delay-time .3)
-;(setq ido-auto-merge-delay-time 9999);; use M-s to search other work dirs
-(setq ido-auto-merge-work-directories-length 0)
+;(setq ido-auto-merge-delay-time .3)
+(setq ido-auto-merge-delay-time 9999);; use M-s to search other work dirs
+;(setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-filename-at-point nil)
 ;(setq ido-default-buffer-method 'selected-window)
 ;(setq ido-ignore-buffers '("\\` " "\\*"))
@@ -706,17 +706,19 @@ For details of keybindings, see `ido-find-file'."
 (electric-pair-mode)
 (add-to-list 'minor-mode-alist (list 'electric-pair-mode "Θ"))
 
-;; not needed in emacs 26
-;; (defun ctanis_electric_pair_inhibitor (char)
-;;   (or
-;;    (eq char (char-after))
-;;    (eq (char-syntax (following-char)) ?w)
-;;    (eq (char-syntax (following-char)) ?\()
-;;    ;; don't add a second quote if this insertion closed a string
-;;    (and (eq char ?\") (save-excursion (backward-char 1) (nth 3 (syntax-ppss))))
-;;    ))
+;; no auto-pair unless we're at the end of the line
+(defun ctanis_electric_pair_inhibitor (char)
+  (or
+   (eq char (char-after))
+   (eq (char-syntax (following-char)) ?w)
+   (eq (char-syntax (following-char)) ?\()
+   ;; don't add a second quote if this insertion closed a string
+   (and (eq char ?\") (save-excursion (backward-char 1) (nth 3 (syntax-ppss))))
+   (electric-pair-default-inhibit char)
+   ))
 
-;; (setq electric-pair-inhibit-predicate 'ctanis_electric_pair_inhibitor)
+(setq electric-pair-inhibit-predicate 'ctanis_electric_pair_inhibitor)
+
 
 (defun apair-try-expand-list (old)
   (let ((rval (try-expand-list old)))
@@ -834,8 +836,8 @@ For details of keybindings, see `ido-find-file'."
 (setq tramp-default-method "ssh")
 
 ;; this is not good on a laptop that requires VPN..
-(setq ido-enable-tramp-completion nil)
-
+(setq ido-enable-tramp-completion t)
+(setq ido-work-directory-list-ignore-regexps '("^/[^/]*:"))
 
 
 (when (require-verbose 'itail)
