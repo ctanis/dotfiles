@@ -313,3 +313,8 @@ most localized thing"
 
      ))
 
+(require-verbose 'org-bookmark-heading)
+
+(when (require-verbose 'org-rich-yank)
+  (define-key craig-prefix-map "\C-y" 'org-rich-yank))
+
