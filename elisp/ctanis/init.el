@@ -852,3 +852,4 @@ For details of keybindings, see `ido-find-file'."
 ;; emacs 26
 (setq comint-move-point-for-matching-input 'end-of-line)
 
+(require 'org)

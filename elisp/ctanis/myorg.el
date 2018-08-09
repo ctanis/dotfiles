@@ -15,10 +15,6 @@
 ;; ctrl-a/e on heading defaults to text
 (setq org-special-ctrl-a/e 'reversed)
 
-;; revisit this if i ever use an org-clock
-;; (setq org-clock-persist t)
-;; (org-clock-persistence-insinuate)
-
 (setq org-alphabetical-lists t)
 ;(setq org-hide-emphasis-markers t)
 (setq org-use-speed-commands nil)
@@ -317,4 +313,25 @@ most localized thing"
 
 (when (require-verbose 'org-rich-yank)
   (define-key craig-prefix-map "\C-y" 'org-rich-yank))
+
+(setq org-pomodoro-play-sounds nil)
+(setq org-pomodoro-format "P.%s")
+(setq org-pomodoro-time-format "%.2m")
+
+;; this may be undesirable if I ever start using org-clock for non-pomodoro
+;; purposes
+;;(defun org-clock-get-clock-string () "")
+(setq org-clock-persist t)
+(org-clock-persistence-insinuate)
+(org-clock-load)
+
+(defun org-pomodoro-protect-modeline (original)
+       (if (org-pomodoro-active-p)
+           ""
+         (funcall original))
+       )
+
+(advice-add 'org-clock-get-clock-string :around #'org-pomodoro-protect-modeline)
+(advice-add 'org-pomodoro :after #'org-clock-update-mode-line)
+
 

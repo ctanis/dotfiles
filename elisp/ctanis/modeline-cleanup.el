@@ -12,6 +12,7 @@
     (cwarn-mode . "w")
     (hs-minor-mode . "Σ")
     (folding-mode . "F")
+    (eldoc-mode . "")
     )
   "Alist for `clean-mode-line'.
  
