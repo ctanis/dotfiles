@@ -254,31 +254,6 @@
 
 
 
-; don't have to use the mouse to get flymake feedback
-(eval-after-load 'flymake
-'(progn
-   (load-library "flycursor")
-   (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
-   (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
-   (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
-   ;; triggering syntax check with newlines is terrible
-   (setq flymake-log-level 0)
-   (setq flymake-start-syntax-check-on-newline nil)
-   ))
-
-
-  ;; flymake-css        
-  ;; flymake-cursor     
-  ;; flymake-easy       
-  ;; flymake-perlcritic
-  ;; flymake-python-...
-  ;; flymake-ruby
-  ;; flymake-shell
-
-
-;; (defun flymake-display-warning (warning) 
-;;   "Display a warning to the user, using lwarn"
-;;   (message warning))
 
 ; don't use ls for dired -- use elisp
 (setq ls-lisp-use-insert-directory-program nil)
@@ -805,6 +780,33 @@ For details of keybindings, see `ido-find-file'."
 (defadvice upcase-region (around upcase-only-when-active activate)
   (if (region-active-p)
       ad-do-it))
+
+; don't have to use the mouse to get flymake feedback
+(eval-after-load 'flymake
+'(progn
+   ;; (load-library "flycursor")
+   ;;(require-verbose 'flymake-curosr)
+   (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
+   (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
+   (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
+   ;; triggering syntax check with newlines is terrible
+   (setq flymake-log-level 0)
+   (setq flymake-start-syntax-check-on-newline nil)
+   ))
+
+
+  ;; flymake-css        
+  ;; flymake-cursor     
+  ;; flymake-easy       
+  ;; flymake-perlcritic
+  ;; flymake-python-...
+  ;; flymake-ruby
+  ;; flymake-shell
+
+
+;; (defun flymake-display-warning (warning) 
+;;   "Display a warning to the user, using lwarn"
+;;   (message warning))
 
 
 
