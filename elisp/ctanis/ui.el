@@ -106,13 +106,13 @@
        ))
 
 
-  (eval-after-load 'flymake
-    '(progn
-       (set-face-background 'flymake-errline "pink")
-       (set-face-foreground 'flymake-errline "red")
-       (set-face-background 'flymake-warnline "lightblue")
-       (set-face-foreground 'flymake-warnline "cyan4")
-       ))
+  ;; (eval-after-load 'flymake
+  ;;   '(progn
+  ;;      (set-face-background 'flymake-errline "pink")
+  ;;      (set-face-foreground 'flymake-errline "red")
+  ;;      (set-face-background 'flymake-warnline "lightblue")
+  ;;      (set-face-foreground 'flymake-warnline "cyan4")
+  ;;      ))
 
 
   (eval-after-load 'org

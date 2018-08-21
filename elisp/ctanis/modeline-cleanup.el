@@ -47,22 +47,3 @@ want to use in the modeline *in lieu of* the original.")
 ;;           '(lambda())
 ;;           (add-hook 'after-insert-file-functions 'clean-mode-line))
  
-;;; alias the new `flymake-report-status-slim' to
-;;; `flymake-report-status'
-
-(eval-after-load 'flymake
-  '(progn
-     (defalias 'flymake-report-status 'flymake-report-status-slim)
-     (defun flymake-report-status-slim (e-w &optional status)
-       "Show \"slim\" flymake status in mode line."
-       (when e-w
-         (setq flymake-mode-line-e-w e-w))
-       (when status
-         (setq flymake-mode-line-status status))
-       (let* ((mode-line " Φ"))
-         (when (> (length flymake-mode-line-e-w) 0)
-           (setq mode-line (concat mode-line ":" flymake-mode-line-e-w)))
-         (setq mode-line (concat mode-line flymake-mode-line-status))
-         (setq flymake-mode-line mode-line)
-         (force-mode-line-update)))
-     ))

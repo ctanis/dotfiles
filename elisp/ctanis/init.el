@@ -781,33 +781,6 @@ For details of keybindings, see `ido-find-file'."
   (if (region-active-p)
       ad-do-it))
 
-; don't have to use the mouse to get flymake feedback
-(eval-after-load 'flymake
-'(progn
-   ;; (load-library "flycursor")
-   ;;(require-verbose 'flymake-curosr)
-   (define-key craig-prefix-map "\M-p" 'flymake-goto-prev-error)
-   (define-key craig-prefix-map "\M-n" 'flymake-goto-next-error)
-   (define-key craig-prefix-map "\M-f" 'flymake-start-syntax-check)
-   ;; triggering syntax check with newlines is terrible
-   (setq flymake-log-level 0)
-   (setq flymake-start-syntax-check-on-newline nil)
-   ))
-
-
-  ;; flymake-css        
-  ;; flymake-cursor     
-  ;; flymake-easy       
-  ;; flymake-perlcritic
-  ;; flymake-python-...
-  ;; flymake-ruby
-  ;; flymake-shell
-
-
-;; (defun flymake-display-warning (warning) 
-;;   "Display a warning to the user, using lwarn"
-;;   (message warning))
-
 
 
 (setq python-shell-interpreter "python3")
@@ -841,6 +814,11 @@ For details of keybindings, see `ido-find-file'."
 (setq ido-enable-tramp-completion t)
 (setq ido-work-directory-list-ignore-regexps '("^/[^/]*:"))
 
+;; flycheck
+  (define-key craig-prefix-map "\M-p" 'flycheck-previous-error)
+  (define-key craig-prefix-map "\M-n" 'flycheck-next-error)
+
+
 
 (when (require-verbose 'itail)
   (defalias 'tail-file 'itail))
@@ -855,3 +833,4 @@ For details of keybindings, see `ido-find-file'."
 (setq comint-move-point-for-matching-input 'end-of-line)
 
 (require 'org)
+
