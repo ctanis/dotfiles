@@ -47,3 +47,4 @@ want to use in the modeline *in lieu of* the original.")
 ;;           '(lambda())
 ;;           (add-hook 'after-insert-file-functions 'clean-mode-line))
  
+(setq flycheck-mode-line-prefix "Φ")
