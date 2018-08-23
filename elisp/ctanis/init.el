@@ -771,6 +771,10 @@ For details of keybindings, see `ido-find-file'."
 ;; do this last since it involve stuff from packages
 (load-library "my-completions")
 (load-library "my-mc")
+;; flycheck
+(load-library "my-flycheck")
+
+
 
 ;; embarrassing protection against keyboard misfiring
 (defadvice downcase-region (around downcase-only-when-active activate)
@@ -813,12 +817,6 @@ For details of keybindings, see `ido-find-file'."
 ;; this is not good on a laptop that requires VPN..
 (setq ido-enable-tramp-completion t)
 (setq ido-work-directory-list-ignore-regexps '("^/[^/]*:"))
-
-;; flycheck
-
-(define-key craig-prefix-map "\M-f" 'flycheck-mode)
-(define-key craig-prefix-map "\M-p" 'flycheck-previous-error)
-(define-key craig-prefix-map "\M-n" 'flycheck-next-error)
 
 
 
