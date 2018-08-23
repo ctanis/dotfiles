@@ -815,8 +815,10 @@ For details of keybindings, see `ido-find-file'."
 (setq ido-work-directory-list-ignore-regexps '("^/[^/]*:"))
 
 ;; flycheck
-  (define-key craig-prefix-map "\M-p" 'flycheck-previous-error)
-  (define-key craig-prefix-map "\M-n" 'flycheck-next-error)
+
+(define-key craig-prefix-map "\M-f" 'flycheck-mode)
+(define-key craig-prefix-map "\M-p" 'flycheck-previous-error)
+(define-key craig-prefix-map "\M-n" 'flycheck-next-error)
 
 
 
