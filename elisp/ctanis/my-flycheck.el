@@ -9,7 +9,8 @@
        "simple single-file checker using javac."
        :command ("javac" "-Xlint" source)
        :error-patterns
-       ((error line-start (file-name) ":" line ": error:" (message) line-end))
+       ((error line-start (file-name) ":" line ": error:" (message) line-end)
+        (warning line-start (file-name) ":" line ": warning:" (message) line-end))
        :modes java-mode
        )
 
