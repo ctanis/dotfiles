@@ -148,7 +148,7 @@
        ;(set-face-background 'org-level-8 "wheat3")
        ;;(set-face-attribute 'org-code nil :font "courier")
        (set-face-attribute 'org-code nil :font ctanis_code_font)
-       (set-face-attribute 'org-code nil :height 1.2)
+       (set-face-attribute 'org-code nil :height 1.1)
        (set-face-foreground 'org-code "royalblue4")
        (set-face-foreground 'org-verbatim "royalblue4")
        ;; (set-face-attribute 'org-verbatim nil :font "courier")
@@ -156,7 +156,7 @@
        ;; (set-face-attribute 'org-verbatim nil :height 1.1)
        ;;(set-face-attribute 'org-block nil :font "courier")
        (set-face-attribute 'org-block nil :font ctanis_code_font)
-       (set-face-attribute 'org-block nil :height 1.2)
+       (set-face-attribute 'org-block nil :height 1.1)
 
        (set-face-foreground 'org-meta-line "cyan4")
        (set-face-foreground 'org-document-info-keyword "cyan4")
