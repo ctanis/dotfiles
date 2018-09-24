@@ -681,12 +681,14 @@ For details of keybindings, see `ido-find-file'."
 (electric-pair-mode)
 (add-to-list 'minor-mode-alist (list 'electric-pair-mode "Θ"))
 
+(defvar ctanis_epair_ws (cons 0 (string-to-list " \t\n")))
 ;; no auto-pair unless we're at the end of the line
 (defun ctanis_electric_pair_inhibitor (char)
   (or
    (eq char (char-after))
-   (eq (char-syntax (following-char)) ?w)
-   (eq (char-syntax (following-char)) ?\()
+   ;; (eq (char-syntax (following-char)) ?w)
+   ;; (eq (char-syntax (following-char)) ?\()
+   (not (member (following-char) ctanis_epair_ws))
    ;; don't add a second quote if this insertion closed a string
    (and (eq char ?\") (save-excursion (backward-char 1) (nth 3 (syntax-ppss))))
    (electric-pair-default-inhibit char)
