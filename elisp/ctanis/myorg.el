@@ -7,7 +7,7 @@
 (setq org-catch-invisible-edits 'smart)
 (setq org-image-actual-width nil)
 (setq org-archive-default-command 'org-toggle-archive-tag)
-;(setq org-yank-folded-subtrees nil)
+(setq org-yank-folded-subtrees t)
 (setq org-yank-adjusted-subtrees t)
 (setq org-startup-folded nil)
 ;;(setq org-src-fontify-natively nil)
