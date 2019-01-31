@@ -695,7 +695,7 @@ For details of keybindings, see `ido-find-file'."
    ))
 
 (setq electric-pair-inhibit-predicate 'ctanis_electric_pair_inhibitor)
-
+(setq electric-pair-skip-self t)
 
 (defun apair-try-expand-list (old)
   (let ((rval (try-expand-list old)))
