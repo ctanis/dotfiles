@@ -583,6 +583,8 @@ For details of keybindings, see `ido-find-file'."
   ; hide mode-line crap
   (setq magit-auto-revert-mode-lighter nil)
   )
+;; since I'm trampin+git so often...
+(setq auto-revert-remote-files t)
 
 
 (when (require-verbose 'ace-jump-mode)
