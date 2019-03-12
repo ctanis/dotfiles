@@ -282,7 +282,7 @@
 (setq ido-auto-merge-delay-time 9999);; use M-s to search other work dirs
 ;(setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-filename-at-point nil)
-;(setq ido-default-buffer-method 'selected-window)
+(setq ido-default-buffer-method 'selected-window)
 ;(setq ido-ignore-buffers '("\\` " "\\*"))
 
 
