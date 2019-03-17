@@ -224,7 +224,7 @@ common-buffer) and go there."
               (select-window win)))
            ((eq (count-windows) 1) (switch-to-buffer-other-window bufname)) ;; always split a window
            ((replace-visible-common-buffer buf) t)
-           (t (switch-to-buffer-other-window bufname)))))))
+           (t (switch-to-buffer bufname))))))) ;; in this case, simply reuse current window
 
 
 ;; modifications of shell-current-directory.el by Daniel Polani
