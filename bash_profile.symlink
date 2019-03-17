@@ -160,7 +160,10 @@ fi
 
 
 if [ "$TERM" == "xterm-256color" ]; then
-    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+    if [ -e "${HOME}/.iterm2_shell_integration.bash" ]; then
+        source "${HOME}/.iterm2_shell_integration.bash"
+        export PROMPT_COMMAND="${HOME}/.iterm2/it2setkeylabel set status `hostname -s`"
+    fi
 fi
 
 
