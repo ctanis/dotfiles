@@ -162,7 +162,7 @@ fi
 if [ "$TERM" == "xterm-256color" ]; then
     if [ -e "${HOME}/.iterm2_shell_integration.bash" ]; then
         source "${HOME}/.iterm2_shell_integration.bash"
-        export PROMPT_COMMAND="${HOME}/.iterm2/it2setkeylabel set status `hostname -s`"
+        export PROMPT_COMMAND="__bp_precmd_invoke_cmd; __bp_interactive_mode; ${HOME}/.iterm2/it2setkeylabel set status `hostname -s`; history -a"
     fi
 fi
 
