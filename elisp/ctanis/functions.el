@@ -805,3 +805,12 @@ agnostic agenda-file management"
 (defun system-yank ()
   (interactive)
   (insert (gui-get-primary-selection)))
+
+
+;; kinda useful for macos
+(defun fs-all ()
+  (interactive)
+  (mapcar (lambda (f)
+            (select-frame f t)
+            (toggle-frame-fullscreen))
+          (frame-list)))
