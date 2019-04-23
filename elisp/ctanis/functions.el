@@ -601,7 +601,7 @@ a prefix arg, run it in another window"
 
 
 
-(defvar tmp-code-dir "~/Desktop")
+(defvar tmp-code-dir (concat (getenv "HOME") "/Desktop"))
 (defun make-tmp-code (fname)
   "create file arg in a random  directory"
   (interactive "sfilename: ")
@@ -609,8 +609,10 @@ a prefix arg, run it in another window"
 	 (dir (concat tmp-code-dir "/" str))
 	 (file (concat dir "/" fname)))
     (ignore-errors
-      (mkdir dir)
-      (ido-record-work-directory dir))
+      (mkdir dir))
+    ;; (ignore-errors
+    ;;   (ido-record-work-file file)
+    ;;   (ido-record-work-directory dir))
     (find-file file)))
 
 

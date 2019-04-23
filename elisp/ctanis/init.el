@@ -98,7 +98,7 @@
 (define-key craig-prefix-map "w" 'write-region)
 (define-key craig-prefix-map "u" 'revert-buffer)
 (define-key craig-prefix-map "\M-$" 'hs-toggle-hiding)
-(define-key craig-prefix-map "\M-x" 'compile-again)
+;(define-key craig-prefix-map "\M-x" 'compile-again)
 (define-key craig-prefix-map "\M-v" 'view-mode)
 (define-key craig-prefix-map "-" 'insert-separator)
 (define-key craig-prefix-map "[" 'wrap-region-with-char)
@@ -819,7 +819,7 @@ For details of keybindings, see `ido-find-file'."
 (setq tramp-default-method "ssh")
 
 ;; this is not good on a laptop that requires VPN..
-(setq ido-enable-tramp-completion t)
+(setq ido-enable-tramp-completion nil)
 (setq ido-work-directory-list-ignore-regexps '("^/[^/]*:"))
 
 
