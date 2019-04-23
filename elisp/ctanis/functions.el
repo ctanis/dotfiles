@@ -32,9 +32,9 @@
 	(delete-window))))
 
 
-(defun kill-current-buffer ()
-  (interactive)
-  (if (buffer-modified-p)
+(defun kill-current-buffer (prefix)
+  (interactive "P")
+  (if (and (buffer-modified-p) (not prefix))
       (error "Can't kill current buffer, buffer modified.")
     (kill-buffer (current-buffer))))
 
@@ -609,7 +609,8 @@ a prefix arg, run it in another window"
 	 (dir (concat tmp-code-dir "/" str))
 	 (file (concat dir "/" fname)))
     (ignore-errors
-      (mkdir dir))
+      (mkdir dir)
+      (ido-record-work-directory dir))
     (find-file file)))
 
 
