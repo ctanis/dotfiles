@@ -606,6 +606,7 @@ For details of keybindings, see `ido-find-file'."
   (ido-ubiquitous-mode 1)
   (add-to-list 'ido-cr+-function-blacklist 'org-refile-fullpath)
   (add-to-list 'ido-cr+-function-blacklist 'org-agenda-refile-fullpath)
+  (add-to-list 'ido-cr+-function-blacklist 'execute-extended-command)
   )
 
 
