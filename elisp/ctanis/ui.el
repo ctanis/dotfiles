@@ -47,7 +47,8 @@
   (set-face-foreground 'ido-only-match  "yellow")
   (set-face-background 'ido-only-match  "green4")
   (set-face-foreground 'ido-subdir  "orangered4")
-  (set-face-foreground 'ido-virtual "red")
+  (set-face-foreground 'ido-virtual "darkmagenta")
+
 
   ;(set-face-background 'show-paren-match "wheat2")
   (set-face-background 'show-paren-match "green3")
@@ -404,10 +405,11 @@
 
 
 
-
-(set-fringe-style 5)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+(if window-system
+    (progn
+	(set-fringe-style 5)
+	(menu-bar-mode -1)
+	(scroll-bar-mode -1)))
 
 ;; ;; disable the mouse/trackpad as much as possible
 
@@ -445,6 +447,13 @@
 ;;   )
 
 
+;; (if window-system
+;;     (when (require 'powerline nil 'noerror)
+;;       (powerline-default-theme)
+;;       ;; (set-face-background 'powerline-active1 "wheat4")
+;;       ;; (set-face-foreground 'powerline-active1 "khaki2")
+;;       ;; (set-face-foreground 'powerline-active2 "lightblue3")
+;;       ))
 
 
 ;; powerline
@@ -485,10 +494,10 @@
                                            (powerline-minor-modes face1 'l)
                                            (powerline-narrow face1 'l)
                                            (powerline-raw " " face1)
-                                           (funcall separator-left face1 face2)
+                                           ;(funcall separator-left face1 face2)
                                            (powerline-vc face2 'r)))
                                 (rhs (list (powerline-raw global-mode-string face2 'r)
-                                           (funcall separator-right face2 face1)
+                                           ;(funcall separator-right face2 face1)
                                            (powerline-raw "%4l" face1 'l)
                                            (powerline-raw ":" face1 'l)
                                            (powerline-raw "%3c" face1 'r)

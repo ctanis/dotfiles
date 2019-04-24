@@ -2,7 +2,8 @@
 (require 'org)
 (require 'org-agenda)
 (setq org-log-done 'time)
-(setq org-completion-use-ido t)
+;;removed
+;;(setq org-completion-use-ido t)
 (setq org-log-into-drawer t)
 (setq org-catch-invisible-edits 'smart)
 (setq org-image-actual-width nil)
@@ -283,7 +284,7 @@ most localized thing"
 
      ;; this one is for refiling to other files in the org-agenda-files
      (defadvice org-refile-fullpath (around use-full-path activate)
-       (let ((org-completion-use-ido nil)
+       (let (;(org-completion-use-ido nil)
 	     (org-outline-path-complete-in-steps t)
 	     (org-refile-use-outline-path 'file)
 	     (org-refile-targets (quote ((nil :maxlevel . 9)

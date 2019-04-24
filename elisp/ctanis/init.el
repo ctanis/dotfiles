@@ -287,7 +287,8 @@
 
 
 (ido-mode 1)
-(ido-everywhere 1)                     ;; turn it on
+
+;(ido-everywhere 1)                     ;; turn it on
 (setq ido-enable-regexp nil) ;; toggle it if you want it
 (setq ido-enable-prefix nil) ;; toggle it if you want it
 ;(ido-mode 1)
@@ -600,6 +601,14 @@ For details of keybindings, see `ido-find-file'."
           ace-jump-line-mode
           ))
   )
+
+(when (require-verbose 'ido-completing-read+)
+  (ido-ubiquitous-mode 1)
+  (add-to-list 'ido-cr+-function-blacklist 'org-refile-fullpath)
+  (add-to-list 'ido-cr+-function-blacklist 'org-agenda-refile-fullpath)
+  )
+
+
 
 (when (require-verbose 'idomenu)
 ;  (load-library "idomenu")
