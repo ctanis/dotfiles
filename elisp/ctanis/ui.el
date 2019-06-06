@@ -362,7 +362,8 @@
   (set-frame-position (selected-frame)
                       (nth (if num 3 4) frame-mitosis-config)
                       (nth 2 frame-mitosis-config))
-  (ctanis_colorfy))
+  ;(ctanis_colorfy)
+  )
 
 (defun frame-mitosis()
   (interactive)
