@@ -394,7 +394,8 @@
 	;(sleep-for 5)
         (select-frame f)
 	(reset-window t)
-        (funcall last_colorfy)))))
+        ;; (funcall last_colorfy)
+                              ))))
 
 
 (defun mono-framify()
