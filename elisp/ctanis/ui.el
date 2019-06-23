@@ -515,3 +515,35 @@
 
 
 
+;; solarized theme setup..
+;; make the fringe stand out from the background
+(setq solarized-distinct-fringe-background t)
+
+;; Don't change the font for some headings and titles
+(setq solarized-use-variable-pitch nil)
+
+;; make the modeline high contrast
+(setq solarized-high-contrast-mode-line t)
+
+;; Don't change size of org-mode headlines (but keep other size-changes)
+(setq solarized-scale-org-headlines nil)
+
+;; Avoid all font-size changes
+(setq solarized-height-minus-1 1.0)
+(setq solarized-height-plus-1 1.0)
+(setq solarized-height-plus-2 1.0)
+(setq solarized-height-plus-3 1.0)
+(setq solarized-height-plus-4 1.0)
+
+;; (create-solarized-theme 'ctanis-dark 'solarized-dark)
+(defun light()
+  (interactive)
+  (load-theme 'solarized-light)
+;  (set-face-background 'mode-line "#d0d0c0")
+  )
+
+(defun dark()
+  (interactive)
+  (load-theme 'solarized-dark)
+;  (set-face-background 'mode-line "#073660")
+  )
