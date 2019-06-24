@@ -261,6 +261,16 @@ Otherwise, no determination is made."
 	     (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
              (toggle-truncate-lines 0)))
 
+(add-hook 'shell-mode-hook
+          #'(lambda ()
+              (when (file-remote-p default-directory)
+                (let ((parts (split-string  default-directory ":")))
+                  (setq comint-input-ring-file-name
+                        (concat (car parts) ":" (cadr parts) ":~/.bash_history"))
+                  (comint-read-input-ring)
+                  (set-process-sentinel (get-buffer-process (current-buffer))
+				#'shell-write-history-on-exit)))))
+
 (setq shell-font-lock-keywords
       `(
 	("\#.*" . font-lock-comment-face)
