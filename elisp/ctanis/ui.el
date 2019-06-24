@@ -114,6 +114,7 @@
 (setq solarized-height-plus-3 1.0)
 (setq solarized-height-plus-4 1.0)
 
+(defvar ctanis_code_font "Courier New")
 
 (when (require-verbose 'solarized)
 
@@ -129,8 +130,8 @@
        `(dired-marked ((,class (:background ,blue :foreground "black"))))
        `(show-paren-match ((,class (:foreground ,base3))))
        `(cursor ((,class (:foreground ,base0 :background ,base2))))
-       `(org-code ((,class (:font "courier" :height 1.1))))
-       `(org-block ((,class (:font "courier" :height 1.1 :foreground ,base1))))
+       `(org-code ((,class (:font ,ctanis_code_font :height 1.1))))
+       `(org-block ((,class (:font ,ctanis_code_font :height 1.1 :foreground ,base1))))
        )
       )
     )
