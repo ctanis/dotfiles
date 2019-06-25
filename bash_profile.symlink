@@ -2,14 +2,14 @@
 
 
 if [ -z $INSIDE_EMACS ]; then
-# not in emacs
-export EDITOR=vi
-#export PAGER=most
-export PAGER=less
+    # not in emacs
+    export EDITOR=vi
+    #export PAGER=most
+    export PAGER=less
 else
-# in emacs
-export EDITOR=emacsclient
-export PAGER=cat
+    # in emacs
+    export EDITOR=emacsclient
+    export PAGER=cat
 fi
 
 export GNUTERM=X11
@@ -24,7 +24,7 @@ export PATH=.:~/bin:~/.dotfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 
 if [ $WINDOW ]; then
-export SCREEN_WINDOW="(screen $WINDOW) "
+    export SCREEN_WINDOW="(screen $WINDOW) "
 fi
 
 
@@ -35,11 +35,11 @@ function parse_git_branch {
 }
 
 if [ $TERM != 'dumb' ]; then
-#export PS1='\h:\W\$ \[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
-export PS1='\[\e[1;10m\]\h:\W$ \[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
+    #export PS1='\h:\W\$ \[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
+    export PS1='\[\e[1;10m\]\h:\W$ \[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
 else
-#mostly for emacs shell...
-export PS1='\h:\W\$ '
+    #mostly for emacs shell...
+    export PS1='\h:\W\$ '
 fi
 
 
@@ -79,21 +79,21 @@ complete -d pushd cd
 
 PLATFORM=`uname`
 if [ $PLATFORM == 'Linux' ]; then
-function edit()
-{
-    until emacsclient -n $*  >/dev/null 2>&1; do
-	sleep 1;
-    done;
-}
+    function edit()
+    {
+        until emacsclient -n $*  >/dev/null 2>&1; do
+	    sleep 1;
+        done;
+    }
 else
-function edit()
-{
-    osascript -e 'tell application "Emacs" to activate'
+    function edit()
+    {
+        osascript -e 'tell application "Emacs" to activate'
 
-    until emacsclient -n $*  >/dev/null 2>&1; do
-	sleep 1;
-    done;
-}
+        until emacsclient -n $*  >/dev/null 2>&1; do
+	    sleep 1;
+        done;
+    }
 fi; 
 
 if [ $PLATFORM == 'Darwin' -a $TERM == 'xterm' ]; then
@@ -112,7 +112,7 @@ function update_repos ()
 	d=`eval echo $i;`
 	if [ -d $d ]; then 
 	    echo $d;
-	   sh -c "cd $d && git fetch";
+	    sh -c "cd $d && git fetch";
 	else
 	    echo "** $d not found **";
 	fi;
@@ -142,7 +142,7 @@ function check_repos ()
 
 
 if [ -f ~/.bash-local ]; then
-	source ~/.bash-local
+    source ~/.bash-local
 fi
 
 
@@ -159,14 +159,14 @@ fi
 # fi
 
 
-if [ "$TERM" == "xterm-256color" ]; then
-    if [ -e "${HOME}/.iterm2_shell_integration.bash" ]; then
-        source "${HOME}/.iterm2_shell_integration.bash"
-        export PROMPT_COMMAND="__bp_precmd_invoke_cmd; __bp_interactive_mode; ${HOME}/.iterm2/it2setkeylabel set status `hostname -s`; history -a"
+#if [ -e "${HOME}/.iterm2_shell_integration.bash" -a ${HOME}/.iterm2/it2check ]; then
+if [[ "$TERM" == xterm* ]] && [ -e ${HOME}/.iterm2 ] && ${HOME}/.iterm2/it2check ; then
+    source "${HOME}/.iterm2_shell_integration.bash"
+    export PROMPT_COMMAND="__bp_precmd_invoke_cmd; __bp_interactive_mode; ${HOME}/.iterm2/it2setkeylabel set status `hostname -s`; history -a"
 
-        alias light='~/.iterm2/it2setcolor preset "Solarized Light"'
-        alias dark='~/.iterm2/it2setcolor preset "Solarized Dark"'    
-    fi
+    alias light='~/.iterm2/it2setcolor preset "Solarized Light"'
+    alias dark='~/.iterm2/it2setcolor preset "Solarized Dark"'
+    alias badge='iterm2_set_user_var badge $1'
 fi
 
 
