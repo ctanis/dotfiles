@@ -71,3 +71,4 @@
 ;; (add-hook 'deft-mode-hook
 ;;           (lambda ()
 ;;             (hl-line-mode 1)))
+(add-hook 'kill-emacs-hook #'deft_push_all_git)
