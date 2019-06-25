@@ -99,11 +99,11 @@
                          company-css
                          company-cmake company-xcode company-clang company-capf company-c-headers
                          company-keywords company-dabbrev-code company-math
-                         company-erlang
-                         company-nginx
-                         company-php
-                         company-plsense
-                         company-suggest
+                         ;; company-erlang
+                         ;; company-nginx
+                         ;; company-php
+                         ;; company-plsense
+                         ;; company-suggest
                          company-files
                          ))
 
