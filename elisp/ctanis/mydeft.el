@@ -37,10 +37,10 @@
 (defun deft_pull_all_git()
   (interactive)
   (dolist (path deft_git_folders)
-        (let ((default-directory path))
-          (shell-command "git pull")
-          (get-buffer "*Messages*")
-          (get-buffer "*Messages*")))
+    (let ((default-directory path))
+      (shell-command "git pull"
+                     (get-buffer "*Messages*")
+                     (get-buffer "*Messages*"))))
   
   (call-interactively 'deft-filter-clear)
   )
@@ -48,11 +48,11 @@
 (defun deft_push_all_git()
   (interactive)
   (dolist (path deft_git_folders)
-        (let ((default-directory path))
-          (async-shell-command
-           "git add * && git commit --allow-empty-message -m '' && git push -u origin"
-           (get-buffer "*Messages*")
-           (get-buffer "*Messages*"))))
+    (let ((default-directory path))
+      (shell-command
+       "git add * && git commit --allow-empty-message -m '' && git push -u origin"
+       (get-buffer "*Messages*")
+       (get-buffer "*Messages*"))))
   )
 
 
