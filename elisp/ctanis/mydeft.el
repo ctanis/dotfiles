@@ -42,6 +42,7 @@
           (get-buffer "*Messages*")
           (get-buffer "*Messages*")))
   
+  (call-interactively 'deft-filter-clear)
   )
 
 (defun deft_push_all_git()
