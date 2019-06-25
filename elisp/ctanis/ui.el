@@ -132,6 +132,7 @@
        `(cursor ((,class (:foreground ,base0 :background ,base2))))
        `(org-code ((,class (:font ,ctanis_code_font :height 1.1))))
        `(org-block ((,class (:font ,ctanis_code_font :height 1.1 :foreground ,base1))))
+       `(deft-title-face ((,class (:inherit deft-date-face :weight bold))))
        )
       )
     )
