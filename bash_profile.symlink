@@ -167,3 +167,9 @@ fi
 
 #brew install rename
 function nospace { rename 's/[ \t]+/_/g' "$1"; }
+
+# reset history file if loaded in emacs/tramp (remote shell tweaks in my elisp
+# handle loading the history properly)
+if [ -n "$INSIDE_EMACS" ] && [[ "$HISTFILE" == *.tramp_history ]]; then
+   export HISTFILE=~/.bash_history
+fi   
