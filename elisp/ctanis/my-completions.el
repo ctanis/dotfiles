@@ -95,16 +95,15 @@
 ;;                          ))
 
 (setq company-backends '(
-                         company-semantic
-                         company-css
-                         company-cmake company-xcode company-clang company-capf company-c-headers
-                         company-keywords company-dabbrev-code company-math
-                         ;; company-erlang
-                         ;; company-nginx
-                         ;; company-php
-                         ;; company-plsense
-                         ;; company-suggest
                          company-files
+                         (company-clang
+                          company-semantic
+                          company-keywords
+                          company-c-headers
+                          company-dabbrev-code
+                          company-xcode
+                          )
+                         company-capf 
                          ))
 
 
