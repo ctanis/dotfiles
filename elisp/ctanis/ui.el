@@ -134,6 +134,7 @@
        `(org-block ((,class (:font ,ctanis_code_font :height 1.1 :foreground ,base1))))
        `(org-checkbox ((,class (:background ,base03 :foreground ,base0 :weight bold))))
        `(deft-title-face ((,class (:inherit deft-date-face :weight bold))))
+       `(company-tooltip-selection ((,class (:weight bold :background ,base2))))
        )
       )
     )
