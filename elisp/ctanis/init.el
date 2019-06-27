@@ -690,15 +690,16 @@ For details of keybindings, see `ido-find-file'."
     rval))
 
 (setq hippie-expand-try-functions-list
-      '(apair-try-expand-list
+      '(try-expand-dabbrev
+        apair-try-expand-list
         try-expand-line
-        try-expand-dabbrev
   
         try-expand-dabbrev-from-kill
 
+        try-expand-dabbrev-all-buffers
         apair-try-expand-list-all-buffers
         try-expand-line-all-buffers
-        try-expand-dabbrev-all-buffers
+
 
 
         ;; try-complete-file-name-partially
