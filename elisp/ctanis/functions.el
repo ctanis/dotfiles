@@ -1,4 +1,4 @@
-;; BUFFER MANAGEMENT
+t;; BUFFER MANAGEMENT
 
 (defun better-display-buffer(arg)
   "a better display buffer"
@@ -817,3 +817,17 @@ agnostic agenda-file management"
             (select-frame f t)
             (toggle-frame-fullscreen))
           (frame-list)))
+
+(defun fortran_narrow_sub()
+  (interactive)
+  (save-excursion
+    (beginning-of-defun)
+    (let ((start (point)))
+      (next-line)
+      (end-of-defun)
+      (narrow-to-region start (point)))))
+
+(eval-after-load 'f90
+  '(progn
+     (define-key f90-mode-map (kbd "\C-x n d") 'fortran_narrow_sub)
+                                                                 ))
