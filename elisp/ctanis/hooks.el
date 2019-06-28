@@ -268,8 +268,15 @@ Otherwise, no determination is made."
                   (setq comint-input-ring-file-name
                         (concat (car parts) ":" (cadr parts) ":~/.bash_history"))
                   (comint-read-input-ring)
+                  ;; (set-process-sentinel (get-buffer-process (current-buffer))
+		  ;; #'shell-write-history-on-exit)
                   (set-process-sentinel (get-buffer-process (current-buffer))
-				#'shell-write-history-on-exit)))))
+                                        #'(lambda (process event)
+                                            (let ((buf (process-buffer process)))
+                                              (when (buffer-live-p buf)
+                                                (with-current-buffer buf
+                                                  (insert (format "\nProcess %s %s\n" process event)))))))
+                  ))))
 
 (setq shell-font-lock-keywords
       `(
