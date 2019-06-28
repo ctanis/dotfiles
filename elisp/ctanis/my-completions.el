@@ -96,21 +96,19 @@
 
 (setq company-backends '(
                          company-files
-                         (company-clang
-                          company-semantic
-                          company-keywords
-                          company-c-headers
-                          company-dabbrev-code
-                          company-xcode
-                          )
                          company-capf 
+                         (company-semantic :with
+                                           company-keywords
+                                           company-c-headers)
+                         company-clang
+                         company-xcode
                          ))
 
 
 
 (setq company-tooltip-align-annotations t)
-;; (setq company-idle-delay .3)
-;; (setq company-minimum-prefix-length 1)
+(setq company-idle-delay .3)
+(setq company-minimum-prefix-length 1)
 
 (when (require-verbose 'company-yasnippet)
   (define-key craig-prefix-map "\M-y" 'company-yasnippet))

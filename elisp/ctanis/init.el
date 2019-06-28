@@ -318,6 +318,23 @@
     res))
 
 
+;; using a colon exits ido when searching for file/dir
+(defun ido_file_handle_colon ()
+  (interactive)
+  ;;(call-interactively ido-context-switch-command)
+  (insert ":")
+  (push ?\: unread-command-events)
+  (let ((i (length ido-text)))
+    (while (> i 0)
+      (push (aref ido-text (setq i (1- i))) unread-command-events)))
+  (setq ido-exit 'fallback)
+  (exit-minibuffer)
+  )
+(define-key ido-file-dir-completion-map ":" 'ido_file_handle_colon)
+
+
+
+
 
 
 ;; (defun my-buffer-filter (name)
