@@ -96,12 +96,14 @@
 
 (setq company-backends '(
                          company-files
-                         company-capf 
-                         (company-semantic :with
-                                           company-keywords
-                                           company-c-headers)
-                         company-clang
-                         company-xcode
+                         (company-semantic
+                          company-keywords
+                          company-c-headers
+                          company-capf
+                          ) 
+                         
+                         ;; company-clang
+                         ;; company-xcode
                          ))
 
 
