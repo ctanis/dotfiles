@@ -50,7 +50,7 @@
   (dolist (path deft_git_folders)
     (let ((default-directory path))
       (shell-command
-       "git add * && git commit --allow-empty-message -m '' && git push -u origin"
+       "git add -u && git add * && git commit --allow-empty-message -m '' && git push -u origin"
        (get-buffer "*Messages*")
        (get-buffer "*Messages*"))))
   )
