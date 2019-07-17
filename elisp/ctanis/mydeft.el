@@ -29,7 +29,7 @@
         (deft-filter-clear))
     ))
 (define-key deft-mode-map (kbd "C-c [") 'rotate-deft-dirs)
-
+(define-key deft-mode-map (kbd "C-c s") 'deft_git_sync)
 
 ;; experimental deft/git integration
 
@@ -42,7 +42,7 @@
                      (get-buffer "*Messages*")
                      (get-buffer "*Messages*"))))
   
-  (call-interactively 'deft-filter-clear)
+  ;;(call-interactively 'deft-filter-clear)
   )
 
 (defun deft_push_all_git()
@@ -55,6 +55,16 @@
        (get-buffer "*Messages*"))))
   )
 
+(defun deft_git_sync()
+  (interactive)
+  (deft_pull_all_git)
+  (deft_push_all_git)
+  (deft-cache-update-all)
+  (deft-filter-clear)
+  (deft-refresh)
+  )
+
+
 
 (defun deft_quit_window()
   (interactive)
@@ -64,7 +74,7 @@
 
 (define-key deft-mode-map (kbd "C-c C-q") 'deft_quit_window)
 
-(add-hook 'deft-mode-hook 'deft_pull_all_git)
+(add-hook 'deft-mode-hook #'deft_git_sync)
 
 
 
