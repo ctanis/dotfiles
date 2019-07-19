@@ -11,11 +11,15 @@
 
 (define-key craig-prefix-map "\M-0" 'deft)
 
-(defvar deft-dirs '(("~/Dropbox/notes/" "txt") ("~/Dropbox/work_notes/" "org")))
-                                        ;(rotate-deft-dirs)
+(defvar deft-dirs nil)
 
+;; call this to set up multiple deft dirs before you start deft
+(defun deft-set-dirs (lst)
+  (setq deft-dirs lst)
+  (setq deft-directory (caar deft-dirs))
+  (setq deft-default-extension (cadar deft-dirs))  
+  )
 
-(defvar deft_git_folders nil)
 
 ;; support multiple deft directories
 (defun rotate-deft-dirs ()
@@ -37,23 +41,25 @@
 
 (defun deft_pull_all_git()
   (interactive)
-  (dolist (path deft_git_folders)
-    (let ((default-directory path))
-      (shell-command "git pull"
-                     (get-buffer "*Messages*")
-                     (get-buffer "*Messages*"))))
+  (dolist (path deft-dirs)
+    (if (and (cddr path) (eq 'git (caddr path)))    
+        (let ((default-directory (car path)))
+          (shell-command "git pull"
+                         (get-buffer "*Messages*")
+                         (get-buffer "*Messages*")))))
   
   ;;(call-interactively 'deft-filter-clear)
   )
 
 (defun deft_push_all_git()
   (interactive)
-  (dolist (path deft_git_folders)
-    (let ((default-directory path))
-      (shell-command
-       "git add -A && git commit --allow-empty-message -m '' && git push -u origin"
-       (get-buffer "*Messages*")
-       (get-buffer "*Messages*"))))
+  (dolist (path deft-dirs)
+    (if (and (cddr path) (eq 'git (caddr path)))    
+        (let ((default-directory (car path)))
+          (shell-command
+           "git add -A && git commit --allow-empty-message -m '' && git push -u origin"
+           (get-buffer "*Messages*")
+           (get-buffer "*Messages*")))))
   )
 
 (defun deft_git_sync()
