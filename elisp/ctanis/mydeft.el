@@ -11,7 +11,7 @@
 
 (define-key craig-prefix-map "\M-0" 'deft)
 
-(defvar deft-dirs '(("~/Dropbox/notes" "txt") ("~/Dropbox/work_notes" "org")))
+(defvar deft-dirs '(("~/Dropbox/notes/" "txt") ("~/Dropbox/work_notes/" "org")))
                                         ;(rotate-deft-dirs)
 
 
@@ -22,6 +22,7 @@
   (interactive)
   (let ((mode (car deft-dirs)))
     (setq deft-directory (car mode))
+    (setq default-directory deft-directory)
     (setq deft-default-extension (cadr mode)))
   (setq deft-dirs (append (cdr deft-dirs) (list (car deft-dirs))))
   (if (called-interactively-p)
