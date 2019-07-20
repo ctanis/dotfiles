@@ -18,6 +18,7 @@
   (setq deft-dirs lst)
   (setq deft-directory (caar deft-dirs))
   (setq deft-default-extension (cadar deft-dirs))  
+  (setq deft-dirs (append (cdr deft-dirs) (list (car deft-dirs))))
   )
 
 
