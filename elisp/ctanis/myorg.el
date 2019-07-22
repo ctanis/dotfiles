@@ -28,6 +28,10 @@
 ;;       '(" \t('\"{" "- \t.,:!?;'\")}\\" " \t\r\n,\"'" "." 0))
 
 
+;; multi-line emphasis (5 lines) -- will I regret this?
+(setq org-emphasis-regexp-components
+  '("-[:space:]('\"{" "-[:space:].,:!?;'\")}\\[" "[:space:]" "." 5))
+
 (setq org-cycle-separator-lines 2)
 
 ;(setq org-M-RET-may-split-line '((headline . nil) (item . nil) (table . t)))
