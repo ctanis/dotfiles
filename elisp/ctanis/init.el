@@ -821,6 +821,11 @@ For details of keybindings, see `ido-find-file'."
 (setq ido-enable-tramp-completion nil)
 (setq ido-work-directory-list-ignore-regexps '("^/[^/]*:"))
 
+(defun purge-ido-tramp ()
+  (interactive)
+  (setq ido-work-directory-list (filter (lambda (s) (not (string-match "^/.*@.*:" s))) ido-work-directory-list))
+  )
+
 
 
 (when (require-verbose 'itail)
