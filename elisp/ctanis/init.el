@@ -295,6 +295,9 @@
 ;; (add-to-list 'ido-ignore-files "`\\.DS_Store")
 ;; (add-to-list 'ido-ignore-files "`\\.git")
 (add-to-list 'ido-ignore-files "`\\.") ;; no dotfiles
+(add-to-list 'ido-ignore-files "\\.webloc")
+(add-to-list 'ido-ignore-files "\\.pdf")
+(add-to-list 'ido-ignore-files "\\.mp.")
 (setq imenu-auto-rescan t)
 
 (setq ido-file-extensions-order '(".org" ".html" ".tex" ".log"))
@@ -847,3 +850,13 @@ For details of keybindings, see `ido-find-file'."
 (defun flash-mode-line ()
   (invert-face 'mode-line)
   (run-with-timer 0.1 nil #'invert-face 'mode-line))
+
+
+(autoload 'erlang-mode         "erlang" "erlang mode" t)
+(autoload 'run-erlang          "erlang" "erlang mode" t)
+
+(setq geiser-active-implementations '(guile))
+(add-to-list 'common-buffers '("g" . "* Guile REPL *"))
+(add-to-list 'common-buffers '("p" . "*Python*"))
+(add-to-list 'common-buffers '("e" . "*erlang*"))
+(add-to-list 'common-buffers '("o" . "*prolog*"))

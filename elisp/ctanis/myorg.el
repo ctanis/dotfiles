@@ -348,3 +348,13 @@ most localized thing"
 (advice-add 'org-pomodoro :after #'org-clock-update-mode-line)
 
 
+;; aiaa document style
+(eval-after-load "ox-latex"
+  '(add-to-list 'org-latex-classes
+		'("aiaa"
+		  "\\documentclass[conf]{new-aiaa}"
+		  ("\\section{%s}" . "\\section*{%s}")
+		  ("\\subsection{%s}" . "\\subsection*{%s}")
+		  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+		  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"               
+		   ))))
