@@ -288,7 +288,7 @@ most localized thing"
 
      ;; this one is for refiling to other files in the org-agenda-files
      (defadvice org-refile-fullpath (around use-full-path activate)
-       (let (;(org-completion-use-ido nil)
+       (let (                           ;(org-completion-use-ido nil)
 	     (org-outline-path-complete-in-steps t)
 	     (org-refile-use-outline-path 'file)
 	     (org-refile-targets (quote ((nil :maxlevel . 9)
@@ -319,7 +319,6 @@ most localized thing"
 				       activate compile)
        "minimize buffer after rebuilding agenda"
        (shrink-window-if-larger-than-buffer))
-
      ))
 
 (require-verbose 'org-bookmark-heading)
@@ -359,6 +358,11 @@ most localized thing"
 		  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"               
 		   ))))
 
+
 ;; angle brackets should not be delimiters
-(modify-syntax-entry ?\< "w" org-mode-syntax-table)
-(modify-syntax-entry ?\> "w" org-mode-syntax-table)
+(add-hook 'org-mode-hook #'(lambda ()
+                             (modify-syntax-entry ?\< "w" org-mode-syntax-table)
+                             (modify-syntax-entry ?\> "w" org-mode-syntax-table)))
+
+
+
