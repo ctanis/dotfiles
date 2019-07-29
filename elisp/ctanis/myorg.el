@@ -358,3 +358,7 @@ most localized thing"
 		  ("\\paragraph{%s}" . "\\paragraph*{%s}")
 		  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"               
 		   ))))
+
+;; angle brackets should not be delimiters
+(modify-syntax-entry ?\< "w" org-mode-syntax-table)
+(modify-syntax-entry ?\> "w" org-mode-syntax-table)
