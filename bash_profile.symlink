@@ -15,7 +15,7 @@ fi
 export GNUTERM=X11
 export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 #export LESS="-erX"
-export LESS="-X"
+export LESS="FRX"
 
 
 # may need to override this in a bash-local
@@ -55,7 +55,7 @@ shopt -s histverify
 shopt -s histreedit
 
 
-#export HISTIGNORE="&:history*"
+export HISTIGNORE="&:*HISTFILE*:history*"
 export HISTFILESIZE=2000
 export HISTSIZE=2000
 export PROMPT_COMMAND="history -a"
