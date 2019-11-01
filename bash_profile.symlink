@@ -141,11 +141,6 @@ function check_repos ()
 }
 
 
-if [ -f ~/.bash-local ]; then
-    source ~/.bash-local
-fi
-
-
 
 # if [ -f ~/.bashrc ]; then
 #    source ~/.bashrc
@@ -173,3 +168,13 @@ function nospace { rename 's/[ \t]+/_/g' "$1"; }
 if [ -n "$INSIDE_EMACS" ] && [[ "$HISTFILE" == *.tramp_history ]]; then
    export HISTFILE=~/.bash_history
 fi   
+
+
+## load customized bash-local if it exists for this machine; otherwise default
+## to .bash-local
+REAL_LOCAL_RC=~/.bash-local.`hostname`
+if [ -e $REAL_LOCAL_RC ]; then
+    source $REAL_LOCAL_RC
+elif [ -f ~/.bash-local ]; then
+    source ~/.bash-local
+fi
