@@ -595,6 +595,8 @@ For details of keybindings, see `ido-find-file'."
   (add-to-list 'ido-cr+-function-blacklist 'org-refile-fullpath)
   (add-to-list 'ido-cr+-function-blacklist 'org-agenda-refile-fullpath)
   (add-to-list 'ido-cr+-function-blacklist 'execute-extended-command)
+  (add-to-list 'ido-cr+-function-blacklist 'describe-function)
+  (add-to-list 'ido-cr+-function-blacklist 'describe-variable)
   )
 
 
