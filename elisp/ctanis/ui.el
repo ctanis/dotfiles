@@ -118,38 +118,42 @@
 
 (when (require-verbose 'solarized)
 
-  (defun  ctanis_theme_tweak (style theme)
-    (load-theme theme t)
-    (eval 
-     `(solarized-with-color-variables ',style
-        ,solarized-color-palette-alist
-        (custom-theme-set-faces
-         theme
-         `(hl-line ((,class (:background ,blue :foreground ,base03))))
-         `(bold ((,class (:foreground ,base2 "gray40" :weight bold))))
-         `(comint-highlight-prompt ((,class (:foreground ,base2 :weight bold))))
-         `(dired-flagged ((,class (:background ,red :foreground "black"))))
-         `(dired-marked ((,class (:background ,blue :foreground "black"))))
-         `(show-paren-match ((,class (:foreground ,base3))))
-         `(cursor ((,class (:foreground ,base0 :background ,base2))))
-         `(org-code ((,class (:font ,ctanis_code_font :height 1.1))))
-         `(org-block ((,class (:font ,ctanis_code_font :height 1.1 :foreground ,base1))))
-         `(org-checkbox ((,class (:background ,base03 :foreground ,base0 :weight bold))))
-         `(deft-title-face ((,class (:inherit deft-date-face :weight bold))))
-         `(company-tooltip-selection ((,class (:weight bold :background ,base2))))
-         )
-        )
-     )
-    )
+  (defun ctanis_theme_tweak (style name)
+    (solarized-create-theme
+     style name
+     (lambda ()
+       (custom-theme-set-faces
+        theme-name
+        `(hl-line ((,class (:background ,blue :foreground ,base03))))
+        `(bold ((,class (:foreground ,base2 "gray40" :weight bold))))
+        `(comint-highlight-prompt ((,class (:foreground ,base2 :weight bold))))
+        `(dired-flagged ((,class (:background ,red :foreground "black"))))
+        `(dired-marked ((,class (:background ,blue :foreground "black"))))
+        `(show-paren-match ((,class (:foreground ,base3))))
+        `(cursor ((,class (:foreground ,base0 :background ,base2))))
+        `(org-code ((,class (:font ,ctanis_code_font :height 1.1))))
+        `(org-block ((,class (:font ,ctanis_code_font :height 1.1 :foreground ,base1))))
+        `(org-checkbox ((,class (:background ,base03 :foreground ,base0 :weight bold))))
+        `(deft-title-face ((,class (:inherit deft-date-face :weight bold))))
+        `(company-tooltip-selection ((,class (:weight bold :background ,base2))))
+        ))))
+
+  (deftheme ctanis-solarized-light "light solarized theme with tweaks")
+  (deftheme ctanis-solarized-dark "dark solarized theme with tweaks")
+  (ctanis_theme_tweak 'light 'ctanis-solarized-light) 
+  (ctanis_theme_tweak 'dark 'ctanis-solarized-dark)
+  (provide-theme 'ctanis-solarized-light)
+  (provide-theme 'ctanis-solarized-dark)
+
 
   (defun light()
     (interactive)
-    (ctanis_theme_tweak 'light 'solarized-light)
+    (enable-theme 'ctanis-solarized-light)
     )
-
+     
   (defun dark()
     (interactive)
-    (ctanis_theme_tweak 'dark 'solarized-dark)
+    (enable-theme 'ctanis-solarized-dark)
     )
   )
 
