@@ -20,7 +20,7 @@ sub do_postprocess($$) {
   chdir $dir;
   
  PROCESS:
-  for my $k (keys %postprocess) 
+  for my $k (keys %postprocess) {
 
     if ($file =~ /.*\.$k$/) {
       ## found a match
