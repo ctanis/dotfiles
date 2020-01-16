@@ -4,7 +4,11 @@ open STDERR, ">&STDOUT"     or die "Can't dup STDOUT: $!";
 
 my $p = shift @ARGV or die;
 
-die "sshmnt: illegal argument\n" unless $p =~ /:/;
+unless ($p =~ /:/) {
+  $p = "$p:";
+}
+
+#die "sshmnt: illegal argument\n" unless $p =~ /:/;
 
 
 
@@ -17,7 +21,8 @@ $f = "$h$n";
 
 die "sshmnt: illegal argument\n" unless $f;
 
-mkdir "/Volumes/$f" or print "failure to make mount dir $f\n";
+
+# mkdir "/Volumes/$f" or print "failure to make mount dir $f\n";
 
 # if this works, it prints nothing out..
 $stat = `/usr/local/bin/sshfs $p /Volumes/$f 2>&1`;
