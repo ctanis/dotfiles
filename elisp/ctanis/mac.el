@@ -33,7 +33,9 @@
 					       tex-last-temp-file
 					       (buffer-file-name tex-last-buffer-texed)))
 		 ".pdf")))
-    (call-process-shell-command "open" nil nil nil pdffile)))
+    ;;(call-process-shell-command "open" nil nil nil pdffile)
+    (shell-command (concat os-launcher-cmd " "
+                           (shell-quote-argument pdffile)))))
 ;; (defun fake-dvi-view()
 ;;   (interactive)
 ;;   (call-process-shell-command "open" nil nil nil (concat (file-name-sans-extension (buffer-file-name tex-last-buffer-texed)) ".pdf")))
