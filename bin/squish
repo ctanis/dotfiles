@@ -11,14 +11,21 @@ for $file (@ARGV) {
 
   $file =~ s/ /\\ /g;
 
-  print STDERR "convert $file --> $fileout\n";
-
   if ($file =~ /\.pdf$/i) {
+    print STDERR "passthru $file --> $file\n";
     push @actual, "$file";
-  } elsif ($file =~ /\.(gif|png|jpg|jpeg)/i) {
+  } elsif ($file =~ /\.(gif|png|jpg|jpeg)$/i) {
     `convert $file $fileout.pdf`; # arbitrary -density 250!
+    print STDERR "convert $file --> $fileout.pdf\n";
     push @actual, "$fileout.pdf";
+  } elsif ($file =~ /\.docx$/i) {
+    $new = $file;
+    $new =~ s/\.docx/.pdf/;
+    print STDERR "docx2pdf $file --> $new\n";
+    `docx2pdf $file`;
+    push @actual, "$new";
   } else {
+    print STDERR "codepdf $file --> $fileout.pdf\n";
     `CODEPDFQUIET=1 PDFOUTPUT=$fileout.pdf codepdf $file`;
     push @actual, "$fileout.pdf";
   }
