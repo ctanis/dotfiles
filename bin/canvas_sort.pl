@@ -41,10 +41,12 @@ sub do_postprocess($$) {
 
 for my $f (glob "*") {
 
-  my ($user, $fname) = $f =~ m/([^_]+)_[0-9]+_[0-9]+_(.*)/;
+  #my ($user, $fname) = $f =~ m/([^_]+)_[0-9]+_[0-9]+_(.*)/;
+  my ($user, $islate, $fname) = $f =~ m/^([^_]+)(_LATE)?_[0-9]+_[0-9]+_(.*)/;
 
   $fname =~ s/[\s\(\)]/_/g;
   print "$f --> `$user`($fname)\n";
+  print "**ISLATE\n" if $islate;
 
 
   mkdir $user;
