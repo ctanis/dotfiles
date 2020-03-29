@@ -239,7 +239,10 @@ most localized thing"
 ;; links in pdfs should have no boxes around them...
 (setq org-latex-hyperref-template
   "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},
- pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n pdfborder={0 0 0} }\n")
+ pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n pdfborder={0 0 0}, \n colorlinks=true}\n")
+;; (setq org-latex-hyperref-template
+;;   "\\hypersetup{\n pdfauthor={%a},\n pdftitle={%t},\n pdfkeywords={%k},
+;;  pdfsubject={%d},\n pdfcreator={%c}, \n pdflang={%L}, \n pdfborder={0 0 0} }\n")
 
 ;; note, you may need an org block like the following
 ;;
