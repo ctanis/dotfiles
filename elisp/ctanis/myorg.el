@@ -15,7 +15,7 @@
 (setq org-src-fontify-natively t)
 
 ;; ctrl-a/e on heading defaults to text
-(setq org-special-ctrl-a/e 'reversed)
+(setq org-special-ctrl-a/e t) ;; 'reversed
 
 (setq org-alphabetical-lists t)
 ;(setq org-hide-emphasis-markers t)
