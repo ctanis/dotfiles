@@ -5,6 +5,11 @@
 ;; You may delete these explanatory comments.
 ;(package-initialize)
 
+;; emacs 27.1 deprecates 'cl; this clears the warning triggered by many 3rd
+;; party packages
+(setq byte-compile-warnings '(cl-functions))
+
+
 (add-to-list 'load-path "~/.dotfiles/elisp/ctanis")
 (add-to-list 'load-path "~/.dotfiles/elisp/other")
 

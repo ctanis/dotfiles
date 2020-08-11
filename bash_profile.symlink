@@ -178,3 +178,4 @@ if [ -e $REAL_LOCAL_RC ]; then
 elif [ -f ~/.bash-local ]; then
     source ~/.bash-local
 fi
+

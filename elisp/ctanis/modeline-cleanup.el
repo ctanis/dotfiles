@@ -21,7 +21,7 @@ must pass the correct minor/major mode symbol and a string you
 want to use in the modeline *in lieu of* the original.")
  
  
-(require 'cl)
+(require 'cl-lib)
 (defun clean-mode-line ()
   (interactive)
   ; put a whitespace
