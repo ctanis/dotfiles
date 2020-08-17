@@ -197,6 +197,9 @@ Otherwise, no determination is made."
 	     (setq f90-program-indent 2)
 	     ))
 
+(add-hook 'text-mode-hook
+          '(lambda ()
+             (modify-syntax-entry ?\" "\"")))
 
 ;; (add-hook 'text-mode-hook
 ;; 	  '(lambda ()
@@ -257,7 +260,9 @@ Otherwise, no determination is made."
 (add-hook 'shell-mode-hook 
 	  '(lambda ()
 					; allow the killing of this buffer without prompting
-	     (process-kill-without-query (get-buffer-process (current-buffer)))
+	     ;;(process-kill-without-query (get-buffer-process (current-buffer)))
+             (set-process-query-on-exit-flag (get-buffer-process (current-buffer))
+                                             nil)
 	     (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
              (toggle-truncate-lines 0)))
 
