@@ -831,3 +831,11 @@ agnostic agenda-file management"
   '(progn
      (define-key f90-mode-map (kbd "\C-x n d") 'fortran_narrow_sub)
                                                                  ))
+
+
+;; replace region with ch copied as necessary
+(defun replace-region (start end ch)
+  (interactive "r\nc Fill with char: ")
+  (message (format "%d -- %d" start end))
+  (delete-region start end)
+  (dotimes (_ (- end start)) (insert ch)))
