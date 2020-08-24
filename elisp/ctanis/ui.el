@@ -64,9 +64,9 @@
 	    (cons (cons 'font font)
 		  default-frame-alist))
 	  )
-      (set-default-font font)
+      (set-frame-font font)
 
-      (let ((f (new-frame)))
+      (let ((f (make-frame)))
 	;(sleep-for 5)
         (select-frame f)
 	(reset-window t)
