@@ -247,7 +247,7 @@ common-buffer) and go there."
     (if (get-buffer shell-buffer-name)
 	(do-jump-to-common-buffer shell-buffer-name)
       (progn (save-window-excursion
-               (shell)
+               (let ((explicit-shell-file-name (getenv "SHELL"))) (shell))
                (rename-buffer (directory-shell-buffer-name) t)
                (set (make-local-variable 'is-common-buffer) t)
                )
