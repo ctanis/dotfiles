@@ -9,8 +9,6 @@
 (setq font-lock-maximum-decoration (list (cons t nil)))
 
 
-  
-
 ;; put tick marks in the fringe at the end of the file content
 (setq-default indicate-empty-lines t)
 
@@ -32,7 +30,7 @@
 
 (defun reset-window (num)
   (interactive "P")
-  (set-frame-font ctanis_font)
+  ;(set-frame-font ctanis_font)
   (set-frame-width (selected-frame) (car frame-mitosis-config))
   (set-frame-height (selected-frame) (cadr frame-mitosis-config))
   (set-frame-position (selected-frame)
@@ -175,7 +173,15 @@
       (solarized-with-color-variables 'light 'ctanis-solarized-light solarized-light-color-palette-alist my-solarized-faces)
       ;;(ctanis_theme_tweak 'dark 'ctanis-solarized-dark)
       (solarized-with-color-variables 'dark 'ctanis-solarized-dark solarized-dark-color-palette-alist my-solarized-faces)
-      (setq ctanis_themes_tweaked t)))
+      (setq ctanis_themes_tweaked t))
+
+
+    ;; need a better place to put this...
+    (add-to-list 'default-frame-alist (cons 'font
+                                            (nth 5 frame-mitosis-config)))
+
+    )
+
   
   (provide-theme 'ctanis-solarized-light)
   (provide-theme 'ctanis-solarized-dark)
@@ -195,4 +201,3 @@
   )
 
 (setq visible-bell nil)
-

@@ -200,3 +200,4 @@
       )))
 
 (define-key dired-mode-map "\M-y" 'dired-quick-look)
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . nil))
