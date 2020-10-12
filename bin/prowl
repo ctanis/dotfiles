@@ -35,17 +35,21 @@ use Getopt::Long;
 use Pod::Usage;
 use Sys::Hostname;
 
+
 # Grab our options.
 my %options = ();
 GetOptions(\%options, 'apikey=s', 'apikeyfile=s',
 					  'providerkey=s', 'url=s',
 					  'application=s', 'event=s', 'notification=s',
-					  'read',
                                           'priority:i', 'help|?') or pod2usage(2);
 
-$options{'application'} ||= hostname . ': prowl.pl';
+my $hn= hostname;
+$hn =~ s/^([^.]+)\..*/$1/;
+
+$options{'application'} ||= $hn . '';
 $options{'priority'} ||= 0;
 $options{'url'} ||= "";
+$options{'event'} ||= ` `;
 
 pod2usage(-verbose => 2) if (exists($options{'help'}));
 pod2usage(-message => "$0: Event name is required") if (!exists($options{'event'}));
@@ -68,8 +72,7 @@ if (!exists($options{'apikey'}) && !exists($options{'apikeyfile'})) {
 	chomp $options{'apikey'};
 }
 
-if ($options{read}) {
-  $options{notification} .= "\n" if $options{notification};
+unless ($options{notification}) {
   while (<STDIN>) {
     $options{notification} .= $_;
   }

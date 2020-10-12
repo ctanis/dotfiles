@@ -340,14 +340,14 @@ most localized thing"
 (org-clock-persistence-insinuate)
 (org-clock-load)
 
-(defun org-pomodoro-protect-modeline (original)
-       (if (org-pomodoro-active-p)
-           ""
-         (funcall original))
-       )
+;; (defun org-pomodoro-protect-modeline (original)
+;;        (if (org-pomodoro-active-p)
+;;            ""
+;;          (funcall original))
+;;        )
 
-(advice-add 'org-clock-get-clock-string :around #'org-pomodoro-protect-modeline)
-(advice-add 'org-pomodoro :after #'org-clock-update-mode-line)
+;; (advice-add 'org-clock-get-clock-string :around #'org-pomodoro-protect-modeline)
+;; (advice-add 'org-pomodoro :after #'org-clock-update-mode-line)
 
 
 ;; aiaa document style
