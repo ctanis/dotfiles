@@ -150,7 +150,7 @@ function check_repos ()
 # if we are in iTerm OR it's a terminal over ssh
 # this is necessary because TERM_PROGRAM isn't set on ssh connections and it's not
 # save to call it2check locally since iTerm could be called via applescript
-if [ "${TERM_PROGRAM}" == 'iTerm.app' ] || ([[ "$TERM" == xterm* ]] && [ -n "${SSH_CONNECTION}" ] && ${HOME}/.iterm2/it2check); then
+if [ "${TERM_PROGRAM}" == 'iTerm.app' ] || ([[ "$TERM" == xterm* ]] && [ -n "${SSH_CONNECTION}" ] && [ -f ${HOME}/.iterm2/it2check ]); then
     source "${HOME}/.iterm2_shell_integration.bash"
     export PROMPT_COMMAND="__bp_precmd_invoke_cmd; __bp_interactive_mode; ${HOME}/.iterm2/it2setkeylabel set status `hostname -s`; history -a"
 
