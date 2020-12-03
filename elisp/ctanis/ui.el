@@ -158,7 +158,7 @@
              `(comint-highlight-prompt ((,class (:foreground ,base2 :weight bold))))
              `(dired-flagged ((,class (:background ,red :foreground "black"))))
              `(dired-marked ((,class (:background ,blue :foreground "black"))))
-             `(show-paren-match ((,class (:foreground ,base3))))
+             `(show-paren-match ((,class (:foreground ,base3 :background ,base02))))
              `(cursor ((,class (:foreground ,base0 :background ,base2))))
              `(org-code ((,class (:font ,ctanis_code_font :height 1.1))))
              `(org-block ((,class (:font ,ctanis_code_font :height 1.1 :foreground ,base1))))

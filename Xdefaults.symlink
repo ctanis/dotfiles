@@ -3,3 +3,4 @@ XTerm*vt100*metaSendsEscape:  true
 XTerm*Background: black
 XTerm*Foreground: red
 XTerm*ScrollBar: on
+XTerm*toolBar: off
