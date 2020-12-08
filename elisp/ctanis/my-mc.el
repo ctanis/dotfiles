@@ -20,6 +20,7 @@
   (require 'phi-search)
   (require 'phi-replace)
   (require 'phi-search-mc)
+  (require 'ace-mc)
   ;; (require 'phi-search-dired)
 
   ; (global-set-key "\M-%" 'phi-replace-query)
@@ -35,6 +36,7 @@
   (define-key craig-prefix-map "\M-.!" 'mc/mark-all-dwim)
   (define-key craig-prefix-map "\M-.@" 'mc/mark-more-like-this-extended)
   (define-key craig-prefix-map "\M-.<" 'mc/mark-sgml-tag-pair)
+  (define-key craig-prefix-map "\M-. " 'ace-mc-add-multiple-cursors)
 
   (define-key mc/keymap (kbd "M-.") 'mc/mark-next-like-this)
   (define-key mc/keymap (kbd "M-.") 'mc/mark-previous-like-this)
