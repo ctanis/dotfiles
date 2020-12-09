@@ -78,14 +78,8 @@ complete -d pushd cd
 
 
 PLATFORM=`uname`
-if [ $PLATFORM == 'Linux' ]; then
-    function edit()
-    {
-        until emacsclient -n $*  >/dev/null 2>&1; do
-	    sleep 1;
-        done;
-    }
-else
+if [ $PLATFORM == 'Darwin' ]; then
+## mac version
     function edit()
     {
         osascript -e 'tell application "Emacs" to activate'
@@ -94,15 +88,16 @@ else
 	    sleep 1;
         done;
     }
-fi; 
 
-if [ $PLATFORM == 'Darwin' -a $TERM == 'xterm' ]; then
-    # select a random color scheme from terminal options specified in TERM_COLOR_CHOICES
-    function rand_term {
-        local OPTION=${TERM_COLOR_CHOICES[$RANDOM % ${#TERM_COLOR_CHOICES[@]}]}
-        osascript -e 'tell application "Terminal" to set current settings of first window to settings set '$OPTION
+else
+    function edit()
+    {
+        until emacsclient -n $*  >/dev/null 2>&1; do
+	    sleep 1;
+        done;
     }
-fi
+
+fi; 
 
 
 
