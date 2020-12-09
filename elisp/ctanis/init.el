@@ -736,11 +736,10 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
-(setq exec-path-from-shell-check-startup-files nil)
-(unless (getenv "SHELL") (setenv "SHELL" "/bin/bash"))
 (when (require-verbose 'exec-path-from-shell)
-     (exec-path-from-shell-initialize)
-)
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize)
+  )
 
 (when (require-verbose 'unfill)
                                         ;  (define-key craig-prefix-map "\M-q" 'toggle-fill-unfill)
@@ -864,3 +863,29 @@ For details of keybindings, see `ido-find-file'."
 (add-to-list 'common-buffers '("p" . "*Python*"))
 (add-to-list 'common-buffers '("e" . "*erlang*"))
 (add-to-list 'common-buffers '("o" . "*prolog*"))
+
+
+;; os launching
+(defvar os-launcher-cmd "open")
+
+(defun launch ()
+  "launch current file with OS"
+  (interactive)
+  (if (equal major-mode 'dired-mode)
+      (call-interactively 'launch-dired)
+    (shell-command (concat os-launcher-cmd " "
+			 (shell-quote-argument (buffer-file-name))))))
+(define-key craig-prefix-map "\M-l" 'launch)
+
+(eval-after-load 'dired
+  '(progn
+     (define-key dired-mode-map "\M-o" 'craig-prefix)
+     (defun launch-dired ()
+       "launch current marked files in dired buffer"
+       (interactive)
+;       (message "in launch-dired")
+       (mapcar
+        (lambda (x)
+          (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
+        (dired-get-marked-files)))
+     ))

@@ -54,13 +54,6 @@
 (setq-default ispell-program-name "aspell")
 
 
-(defun open-in-finder ()
-  (interactive)
-  (shell-command "open ."))
-(define-key craig-prefix-map "\M-w" 'open-in-finder)
-
-
-
 (defun dirshell ()
   "launch a Terminal.app in the current directory"
   (interactive)
@@ -69,29 +62,14 @@
 (define-key craig-prefix-map "\C-x!" 'dirshell)
 
 
-(defvar os-launcher-cmd "open")
-
-(defun launch ()
-  "launch current file with OS"
+(defun open-in-finder ()
   (interactive)
-  (if (equal major-mode 'dired-mode)
-      (call-interactively 'launch-dired)
-    (shell-command (concat os-launcher-cmd " "
-			 (shell-quote-argument (buffer-file-name))))))
-(define-key craig-prefix-map "\M-l" 'launch)
+  (shell-command "open ."))
+(define-key craig-prefix-map "\M-w" 'open-in-finder)
 
-(eval-after-load 'dired
-  '(progn
-     (define-key dired-mode-map "\M-o" 'craig-prefix)
-     (defun launch-dired ()
-       "launch current marked files in dired buffer"
-       (interactive)
-;       (message "in launch-dired")
-       (mapcar
-        (lambda (x)
-          (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
-        (dired-get-marked-files)))
-     ))
+
+
+
 
 ;; ;; some stuff for dealing with Dash.app
 ;; (define-derived-mode dash-snippet-mode fundamental-mode
@@ -169,7 +147,6 @@
 (defun stop-speaking ()
   (interactive)
   (kill-process (get-process speak-process)))
-
 
 
 ;; dash stuff
