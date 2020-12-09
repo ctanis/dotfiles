@@ -182,7 +182,6 @@
 
     )
 
-  
   (provide-theme 'ctanis-solarized-light)
   (provide-theme 'ctanis-solarized-dark)
 
