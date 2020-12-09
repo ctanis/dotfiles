@@ -738,6 +738,7 @@ For details of keybindings, see `ido-find-file'."
   )
 
 
+(setenv "SHELL" "/bin/bash")
 (when (require-verbose 'exec-path-from-shell)
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize)
