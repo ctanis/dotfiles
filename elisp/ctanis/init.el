@@ -776,7 +776,7 @@ For details of keybindings, see `ido-find-file'."
 (load-library "ui")
 
 ;; shell should run as a login shell (load rc)
-(setq explicit-bash-args '("--noediting" "-il"))
+;;(setq explicit-bash-args '("--noediting" "-i"))
 
 ;; do this last since it involve stuff from packages
 (load-library "my-completions")
