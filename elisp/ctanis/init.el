@@ -1,7 +1,7 @@
-;; start this asap
-(require 'server)
-(if (and window-system (not (server-running-p)))
-    (server-start))
+;; start this asap -- should be per-emacs
+;; (require 'server)
+;; (if (and window-system (not (server-running-p)))
+;;     (server-start))
 
 
 (load-library "functions")
