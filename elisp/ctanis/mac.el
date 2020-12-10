@@ -62,11 +62,6 @@
 (define-key craig-prefix-map "\C-x!" 'dirshell)
 
 
-(defun open-in-finder ()
-  (interactive)
-  (shell-command "open ."))
-(define-key craig-prefix-map "\M-w" 'open-in-finder)
-
 
 
 

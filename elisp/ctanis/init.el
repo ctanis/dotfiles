@@ -892,3 +892,8 @@ For details of keybindings, see `ido-find-file'."
           (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
         (dired-get-marked-files)))
      ))
+
+(defun send-cwd-to-os ()
+  (interactive)
+  (shell-command "open ."))
+(define-key craig-prefix-map "\M-w" 'send-cwd-to-os)
