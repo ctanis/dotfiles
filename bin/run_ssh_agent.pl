@@ -27,7 +27,7 @@ if (-e $cache_file) {
 
 
 if ($running_pid == -1) {
-  @cache=`ssh-agent -s`;
+  @cache=`/usr/bin/ssh-agent -s`;
   $cache[2]="#".$cache[2];
   $resave_cache=1;
 } else {
