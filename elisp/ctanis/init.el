@@ -320,20 +320,37 @@
 	      cur nil)))
     res))
 
-
-;; using a colon exits ido when searching for file/dir
-(defun ido_file_handle_colon ()
+(setq ido-merge-ftp-work-directories nil)
+(defun ido-merge-remote ()
+  ;; toggle merging remote directories
   (interactive)
-  ;;(call-interactively ido-context-switch-command)
-  (insert ":")
-  (push ?\: unread-command-events)
-  (let ((i (length ido-text)))
-    (while (> i 0)
-      (push (aref ido-text (setq i (1- i))) unread-command-events)))
-  (setq ido-exit 'fallback)
+  (setq ido-use-merged-list t ido-try-merged-list t)
+  (setq ido-exit 'refresh)
+  (setq ido-text-init ido-text)
+  (setq ido-rotate-temp t)
+  (setq ido-merge-ftp-work-directories (not ido-merge-ftp-work-directories))
   (exit-minibuffer)
   )
-(define-key ido-file-dir-completion-map ":" 'ido_file_handle_colon)
+(define-key ido-file-dir-completion-map [(meta control ?s)] 'ido-merge-remote)
+
+(defun purge-ido-tramp ()
+  (interactive)
+  (setq ido-work-directory-list (filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
+  )
+
+;; ;; ;; using a colon exits ido when searching for file/dir
+;; (defun ido_file_handle_colon ()
+;;   (interactive)
+;;   ;;(call-interactively ido-context-switch-command)
+;;   (insert ":")
+;;   (push ?\: unread-command-events)
+;;   (let ((i (length ido-text)))
+;;     (while (> i 0)
+;;       (push (aref ido-text (setq i (1- i))) unread-command-events)))
+;;   (setq ido-exit 'fallback)
+;;   (exit-minibuffer)
+;;   )
+;; (define-key ido-file-dir-completion-map ":" 'ido_file_handle_colon)
 
 
 
@@ -823,19 +840,6 @@ For details of keybindings, see `ido-find-file'."
 ; tramp exec use remote path
 (eval-after-load 'tramp
   '(add-to-list 'tramp-remote-path 'tramp-own-remote-path))
-
-(setq tramp-default-method "ssh")
-
-;; this is not good on a laptop that requires VPN..
-(setq ido-enable-tramp-completion nil)
-(setq ido-work-directory-list-ignore-regexps '("^/[^/]*:"))
-
-(defun purge-ido-tramp ()
-  (interactive)
-  (setq ido-work-directory-list (filter (lambda (s) (not (string-match "^/.*@.*:" s))) ido-work-directory-list))
-  )
-
-
 
 (when (require-verbose 'itail)
   (defalias 'tail-file 'itail))
