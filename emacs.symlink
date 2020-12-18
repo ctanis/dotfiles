@@ -1,4 +1,5 @@
 ;;  -*- mode: emacs-lisp; -*- 
+(setq byte-compile-warnings '(cl-functions))
 (add-to-list 'load-path "~/.dotfiles/dotemacs")
 (load-library "init")
 
