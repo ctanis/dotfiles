@@ -1,10 +1,14 @@
-(require 'package)
+(package-initialize)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/" ) t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/" ) t)
-;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/" ) t)
 
-;; (package-initialize) ;; trigger elpa packages
+(defun require-verbose (feature)
+  (if (require feature nil 'noerror)
+       'feature
+     (progn
+       (message (concat "could not load " (symbol-name feature)))
+       nil
+       )))
 
 ;; (defun get-updatable-count ()
 ;;   (let (old-archives new-packages)

@@ -1,26 +1,10 @@
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-;(package-initialize)
-
-;; emacs 27.1 deprecates 'cl; this clears the warning triggered by many 3rd
-;; party packages
-(setq byte-compile-warnings '(cl-functions))
-
-
-(add-to-list 'load-path "~/.dotfiles/elisp/ctanis")
-(add-to-list 'load-path "~/.dotfiles/elisp/other")
-
+;;  -*- mode: emacs-lisp; -*- 
+(add-to-list 'load-path "~/.dotfiles/dotemacs")
 (load-library "init")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (if (file-readable-p custom-file)
     (load-file custom-file))
-
-(if (file-readable-p "~/.emacs.d/projects.el")
-	(load-file "~/.emacs.d/projects.el"))
 
 (if (file-readable-p "~/.emacs-local")
     (load-file "~/.emacs-local"))

@@ -1,5 +1,4 @@
-t;; BUFFER MANAGEMENT
-
+;; BUFFER MANAGEMENT
 (defun better-display-buffer(arg)
   "a better display buffer"
   (interactive (list (ido-read-buffer "Buffer: ")))
@@ -116,7 +115,7 @@ more than 2 windows are currently displayed."
 ;;(apply (function concat) (mapcar (function car) common-buffers))
 
 (defun get-all-shell-buffers()
-  (filter (lambda (c)
+  (seq-filter (lambda (c)
             (with-current-buffer c
               (eq major-mode 'shell-mode)))
           (buffer-list)))
@@ -125,13 +124,13 @@ more than 2 windows are currently displayed."
   (interactive "cWhich quick key?")
   (let ((b (buffer-name)))
     (set (make-local-variable 'is-common-buffer) t)
-    (unless (filter (lambda (c)
+    (unless (seq-filter (lambda (c)
                       (equal (cdr c) b)) common-buffers)
       (add-to-list 'common-buffers (cons (char-to-string k) (buffer-name) )))))
 
 (defun active-common-buffers ()
   (cons '("l" . "SHELL_PLACEHOLDER")
-        (filter (lambda (c) (get-buffer (cdr c))) common-buffers)))
+        (seq-filter (lambda (c) (get-buffer (cdr c))) common-buffers)))
 
 (defun remove-current-from-common-buffers (doit)
   (interactive "cAre you sure?")
@@ -139,7 +138,7 @@ more than 2 windows are currently displayed."
       (progn
         (set (make-local-variable 'is-common-buffer) nil)
         (setq common-buffers
-              (filter (lambda (b)
+              (seq-filter (lambda (b)
                         (not (equal (cdr b) (buffer-name)))) common-buffers)))))
 
 
@@ -181,7 +180,7 @@ common-buffers alist"
                     (do-jump-to-common-buffer (car (get-all-shell-buffers)))
                   (shell-current-directory)))))
         (let* ((entry (assoc (char-to-string buf-id)
-                             (filter '(lambda (i)
+                             (seq-filter '(lambda (i)
                                         (get-buffer (cdr i)))
                                      (active-common-buffers))))
                (bufname (and entry (cdr entry))))
@@ -259,40 +258,6 @@ common-buffer) and go there."
 
 
 (require 'advice)
-;-----------------------------------------------------------------------------
-;; ;i stole this stuff from eric beuscher.  i'm sick of creating buffers on
-;; ;accident, and then having to kill them!
-
-;; (defadvice switch-to-buffer 
-;;   (before existing-buffers-only activate)
-;;   "When called interactively switch to existing buffers only, unless 
-;; when called with a prefix argument."
-;;   (interactive 
-;;    (list (read-buffer "Switch to buffer: " (other-buffer) 
-;;                       (null current-prefix-arg)))))
-
-;; (defadvice switch-to-buffer-other-window 
-;;   (before existing-buffers-only activate)
-;;   "When called interactively switch to existing buffers only, unless 
-;; when called with a prefix argument."
-;;   (interactive 
-;;    (list (read-buffer "Switch to buffer other window: " (other-buffer) 
-;;                       (null current-prefix-arg)))))
-
-;; ;; (defadvice better-display-buffer 
-;; ;;   (before existing-buffers-only activate)
-;; ;;   "When called interactively display existing buffers only, unless 
-;; ;; when called with a prefix argument."
-;; ;;   (interactive 
-;; ;;    (list (read-buffer "Display buffer: " (other-buffer) 
-;; ;;                       (null current-prefix-arg)))))
-
-;; (defadvice display-buffer (around  display-buffer-return-to-sender activate)
-;;   "displaying a buffer in another frame should not change the frame we are currently in!"
-;;   (let ((f (window-frame (selected-window))))
-;;     ad-do-it
-;;     (raise-frame f)))
-
 
 ;; EDITING
 
@@ -495,88 +460,7 @@ multiple times in a row"
 			       'delete-non-matching-lines)
 			  'delete-matching-lines)))
 
-;; eval-buffer-as-perl-script caveats:
 
-
-;;  one thing to note is that perl is run under bash under emacs.
-;;  If the command line args you specify don't work in the shell, then
-;;  you get a bash error in the perl output buffer..
-
-;;  if the perl script is expecting input from the user, it will just
-;;  hang if you run it. ( but it hangs in the background, so it won't
-;;  slow you down)-- you have to manually kill it (or exit emacs.. but
-;;  why would you want to do that?)
-
-;;  syntax checking works fine however....
-
-
-(defun eval-buffer-as-perl-script (pre)
-  "Send the current buffer to a perl interpreter for syntax checking.  With
-a prefix arg, run it in another window"
-  (interactive "P")
-  
-  (if (not buffer-file-name)
-      (error "No file for current buffer"))
-  (save-some-buffers)
-
-  (let* ((line-args (if pre (read-from-minibuffer "Command-line args: ")
-		      ""))
-	 (perl-buffer-file-name  (concat
-				  "*Perl: "
-				  buffer-file-name))
-	 (buf (and pre (or (get-buffer perl-buffer-file-name)
-			   (generate-new-buffer perl-buffer-file-name)))))
-
-    (shell-command (concat "perl "
-			   (if pre
-			       ""
-			     "-c ")
-			   buffer-file-name
-			   " " line-args " "
-			   (if pre " &" ""))
-		   (if pre buf nil))
-    (if pre
-	(display-buffer buf))))
-
-
-(defun make-perl-script ()
-  (interactive)
-  (executable-set-magic "perl" "-w")
-  (perl-mode))
-
-
-;; ;; hostname mode
-;; (defvar ctanis/hostname (let ((str (or (getenv "HOSTNAME") "")))
-;;   (substring  str 0 (string-match "\\." str))))
-
-;; ;modified from code for column-number-mode
-;; (defvar host-name-mode nil
-;;   "*Non-nil means display host name in mode line.")
-
-;; (defun host-name-mode (arg)
-;;   "Toggle Host Name mode.
-;; With arg, turn Host Name  mode on iff arg is positive.
-;; When Host Name mode is enabled, the column number appears
-;; in the mode line."
-;;   (interactive "P")
-;;   (setq host-name-mode
-;; 	(if (null arg) (not host-name-mode)
-;; 	  (> (prefix-numeric-value arg) 0)))
-;;   (force-mode-line-update))
-
-
-(defun filter (pred ls)
-  "filter PRED LS   returns new list of elts for which PRED is true"
-  (if ls
-      (if (funcall pred (car ls))
-	  (cons (car ls) (filter pred (cdr ls)))
-	(filter pred (cdr ls)))
-    '()))
-
-;; a better filter?
-;; (defun my-filter (condp lst)
-;;     (delq nil
-;; 	  (mapcar (lambda (x) (and (funcall condp x) x)) lst)))
 
 
 
@@ -589,14 +473,6 @@ a prefix arg, run it in another window"
 				    numprefix
 				  16)))
     (command-execute 'quoted-insert)))
-
-
-(defun dired-hide-dotfiles()
-  "reload current dired buffer, hiding dotfiles"
-  (interactive)
-  (dired-unmark-all-marks)
-  (dired-mark-files-regexp "^\\.")
-  (dired-do-kill-lines))
 
 
 
@@ -624,48 +500,6 @@ a prefix arg, run it in another window"
     (insert "\\verb|")
     (yank)
     (insert "|")))
-
-
-; clean up ido-work-dirs
-(defun remove-ido-work-dirs (match)
-  (interactive "MRemove work directories matching: ")
-  (setq ido-work-directory-list
-	(filter '(lambda(c) (not
-			     (string-match (concat "^.*" match) c)))
-		ido-work-directory-list)))
-
-
-
-;; (defun compile-again (pfx)
-;;   """Run the same compile as the last time.
-
-;; If there was no last time, or there is a prefix argument, this acts like
-;; M-x compile.
-;; """
-;;  (interactive "p")
-;;  (if (and (eq pfx 1)
-;; 	  compilation-last-buffer
-;; 	  (string= (buffer-name compilation-last-buffer) "*compilation*")
-;; 	  )
-;;      (progn
-;;        (set-buffer compilation-last-buffer)
-;;        (save-some-buffers)
-;;        (revert-buffer t t))
-;;    (call-interactively 'compile)))
-
-(defun compile-again (pfx)
-  "Run the same compile as the last time.
-
-If there was no last time, or there is a prefix argument, this acts like
-M-x compile."
- (interactive "p")
- (let ((oldbuf (get-buffer "*compilation*")))
-   (if (and oldbuf (eq pfx 1))
-       (progn
-         (set-buffer oldbuf)
-         (save-some-buffers)
-         (revert-buffer t t))
-     (call-interactively 'compile))))
 
 
 ;; from jennings
@@ -782,17 +616,6 @@ initial entry is Mode: with the current buffer mode inserted."
     (goto-char pt)
     ))
 
-(defun indent-omp-pragmas ()
-  (interactive)
-  (c-set-offset (quote cpp-macro) 0)
-  (save-excursion
-    (goto-char (point-min))
-    (insert comment-start " -*- mode: "
-	    (downcase (car (split-string mode-name "/"))) ;; ctanis -- remove minor modes
-	    "; eval: (c-set-offset (quote cpp-macro) 0)-*- " comment-end "\n")
-
-    ))
-
 
 (defun tildefy-path (path)
   "replace home directory with tilde in path, for platform
@@ -818,20 +641,6 @@ agnostic agenda-file management"
             (toggle-frame-fullscreen))
           (frame-list)))
 
-(defun fortran_narrow_sub()
-  (interactive)
-  (save-excursion
-    (beginning-of-defun)
-    (let ((start (point)))
-      (next-line)
-      (end-of-defun)
-      (narrow-to-region start (point)))))
-
-(eval-after-load 'f90
-  '(progn
-     (define-key f90-mode-map (kbd "\C-x n d") 'fortran_narrow_sub)
-                                                                 ))
-
 
 ;; replace region with ch copied as necessary
 (defun replace-region (start end ch)
@@ -839,3 +648,25 @@ agnostic agenda-file management"
   (message (format "%d -- %d" start end))
   (delete-region start end)
   (dotimes (_ (- end start)) (insert ch)))
+
+(defun flash-mode-line ()
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil #'invert-face 'mode-line))
+
+
+(defun ddg-search (prefix str)
+  (interactive "P\nMSearch term: ")
+  (let ((arg
+         (if (region-active-p)
+             (concat str (if prefix " \"" " ")
+                     (buffer-substring (region-beginning) (region-end))
+                     (if prefix "\""))
+           str)))
+  (browse-url (concat "https://duckduckgo.com/?q=" (url-hexify-string arg)))))
+
+(defun active-mark-rectangle()
+  (interactive)
+  ;(setq transient-mark-mode 'lambda) ;; set it temporarily
+  (activate-mark)
+  (rectangle-mark-mode)
+  )

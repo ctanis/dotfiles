@@ -256,8 +256,8 @@
 
 
 ; don't use ls for dired -- use elisp
-(setq ls-lisp-use-insert-directory-program nil)
-(require 'ls-lisp)
+;; (setq ls-lisp-use-insert-directory-program nil)
+;; (require 'ls-lisp)
 
 
 ;; case doesn't matter in the minibuffer
@@ -863,7 +863,7 @@ For details of keybindings, see `ido-find-file'."
 
 
 (autoload 'erlang-mode         "erlang" "erlang mode" t)
-(autoload 'run-erlang          "erlang" "erlang mode" t)
+
 
 (setq geiser-active-implementations '(guile))
 (add-to-list 'common-buffers '("g" . "* Guile REPL *"))

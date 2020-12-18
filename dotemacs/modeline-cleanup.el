@@ -24,21 +24,21 @@ want to use in the modeline *in lieu of* the original.")
 (require 'cl-lib)
 (defun clean-mode-line ()
   (interactive)
-  ; put a whitespace
+  ;; put a whitespace
   (if (and (stringp mode-name)
 	   (not (string= (substring mode-name -1) " ")))
-      ;(setq mode-name2 (string-append mode-name " "))
+      ;;(setq mode-name2 (string-append mode-name " "))
       nil
     )
-  (loop for cleaner in mode-line-cleaner-alist
-        do (let* ((mode (car cleaner))
-                 (mode-str (cdr cleaner))
-                 (old-mode-str (cdr (assq mode minor-mode-alist))))
-             (when old-mode-str
-                 (setcar old-mode-str mode-str))
-               ;; major mode
-             (when (eq mode major-mode)
-               (setq mode-name mode-str)))))
+  (cl-loop for cleaner in mode-line-cleaner-alist
+           do (let* ((mode (car cleaner))
+                     (mode-str (cdr cleaner))
+                     (old-mode-str (cdr (assq mode minor-mode-alist))))
+		(when old-mode-str
+                  (setcar old-mode-str mode-str))
+		;; major mode
+		(when (eq mode major-mode)
+		  (setq mode-name mode-str)))))
  
  
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
