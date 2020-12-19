@@ -46,7 +46,7 @@
 
 
 
-(defun ido-merge-remote ()
+(defun ido-toggle-merge-remote ()
   ;; toggle merging remote directories
   (interactive)
   (setq ido-use-merged-list t ido-try-merged-list t)
@@ -56,11 +56,12 @@
   (setq ido-merge-ftp-work-directories (not ido-merge-ftp-work-directories))
   (exit-minibuffer)
   )
-(define-key ido-file-dir-completion-map [(meta control ?s)] 'ido-merge-remote)
+(define-key ido-file-dir-completion-map [(meta control ?s)] 'ido-toggle-merge-remote)
 
 (defun purge-ido-tramp ()
   (interactive)
-  (setq ido-work-directory-list (filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
+  (setq ido-work-directory-list
+        (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
   )
 
 (defun ido-dired-other-window ()

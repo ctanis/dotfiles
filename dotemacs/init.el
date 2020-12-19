@@ -98,6 +98,15 @@
 (eval-after-load 'org
   '(load-library "my-org"))
 
+
+;; multiple cursors
+(define-key craig-prefix-map "\M-." (make-sparse-keymap))
+(define-key craig-prefix-map "\M-.\M-j" 'ace-mc-add-multiple-cursors)
+(define-key craig-prefix-map "\M-.\M-l" 'mc/edit-lines)
+(define-key craig-prefix-map "\M-.\M-." 'mc/mark-more-like-this-extended)
+(autoload 'ace-mc-add-multiple-cursors "my-mc")
+(autoload 'mc/edit-lines "my-mc")
+(autoload 'mc/mark-more-like-this-extended "my-mc")
 (eval-after-load 'multiple-cursors
   '(load-library "my-mc"))
 
@@ -218,6 +227,23 @@
 
 (when (require-verbose 'dictionary)
   (define-key craig-prefix-map "\C-\M-w" 'dictionary-lookup-definition))
+
+(when (require-verbose 'ace-jump-mode)
+  ;;(define-key craig-prefix-map "j" 'ace-jump-mode)
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+  (define-key global-map (kbd "M-J") 'ace-jump-mode)
+  ;;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+  (setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
+  (set-face-foreground 'ace-jump-face-foreground "black")
+  (set-face-background 'ace-jump-face-foreground "wheat")
+  (setq ace-jump-mode-submode-list
+        '(ace-jump-char-mode
+          ace-jump-word-mode
+          ace-jump-line-mode
+          ))
+  )
+
+
 
 
 ;; advice

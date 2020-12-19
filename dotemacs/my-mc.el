@@ -3,33 +3,10 @@
 (require 'phi-replace)
 (require 'phi-search-mc)
 (require 'ace-mc)
-;; (require 'phi-search-dired)
-
-                                        ; (global-set-key "\M-%" 'phi-replace-query)
-
-;; (global-set-key (kbd "C-s") 'phi-search)
-;; (global-set-key (kbd "C-r") 'phi-search-backward)
-;; (define-key dired-mode-map (kbd "/") 'phi-search-dired)
-
-(define-key craig-prefix-map "\M-." (make-sparse-keymap))
-(define-key craig-prefix-map "\M-.\M-j" 'ace-mc-add-multiple-cursors)
-(define-key craig-prefix-map "\M-.\M-l" 'mc/edit-lines)
-(define-key craig-prefix-map "\M-.\M-." 'mc/mark-more-like-this-extended)
-;; (define-key craig-prefix-map "\M-.\M-." 'mc/mark-next-like-this)
-;; (define-key craig-prefix-map "\M-.!" 'mc/mark-all-dwim)
-;; (define-key craig-prefix-map "\M-.@" 'mc/mark-more-like-this-extended)
-;; (define-key craig-prefix-map "\M-.<" 'mc/mark-sgml-tag-pair)
 
 
-;; (define-key mc/keymap (kbd "M-.") 'mc/mark-next-like-this)
-;; (define-key mc/keymap (kbd "M-.") 'mc/mark-previous-like-this)
-;; (define-key mc/keymap (kbd "C-*") 'mc/mark-all-like-this)
-;; (define-key mc/keymap (kbd "C-. C-d") 'mc/remove-current-cursor)
-;; (define-key mc/keymap (kbd "C-. d")   'mc/remove-duplicated-cursors)
-;; (define-key mc/keymap (kbd "C-. =")   'mc/compare-chars)
+
 (define-key mc/keymap (kbd "C-. #") 'mc/insert-numbers)
-;; (define-key mc/keymap (kbd "C-. C-r") 'mc/reverse-regions)
-;; (define-key mc/keymap (kbd "C-. C-s") 'mc/sort-regions)
 (define-key mc/keymap (kbd "M-j") 'mc/backward-jump-to-char)
 
 (defun mc/backward-jump-to-char (arg char)
@@ -48,14 +25,12 @@ prompt when ran multiple times in a row"
       cursor))))
 
 
-
 (defvar phi-search-from-isearch-mc/ctl-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "M-.")   'phi-search-from-isearch-mc/mark-next)
     (define-key map (kbd "M-,")   'phi-search-from-isearch-mc/mark-previous)
     (define-key map (kbd "M-!") 'phi-search-from-isearch-mc/mark-all)
     map))
-
 
 
 (defadvice phi-search-from-isearch-mc/setup-keys
@@ -68,14 +43,4 @@ prompt when ran multiple times in a row"
 (define-key phi-search-default-map (kbd "M-,") 'phi-search-mc/mark-previous)
 (define-key phi-search-default-map (kbd "M-!") 'phi-search-mc/mark-all)
 
-                                        ; (phi-search-mc/setup-keys)
 (add-hook 'isearch-mode-hook 'phi-search-from-isearch-mc/setup-keys)
-
-
-                                        ; (phi-search-mc/setup-keys)
-
-
-
-
-
-

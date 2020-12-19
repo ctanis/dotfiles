@@ -8,8 +8,9 @@
 (setq yas-prompt-functions (list 'yas-ido-prompt))
 (setq yas-verbosity 1)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/stock-snippets"))
-(load-library "yasnippet")
 (setq yas-expand-only-for-last-commands '(self-insert-command org-self-insert-command))
+
+(load-library "yasnippet")
 (yas-global-mode 1)
 (define-key craig-prefix-map "\M-y" 'yas-insert-snippet)
 
@@ -41,8 +42,16 @@
 
 
 (when (require-verbose 'auto-yasnippet)
-  (define-key craig-prefix-map (read-kbd-macro "<tab>") 'aya-expand)
-  (define-key craig-prefix-map (read-kbd-macro "<backtab>") 'aya-create)
+
+  (defun aya-dispatch (p)
+    (interactive "p")
+    (if (> p 1)
+        (progn
+          (message "creating autosnippet")
+          (call-interactively 'aya-create))
+      (progn
+        (message "expand autosnippet")
+        (call-interactively 'aya-expand))))
   )
 
 
@@ -126,6 +135,11 @@
           '(lambda ()
              (company-mode -1)))
 
+(global-company-mode t)
+(global-set-key "\M-?" 'company-complete)
+(global-set-key "\M-/" 'hippie-expand)
+
+
 
 
 ;;;; semantic / cedet
@@ -141,10 +155,8 @@
 ;;    )
 ;;  (eclim-mode))
 ;;
-;;(global-company-mode t)
 ;;
-;;(global-set-key "\M-?" 'company-complete)
-;;(global-set-key "\M-/" 'hippie-expand)
+;;
 ;;
 ;;
 ;;;; semantic
