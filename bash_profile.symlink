@@ -115,7 +115,7 @@ function update_repos ()
     done;
 
     cd ~/.dotfiles && git pull
-    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
+    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/dotemacs")'`
 }
 
 
