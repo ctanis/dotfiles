@@ -149,13 +149,21 @@
 
 (defvar os-launcher-cmd "open")
 
-(defun launch ()
-  "launch current file with OS"
+
+(defun reveal-in-os ()
+  "reveal current file in appropriate browser"
   (interactive)
-  (if (equal major-mode 'dired-mode)
-      (call-interactively 'launch-dired)
-    (shell-command (concat os-launcher-cmd " "
-			 (shell-quote-argument (buffer-file-name))))))
+  (shell-command (concat os-launcher-cmd " .")))
+
+(defun launch (p)
+  "launch current file with OS. With prefix-arg, reveal"
+  (interactive "p")
+  (if (> p 1) (reveal-in-os)
+    (if (equal major-mode 'dired-mode)
+        (call-interactively 'launch-dired)
+      (shell-command (concat os-launcher-cmd " "
+			     (shell-quote-argument (buffer-file-name)))))))
+
 (define-key craig-prefix-map "\M-l" 'launch)
 
 
