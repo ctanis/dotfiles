@@ -18,9 +18,8 @@ export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 export LESS="FRX"
 
 
-# may need to override this in a bash-local
-#export TEXBIN=/usr/local/texlive/2012/bin/universal-darwin
-export PATH=~/bin:~/.dotfiles/bin:$PATH
+export ORIG_PATH=$PATH
+export PATH=~/bin:~/.dotfiles/bin:/usr/bin:/usr/local/bin
 
 
 if [ $WINDOW ]; then
