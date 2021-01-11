@@ -95,8 +95,15 @@
 (eval-after-load 'dired
   '(load-library "my-dired"))
 
+(autoload 'org-agenda "org")
+(autoload 'org-capture "org")
+(autoload 'org-store-link "org")
 (eval-after-load 'org
   '(load-library "my-org"))
+(define-key craig-prefix-map "\C-l" 'org-store-link)
+(define-key craig-prefix-map "\M-s" 'org-capture)
+(define-key craig-prefix-map "\M-a" 'org-agenda)
+
 
 
 ;; multiple cursors
