@@ -112,7 +112,8 @@ function update_repos ()
     done;
 
     cd ~/.dotfiles && git pull
-    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/dotemacs")'`
+    ## too many bad compilations
+    ## `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/dotemacs")'`
 }
 
 
@@ -129,7 +130,7 @@ function check_repos ()
 	fi;
     done;
 
-    `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
+    ## `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/elisp")'`
 }
 
 
