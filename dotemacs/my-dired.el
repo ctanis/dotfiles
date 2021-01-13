@@ -25,6 +25,28 @@
   (dired-mark-files-regexp "^\\.")
   (dired-do-kill-lines))
 
+(defun dired-mark-files-not-matching-regexp (regexp &optional marker-char)
+  (interactive
+   (list (read-regexp (concat (if current-prefix-arg "Unmark" "Mark")
+                              " files (regexp): ")
+                      ;; Add more suggestions into the default list
+                      (cons nil (list (dired-get-filename t t)
+                                      (and (dired-get-filename nil t)
+                                           (concat (regexp-quote
+                                                    (file-name-extension
+                                                     (dired-get-filename nil t) t))
+                                                   "\\'"))))
+                      'dired-regexp-history)
+	 (if current-prefix-arg ?\s)))
+
+  (let ((dired-marker-char (or marker-char dired-marker-char)))
+    (dired-mark-if
+     (and (not (looking-at-p dired-re-dot))
+	  (not (eolp))			; empty line
+	  (let ((fn (dired-get-filename t t)))
+	    (and fn (not (string-match-p regexp fn)))))
+     "matching file")))
+
 
 (put 'dired-do-copy-other-window 'ido 'ignore)
 (put 'dired-do-rename-other-window 'ido 'ignore)
@@ -60,3 +82,9 @@
    (lambda (x)
      (shell-command (concat os-launcher-cmd " " (shell-quote-argument x))))
    (dired-get-marked-files)))
+
+
+(defun cleanup-org-dir ()
+  (interactive)
+  (dired-mark-files-not-matching-regexp
+   "^\\(data\\|.*\\.org\\|.*\\.org_archive\\)$" ?D))
