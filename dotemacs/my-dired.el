@@ -25,7 +25,7 @@
   (dired-mark-files-regexp "^\\.")
   (dired-do-kill-lines))
 
-(defun dired-mark-files-not-matching-regexp (regexp &optional marker-char)
+(defun dired-mark-files-not-matching-regexp (regexp &optional marker-char include-dirs)
   (interactive
    (list (read-regexp (concat (if current-prefix-arg "Unmark" "Mark")
                               " files (regexp): ")
@@ -44,7 +44,9 @@
      (and (not (looking-at-p dired-re-dot))
 	  (not (eolp))			; empty line
 	  (let ((fn (dired-get-filename t t)))
-	    (and fn (not (string-match-p regexp fn)))))
+            (and fn
+                 (or  include-dirs (not (file-directory-p fn)))
+                 (not (string-match-p regexp fn)))))
      "matching file")))
 
 
@@ -85,6 +87,7 @@
 
 
 (defun cleanup-org-dir ()
+  "mark all files that are not org-related, subdirectories or dotfiles for deletion"
   (interactive)
   (dired-mark-files-not-matching-regexp
-   "^\\(data\\|.*\\.org\\|.*\\.org_archive\\)$" ?D))
+   "^\\(data\\|\\..*\\|.*\\.org\\|.*\\.org_archive\\)$" ?D))
