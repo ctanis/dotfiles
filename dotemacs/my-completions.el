@@ -103,13 +103,15 @@
 ;;                          ))
 
 (setq company-backends '(
-                         company-files
-                         (;company-semantic
+                         (
+                          company-gtags
+                          ;;company-semantic
                           company-keywords
                           company-c-headers
                           company-capf
-                          ) 
-                         
+                          )n
+                         company-files
+
                          ;; company-clang
                          ;; company-xcode
                          ))
