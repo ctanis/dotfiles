@@ -13,19 +13,26 @@
       (end-of-defun)
       (narrow-to-region start (point)))))
 
+(eval-after-load 'fortran
+  (add-hook 'fortran-mode-hook
+            '(lambda()
+               (auto-fill-mode 1)
+               (electric-indent-mode -1))))
+
 (eval-after-load 'f90
   '(progn
      (define-key f90-mode-map (kbd "\C-x n d") 'fortran_narrow_sub)
 
      (add-hook 'f90-mode-hook
-	       '(lambda()
-	          (local-set-key "\C-m" 'newline-and-indent)
-	          (local-set-key "\C-c\C-c" 'compile)
-	          (setq f90-do-indent 2)
-	          (setq f90-if-indent 2)
-	          (setq f90-type-indent 2)
-	          (setq f90-program-indent 2)
-	          ))))
+               '(lambda()
+                  (local-set-key "\C-m" 'newline-and-indent)
+                  (local-set-key "\C-c\C-c" 'compile)
+                  (setq f90-do-indent 2)
+                  (setq f90-if-indent 2)
+                  (setq f90-type-indent 2)
+                  (setq f90-program-indent 2)
+                  ))
+     ))
 
 
 
