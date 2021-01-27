@@ -223,17 +223,16 @@
 
 ;; hippie
 (setq hippie-expand-try-functions-list
-      '(try-expand-dabbrev
-        apair-try-expand-list
-        try-expand-line
-  
+      '(apair-try-expand-list
+        try-expand-dabbrev
         try-expand-dabbrev-from-kill
-
-        try-expand-dabbrev-all-buffers
-        apair-try-expand-list-all-buffers
+        
+        try-expand-line
         try-expand-line-all-buffers
+        apair-try-expand-list-all-buffers
 
-
+        
+        try-expand-dabbrev-all-buffers
 
         ;; try-complete-file-name-partially
         ;; try-complete-file-name
