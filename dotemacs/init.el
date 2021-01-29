@@ -259,7 +259,8 @@
   )
 
 
-
+(when (require-verbose 'bash-completion)
+  (bash-completion-setup))
 
 ;; advice
 ;; embarrassing protection against keyboard misfiring
