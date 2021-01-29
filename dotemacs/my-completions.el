@@ -110,7 +110,7 @@
                           company-c-headers
                           company-capf
                           )n
-                         company-files
+                         ;; company-files
 
                          ;; company-clang
                          ;; company-xcode
@@ -128,7 +128,7 @@
 (eval-after-load "company.el"
   '(progn
 
-     (set-face-background 'company-preview "wheat1") ;; shoudl be in ui.el
+     (set-face-background 'company-preview "wheat1") ;; should be in ui.el
 
      ))
 
@@ -138,7 +138,7 @@
              (company-mode -1)))
 
 (global-company-mode t)
-(global-set-key "\M-?" 'company-complete)
+(define-key craig-prefix-map "~"  'company-files)
 (global-set-key "\M-/" 'hippie-expand)
 
 
@@ -223,16 +223,17 @@
 
 ;; hippie
 (setq hippie-expand-try-functions-list
-      '(apair-try-expand-list
+      '(
         try-expand-dabbrev
-        try-expand-dabbrev-from-kill
-        
+        apair-try-expand-list
+
         try-expand-line
         try-expand-line-all-buffers
         apair-try-expand-list-all-buffers
-
         
         try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+
 
         ;; try-complete-file-name-partially
         ;; try-complete-file-name
