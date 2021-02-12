@@ -21,6 +21,7 @@
 (add-to-list 'ido-ignore-files "\\.webloc")
 (add-to-list 'ido-ignore-files "\\.pdf")
 (add-to-list 'ido-ignore-files "\\.mp.")
+(add-to-list 'ido-ignore-files "\\.[0-9]+") ;; no files with numeric extensions
 
 (setq imenu-auto-rescan t)
 
