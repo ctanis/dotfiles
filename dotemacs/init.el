@@ -192,6 +192,9 @@
    ))
 
 (setq electric-pair-inhibit-predicate 'ctanis_electric_pair_inhibitor)
+
+;; don't skip newlines when closing delimiters
+(setq electric-pair-skip-whitespace-chars '(9 32))
 ;(setq electric-pair-skip-self t)
 
 (defun apair-try-expand-list (old)
