@@ -3,7 +3,7 @@ use strict;
 
 my ($tag, $path) = @ARGV;
 my $export_mode='bash';
-
+my @order;
 #print "getting $tag from $path\n";
 if ($tag eq '-') {
   open DAT, "$path" or die "cannot open $path";
@@ -12,7 +12,7 @@ if ($tag eq '-') {
     my $new_tag;
 
     if (($new_tag) = m/^\s*\[([a-z0-9_]+)\]/i) {
-      print "$new_tag " 
+      print "$new_tag " unless $new_tag eq '*';
     }
 
   }
@@ -45,8 +45,9 @@ while (<DAT>) {
   next if m/^\s*$/;
 
   # selection
-  if (($new_tag) = m/^\s*\[([a-z0-9_]+)\]/i) {
-    if (lc $new_tag eq lc $tag) {
+  if (($new_tag) = m/^\s*\[([a-z0-9_*]+)\]/i) {
+
+    if ((lc $new_tag eq lc $tag) or ($new_tag eq '*')) {
       $in_block = 1;
     } else {
       $in_block = 0;
@@ -63,18 +64,20 @@ while (<DAT>) {
     else {
       my ($k,$v) = m/^\s*([a-z0-9_]+)\s*=\s*(.*)$/i;
       $newenv{$k}=$v;
+      push @order, $k;
     }
   }
 }
 
 if ($export_mode eq 'bash') {
+
+  for my $k (@order) {
+    print "export $k=$newenv{$k};\n";
+    delete $newenv{$k};
+  }
+
   for my $k (keys %newenv) {
-    if (defined $newenv{$k}) {
-      print "export $k=$newenv{$k};\n";
-    }
-    else {
-      print "unset $k;\n";
-    }
+    print "unset $k;\n";
   }
 
 } else {
