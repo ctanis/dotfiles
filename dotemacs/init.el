@@ -226,10 +226,11 @@
   (define-key craig-prefix-map "/" 'apply-operation-to-number-at-point)
   (define-key craig-prefix-map "\\" 'apply-operation-to-number-at-point)
   (define-key craig-prefix-map "^" 'apply-operation-to-number-at-point)
-  (define-key craig-prefix-map "<" 'apply-operation-to-number-at-point)
-  (define-key craig-prefix-map ">" 'apply-operation-to-number-at-point)
-  (define-key craig-prefix-map "#" 'apply-operation-to-number-at-point)
-  (define-key craig-prefix-map "%" 'apply-operation-to-number-at-point)
+;;  (define-key craig-prefix-map "<" 'apply-operation-to-number-at-point)
+;;  (define-key craig-prefix-map ">" 'apply-operation-to-number-at-point)
+;; these don't work great
+;;  (define-key craig-prefix-map "#" 'apply-operation-to-number-at-point)
+;;  (define-key craig-prefix-map "%" 'apply-operation-to-number-at-point)
   (define-key craig-prefix-map "'" 'operate-on-number-at-point)
   )
 
@@ -281,3 +282,19 @@
 (load-library "my-keys")
 (load-library "ui")
 
+;; grep-related
+(defun find-grep-dispatch (prefix)
+  (interactive "P")
+  (require 'find-dired)
+  ;; default to case-insensitive
+  (let ((find-grep-options (if prefix
+                               find-grep-options
+                             "-qi" )))
+    (call-interactively 'find-grep-dired)))
+
+(define-prefix-command 'search-dispatch 'search-dispatch-map)
+(define-key craig-prefix-map "\M-g" 'search-dispatch)
+(define-key 'search-dispatch "g" 'grep)
+(define-key 'search-dispatch "f" 'find)
+(define-key 'search-dispatch "d" 'find-grep-dispatch)
+(define-key 'search-dispatch "b" 'ddg-search)
