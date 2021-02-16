@@ -6,7 +6,7 @@
 ;;(setq ido-everywhere t)
 
 ;; auto-merge
-(setq ido-auto-merge-delay-time 9999)
+(setq ido-auto-merge-delay-time 0)
 (setq ido-auto-merge-work-directories-length 0)
 (setq ido-merge-ftp-work-directories nil) ; see ido-merge-remote below
 
@@ -70,8 +70,7 @@
 The directory is selected interactively by typing a substring.
 For details of keybindings, see `ido-find-file'."
   (interactive)
-  (let ((ido-report-no-match nil)
-	(ido-auto-merge-work-directories-length -1))
+  (let ((ido-report-no-match nil))
     (ido-file-internal 'other-window 'dired-other-window nil "Dired: " 'dir)))
 
 (define-key craig-prefix-map "d" 'ido-dired-other-window)
