@@ -65,6 +65,15 @@
         (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
   )
 
+(defun ido-dired ()
+  "Call `dired' the Ido way.
+The directory is selected interactively by typing a substring.
+For details of keybindings, see `ido-find-file'."
+  (interactive)
+  (let ((ido-report-no-match nil))
+    (ido-file-internal 'dired 'dired nil "Dired: " 'dir)))
+
+
 (defun ido-dired-other-window ()
   "Call `dired-other-window' the ido way.
 The directory is selected interactively by typing a substring.
