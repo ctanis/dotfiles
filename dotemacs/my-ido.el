@@ -21,29 +21,31 @@
 (add-to-list 'ido-ignore-files "\\.webloc")
 (add-to-list 'ido-ignore-files "\\.pdf")
 (add-to-list 'ido-ignore-files "\\.mp.")
-(add-to-list 'ido-ignore-files "\\.[0-9]+") ;; no files with numeric extensions
+(add-to-list 'ido-ignore-files "\\.[0-9]+$") ;; no files with numeric extensions
 
 (setq imenu-auto-rescan t)
 
 (setq ido-file-extensions-order '(".org" ".html" ".tex" ".log"))
 
 ;; redefinition of this to respect file extensions
-(defun ido-sort-merged-list (items promote)
-  ;; Input is list of ("file" . "dir") cons cells.
-  ;; Output is sorted list of ("file "dir" ...) lists
-  (let ((l (sort items (lambda (a b) (ido-file-extension-lessp (car b) (car a)))))
-	res a cur)
-    (while l
-      (setq a (car l)
-	    l (cdr l))
-      (if (and res (string-equal (car (car res)) (car a)))
-	  (progn
-	    (setcdr (car (if cur (cdr res) res)) (cons (cdr a) (cdr (car res))))
-	    (if (and promote (string-equal ido-current-directory (cdr a)))
-		(setq cur t)))
-	(setq res (cons (list (car a) (cdr a)) res)
-	      cur nil)))
-    res))
+;; see ido-file-extensions-order if I ever care about this again...
+
+;; (defun ido-sort-merged-list (items promote)
+;;   ;; Input is list of ("file" . "dir") cons cells.
+;;   ;; Output is sorted list of ("file "dir" ...) lists
+;;   (let ((l (sort items (lambda (a b) (ido-file-extension-lessp (car b) (car a)))))
+;; 	res a cur)
+;;     (while l
+;;       (setq a (car l)
+;; 	    l (cdr l))
+;;       (if (and res (string-equal (car (car res)) (car a)))
+;; 	  (progn
+;; 	    (setcdr (car (if cur (cdr res) res)) (cons (cdr a) (cdr (car res))))
+;; 	    (if (and promote (string-equal ido-current-directory (cdr a)))
+;; 		(setq cur t)))
+;; 	(setq res (cons (list (car a) (cdr a)) res)
+;; 	      cur nil)))
+;;     res))
 
 
 
@@ -105,6 +107,15 @@
         (imenu (idomenu--read (idomenu--trim-alist index-alist) nil t)))))
 
   )
+
+(defun ido-magic-slash ()
+  (interactive)
+  (setq ido-auto-merge-delay-time 999)
+  (call-interactively 'self-insert-command))
+(define-key ido-file-dir-completion-map "/" 'ido-magic-slash)
+
+(defadvice ido-merge-work-directories (before reset-timers activate)
+  (setq ido-auto-merge-delay-time 0))
 
 
 (ido-mode 1)
