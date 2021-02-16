@@ -486,9 +486,9 @@ multiple times in a row"
 	 (file (concat dir "/" fname)))
     (ignore-errors
       (mkdir dir))
-    ;; (ignore-errors
-    ;;   (ido-record-work-file file)
-    ;;   (ido-record-work-directory dir))
+    (ignore-errors
+      (ido-record-work-file file)
+      (ido-record-work-directory dir))
     (find-file file)))
 
 
