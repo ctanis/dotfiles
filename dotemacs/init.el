@@ -294,7 +294,7 @@
 
 (define-prefix-command 'search-dispatch 'search-dispatch-map)
 (define-key craig-prefix-map "\M-g" 'search-dispatch)
-(define-key 'search-dispatch "g" 'grep)
-(define-key 'search-dispatch "f" 'find)
+(define-key 'search-dispatch "\M-g" 'grep)
+(define-key 'search-dispatch "f" 'find-grep)
 (define-key 'search-dispatch "d" 'find-grep-dispatch)
 (define-key 'search-dispatch "b" 'ddg-search)

@@ -65,22 +65,6 @@
         (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
   )
 
-(defun ido-dired ()
-  "Call `dired' the Ido way.
-The directory is selected interactively by typing a substring.
-For details of keybindings, see `ido-find-file'."
-  (interactive)
-  (let ((ido-report-no-match nil))
-    (ido-file-internal 'dired 'dired nil "Dired: " 'dir)))
-
-
-(defun ido-dired-other-window ()
-  "Call `dired-other-window' the ido way.
-The directory is selected interactively by typing a substring.
-For details of keybindings, see `ido-find-file'."
-  (interactive)
-  (let ((ido-report-no-match nil))
-    (ido-file-internal 'other-window 'dired-other-window nil "Dired: " 'dir)))
 
 (define-key craig-prefix-map "d" 'ido-dired-other-window)
 
@@ -105,6 +89,21 @@ For details of keybindings, see `ido-find-file'."
 
 (when (require-verbose 'idomenu)
   (define-key craig-prefix-map "\M-i" 'idomenu)
+
+  (defun idomenu ()
+    "Switch to a buffer-local tag from Imenu via Ido."
+    (interactive)
+    ;; ido initialization
+    (ido-init-completion-maps)
+    (add-hook 'minibuffer-setup-hook 'ido-minibuffer-setup)
+    (add-hook 'choose-completion-string-functions 'ido-choose-completion-string)
+    (add-hook 'kill-emacs-hook 'ido-kill-emacs-hook)
+    ;; set up ido completion list
+    (let ((index-alist (imenu--make-index-alist))) ;; package takes cdr for some reason..
+      (if (equal index-alist '(nil))
+          (message "No imenu tags in buffer")
+        (imenu (idomenu--read (idomenu--trim-alist index-alist) nil t)))))
+
   )
 
 
