@@ -31,14 +31,19 @@ function parse_git_branch {
     git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e 's/\(.*\)/\<\1\>/'
 }
 
+export PROMPT_NOTE=`hostname`
+
 if [ $TERM != 'dumb' ]; then
-    #export PS1='\h:\W\$ \[\e]0;${SCREEN_WINDOW}\h:\w\a\]'
-    export PS1='\[\e[1;10m\]\h:\W\[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]$ '
+    _inline='\e[01;31m$PROMPT_NOTE\e[01;37m\W:\e[00;00m '
+    _title='\[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
+    export PS1="$_title$_inline"
+
+    unset _inline
+    unset _title
 else
     #mostly for emacs shell...
-    export PS1='\h:\W\$ '
+    export PS1='$PROMPT_NOTE\W: '
 fi
-
 
 # export PERL5LIB=~/.perl/local
 
