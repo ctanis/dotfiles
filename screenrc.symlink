@@ -10,16 +10,16 @@ startup_message off
 
 term "screen-256color"
 attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
 
 
 # # turn sending of screen messages to hardstatus off
 hardstatus off
 # Set the hardstatus prop on gui terms to set the titlebar/icon title
-termcapinfo xterm 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
 termcapinfo vt* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
 #termapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-termcapinfo xterm OP
+termcapinfo xterm* OP
 
 defnonblock 5
