@@ -34,7 +34,7 @@ function parse_git_branch {
 export PROMPT_NOTE=`hostname`
 
 if [ $TERM != 'dumb' ]; then
-    _inline='\e[01;31m$PROMPT_NOTE \e[01;37m\W:\e[00;00m '
+    _inline='\e[00;31m$PROMPT_NOTE \e[00;33m\W:\e[00;37m '
     _title='\[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
     export PS1="$_title$_inline"
 
