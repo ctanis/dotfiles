@@ -5,11 +5,6 @@
 ;; obviated for ido-ubiquitous-mode (below)
 ;;(setq ido-everywhere t)
 
-;; auto-merge
-(setq ido-auto-merge-delay-time 0)
-(setq ido-auto-merge-work-directories-length 0)
-(setq ido-merge-ftp-work-directories nil) ; see ido-merge-remote below
-
 (setq ido-use-filename-at-point nil)
 (setq ido-default-buffer-method 'selected-window)
 (setq ido-use-virtual-buffers nil)
@@ -108,14 +103,24 @@
 
   )
 
+;; auto-merge
+(setq ido-auto-merge-delay-time 0)
+(setq ido-auto-merge-work-directories-length 0)
+(setq ido-merge-ftp-work-directories nil) ; see ido-merge-remote below
+
+
+;; disable auto merge as soon as a specific folder is hinted at (via slash)
+(setq ctanis-dflt-ido-merge-time 0.2)
 (defun ido-magic-slash ()
   (interactive)
-  (setq ido-auto-merge-delay-time 999)
+  (setq ido-auto-merge-delay-time 9999)
   (call-interactively 'self-insert-command))
 (define-key ido-file-dir-completion-map "/" 'ido-magic-slash)
 
+(defadvice ido-find-file (before reset-timers activate)
+  (setq ido-auto-merge-delay-time ctanis-dflt-ido-merge-time))
 (defadvice ido-merge-work-directories (before reset-timers activate)
-  (setq ido-auto-merge-delay-time 0))
+  (setq ido-auto-merge-delay-time ctanis-dflt-ido-merge-time))
 
 
 (ido-mode 1)
