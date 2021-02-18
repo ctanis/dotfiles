@@ -32,7 +32,7 @@ function parse_git_branch {
 }
 
 if [ $TERM != 'dumb' ]; then
-    _inline='\[\e[00;31m\]$PROMPT_NOTE\[\e[00;33m\]\W%\[\e[00;00m\] '
+    _inline='\[\e[00;31m\]${PROMPT_NOTE}\[\e[00;33m\]\W%\[\e[00;00m\] '
     _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
     export PS1="$_title$_inline"
 
@@ -40,7 +40,7 @@ if [ $TERM != 'dumb' ]; then
     unset _title
 else
     #mostly for emacs shell...
-    export PS1='$PROMPT_NOTE\W% '
+    export PS1='${PROMPT_NOTE}\W% '
 fi
 
 # export PERL5LIB=~/.perl/local
