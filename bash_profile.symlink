@@ -31,7 +31,9 @@ function parse_git_branch {
     git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e 's/\(.*\)/\<\1\>/'
 }
 
-export PROMPT_NOTE=`hostname`
+if [[ -z "$PROMPT_NOTE" ]]; then
+    export PROMPT_NOTE=`hostname`
+fi
 
 if [ $TERM != 'dumb' ]; then
     _inline='\[\e[00;31m\]$PROMPT_NOTE \[\e[00;33m\]\W:\[\e[00;00m\] '
