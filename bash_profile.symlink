@@ -113,7 +113,8 @@ function update_repos ()
 
     done;
 
-    cd ~/.dotfiles && git pull
+    pushd ~/.dotfiles && git pull
+    popd
     ## too many bad compilations
     ## `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/dotemacs")'`
 }
