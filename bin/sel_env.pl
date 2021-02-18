@@ -20,6 +20,9 @@ if ($tag eq '-') {
   exit;
 }
 
+# match multiple tags 
+my @tags=map lc, split /\./, $tag;
+
 my %newenv;
 ## turn off all variables in this file
 open DAT, "$path" or die "cannot open $path";
@@ -47,7 +50,7 @@ while (<DAT>) {
   # selection
   if (($new_tag) = m/^\s*\[([a-z0-9_*]+)\]/i) {
 
-    if ((lc $new_tag eq lc $tag) or ($new_tag eq '*')) {
+    if (($new_tag eq '*' ) or lc $new_tag ~~ @tags) {
       $in_block = 1;
     } else {
       $in_block = 0;
@@ -64,6 +67,9 @@ while (<DAT>) {
     else {
       my ($k,$v) = m/^\s*([a-z0-9_]+)\s*=\s*(.*)$/i;
       $newenv{$k}=$v;
+
+      # remove $k from order
+      @order = grep { $_ ne $k } @order;
       push @order, $k;
     }
   }
