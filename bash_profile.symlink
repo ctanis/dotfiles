@@ -31,20 +31,16 @@ function parse_git_branch {
     git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e 's/\(.*\)/\<\1\>/'
 }
 
-if [[ -z "$PROMPT_NOTE" ]]; then
-    export PROMPT_NOTE=`hostname`
-fi
-
 if [ $TERM != 'dumb' ]; then
-    _inline='\[\e[00;31m\]$PROMPT_NOTE \[\e[00;33m\]\W:\[\e[00;00m\] '
-    _title='\[\e[0m\]\[\e]0;${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
+    _inline='\[\e[00;31m\]$PROMPT_NOTE\[\e[00;33m\]\W:\[\e[00;00m\] '
+    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
     export PS1="$_title$_inline"
 
     unset _inline
     unset _title
 else
     #mostly for emacs shell...
-    export PS1='$PROMPT_NOTE \W: '
+    export PS1='$PROMPT_NOTE\W: '
 fi
 
 # export PERL5LIB=~/.perl/local
@@ -161,6 +157,19 @@ fi
 
 #brew install rename
 function nospace { rename 's/[ \t]+/_/g' "$1"; }
+
+function prompt_note() {
+    export PROMPT_NOTE="$* "
+}
+function title_note() {
+    export TITLE_NOTE="$* "
+}
+
+if [[ -z "$PROMPT_NOTE" ]]; then
+    prompt_note `hostname`
+fi
+
+
 
 # reset history file if loaded in emacs/tramp (remote shell tweaks in my elisp
 # handle loading the history properly)
