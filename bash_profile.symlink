@@ -167,7 +167,7 @@ function title_note() {
 }
 
 if [[ -z "$PROMPT_NOTE" ]]; then
-    prompt_note `hostname`
+    prompt_note `hostname -s`
 fi
 
 
