@@ -119,6 +119,8 @@
 
 (defadvice ido-find-file (before reset-timers activate)
   (setq ido-auto-merge-delay-time ctanis-dflt-ido-merge-time))
+(defadvice ido-find-file-other-window (before reset-timers activate)
+  (setq ido-auto-merge-delay-time ctanis-dflt-ido-merge-time))
 (defadvice ido-merge-work-directories (before reset-timers activate)
   (setq ido-auto-merge-delay-time ctanis-dflt-ido-merge-time))
 
