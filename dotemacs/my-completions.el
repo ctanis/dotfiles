@@ -132,10 +132,15 @@
 
      ))
 
-;; lord, not in shell-mode
-(add-hook 'shell-mode-hook
-          '(lambda ()
-             (company-mode -1)))
+;; ;; lord, not in shell-mode
+;; (add-hook 'shell-mode-hook
+;;           #'(lambda ()
+;;              (company-mode -1)))
+
+;; (add-hook 'gdb-mode-hook
+;;           #'(lambda ()
+;;               (company-mode -1)))
+(setq company-global-modes '(not shell-mode gud-mode))
 
 (global-company-mode t)
 (define-key craig-prefix-map "~"  'company-files)
