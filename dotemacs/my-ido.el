@@ -10,7 +10,8 @@
 (setq ido-use-virtual-buffers nil)
 
 (setq ido-enable-regexp nil) ;; toggle it if you want it
-(setq ido-enable-prefix nil) ;; toggle it if you want it
+(setq ido-enable-prefix t) ;; toggle it if you don't want it
+(setq ido-enable-tramp-completion nil) ;; overwrite in a .emacs-local for appropariate systems
  
 (add-to-list 'ido-ignore-files "`\\.") ;; no dotfiles
 (add-to-list 'ido-ignore-files "\\.webloc")
