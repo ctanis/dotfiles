@@ -17,6 +17,7 @@
   (add-hook 'fortran-mode-hook
             '(lambda()
                (auto-fill-mode 1)
+               (local-set-key "\C-\M-u" 'fortran-beginning-of-block)
                (electric-indent-mode -1))))
 
 (eval-after-load 'f90
