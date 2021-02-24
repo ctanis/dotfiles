@@ -54,10 +54,10 @@
     (set-frame-width    last-event-frame width)
     (set-frame-position last-event-frame geom-x2 geom-y)
 
-    (let ((after-make-frame-functions '(lambda (frame)
-					 (set-frame-height frame height)
-					 (set-frame-width frame width)
-					 (set-frame-position frame geom-x1 geom-y)))
+    (let ((after-make-frame-functions #'(lambda (frame)
+					  (set-frame-height frame height)
+					  (set-frame-width frame width)
+					  (set-frame-position frame geom-x1 geom-y)))
 	  (default-frame-alist
 	    (cons (cons 'font font)
 		  default-frame-alist))
@@ -65,11 +65,11 @@
       (set-frame-font font)
 
       (let ((f (make-frame)))
-	;(sleep-for 5)
+        ;;(sleep-for 5)
         (select-frame f)
 	(reset-window t)
         ;; (funcall last_colorfy)
-                              ))))
+        ))))
 
 
 (defun mono-framify()

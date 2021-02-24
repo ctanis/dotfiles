@@ -82,8 +82,8 @@ more than 2 windows are currently displayed."
 		 (completing-read 
 		  (concat "Flip with (" name "): ")
 		  (mapcar (lambda (a)
-			 (cons (buffer-name a) a))
-		       (buffer-list))
+			    (cons (buffer-name a) a))
+		          (buffer-list))
 		  nil t nil)))
 	   (if (equal "" ded-buf)
 	       name
@@ -116,16 +116,16 @@ more than 2 windows are currently displayed."
 
 (defun get-all-shell-buffers()
   (seq-filter (lambda (c)
-            (with-current-buffer c
-              (eq major-mode 'shell-mode)))
-          (buffer-list)))
+                (with-current-buffer c
+                  (eq major-mode 'shell-mode)))
+              (buffer-list)))
 
 (defun add-current-to-common-buffers (k)
   (interactive "cWhich quick key?")
   (let ((b (buffer-name)))
     (set (make-local-variable 'is-common-buffer) t)
     (unless (seq-filter (lambda (c)
-                      (equal (cdr c) b)) common-buffers)
+                          (equal (cdr c) b)) common-buffers)
       (add-to-list 'common-buffers (cons (char-to-string k) (buffer-name) )))))
 
 (defun active-common-buffers ()
@@ -139,7 +139,7 @@ more than 2 windows are currently displayed."
         (set (make-local-variable 'is-common-buffer) nil)
         (setq common-buffers
               (seq-filter (lambda (b)
-                        (not (equal (cdr b) (buffer-name)))) common-buffers)))))
+                            (not (equal (cdr b) (buffer-name)))) common-buffers)))))
 
 
 ;; tweaked to work with shell-current-directory.el
@@ -180,9 +180,9 @@ common-buffers alist"
                     (do-jump-to-common-buffer (car (get-all-shell-buffers)))
                   (shell-current-directory)))))
         (let* ((entry (assoc (char-to-string buf-id)
-                             (seq-filter '(lambda (i)
-                                        (get-buffer (cdr i)))
-                                     (active-common-buffers))))
+                             (seq-filter (lambda (i)
+                                           (get-buffer (cdr i)))
+                                         (active-common-buffers))))
                (bufname (and entry (cdr entry))))
           (if bufname
               (do-jump-to-common-buffer bufname)
@@ -305,10 +305,10 @@ in a row"
        (list (or current-prefix-arg 1)
 	     last-jumped-to-char)
      (progn
-       (call-interactively '(lambda (arg char)
-			      (interactive "p\ncJump to char: ")
-			      (push-mark) ;save the current position
-			      (list arg char))))))
+       (call-interactively (lambda (arg char)
+			     (interactive "p\ncJump to char: ")
+			     (push-mark) ;save the current position
+			     (list arg char))))))
   (setq last-jumped-to-char char)
   (forward-char 1)
   (search-forward (char-to-string char)
@@ -326,10 +326,10 @@ multiple times in a row"
        (list (or current-prefix-arg 1)
 	     last-jumped-to-char)
      (progn
-       (call-interactively '(lambda (arg char)
-			      (interactive "p\ncJump to char: ")
-			      (push-mark) ;save the current position
-			      (list arg char))))))
+       (call-interactively (lambda (arg char)
+			     (interactive "p\ncJump to char: ")
+			     (push-mark) ;save the current position
+			     (list arg char))))))
   (setq last-jumped-to-char char)
   (search-forward (char-to-string char)
 		  nil t (- arg)))

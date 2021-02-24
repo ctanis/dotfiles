@@ -41,8 +41,8 @@
 ;;   (call-process-shell-command "open" nil nil nil (concat (file-name-sans-extension (buffer-file-name tex-last-buffer-texed)) ".pdf")))
 
 (add-hook 'latex-mode-hook
-	  '(lambda ()
-	     (local-set-key "\C-c\C-v" 'fake-dvi-view)))
+	  #'(lambda ()
+	      (local-set-key "\C-c\C-v" 'fake-dvi-view)))
       
 
 ; xcode stuff

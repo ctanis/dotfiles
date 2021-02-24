@@ -36,76 +36,19 @@
 
 
 (add-hook 'markdown-mode-hook
-	  '(lambda()
-	     (local-set-key "\C-\M-u" 'backward-up-list)
-	     (local-set-key "\M-p" 'scroll-down-slow)
-	     (local-set-key "\M-n" 'scroll-up-slow)
-	     (local-set-key "\C-\M-f" 'forward-sexp)
-	     (local-set-key "\C-\M-b" 'backward-sexp)
-	     (local-set-key [S-tab] 'markdown-shifttab)
-	     ))
+	  #'(lambda()
+	      (local-set-key "\C-\M-u" 'backward-up-list)
+	      (local-set-key "\M-p" 'scroll-down-slow)
+	      (local-set-key "\M-n" 'scroll-up-slow)
+	      (local-set-key "\C-\M-f" 'forward-sexp)
+	      (local-set-key "\C-\M-b" 'backward-sexp)
+	      (local-set-key [S-tab] 'markdown-shifttab)
+	      ))
 
+(add-hook 'occur-mode-hook
+          #'(lambda()
+              (toggle-truncate-lines 1)))
 
-
-
-
-
-
-
-					; C style
-;; (setq c-default-style '((c-mode  . "k&r")
-;; 			(c++-mode . "stroustrup")
-;; 			(objc-mode . "k&r")
-;; 			(other . "ellemtel")))
-
-;; this should be somewhere other than hooks.el
-
-(defun c-semi&comma-no-newline-amidst-content ()
-  "Controls newline insertion after semicolons.
-If a comma was inserted, no determination is made.  If a semicolon was
-inserted, and we are not at the end of a block, no newline is inserted.
-Otherwise, no determination is made."
-  (if (= (c-last-command-char) ?\;)
-      (if (save-excursion
-            (skip-syntax-forward "->")
-            (or (= (point-max) (point))
-                (= (char-syntax (char-after)) ?\) )))
-            t
-        'stop)
-    nil))
-
-(c-add-style "ctanis" '("ellemtel"
-			(c-basic-offset . 4)
-			(c-offsets-alist
-			 (case-label . 1)
-			 (access-label . -)
-                                        ; (cpp-macro . 0)
-					; (cpp-macro . -)
-                         (innamespace . [0])
-			 )
-			(c-hanging-braces-alist
-			 (substatement-open . 'before)
-			 (class-open . 'before)
-			 (defun-open . 'before)
-			 (block-open . 'before)
-			 (brace-list-open)
-			 (brace-entry-open)
-			 (statement-case-open . 'before)
-			 (extern-lang-open . 'before)
-			 (namespace-open . 'after)
-                         (namespace-close)
-			 (inline-open)
-			 (class-close)
-			 )
-			(c-hanging-semi&comma-criteria .
-						       (
-                                                        c-semi&comma-no-newlines-before-nonblanks
-                                                        c-semi&comma-no-newline-amidst-content
-                                                        c-semi&comma-no-newlines-for-oneline-inliners
-							c-semi&comma-inside-parenlist))
-                        ;(c-hanging-semi&comma-criteria . nil)
-			))
-(setq c-default-style "ctanis")
 
 ;; ; open-line between curlies when autopair & auto-newline are enabled
 ;; (defun autopair-cleanup-closing-brace (action pair pos-before)
@@ -143,37 +86,37 @@ Otherwise, no determination is made."
 
 
 (add-hook 'text-mode-hook
-          '(lambda ()
-             (modify-syntax-entry ?\" "\"")))
+          #'(lambda ()
+              (modify-syntax-entry ?\" "\"")))
 
 (add-hook 'comint-mode-hook
-	  '(lambda ()
-	     ;; (setq comint-use-prompt-regexp t)
-	     ;; (setq comint-prompt-regexp "^[^\$]+\$ ")
+	  #'(lambda ()
+	      ;; (setq comint-use-prompt-regexp t)
+	      ;; (setq comint-prompt-regexp "^[^\$]+\$ ")
 					; (setq comint-prompt-read-only t)
-	     (define-key comint-mode-map
-	       "\M-p" 'comint-previous-matching-input-from-input)
-	     (define-key comint-mode-map
-	       "\M-n" 'comint-next-matching-input-from-input)
-	     (define-key comint-mode-map "\C-a" 'comint-bol)
-             (define-key comint-mode-map "\M-\C-r" 'comint-history-isearch-backward)
-	     (define-key comint-mode-map "\M-o\C-?" 'comint-kill-input)
-	     (define-key comint-mode-map "\M-{" 'comint-previous-prompt)
-	     (define-key comint-mode-map "\M-}" 'comint-next-prompt)
+	      (define-key comint-mode-map
+	        "\M-p" 'comint-previous-matching-input-from-input)
+	      (define-key comint-mode-map
+	        "\M-n" 'comint-next-matching-input-from-input)
+	      (define-key comint-mode-map "\C-a" 'comint-bol)
+              (define-key comint-mode-map "\M-\C-r" 'comint-history-isearch-backward)
+	      (define-key comint-mode-map "\M-o\C-?" 'comint-kill-input)
+	      (define-key comint-mode-map "\M-{" 'comint-previous-prompt)
+	      (define-key comint-mode-map "\M-}" 'comint-next-prompt)
 
-             ;; can't remember why I had this disabled...
-             ;; (setq autopair-dont-activate t)
-             ;; (autopair-mode -1)
-	     ))
+              ;; can't remember why I had this disabled...
+              ;; (setq autopair-dont-activate t)
+              ;; (autopair-mode -1)
+	      ))
 
 (add-hook 'shell-mode-hook 
-	  '(lambda ()
+	  #'(lambda ()
 					; allow the killing of this buffer without prompting
-	     ;;(process-kill-without-query (get-buffer-process (current-buffer)))
-             (set-process-query-on-exit-flag (get-buffer-process (current-buffer))
-                                             nil)
-	     (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
-             (toggle-truncate-lines 0)))
+	      ;;(process-kill-without-query (get-buffer-process (current-buffer)))
+              (set-process-query-on-exit-flag (get-buffer-process (current-buffer))
+                                              nil)
+	      (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
+              (toggle-truncate-lines 0)))
 
 (add-hook 'shell-mode-hook
           #'(lambda ()
@@ -200,37 +143,37 @@ Otherwise, no determination is made."
 
 
 (add-hook 'octave-mode-hook
-	  '(lambda ()
-	     (local-set-key "\C-m" 'newline-and-indent)))
+	  #'(lambda ()
+	      (local-set-key "\C-m" 'newline-and-indent)))
 
 
 (add-hook 'inferior-octave-mode-hook
-	  '(lambda ()
-	     (local-set-key
-	      "\M-p" 'comint-previous-matching-input-from-input)
-	     (local-set-key
-	      "\M-n" 'comint-next-matching-input-from-input)
-	     (local-set-key
-	      "\C-a" 'comint-bol)))
+	  #'(lambda ()
+	      (local-set-key
+	       "\M-p" 'comint-previous-matching-input-from-input)
+	      (local-set-key
+	       "\M-n" 'comint-next-matching-input-from-input)
+	      (local-set-key
+	       "\C-a" 'comint-bol)))
 
 
 (add-hook 'emacs-lisp-mode-hook
-	  '(lambda ()
-	     (setq comment-start ";; ")
-	     ;; (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
-             (local-set-key "\C-m" 'newline-and-indent)))
+	  #'(lambda ()
+	      (setq comment-start ";; ")
+	      ;; (set (make-local-variable 'autopair-skip-whitespace) 'chomp)
+              (local-set-key "\C-m" 'newline-and-indent)))
 
 (add-hook 'lisp-interaction-mode-hook
-	  '(lambda ()
-	     (setq comment-start ";; ")
-	     (local-set-key "\C-m" 'newline-and-indent)))
+	  #'(lambda ()
+	      (setq comment-start ";; ")
+	      (local-set-key "\C-m" 'newline-and-indent)))
 
 
 (add-hook 'perl-mode-hook
-	  '(lambda ()
+	  #'(lambda ()
 
-             (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
-	     (local-set-key "\C-m" 'newline-and-indent)))
+              (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
+	      (local-set-key "\C-m" 'newline-and-indent)))
 
 ;; (add-hook 'cperl-mode-hook
 ;;           '(lambda ()
@@ -247,43 +190,44 @@ Otherwise, no determination is made."
 
 
 (add-hook 'cperl-mode-hook
-	  '(lambda ()
-	     (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
-	     (local-set-key "\C-m" 'newline-and-indent)
-	     (local-set-key "\M-o\M-v" 'cperl-get-help)
-	     (local-set-key "\M-o\M-h" 'cperl-perldoc-at-point)
-	     (local-set-key "\M-o\C-H" 'cperl-perldoc)
-	     (local-set-key "\M-o|" 'cperl-lineup)
-	     ))
+	  #'(lambda ()
+	      (local-set-key "\C-c\C-c" 'eval-buffer-as-perl-script)
+	      (local-set-key "\C-m" 'newline-and-indent)
+	      (local-set-key "\M-o\M-v" 'cperl-get-help)
+	      (local-set-key "\M-o\M-h" 'cperl-perldoc-at-point)
+	      (local-set-key "\M-o\C-H" 'cperl-perldoc)
+	      (local-set-key "\M-o|" 'cperl-lineup)
+	      ))
 
 
 
 
 
-(add-hook 'Man-mode-hook '(lambda ()
-			    (local-set-key "\M-n" 'scroll-up-slow)
-			    (local-set-key "\M-p" 'scroll-down-slow)))
+(add-hook 'Man-mode-hook
+          #'(lambda ()
+	      (local-set-key "\M-n" 'scroll-up-slow)
+	      (local-set-key "\M-p" 'scroll-down-slow)))
 
 
 
 
 (add-hook 'sgml-mode-hook
-	  '(lambda ()
-	     (auto-fill-mode -1)))
+	  #'(lambda ()
+	      (auto-fill-mode -1)))
 
 (add-hook 'html-mode-hook
-          '(lambda()
+          #'(lambda()
               (auto-fill-mode -1)))
 
 
 
 (add-hook 'octave-mode-hook
-	  '(lambda ()
-	     (local-set-key " " 'self-insert-command)))
+	  #'(lambda ()
+	      (local-set-key " " 'self-insert-command)))
 
 (add-hook 'inferior-octave-mode-hook
-	  '(lambda ()
-	     (setq comint-prompt-regexp "^[^>]+> ")))
+	  #'(lambda ()
+	      (setq comint-prompt-regexp "^[^>]+> ")))
 
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
 
@@ -291,10 +235,10 @@ Otherwise, no determination is made."
 
 
 (add-hook 'inferior-python-mode-hook
-          '(lambda()
-             ;(add-to-list 'common-buffers '("p" . "*Python*"))
-             ;;(set (make-local-variable 'is-common-buffer) t)
-             ))
+          #'(lambda()
+              ;;(add-to-list 'common-buffers '("p" . "*Python*"))
+              ;;(set (make-local-variable 'is-common-buffer) t)
+              ))
 
 
 ;; (add-hook 'inferior-python-mode-hook
@@ -308,46 +252,46 @@ Otherwise, no determination is made."
 
 
 (add-hook 'ibuffer-mode-hook
-	  '(lambda ()
-	     (ibuffer-auto-mode 1)
-	     (local-set-key "\C-x\C-f" 'ido-find-file)
+	  #'(lambda ()
+	      (ibuffer-auto-mode 1)
+	      (local-set-key "\C-x\C-f" 'ido-find-file)
 					;	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
-	     (local-unset-key "\M-o")))
+	      (local-unset-key "\M-o")))
 
 
 (add-hook 'org-mode-hook
-	  '(lambda()
-	     (local-set-key "\C-\M-p" 'org-backward-element)
-	     (local-set-key "\C-\M-n" 'org-forward-element)
-	     (local-set-key "\M-{" 'backward-paragraph)
-	     (local-set-key "\M-}" 'forward-paragraph)
+	  #'(lambda()
+	      (local-set-key "\C-\M-p" 'org-backward-element)
+	      (local-set-key "\C-\M-n" 'org-forward-element)
+	      (local-set-key "\M-{" 'backward-paragraph)
+	      (local-set-key "\M-}" 'forward-paragraph)
 
 					;(local-set-key "\C-\M-u" 'org-up-element)
-	     (local-set-key "\C-\M-u" 'org-up-list-or-element)
-	     (local-set-key "\C-\M-d" 'org-down-element)
-             (local-set-key "\C-\M-e" 'org-end-of-item-list)
+	      (local-set-key "\C-\M-u" 'org-up-list-or-element)
+	      (local-set-key "\C-\M-d" 'org-down-element)
+              (local-set-key "\C-\M-e" 'org-end-of-item-list)
 
-	     (local-set-key "\C-c\M-w" 'org-refile-fullpath)
-	     ;; rebound since yasnippet eats the previous shortcut
-	     (local-set-key "\C-c\M-b" 'org-mark-ring-goto)
+	      (local-set-key "\C-c\M-w" 'org-refile-fullpath)
+	      ;; rebound since yasnippet eats the previous shortcut
+	      (local-set-key "\C-c\M-b" 'org-mark-ring-goto)
              
 
-	     (local-set-key "\C-c\M-n" 'org-next-block)
-	     (local-set-key "\C-c\M-p" 'org-previous-block)
+	      (local-set-key "\C-c\M-n" 'org-next-block)
+	      (local-set-key "\C-c\M-p" 'org-previous-block)
 
-	     (auto-fill-mode 1)
-             (toggle-truncate-lines -1)
+	      (auto-fill-mode 1)
+              (toggle-truncate-lines -1)
 
-             (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
-             ))
+              (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
+              ))
 
 (add-hook 'org-agenda-mode-hook
-          '(lambda ()
-             (local-set-key "\C-c\M-w" 'org-agenda-refile-fullpath)))
+          #'(lambda ()
+              (local-set-key "\C-c\M-w" 'org-agenda-refile-fullpath)))
 
 (add-hook 'org-agenda-finalize-hook
-          '(lambda()
-             (hl-line-mode nil)))
+          #'(lambda()
+              (hl-line-mode nil)))
 
 
 
@@ -369,64 +313,64 @@ Otherwise, no determination is made."
   (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
 
 (add-hook 'org-mode-hook
-          (lambda ()
-            ;; yasnippet (using the new org-cycle hooks)
-            (make-variable-buffer-local 'yas/trigger-key)
-            (setq yas/trigger-key [tab])
-            (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-            ;(define-key yas/keymap [tab] 'yas/next-field)
-            (define-key yas/keymap [tab] 'yas-next-field)
-            ))
+          #'(lambda ()
+              ;; yasnippet (using the new org-cycle hooks)
+              (make-variable-buffer-local 'yas/trigger-key)
+              (setq yas/trigger-key [tab])
+              (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+                                        ;(define-key yas/keymap [tab] 'yas/next-field)
+              (define-key yas/keymap [tab] 'yas-next-field)
+              ))
 
 
 
 (add-hook 'ido-minibuffer-setup-hook
-	  (lambda()
-	    (define-key ido-file-completion-map "\C-t" 'transpose-chars)
-	    (define-key ido-buffer-completion-map "\C-t" 'transpose-chars)
-	    (define-key ido-file-dir-completion-map "\C-t" 'transpose-chars)
+	  #'(lambda()
+	      (define-key ido-file-completion-map "\C-t" 'transpose-chars)
+	      (define-key ido-buffer-completion-map "\C-t" 'transpose-chars)
+	      (define-key ido-file-dir-completion-map "\C-t" 'transpose-chars)
 
-	    (define-key ido-file-completion-map "\M-t" 'ido-toggle-regexp)
-	    (define-key ido-buffer-completion-map "\M-t" 'ido-toggle-regexp)
-	    (define-key ido-file-dir-completion-map "\M-t" 'ido-toggle-regexp)
+	      (define-key ido-file-completion-map "\M-t" 'ido-toggle-regexp)
+	      (define-key ido-buffer-completion-map "\M-t" 'ido-toggle-regexp)
+	      (define-key ido-file-dir-completion-map "\M-t" 'ido-toggle-regexp)
 
 
-	    (define-key ido-file-completion-map "\M-b" 'backward-word)
-	    (define-key ido-buffer-completion-map "\M-b" 'backward-word)
-	    (define-key ido-file-dir-completion-map "\M-b" 'backward-word)
-	    (define-key ido-file-completion-map "\M-f" 'forward-word)
-	    (define-key ido-buffer-completion-map "\M-f" 'forward-word)
-	    (define-key ido-file-dir-completion-map "\M-f" 'forward-word)
+	      (define-key ido-file-completion-map "\M-b" 'backward-word)
+	      (define-key ido-buffer-completion-map "\M-b" 'backward-word)
+	      (define-key ido-file-dir-completion-map "\M-b" 'backward-word)
+	      (define-key ido-file-completion-map "\M-f" 'forward-word)
+	      (define-key ido-buffer-completion-map "\M-f" 'forward-word)
+	      (define-key ido-file-dir-completion-map "\M-f" 'forward-word)
 
-	    (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
-	    (local-unset-key "\M-r")
-            ))
+	      (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
+	      (local-unset-key "\M-r")
+              ))
 
 
 (add-hook 'erlang-shell-mode-hook
-          '(lambda()
-             ;;(set (make-local-variable 'is-common-buffer) t)
-	     ;(add-to-list 'common-buffers '("e" . "*erlang*"))
-	     (setq comint-process-echoes t)))
+          #'(lambda()
+              ;;(set (make-local-variable 'is-common-buffer) t)
+              ;;(add-to-list 'common-buffers '("e" . "*erlang*"))
+	      (setq comint-process-echoes t)))
 
 
 (add-hook 'erlang-mode-hook
-	  (lambda()
-            (local-set-key "\C-m" 'newline-and-indent)))
+	  #'(lambda()
+              (local-set-key "\C-m" 'newline-and-indent)))
 
 (add-hook 'Info-mode-hook
-	  (lambda()
-	    (local-set-key "\M-n" 'scroll-up-slow)
-	    (local-set-key "\M-p" 'scroll-down-slow)))
+	  #'(lambda()
+	      (local-set-key "\M-n" 'scroll-up-slow)
+	      (local-set-key "\M-p" 'scroll-down-slow)))
 
 (add-hook 'latex-mode-hook
-          (lambda ()
-	    (add-to-list 'tex-verbatim-environments "lstlisting")
-	    ;; (set (make-local-variable 'autopair-skip-criteria) 'always)
-            ;; (set (make-local-variable 'autopair-handle-action-fns)
-	    ;;      (list 'autopair-default-handle-action
-	    ;;            'autopair-latex-mode-paired-delimiter-action))
-                                                                     ))
+          #'(lambda ()
+	      (add-to-list 'tex-verbatim-environments "lstlisting")
+	      ;; (set (make-local-variable 'autopair-skip-criteria) 'always)
+              ;; (set (make-local-variable 'autopair-handle-action-fns)
+	      ;;      (list 'autopair-default-handle-action
+	      ;;            'autopair-latex-mode-paired-delimiter-action))
+              ))
 
 
 
@@ -439,49 +383,49 @@ Otherwise, no determination is made."
 
 
 (add-hook 'folding-mode-hook
-	  (lambda ()
-	    (local-set-key "\C-\M-n" 'folding-next-visible-heading)
-	    (local-set-key "\C-\M-p" 'folding-previous-visible-heading)
-	    (local-set-key (read-kbd-macro "M-o <tab>") 'folding-toggle-show-hide)))
+	  #'(lambda ()
+	      (local-set-key "\C-\M-n" 'folding-next-visible-heading)
+	      (local-set-key "\C-\M-p" 'folding-previous-visible-heading)
+	      (local-set-key (read-kbd-macro "M-o <tab>") 'folding-toggle-show-hide)))
 
 (eval-after-load "hideshow"
-  '(progn
-     (defadvice goto-line (after expand-after-goto-line
-				 activate compile)
-       "hideshow-expand affected block when using goto-line in a collapsed buffer"
-       (save-excursion
-	 (hs-show-block)))
+  #'(progn
+      (defadvice goto-line (after expand-after-goto-line
+				  activate compile)
+        "hideshow-expand affected block when using goto-line in a collapsed buffer"
+        (save-excursion
+	  (hs-show-block)))
 
 
-     (defadvice idomenu (after expand-after-goto-line
-			       activate compile)
-       "hideshow-expand affected subroutine when using idomenu"
-       (if hs-block-start-regexp
-	   (save-excursion
-	     (search-forward-regexp hs-block-start-regexp)
-	     (hs-show-block))))
+      (defadvice idomenu (after expand-after-goto-line
+			        activate compile)
+        "hideshow-expand affected subroutine when using idomenu"
+        (if hs-block-start-regexp
+	    (save-excursion
+	      (search-forward-regexp hs-block-start-regexp)
+	      (hs-show-block))))
      
-     (defadvice imenu-anywhere (after expand-after-goto-line
-				      activate compile)
-       "hideshow-expand affected subroutine when using idomenu"
-       (if hs-block-start-regexp
-	   (save-excursion
-	     (search-forward-regexp hs-block-start-regexp)
-	     (hs-show-block))))
-     ))
+      (defadvice imenu-anywhere (after expand-after-goto-line
+				       activate compile)
+        "hideshow-expand affected subroutine when using idomenu"
+        (if hs-block-start-regexp
+	    (save-excursion
+	      (search-forward-regexp hs-block-start-regexp)
+	      (hs-show-block))))
+      ))
 
 
 (add-hook 'diff-mode-hook
-	  (lambda ()
-	    (local-set-key "\M-o" 'craig-prefix)))
+	  #'(lambda ()
+	      (local-set-key "\M-o" 'craig-prefix)))
 
 
 (add-hook 'calc-mode-hook
-	  (lambda ()
-	    (yas-minor-mode -1)))
+	  #'(lambda ()
+	      (yas-minor-mode -1)))
 
 (eval-after-load "calc"
-  '(define-key calc-dispatch-map "\M-u" 'calc-same-interface)
+  #'(define-key calc-dispatch-map "\M-u" 'calc-same-interface)
   )
 
 
@@ -489,43 +433,43 @@ Otherwise, no determination is made."
 
 ;; choose an appropriate compile-command
 (add-hook 'java-mode-hook
-          (lambda ()
-            (if (locate-dominating-file default-directory "build.xml")
-                (set (make-local-variable 'compile-command)
-                     "ant -emacs -s build.xml -e ")
-              (if buffer-file-name
+          #'(lambda ()
+              (if (locate-dominating-file default-directory "build.xml")
                   (set (make-local-variable 'compile-command)
-                       (concat "javac -Xlint " (file-name-nondirectory buffer-file-name)))))))
+                       "ant -emacs -s build.xml -e ")
+                (if buffer-file-name
+                    (set (make-local-variable 'compile-command)
+                         (concat "javac -Xlint " (file-name-nondirectory buffer-file-name)))))))
 
 ;; ibuffer -- group dired buffers with filenames
 (eval-after-load "ibuf-ext"
-      '(define-ibuffer-filter filename
-         "Toggle current view to buffers with file or directory name matching QUALIFIER."
-         (:description "filename"
-          :reader (read-from-minibuffer "Filter by file/directory name (regexp): "))
-         (ibuffer-awhen (or (buffer-local-value 'buffer-file-name buf)
-                            (buffer-local-value 'dired-directory buf))
-           (string-match qualifier it))))
+      #'(define-ibuffer-filter filename
+            "Toggle current view to buffers with file or directory name matching QUALIFIER."
+          (:description "filename"
+                        :reader (read-from-minibuffer "Filter by file/directory name (regexp): "))
+          (ibuffer-awhen (or (buffer-local-value 'buffer-file-name buf)
+                             (buffer-local-value 'dired-directory buf))
+                         (string-match qualifier it))))
 
 
 (add-hook 'js2-mode-hook
-          (lambda()
-            ;;(make-local-variable 'autopair-skip-criteria)
-            ;;(setq autopair-skip-criteria 'always)
-            ;;(make-local-variable 'autopair-skip-whitespace)
-            ;;(setq autopair-skip-whitespace nil)
-            (define-key js2-mode-map "\M-j" 'backward-jump-to-char)
-	    ;; (electric-layout-mode 1)
-            ))
+          #'(lambda()
+              ;;(make-local-variable 'autopair-skip-criteria)
+              ;;(setq autopair-skip-criteria 'always)
+              ;;(make-local-variable 'autopair-skip-whitespace)
+              ;;(setq autopair-skip-whitespace nil)
+              (define-key js2-mode-map "\M-j" 'backward-jump-to-char)
+	      ;; (electric-layout-mode 1)
+              ))
 
 
 (add-hook 'cuda-mode-hook
-          (lambda()
-            (yas-activate-extra-mode 'c-mode)
-            (setq imenu-generic-expression cc-imenu-c++-generic-expression)
-            ))
+          #'(lambda()
+              (yas-activate-extra-mode 'c-mode)
+              (setq imenu-generic-expression cc-imenu-c++-generic-expression)
+              ))
 
 (add-hook 'compilation-mode-hook
-          (lambda()
-            (add-to-list 'common-buffers '("c" . "*compilation*"))
-            (set (make-local-variable 'is-common-buffer) t)))
+          #'(lambda()
+              (add-to-list 'common-buffers '("c" . "*compilation*"))
+              (set (make-local-variable 'is-common-buffer) t)))

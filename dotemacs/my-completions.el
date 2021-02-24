@@ -248,5 +248,5 @@
 
 ;; python-capf is totally borked
 (add-hook 'python-mode-hook
-          '(lambda ()
-             (setq-local completion-at-point-functions nil)))
+          #'(lambda ()
+              (setq-local completion-at-point-functions nil)))

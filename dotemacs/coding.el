@@ -15,24 +15,24 @@
 
 (eval-after-load 'fortran
   (add-hook 'fortran-mode-hook
-            '(lambda()
-               (auto-fill-mode 1)
-               (local-set-key "\C-\M-u" 'fortran-beginning-of-block)
-               (electric-indent-mode -1))))
+            #'(lambda()
+                (auto-fill-mode 1)
+                (local-set-key "\C-\M-u" 'fortran-beginning-of-block)
+                (electric-indent-mode -1))))
 
 (eval-after-load 'f90
   '(progn
      (define-key f90-mode-map (kbd "\C-x n d") 'fortran_narrow_sub)
 
      (add-hook 'f90-mode-hook
-               '(lambda()
-                  (local-set-key "\C-m" 'newline-and-indent)
-                  (local-set-key "\C-c\C-c" 'compile)
-                  (setq f90-do-indent 2)
-                  (setq f90-if-indent 2)
-                  (setq f90-type-indent 2)
-                  (setq f90-program-indent 2)
-                  ))
+               #'(lambda()
+                   (local-set-key "\C-m" 'newline-and-indent)
+                   (local-set-key "\C-c\C-c" 'compile)
+                   (setq f90-do-indent 2)
+                   (setq f90-if-indent 2)
+                   (setq f90-type-indent 2)
+                   (setq f90-program-indent 2)
+                   ))
      ))
 
 
@@ -158,37 +158,37 @@ Otherwise, no determination is made."
    (t ctanis-dflt-cpp-compiler)))
 
 (add-hook 'c-mode-common-hook
-	  '(lambda ()
-	     (local-set-key "\C-c\C-c" 'compile)
-	     (local-set-key "\C-m" 'newline-and-indent)
-	     (c-toggle-auto-newline 1)
-	     (c-toggle-hungry-state -1)
-	     (abbrev-mode -1)
-	     (cwarn-mode 1)
+	  #'(lambda ()
+	      (local-set-key "\C-c\C-c" 'compile)
+	      (local-set-key "\C-m" 'newline-and-indent)
+	      (c-toggle-auto-newline 1)
+	      (c-toggle-hungry-state -1)
+	      (abbrev-mode -1)
+	      (cwarn-mode 1)
 					; (local-set-key "}" 'self-insert-command)
-	     (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
-	     (local-set-key "\C-\M-e" 'up-list)
-	     (local-set-key "\M-o\M-e" 'c-end-of-defun)
+	      (local-set-key "\C-c\C-g" 'c-toggle-hungry-state)
+	      (local-set-key "\C-\M-e" 'up-list)
+	      (local-set-key "\M-o\M-e" 'c-end-of-defun)
 
              
-             (if (not (locate-dominating-file default-directory "Makefile"))
-                 (if buffer-file-name
-                     (set (make-local-variable 'compile-command)
-                          (concat (ctanis-choose-compiler major-mode)
-                                  (file-name-nondirectory buffer-file-name)))))
+              (if (not (locate-dominating-file default-directory "Makefile"))
+                  (if buffer-file-name
+                      (set (make-local-variable 'compile-command)
+                           (concat (ctanis-choose-compiler major-mode)
+                                   (file-name-nondirectory buffer-file-name)))))
 
-	     ;; so autopair works with electric braces and auto newline
-	     ;; (make-variable-buffer-local 'autopair-pair-criteria)
-	     ;; (setq autopair-pair-criteria 'always)
-	     ;; (setq autopair-handle-action-fns
-	     ;; 	   (list 'autopair-default-handle-action
-	     ;; 		 'autopair-cleanup-closing-brace))
+	      ;; so autopair works with electric braces and auto newline
+	      ;; (make-variable-buffer-local 'autopair-pair-criteria)
+	      ;; (setq autopair-pair-criteria 'always)
+	      ;; (setq autopair-handle-action-fns
+	      ;; 	   (list 'autopair-default-handle-action
+	      ;; 		 'autopair-cleanup-closing-brace))
 
-             ;; (local-set-key "}" 'self-insert-command) ;; electric-brace
-             ;;                                          ;; doesn't play well
-             ;;                                          ;; with autopair
+              ;; (local-set-key "}" 'self-insert-command) ;; electric-brace
+              ;;                                          ;; doesn't play well
+              ;;                                          ;; with autopair
 
-	     ))
+	      ))
 
 
 (defun indent-omp-pragmas ()
@@ -208,15 +208,72 @@ Otherwise, no determination is made."
 (define-key craig-prefix-map "\M-n" 'flycheck-next-error)
 
 (eval-after-load 'flycheck
-  '(progn
-     (flycheck-define-checker java-single
-       "simple single-file checker using javac."
-       :command ("javac" "-Xlint" source)
-       :error-patterns
-       ((error line-start (file-name) ":" line ": error:" (message) line-end)
-        (warning line-start (file-name) ":" line ": warning:" (message) line-end))
-       :modes java-mode
-       )
+  #'(progn
+      (flycheck-define-checker java-single
+        "simple single-file checker using javac."
+        :command ("javac" "-Xlint" source)
+        :error-patterns
+        ((error line-start (file-name) ":" line ": error:" (message) line-end)
+         (warning line-start (file-name) ":" line ": warning:" (message) line-end))
+        :modes java-mode
+        )
 
-     (add-to-list 'flycheck-checkers 'java-single))
-)
+      (add-to-list 'flycheck-checkers 'java-single))
+  )
+
+
+
+					; C style
+;; (setq c-default-style '((c-mode  . "k&r")
+;; 			(c++-mode . "stroustrup")
+;; 			(objc-mode . "k&r")
+;; 			(other . "ellemtel")))
+
+;; this should be somewhere other than hooks.el
+
+(defun c-semi&comma-no-newline-amidst-content ()
+  "Controls newline insertion after semicolons.
+If a comma was inserted, no determination is made.  If a semicolon was
+inserted, and we are not at the end of a block, no newline is inserted.
+Otherwise, no determination is made."
+  (if (= (c-last-command-char) ?\;)
+      (if (save-excursion
+            (skip-syntax-forward "->")
+            (or (= (point-max) (point))
+                (= (char-syntax (char-after)) ?\) )))
+            t
+        'stop)
+    nil))
+
+(c-add-style "ctanis" '("ellemtel"
+			(c-basic-offset . 4)
+			(c-offsets-alist
+			 (case-label . 1)
+			 (access-label . -)
+                                        ; (cpp-macro . 0)
+					; (cpp-macro . -)
+                         (innamespace . [0])
+			 )
+			(c-hanging-braces-alist
+			 (substatement-open . 'before)
+			 (class-open . 'before)
+			 (defun-open . 'before)
+			 (block-open . 'before)
+			 (brace-list-open)
+			 (brace-entry-open)
+			 (statement-case-open . 'before)
+			 (extern-lang-open . 'before)
+			 (namespace-open . 'after)
+                         (namespace-close)
+			 (inline-open)
+			 (class-close)
+			 )
+			(c-hanging-semi&comma-criteria .
+						       (
+                                                        c-semi&comma-no-newlines-before-nonblanks
+                                                        c-semi&comma-no-newline-amidst-content
+                                                        c-semi&comma-no-newlines-for-oneline-inliners
+							c-semi&comma-inside-parenlist))
+                        ;(c-hanging-semi&comma-criteria . nil)
+			))
+(setq c-default-style "ctanis")

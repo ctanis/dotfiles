@@ -71,9 +71,9 @@
 (defun remove-ido-work-dirs (match)
   (interactive "MRemove work directories matching: ")
   (setq ido-work-directory-list
-	(seq-filter '(lambda(c) (not
-			     (string-match (concat "^.*" match) c)))
-		ido-work-directory-list)))
+	(seq-filter (lambda(c) (not
+			        (string-match (concat "^.*" match) c)))
+		    ido-work-directory-list)))
 
 
 (when (require-verbose 'ido-completing-read+)

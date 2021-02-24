@@ -62,11 +62,11 @@
 
 
 (add-hook 'dired-mode-hook
-	  '(lambda ()
-	     (toggle-truncate-lines 1)
-             (local-set-key "h" 'dired-hide-dotfiles)
-	     (local-set-key "\C-c\C-q" 'wdired-change-to-wdired-mode)
-	     ))
+	  #'(lambda ()
+	      (toggle-truncate-lines 1)
+              (local-set-key "h" 'dired-hide-dotfiles)
+	      (local-set-key "\C-c\C-q" 'wdired-change-to-wdired-mode)
+	      ))
 
 
 (put 'dired-find-alternate-file 'disabled nil)
