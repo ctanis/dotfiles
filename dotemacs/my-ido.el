@@ -63,6 +63,12 @@
         (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
   )
 
+(defun cleanup-ido(str)
+  (interactive "MWhat string? ")
+  (setq ido-work-directory-list
+        (seq-filter (lambda (s) (not (string-match str s)))
+                    ido-work-directory-list)))
+
 
 (define-key craig-prefix-map "d" 'ido-dired-other-window)
 
