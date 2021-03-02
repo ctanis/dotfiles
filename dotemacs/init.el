@@ -266,6 +266,9 @@
 (when (require-verbose 'bash-completion)
   (bash-completion-setup))
 
+(when (require-verbose 'browse-kill-ring)
+  (browse-kill-ring-default-keybindings))
+
 ;; advice
 ;; embarrassing protection against keyboard misfiring
 (defadvice downcase-region (around downcase-only-when-active activate)
