@@ -298,3 +298,4 @@
 (define-key 'search-dispatch "f" 'find-grep)
 (define-key 'search-dispatch "d" 'find-grep-dispatch)
 (define-key 'search-dispatch "b" 'ddg-search)
+(define-key 'search-dispatch "e" 'ediff-buffers)
