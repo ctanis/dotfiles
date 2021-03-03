@@ -13,11 +13,37 @@
       (end-of-defun)
       (narrow-to-region start (point)))))
 
+;; modeled after org version (to refactor)
+(defun fortran-up-list-or-block ()
+  "combination of backward-up-list and fortran-beginning-of-block"
+  (interactive)
+  (let* ((start (point))
+         (block (condition-case nil
+                    (progn
+                      (fortran-beginning-of-block)
+                      (point))
+                  (error nil)))
+         (liststart
+          (condition-case nil
+              (progn
+                (goto-char start)
+                (up-list -1)
+                (point))
+            (error nil))))
+    (goto-char
+     (cond
+      ((and (not block) liststart) liststart)
+      ((and (not liststart) block) block)
+      ((and liststart block) (max block liststart))
+      (t (progn
+           (message "no containing list or element")
+           (point)))))))
+
 (eval-after-load 'fortran
   (add-hook 'fortran-mode-hook
             #'(lambda()
                 (auto-fill-mode 1)
-                (local-set-key "\C-\M-u" 'fortran-beginning-of-block)
+                (local-set-key "\C-\M-u" 'fortran-up-list-or-block)
                 (electric-indent-mode -1))))
 
 (eval-after-load 'f90
