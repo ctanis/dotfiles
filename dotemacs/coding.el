@@ -44,6 +44,7 @@
             #'(lambda()
                 (auto-fill-mode 1)
                 (local-set-key "\C-\M-u" 'fortran-up-list-or-block)
+                (local-set-key (kbd "RET") 'align-newline-and-indent)
                 (electric-indent-mode -1))))
 
 (eval-after-load 'f90
