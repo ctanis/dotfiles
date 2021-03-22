@@ -1,3 +1,4 @@
+(require 'multiple-cursors)
 (require 'mc-extras)
 (require 'phi-search)
 (require 'phi-replace)

@@ -117,7 +117,7 @@
 
 
 ;; disable auto merge as soon as a specific folder is hinted at (via slash)
-(setq ctanis-dflt-ido-merge-time 0.2)
+(setq ctanis-dflt-ido-merge-time 0.7)
 (defun ido-magic-slash ()
   (interactive)
   (setq ido-auto-merge-delay-time 9999)

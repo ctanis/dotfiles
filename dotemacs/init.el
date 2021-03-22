@@ -107,15 +107,17 @@
 
 
 ;; multiple cursors
+(load-library "my-mc")
 (define-key craig-prefix-map "\M-." (make-sparse-keymap))
 (define-key craig-prefix-map "\M-.\M-j" 'ace-mc-add-multiple-cursors)
 (define-key craig-prefix-map "\M-.\M-l" 'mc/edit-lines)
 (define-key craig-prefix-map "\M-.\M-." 'mc/mark-more-like-this-extended)
-(autoload 'ace-mc-add-multiple-cursors "my-mc")
-(autoload 'mc/edit-lines "my-mc")
-(autoload 'mc/mark-more-like-this-extended "my-mc")
-(eval-after-load 'multiple-cursors
-  '(load-library "my-mc"))
+
+;; (autoload 'ace-mc-add-multiple-cursors "my-mc")
+;; (autoload 'mc/edit-lines "my-mc")
+;; (autoload 'mc/mark-more-like-this-extended "my-mc")
+;; (eval-after-load 'multiple-cursors
+;;   '(load-library "my-mc"))
 
 (eval-after-load 'deft
   '(load-library "my-deft"))
