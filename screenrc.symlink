@@ -1,5 +1,6 @@
 #ctrl-a as a screen key sucks for emacs
-escape "``"
+# escape "``"
+escape "\^\^"
 autodetach on
 activity "activity: window ~%"
 vbell_msg "bell: window ~%"

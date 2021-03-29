@@ -670,3 +670,15 @@ agnostic agenda-file management"
   (activate-mark)
   (rectangle-mark-mode)
   )
+
+;; run cmd with output to buffer bname, running optional hook
+(defun capture-cmd (cmd bname &optional hook)
+  (let ((buf (get-buffer-create bname)))
+    (save-current-buffer
+      (set-buffer buf)
+      (erase-buffer)
+      (shell-command cmd (current-buffer))
+      (if hook
+          (funcall hook))
+      )
+    buf))
