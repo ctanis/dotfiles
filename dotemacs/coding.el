@@ -53,7 +53,8 @@
 
      (add-hook 'f90-mode-hook
                #'(lambda()
-                   (local-set-key "\C-m" 'newline-and-indent)
+                   (local-set-key "\C-\M-u" 'fortran-up-list-or-block)
+                   (local-set-key (kbd "RET") 'align-newline-and-indent)
                    (local-set-key "\C-c\C-c" 'compile)
                    (setq f90-do-indent 2)
                    (setq f90-if-indent 2)

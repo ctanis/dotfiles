@@ -107,9 +107,10 @@
                           company-gtags
                           ;;company-semantic
                           company-keywords
-                          company-c-headers
-                          company-capf
-                          )n
+;;                         company-c-headers
+;; Wed Mar 31 16:53:09 2021 -- this is too much
+;;                          company-capf
+                          )
                          ;; company-files
 
                          ;; company-clang
@@ -140,10 +141,12 @@
 ;; (add-hook 'gdb-mode-hook
 ;;           #'(lambda ()
 ;;               (company-mode -1)))
-(setq company-global-modes '(not shell-mode gud-mode))
+;;
+;;(setq company-global-modes '(not shell-mode gud-mode))
 
 (global-company-mode t)
 (define-key craig-prefix-map "~"  'company-files)
+(global-set-key (kbd "M-TAB") 'company-capf)
 (global-set-key "\M-/" 'hippie-expand)
 
 
