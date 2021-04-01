@@ -265,9 +265,6 @@
   )
 
 
-(when (require-verbose 'bash-completion)
-  (bash-completion-setup))
-
 (when (require-verbose 'browse-kill-ring)
   (browse-kill-ring-default-keybindings))
 
