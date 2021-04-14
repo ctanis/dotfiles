@@ -63,7 +63,7 @@
 
 ;; comint
 (setq comint-move-point-for-matching-input 'end-of-line)
-
+(setq comint-input-ring-size 2000) ;; see matching length in bash_profile
 
 ;; minibuffers
 (setq completion-ignore-case t)
@@ -301,3 +301,5 @@
 (define-key 'search-dispatch "f" 'find-grep-dispatch)
 (define-key 'search-dispatch "b" 'ddg-search)
 (define-key 'search-dispatch "e" 'ediff-buffers)
+
+
