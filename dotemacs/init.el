@@ -249,23 +249,7 @@
 (when (require-verbose 'dictionary)
   (define-key craig-prefix-map "\C-\M-w" 'dictionary-lookup-definition))
 
-(when (require-verbose 'ace-jump-mode)
-  ;;(define-key craig-prefix-map "j" 'ace-jump-mode)
-  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-  (define-key global-map (kbd "M-J") 'ace-jump-mode)
-  ;;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
-  (setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
-  (set-face-foreground 'ace-jump-face-foreground "black")
-  (set-face-background 'ace-jump-face-foreground "wheat")
-  (setq ace-jump-mode-submode-list
-        '(ace-jump-char-mode
-          ace-jump-word-mode
-          ace-jump-line-mode
-          ))
 
-  (when (require-verbose 'ace-window)
-    (define-key global-map (kbd "C-x o") 'ace-window))
-  )
 
 
 (when (require-verbose 'browse-kill-ring)
@@ -306,3 +290,21 @@
 (define-key 'search-dispatch "e" 'ediff-buffers)
 
 
+(when (require-verbose 'ace-jump-mode)
+  ;;(define-key craig-prefix-map "j" 'ace-jump-mode)
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+  (define-key global-map (kbd "M-J") 'ace-jump-mode)
+  ;;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+  (setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
+  (set-face-foreground 'ace-jump-face-foreground "black")
+  (set-face-background 'ace-jump-face-foreground "wheat")
+  (setq ace-jump-mode-submode-list
+        '(ace-jump-char-mode
+          ace-jump-word-mode
+          ace-jump-line-mode
+          ))
+
+  (when (require-verbose 'ace-window)
+    (define-key global-map (kbd "C-x o") 'ace-window)
+    (define-key craig-prefix-map "\M-o" 'aw-flip-window)
+    ))
