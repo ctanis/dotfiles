@@ -262,6 +262,9 @@
           ace-jump-word-mode
           ace-jump-line-mode
           ))
+
+  (when (require-verbose 'ace-window)
+    (define-key global-map (kbd "C-x o") 'ace-window))
   )
 
 
