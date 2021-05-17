@@ -308,3 +308,7 @@
     (define-key global-map (kbd "C-x o") 'ace-window)
     (define-key craig-prefix-map "\M-o" 'aw-flip-window)
     ))
+
+
+(when (require-verbose 'bash-completion)
+  (bash-completion-setup))
