@@ -305,8 +305,8 @@
           ))
 
   (when (require-verbose 'ace-window)
-    (define-key global-map (kbd "C-x o") 'ace-window)
-    (define-key craig-prefix-map "\M-o" 'aw-flip-window)
+    (define-key global-map (kbd "C-x M-o") 'ace-window)
+    ;(define-key craig-prefix-map "\M-o" 'aw-flip-window)
     ))
 
 

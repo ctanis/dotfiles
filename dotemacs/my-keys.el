@@ -22,7 +22,7 @@
 (define-key craig-prefix-map "\M-k" 'kill-current-buffer)
 (define-key craig-prefix-map "\M-m" 'make-directory)
 (define-key craig-prefix-map "\C-s" 'clone-indirect-in-place)
-(define-key craig-prefix-map "\M-o" 'other-window)
+;(define-key craig-prefix-map "\M-o" 'other-window)
 (define-key craig-prefix-map "\M-o" 'switch-to-previous-window)
 (define-key craig-prefix-map "\M-t" 'toggle-truncate-lines)
 ;(define-key craig-prefix-map "]" 'overwrite-mode) ;toggle it!
