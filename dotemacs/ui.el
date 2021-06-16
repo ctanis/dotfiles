@@ -113,6 +113,7 @@
 (setq solarized-height-plus-4 1.0)
 
 (defvar ctanis_code_font "Courier New")
+(defvar ctanis_code_font_height 1.0)
 
 (when (require-verbose 'solarized)
   (require 'solarized-palettes)
@@ -160,8 +161,8 @@
              `(dired-marked ((,class (:background ,blue :foreground "black"))))
              `(show-paren-match ((,class (:foreground ,base3 :background ,base02))))
              `(cursor ((,class (:foreground ,base0 :background ,base2))))
-             `(org-code ((,class (:font ,ctanis_code_font :height 1.1))))
-             `(org-block ((,class (:font ,ctanis_code_font :height 1.1 :foreground ,base1))))
+             `(org-code ((,class (:font ,ctanis_code_font :height ,ctanis_code_font_height :foreground ,base1 :background ,base02))))
+             `(org-block ((,class (:font ,ctanis_code_font :height ,ctanis_code_font_height :foreground ,base1))))
              `(org-checkbox ((,class (:background ,base03 :foreground ,base0 :weight bold))))
              `(deft-title-face ((,class (:inherit deft-date-face :weight bold))))
              `(company-tooltip-selection ((,class (:weight bold :background ,base2))))
