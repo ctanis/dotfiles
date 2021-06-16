@@ -1,4 +1,4 @@
-(global-set-key "\C-x\C-c" 'verify-exit)
+;;(global-set-key "\C-x\C-c" 'verify-exit)
 
 
 (define-key global-map "\M-o" 'craig-prefix)

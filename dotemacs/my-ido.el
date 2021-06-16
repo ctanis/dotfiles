@@ -59,27 +59,27 @@
 
 (defun purge-ido-tramp ()
   (interactive)
-  (setq ido-work-directory-list
+  (setq ido-dir-file-cache
         (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
+  ;; (setq ido-work-directory-list
+  ;;       (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
   )
 
+; clean up ido-work-dirs
 (defun cleanup-ido(str)
-  (interactive "MWhat string? ")
+  (interactive "MRemove work directories matching: ")
   (setq ido-work-directory-list
         (seq-filter (lambda (s) (not (string-match str s)))
                     ido-work-directory-list)))
 
 
+(defun ido-kill-emacs-hook ()
+  (purge-ido-tramp)
+  (ido-save-history))
+
+
 (define-key craig-prefix-map "d" 'ido-dired-other-window)
 
-
-; clean up ido-work-dirs
-(defun remove-ido-work-dirs (match)
-  (interactive "MRemove work directories matching: ")
-  (setq ido-work-directory-list
-	(seq-filter (lambda(c) (not
-			        (string-match (concat "^.*" match) c)))
-		    ido-work-directory-list)))
 
 
 (when (require-verbose 'ido-completing-read+)
@@ -98,10 +98,10 @@
     "Switch to a buffer-local tag from Imenu via Ido."
     (interactive)
     ;; ido initialization
-    (ido-init-completion-maps)
-    (add-hook 'minibuffer-setup-hook 'ido-minibuffer-setup)
-    (add-hook 'choose-completion-string-functions 'ido-choose-completion-string)
-    (add-hook 'kill-emacs-hook 'ido-kill-emacs-hook)
+    ;; (ido-init-completion-maps)
+    ;; (add-hook 'minibuffer-setup-hook 'ido-minibuffer-setup)
+    ;; (add-hook 'choose-completion-string-functions 'ido-choose-completion-string)
+    ;; (add-hook 'kill-emacs-hook 'ido-kill-emacs-hook)
     ;; set up ido completion list
     (let ((index-alist (imenu--make-index-alist))) ;; package takes cdr for some reason..
       (if (equal index-alist '(nil))
