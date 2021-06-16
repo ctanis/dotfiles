@@ -11,7 +11,7 @@
 
 (setq ido-enable-regexp nil) ;; toggle it if you want it
 (setq ido-enable-prefix nil) ;; toggle it if you don't want it
-(setq ido-enable-tramp-completion nil) ;; overwrite in a .emacs-local for appropariate systems
+;;(setq ido-enable-tramp-completion nil) ;; overwrite in a .emacs-local for appropariate systems
  
 (add-to-list 'ido-ignore-files "`\\.") ;; no dotfiles
 (add-to-list 'ido-ignore-files "\\.webloc")
@@ -61,8 +61,8 @@
   (interactive)
   (setq ido-dir-file-cache
         (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
-  ;; (setq ido-work-directory-list
-  ;;       (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
+  (setq ido-work-directory-list
+        (seq-filter (lambda (s) (not (string-match "^/.*:.*:" s))) ido-work-directory-list))
   )
 
 ; clean up ido-work-dirs
