@@ -99,6 +99,14 @@ else
 fi; 
 
 
+function expand_alias()
+{
+    local C=$1
+    shift
+    eval echo `alias |gawk 'BEGIN { FS="'"'"'" } \$1~/'$C'/ {print $2 }'` 
+}
+
+
 
 function update_repos ()
 {

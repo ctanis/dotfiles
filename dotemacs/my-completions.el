@@ -65,13 +65,13 @@
 ;; hippie
 (setq hippie-expand-try-functions-list
       '(
-        try-expand-dabbrev
         apair-try-expand-list
 
         try-expand-line
         try-expand-line-all-buffers
         apair-try-expand-list-all-buffers
         
+        try-expand-dabbrev
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill
 
