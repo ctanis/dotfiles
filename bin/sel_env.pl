@@ -61,7 +61,7 @@ while (<DAT>) {
 
   if ($in_block) {
     s/%([a-z_]+)%(?!=)/$vars{$1}/gi;
-    s/\$\{(.*)\}/$newenv{$1}/g;
+    s/\$\{(.*?)\}/$newenv{$1}/g;
 
     if (($varname,$varvalue)= m/^\s*%([a-z0-9_]+)%=(.*)\s*$/i) {
       $vars{$varname}=$varvalue;
