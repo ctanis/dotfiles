@@ -281,6 +281,13 @@
                              "-qi" )))
     (call-interactively 'find-grep-dired)))
 
+(defun tail-dispatch ()
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (tail-file (dired-get-file-for-visit))
+    (call-interactively 'tail-file)))
+
+
 (define-prefix-command 'search-dispatch 'search-dispatch-map)
 (define-key craig-prefix-map "\M-g" 'search-dispatch)
 (define-key 'search-dispatch "\M-g" 'grep)
@@ -288,6 +295,7 @@
 (define-key 'search-dispatch "f" 'find-grep-dispatch)
 (define-key 'search-dispatch "b" 'ddg-search)
 (define-key 'search-dispatch "e" 'ediff-buffers)
+(define-key 'search-dispatch "t" 'tail-dispatch)
 
 
 (when (require-verbose 'ace-jump-mode)

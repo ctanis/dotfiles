@@ -106,7 +106,6 @@
 (define-key craig-prefix-map "\C-f" 'find-file-at-point)
 (define-key craig-prefix-map "\C-\M-f" 'find-and-display-file)
 
-(define-key 'craig-prefix "\M-g" 'ddg-search)
 (define-key craig-prefix-map "\M-r" 'active-mark-rectangle)
 
 (define-key craig-prefix-map "\M-0" 'deft)
