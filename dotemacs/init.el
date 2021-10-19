@@ -241,6 +241,7 @@
   )
 
 (when (require-verbose 'itail)
+  (setq itail-fancy-mode-line t)
   (defalias 'tail-file 'itail))
 
 (when (require-verbose 'immortal-scratch)
