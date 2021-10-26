@@ -163,22 +163,18 @@ common-buffers alist"
     (if (string= (char-to-string buf-id) "\t")
         (call-interactively 'remove-current-from-common-buffers)
       (if (string= (char-to-string buf-id) "l")
-          (let ((buff (directory-shell-buffer-name)))
-            (if (get-buffer buff)
-                (progn 
-                  (message buff)
-                  (setq shell-last-shell buff)
-                  (do-jump-to-common-buffer (get-buffer buff))
-                  )
-              (if (and shell-last-shell (get-buffer shell-last-shell))
-                  (do-jump-to-common-buffer shell-last-shell)
-                ;;(error "no shell for current directory")
+          ;; get the most relevant shell, or create one if necessary
+          (let* ((buff (directory-shell-buffer-name))
+                 (shells (mapcar (lambda (z)
+                                   (let ((n (buffer-name z)))
+                                     (cons (longest-prefix buff n) z)))
+                                 (get-all-shell-buffers))))
+            (message (buffer-name (cdar shells)))
+            (if shells
+                (do-jump-to-common-buffer
+                 (cdar (sort shells (lambda (a b) (> (car a) (car b))))))
+              (shell-current-directory)))
 
-                (if (get-all-shell-buffers)
-                    ;;(error "which shell?")
-                    ;; don't create a new shell if any exist
-                    (do-jump-to-common-buffer (car (get-all-shell-buffers)))
-                  (shell-current-directory)))))
         (let* ((entry (assoc (char-to-string buf-id)
                              (seq-filter (lambda (i)
                                            (get-buffer (cdr i)))
@@ -222,7 +218,7 @@ common-buffer) and go there."
               (other-frame 0)           ; switch to the selected frame?
               (select-window win)))
            ((eq (count-windows) 1) (switch-to-buffer-other-window bufname)) ;; always split a window
-           ((replace-visible-common-buffer buf) t)
+           ;((replace-visible-common-buffer buf) t)
            (t (switch-to-buffer bufname))))))) ;; in this case, simply reuse current window
 
 
@@ -231,7 +227,11 @@ common-buffer) and go there."
   "The name of a shell buffer pertaining to DIR."
   (interactive)
   (concat "*"
-	  (directory-file-name (expand-file-name default-directory))
+          (let ((dn
+                 (directory-file-name (expand-file-name default-directory))))
+            (if (string-prefix-p "/scp:" dn)
+                (substring dn 1)
+              dn))
 	  "-shell*"))
 
 (defvar shell-last-shell nil)
@@ -682,3 +682,13 @@ agnostic agenda-file management"
           (funcall hook))
       )
     buf))
+
+
+;; figure out how many leading characters s1 and s2 share
+(defun longest-prefix (s1 s2)
+  (if (or (string-empty-p s1) (string-empty-p s2))
+      0
+    (if (char-equal (string-to-char s1) (string-to-char s2))
+        (+ 1 (longest-prefix (substring s1 1)
+                             (substring s2 1)))
+      0)))
