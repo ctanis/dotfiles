@@ -164,26 +164,28 @@ common-buffers alist"
         (call-interactively 'remove-current-from-common-buffers)
       (if (string= (char-to-string buf-id) "l")
           ;; get the most relevant shell, or create one if necessary
-          (let* ((buff (directory-shell-buffer-name))
-                 (shells (mapcar (lambda (z)
-                                   (let ((n (buffer-name z)))
-                                     (cons (longest-prefix buff n) z)))
-                                 (get-all-shell-buffers))))
-            (message (buffer-name (cdar shells)))
-            (if shells
-                (do-jump-to-common-buffer
-                 (cdar (sort shells (lambda (a b) (> (car a) (car b))))))
-              (shell-current-directory)))
+          (if (eq major-mode 'shell-mode)
+              (switch-to-buffer (car (reverse (get-all-shell-buffers))))
+            (let* ((buff (directory-shell-buffer-name))
+                   (shells (mapcar (lambda (z)
+                                     (let ((n (buffer-name z)))
+                                       (cons (longest-prefix buff n) z)))
+                                   (get-all-shell-buffers))))
+              (message (buffer-name (cdar shells)))
+              (if shells
+                  (do-jump-to-common-buffer
+                   (cdar (sort shells (lambda (a b) (> (car a) (car b))))))
+                (shell-current-directory)))
 
-        (let* ((entry (assoc (char-to-string buf-id)
-                             (seq-filter (lambda (i)
-                                           (get-buffer (cdr i)))
-                                         (active-common-buffers))))
-               (bufname (and entry (cdr entry))))
-          (if bufname
-              (do-jump-to-common-buffer bufname)
-            (error (concat "Selection not available" bufname)))
-          (set (make-local-variable 'is-common-buffer) t))))))
+            (let* ((entry (assoc (char-to-string buf-id)
+                                 (seq-filter (lambda (i)
+                                               (get-buffer (cdr i)))
+                                             (active-common-buffers))))
+                   (bufname (and entry (cdr entry))))
+              (if bufname
+                  (do-jump-to-common-buffer bufname)
+                (error (concat "Selection not available" bufname)))
+              (set (make-local-variable 'is-common-buffer) t)))))))
 
 
 (defun replace-visible-common-buffer (buffer)
