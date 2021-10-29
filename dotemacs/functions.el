@@ -165,7 +165,11 @@ common-buffers alist"
       (if (string= (char-to-string buf-id) "l")
           ;; get the most relevant shell, or create one if necessary
           (if (eq major-mode 'shell-mode)
-              (switch-to-buffer (car (reverse (get-all-shell-buffers))))
+              (let ((next-shell  (car (reverse (get-all-shell-buffers)))))
+                (if current-prefix-arg
+                    (switch-to-buffer-other-window next-shell)
+                  (switch-to-buffer next-shell)))
+                                                                        
             (let* ((buff (directory-shell-buffer-name))
                    (shells (mapcar (lambda (z)
                                      (let ((n (buffer-name z)))
