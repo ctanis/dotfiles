@@ -175,17 +175,17 @@ common-buffers alist"
               (if shells
                   (do-jump-to-common-buffer
                    (cdar (sort shells (lambda (a b) (> (car a) (car b))))))
-                (shell-current-directory)))
+                (shell-current-directory))))
 
-            (let* ((entry (assoc (char-to-string buf-id)
-                                 (seq-filter (lambda (i)
-                                               (get-buffer (cdr i)))
-                                             (active-common-buffers))))
-                   (bufname (and entry (cdr entry))))
-              (if bufname
-                  (do-jump-to-common-buffer bufname)
-                (error (concat "Selection not available" bufname)))
-              (set (make-local-variable 'is-common-buffer) t)))))))
+        (let* ((entry (assoc (char-to-string buf-id)
+                             (seq-filter (lambda (i)
+                                           (get-buffer (cdr i)))
+                                         (active-common-buffers))))
+               (bufname (and entry (cdr entry))))
+          (if bufname
+              (do-jump-to-common-buffer bufname)
+            (error (concat "Selection not available" bufname)))
+          (set (make-local-variable 'is-common-buffer) t))))))
 
 
 (defun replace-visible-common-buffer (buffer)
