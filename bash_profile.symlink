@@ -103,7 +103,8 @@ function expand_alias()
 {
     local C=$1
     shift
-    eval echo `alias |gawk 'BEGIN { FS="'"'"'" } \$1~/'$C'/ {print $2 }'` 
+    local TXT=`alias|perl -ne "if (/alias $C/) {s/\"/_._._/g; s/alias [^=]+='(.*)'/\\\$1/; print}"`;
+    eval echo $TXT|perl -pe 's/_._._/"/g';
 }
 
 

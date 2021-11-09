@@ -1,3 +1,8 @@
+;; this is only used on certain machines, and when it's used there's a high
+;; likelihood that the default is using a bad trusted certificates file
+(setq tls-program '("gnutls-cli -p %p %h"))
+
+
 (package-initialize)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/" ) t)
