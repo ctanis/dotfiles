@@ -1,3 +1,4 @@
+(add-to-list 'load-path "~/.emacs.d/other")
 (load-library "package-load")
 (load-library "functions")
 (load-library "hooks")
