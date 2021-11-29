@@ -2,6 +2,9 @@
 ;; likelihood that the default is using a bad trusted certificates file
 (setq tls-program '("gnutls-cli -p %p %h"))
 
+(when (eql system-type 'darwin)
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
 
 (package-initialize)
 ;;(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
