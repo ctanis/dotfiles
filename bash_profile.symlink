@@ -180,6 +180,10 @@ if [[ -z "$PROMPT_NOTE" ]]; then
 fi
 
 
+## download all links passed to stdin (useful in conjunction with bookmarklet
+## that makes a list of link targets on the current page)
+alias dl_stdin='for x in `xargs`; do wget  $x; done'
+
 
 # reset history file if loaded in emacs/tramp (remote shell tweaks in my elisp
 # handle loading the history properly)
