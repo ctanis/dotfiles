@@ -36,7 +36,7 @@
 (set-default 'fill-column 78)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode 1)
-
+(winner-mode)
 
 (if window-system
     (progn
@@ -323,4 +323,4 @@
 (when (require-verbose 'bash-completion)
   (bash-completion-setup))
 
-(require-verbose 'winner-mode)
+
