@@ -249,7 +249,7 @@
   (immortal-scratch-mode))
 
 (when (require-verbose 'dictionary)
-  (define-key craig-prefix-map "\C-\M-w" 'dictionary-lookup-definition))
+  (define-key craig-prefix-map "," 'dictionary-lookup-definition))
 
 
 
@@ -322,3 +322,5 @@
 
 (when (require-verbose 'bash-completion)
   (bash-completion-setup))
+
+(require-verbose 'winner-mode)

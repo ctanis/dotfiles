@@ -52,6 +52,8 @@
 (define-key craig-prefix-map "\C-r" 'copy-region-for-paste)
 (define-key craig-prefix-map "\M-2" 'save-file-local-variable)
 (define-key craig-prefix-map "\M-q" 'slide-line-left)
+(define-key craig-prefix-map "\M-w" 'winner-undo)
+(define-key craig-prefix-map "\C-\M-w" 'winner-redo)
 
 (global-set-key "\M-j" 'backward-jump-to-char)
 (global-set-key "\M-,"  'ispell-word)
