@@ -319,6 +319,9 @@
     ;(define-key craig-prefix-map "\M-o" 'aw-flip-window)
     ))
 
+(when (require-verbose 'zzz-to-char)
+  (global-set-key (kbd "M-z") #'zzz-to-char))
+
 
 (when (require-verbose 'bash-completion)
   (bash-completion-setup))
