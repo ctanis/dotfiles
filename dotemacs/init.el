@@ -53,13 +53,31 @@
 (setq set-mark-command-repeat-pop t) ;; c-spc after C-u C-spc pops
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
-; skip calc trail windows with next-window
-(defadvice calc-trail-display (after skip-trail-window activate)
-  "set the no-other-window property on calc trail windows"
-  (let ((win (get-buffer-window (get-buffer "*Calc Trail*"))))
-    (if win
-        (set-window-parameter win
-                              'no-other-window t))))
+;; ; skip calc trail windows with next-window
+;; (defadvice calc-trail-display (after skip-trail-window activate)
+;;   "set the no-other-window property on calc trail windows"
+;;   (let ((win (get-buffer-window (get-buffer "*Calc Trail*"))))
+;;     (if win
+;;         (set-window-parameter win
+;;                               'no-other-window t))))
+(setq calc-display-trail nil)
+(eval-after-load 'calc
+  '(defun calc-align-stack-window ()
+     (if (derived-mode-p 'calc-mode)
+         (progn
+	   (let ((win (get-buffer-window (current-buffer))))
+	     (if win
+	         (progn
+		   (calc-cursor-stack-index 0)
+		   (vertical-motion (- 2 (window-height win)))
+		   ;;(set-window-start win (point))
+                   )))
+	   (calc-cursor-stack-index 0)
+	   (if (looking-at " *\\.$")
+	       (goto-char (1- (match-end 0)))))
+       (save-excursion
+         (calc-select-buffer)
+         (calc-align-stack-window)))))
 
 
 ;; comint
