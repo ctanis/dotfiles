@@ -473,3 +473,8 @@
           #'(lambda()
               (add-to-list 'common-buffers '("c" . "*compilation*"))
               (set (make-local-variable 'is-common-buffer) t)))
+
+(add-hook 'ggtags-mode-hook
+          #'(lambda()
+              (define-key ggtags-navigation-map "\M-o" nil)
+              (define-key ggtags-mode-prefix-map "\M-o" nil)))
