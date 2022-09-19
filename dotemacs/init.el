@@ -115,7 +115,7 @@
   '(load-library "my-dired"))
 
 (autoload 'org-agenda "org")
-(autoload 'org-capture "org")
+(autoload 'org-capture "org-capture")
 (autoload 'org-store-link "org")
 (eval-after-load 'org
   '(load-library "my-org"))
