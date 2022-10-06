@@ -105,7 +105,7 @@
 
 (define-key craig-prefix-map "\C-xb" 'ibuffer-other-window)
 
-(define-key craig-prefix-map "\C-f" 'find-file-at-point)
+(define-key craig-prefix-map "\C-f" 'ffap-other-window)
 (define-key craig-prefix-map "\C-\M-f" 'find-and-display-file)
 
 (define-key craig-prefix-map "\M-r" 'active-mark-rectangle)
