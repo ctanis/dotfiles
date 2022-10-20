@@ -28,6 +28,7 @@
       ring-bell-function 'flash-mode-line)
 
 (setq-default search-highlight t)
+(setq-default truncate-lines t)
 (setq next-line-add-newlines nil)
 (setq require-final-newline nil)
 (setq split-width-threshold nil)
