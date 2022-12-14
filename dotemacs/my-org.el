@@ -321,6 +321,8 @@ most localized thing"
   "minimize buffer after rebuilding agenda"
   (shrink-window-if-larger-than-buffer))
 
+(setq org-agenda-entry-text-maxlines 999)
+
 
 (require-verbose 'org-bookmark-heading)
 
