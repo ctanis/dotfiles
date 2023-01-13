@@ -1,5 +1,3 @@
 if [ -f ~/.bash_profile ]; then
    source ~/.bash_profile
 fi
-
-test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
