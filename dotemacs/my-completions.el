@@ -27,6 +27,7 @@
       (progn
         (message "expand autosnippet")
         (call-interactively 'aya-expand))))
+  (define-key craig-prefix-map "y" 'aya-dispatch)
   )
 
 
@@ -46,10 +47,7 @@
 (when (require-verbose 'company-yasnippet)
   (define-key craig-prefix-map "\M-y" 'company-yasnippet))
 
-(eval-after-load "company.el"
-  '(progn
-     (set-face-background 'company-preview "wheat1") ;; should be in ui.el
-     ))
+
 
 ;; don't use company in these modes
 ;;(setq company-global-modes '(not shell-mode gud-mode))

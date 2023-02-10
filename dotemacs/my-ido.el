@@ -74,7 +74,7 @@
 
 
 (defun ido-kill-emacs-hook ()
-  (purge-ido-tramp)
+;  (purge-ido-tramp)
   (ido-save-history))
 
 
