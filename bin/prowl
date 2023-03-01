@@ -1,40 +1,9 @@
 #!/usr/bin/perl -w
-# ProwlScript, to communicate with the Prowl server.
-#
-# Copyright (c) 2010, Zachary West
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of Zachary West nor the
-#       names of its contributors may be used to endorse or promote products
-#       derived from this software without specific prior written permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY Zachary West ''AS IS'' AND ANY
-# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-# DISCLAIMED. IN NO EVENT SHALL Zachary West BE LIABLE FOR ANY
-# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-# This requires running Prowl on your device.
-# See the Prowl website <http://prowlapp.com>
 
 use strict;
-use LWP::UserAgent;
 use Getopt::Long;
 use Pod::Usage;
 use Sys::Hostname;
-
 
 # Grab our options.
 my %options = ();
@@ -86,18 +55,12 @@ $options{'application'} =~ s/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg;
 $options{'event'} =~ s/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg;
 $options{'notification'} =~ s/([^A-Za-z0-9])/sprintf("%%%02X", ord($1))/seg;
 
-# Generate our HTTP request.
-my ($userAgent, $request, $response, $requestURL);
-$userAgent = LWP::UserAgent->new;
-$userAgent->agent("ProwlScript/1.2");
-$userAgent->env_proxy();
-
 my $providerKeyString = "";
 if(exists($options{'providerkey'})) {
 	$providerKeyString = sprintf("&providerkey=%s", $options{'providerkey'});
 }
 
-$requestURL = sprintf("https://prowlapp.com/publicapi/add?apikey=%s&application=%s&event=%s&description=%s&priority=%d&url=%s%s",
+my $requestURL = sprintf("https://prowlapp.com/publicapi/add?apikey=%s&application=%s&event=%s&description=%s&priority=%d&url=%s%s",
 				$options{'apikey'},
 				$options{'application'},
 				$options{'event'},
@@ -106,16 +69,12 @@ $requestURL = sprintf("https://prowlapp.com/publicapi/add?apikey=%s&application=
 				$options{'url'},
 				$providerKeyString);
 
-$request = HTTP::Request->new(GET => $requestURL);
+my $Z=join ' ', `curl '$requestURL' 2>/dev/null`;
 
-$response = $userAgent->request($request);
-
-if ($response->is_success) {
-	print "Notification successfully posted.\n";
-} elsif ($response->code == 401) {
-	print STDERR "Notification not posted: incorrect API key.\n";
+if ($Z =~ /success/i) {
+  print "Notification posted\n";
 } else {
-	print STDERR "Notification not posted: " . $response->content . "\n";
+  print STDERR "Error\n";
 }
 
 __END__
