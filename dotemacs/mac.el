@@ -57,7 +57,9 @@
 (defun dirshell ()
   "launch a Terminal.app in the current directory"
   (interactive)
-  (shell-command "term \"`pwd`\""))
+  ;(shell-command "term \"`pwd`\"")
+  (shell-command "open -a iterm \"`pwd`\"")
+  )
 ;;(define-key craig-prefix-map "\C-s" 'dirshell)
 (define-key craig-prefix-map "\C-x!" 'dirshell)
 
