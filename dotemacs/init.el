@@ -263,6 +263,31 @@
 
 (when (require-verbose 'itail)
   (setq itail-fancy-mode-line t)
+
+  (defun really-tail ()
+    (interactive)
+    (dolist ($buf (buffer-list (current-buffer)))
+      (with-current-buffer $buf
+        (when itail-mode
+          (message "itail mode %s" $buf)
+          (let ((w (get-buffer-window $buf)))
+            (if w
+                (progn
+                  (message "visible window %s %s" $buf w)
+                  (goto-char (point-max))
+                  (set-window-point w (point-max)))))))))
+
+  (defun enable-really-tail()
+    (interactive)
+    (advice-add 'jump-to-register
+                :after (lambda (&rest r) (really-tail))
+                '((name . "really-tail"))))
+
+  (defun disable-really-tail()
+    (interactive)
+    (advice-remove 'jump-to-register "really-tail"))
+  
+  (enable-really-tail)
   (defalias 'tail-file 'itail))
 
 (when (require-verbose 'immortal-scratch)
