@@ -268,12 +268,12 @@
     (interactive)
     (dolist ($buf (buffer-list (current-buffer)))
       (with-current-buffer $buf
-        (when itail-mode
-          (message "itail mode %s" $buf)
+        (when (or itail-mode (equal major-mode 'shell-mode))
+;          (message "itail mode %s" $buf)
           (let ((w (get-buffer-window $buf)))
             (if w
                 (progn
-                  (message "visible window %s %s" $buf w)
+;                  (message "visible window %s %s" $buf w)
                   (goto-char (point-max))
                   (set-window-point w (point-max)))))))))
 

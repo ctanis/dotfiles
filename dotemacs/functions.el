@@ -698,3 +698,18 @@ agnostic agenda-file management"
         (+ 1 (longest-prefix (substring s1 1)
                              (substring s2 1)))
       0)))
+
+
+;; selective invisibilty
+(defun crt-hide-matches (regexp)
+  (add-to-invisibility-spec 'crt-hideme)
+  (let ((inhibit-read-only t))
+    (save-excursion
+     (goto-char (point-min))
+     (while (search-forward-regexp regexp nil 'noerror)
+       (put-text-property (match-beginning 0) (match-end 0)
+                          'invisible 'crt-hideme)))))
+
+(defun crt-show-all ()
+  (interactive)
+  (remove-from-invisibility-spec 'crt-hideme))
