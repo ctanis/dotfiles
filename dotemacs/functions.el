@@ -213,7 +213,10 @@ common-buffers alist"
 it visible (prioritizing the replacement of a different
 common-buffer) and go there."
   (if current-prefix-arg ;; always open in other window
-      (switch-to-buffer-other-window bufname)
+      ;; if we are in a common buffer, a prefix means "flip" the expected behavior
+      (if is-common-buffer
+          (switch-to-buffer-other-window bufname)
+        (switch-to-buffer bufname))
     (let ((buf (get-buffer bufname)))
       (if buf
           (cond
