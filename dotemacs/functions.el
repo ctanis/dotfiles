@@ -212,11 +212,10 @@ common-buffers alist"
   "Jump to buffer BUFNAME.  If visible go there.  Otherwise make
 it visible (prioritizing the replacement of a different
 common-buffer) and go there."
+  (message "in do-jump")
   (if current-prefix-arg ;; always open in other window
       ;; if we are in a common buffer, a prefix means "flip" the expected behavior
-      (if is-common-buffer
-          (switch-to-buffer-other-window bufname)
-        (switch-to-buffer bufname))
+      (switch-to-buffer-other-window bufname)
     (let ((buf (get-buffer bufname)))
       (if buf
           (cond
@@ -228,7 +227,9 @@ common-buffer) and go there."
               (select-window win)))
            ((eq (count-windows) 1) (switch-to-buffer-other-window bufname)) ;; always split a window
            ;((replace-visible-common-buffer buf) t)
-           (t (switch-to-buffer bufname))))))) ;; in this case, simply reuse current window
+           (t (if current-prefix-arg
+                  (switch-to-buffer-other-window bufname)
+                (switch-to-buffer bufname)))))))) ;; in this case, simply reuse current window
 
 
 ;; modifications of shell-current-directory.el by Daniel Polani
