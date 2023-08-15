@@ -212,7 +212,6 @@ common-buffers alist"
   "Jump to buffer BUFNAME.  If visible go there.  Otherwise make
 it visible (prioritizing the replacement of a different
 common-buffer) and go there."
-  (message "in do-jump")
   (if current-prefix-arg ;; always open in other window
       ;; if we are in a common buffer, a prefix means "flip" the expected behavior
       (switch-to-buffer-other-window bufname)
