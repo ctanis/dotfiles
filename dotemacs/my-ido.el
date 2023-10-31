@@ -131,5 +131,17 @@
 (defadvice ido-merge-work-directories (before reset-timers activate)
   (setq ido-auto-merge-delay-time ctanis-dflt-ido-merge-time))
 
+(setq ido-show-dot-for-dired t)
+
+
+(defun crt-ido-record-current-file ( &optional ignore)
+  (if (buffer-file-name)
+      (progn
+        (ido-record-work-file (file-name-nondirectory (buffer-file-name)))
+        (ido-record-work-directory (file-name-directory (buffer-file-name))))))
+
+(advice-add 'dired-find-file :after #'crt-ido-record-current-file)
+
+
 
 (ido-mode 1)
