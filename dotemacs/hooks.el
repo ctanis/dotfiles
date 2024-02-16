@@ -217,6 +217,7 @@
 
 (add-hook 'html-mode-hook
           #'(lambda()
+              (local-set-key "\M-o" 'craig-prefix)
               (auto-fill-mode -1)))
 
 
