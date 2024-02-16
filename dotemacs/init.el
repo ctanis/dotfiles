@@ -240,6 +240,9 @@
   '(add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 (setq enable-remote-dir-locals t)
 
+;; hide tab-bar when there's only one tab
+(setq tab-bar-show 1)
+
 ;; more optional packages
 (when (require-verbose 'operate-on-number)
 

@@ -18,10 +18,6 @@ export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 export LESS="FRX"
 
 
-export ORIG_PATH=$PATH
-export PATH=~/bin:~/.dotfiles/bin:/usr/bin:/usr/local/bin:/bin
-
-
 if [ $WINDOW ]; then
     export SCREEN_WINDOW="(screen $WINDOW) "
 fi
@@ -33,7 +29,8 @@ function parse_git_branch {
 
 if [ $TERM != 'dumb' ]; then
     _inline='\[\e[00;31m\]${PROMPT_NOTE}\[\e[00;33m\]\W%\[\e[00;00m\] '
-    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
+    #    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
+    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}\h:\w `parse_git_branch`\a\]'
     export PS1="$_title$_inline"
 
     unset _inline
