@@ -17,6 +17,9 @@ export TEXINPUTS="~/.tex:.:$TEXINPUTS"
 #export LESS="-erX"
 export LESS="FRX"
 
+export ORIG_PATH=$PATH
+export PATH=~/bin:~/.dotfiles/bin:/usr/bin:/usr/local/bin:/bin
+
 
 if [ $WINDOW ]; then
     export SCREEN_WINDOW="(screen $WINDOW) "
