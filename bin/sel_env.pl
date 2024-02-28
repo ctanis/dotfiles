@@ -23,6 +23,9 @@ if ($tag eq '-') {
 # match multiple tags 
 my @tags=map lc, split /\./, $tag;
 
+my %valid_tag;
+map { $valid_tag{$_}=undef; } @tags;
+
 my %newenv;
 ## turn off all variables in this file
 open DAT, "$path" or die "cannot open $path";
@@ -52,6 +55,9 @@ while (<DAT>) {
 
     no warnings;
     if (($new_tag eq '*' ) or lc $new_tag ~~ @tags) {
+
+      $valid_tag{$new_tag}=1;
+
       $in_block = 1;
     } else {
       $in_block = 0;
@@ -60,6 +66,7 @@ while (<DAT>) {
   }
 
   if ($in_block) {
+    no warnings;
     s/%([a-z_]+)%(?!=)/$vars{$1}/gi;
     s/\$\{(.*?)\}/$newenv{$1}/g;
 
@@ -76,6 +83,13 @@ while (<DAT>) {
     }
   }
 }
+
+my @unknown= grep { !defined $valid_tag{$_} } keys %valid_tag;
+
+if (@unknown)  {
+  die "unkown tag: @unknown\n";
+}
+
 
 if ($export_mode eq 'bash') {
 
