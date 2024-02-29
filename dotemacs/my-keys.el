@@ -54,6 +54,7 @@
 (define-key craig-prefix-map "\M-q" 'slide-line-left)
 (define-key craig-prefix-map "\M-w" 'winner-undo)
 (define-key craig-prefix-map "\C-\M-w" 'winner-redo)
+(define-key craig-prefix-map "c" 'copy-buffer-file-name)
 
 (global-set-key "\M-j" 'backward-jump-to-char)
 (global-set-key "\M-,"  'ispell-word)

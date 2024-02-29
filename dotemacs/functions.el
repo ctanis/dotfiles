@@ -716,3 +716,14 @@ agnostic agenda-file management"
 (defun crt-show-all ()
   (interactive)
   (remove-from-invisibility-spec 'crt-hideme))
+
+;; thank you bing
+(defun copy-buffer-file-name ()
+  "Copy the current buffer's file name to the clipboard."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if filename
+        (progn
+          (kill-new filename)
+          (message "Copied buffer file name '%s' to the clipboard." filename))
+      (error "Buffer not visiting a file"))))
