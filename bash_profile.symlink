@@ -33,7 +33,7 @@ function parse_git_branch {
 if [ $TERM != 'dumb' ]; then
     _inline='\[\e[00;31m\]${PROMPT_NOTE}\[\e[00;33m\]\W%\[\e[00;00m\] '
     #    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
-    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}\h:\w `parse_git_branch`\a\]'
+    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}\h:\w\a\]'
     export PS1="$_title$_inline"
 
     unset _inline
