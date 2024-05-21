@@ -727,3 +727,10 @@ agnostic agenda-file management"
           (kill-new filename)
           (message "Copied buffer file name '%s' to the clipboard." filename))
       (error "Buffer not visiting a file"))))
+
+
+
+(defun set-xterm-title (title)
+  "Set the Xterm window title to TITLE."
+  (interactive "sTitle: ")
+  (send-string-to-terminal (concat "\033]0;" title "\007")))
