@@ -68,7 +68,13 @@ while (<DAT>) {
   if ($in_block) {
     no warnings;
     s/%([a-z_]+)%(?!=)/$vars{$1}/gi;
+
+# pull $$FOO directly from incoming environment    
+    s/(?<!\\)\$\$\{(.*?)\}/$ENV{$1}/g;
+
     s/(?<!\\)\$\{(.*?)\}/$newenv{$1}/g;
+
+    
 
     if (($varname,$varvalue)= m/^\s*%([a-z0-9_]+)%=(.*)\s*$/i) {
       $vars{$varname}=$varvalue;
