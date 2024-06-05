@@ -82,3 +82,22 @@
 (add-hook 'python-mode-hook
           #'(lambda ()
               (setq-local completion-at-point-functions nil)))
+
+
+;; hack of company-files to not require leading relative paths
+(require 'company-files)
+(defun company-files--grab-existing-name ()
+  ;; Grab the file name.
+  ;; When surrounded with quotes, it can include spaces.
+  (let (file dir)
+    (and (cl-dolist (regexp company-files--regexps)
+           (when (setq file (company-grab-line regexp 1))
+             (cl-return file)))
+         (company-files--connected-p file)
+         (setq file (if (string-match-p "^[~/]" file) file
+                      (concat "./" file)))
+         (setq dir (file-name-directory file))
+         (not (string-match "//" dir))
+         (file-exists-p dir)
+         file)))
+(add-to-list 'company-files--regexps "\\(?:[ \t=\[]\\|^\\)\\([^ \t\n]+\\)")
