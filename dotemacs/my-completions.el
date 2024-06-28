@@ -100,4 +100,5 @@
          (not (string-match "//" dir))
          (file-exists-p dir)
          file)))
-(add-to-list 'company-files--regexps "\\(?:[ \t=\[]\\|^\\)\\([^ \t\n]+\\)")
+;(add-to-list 'company-files--regexps "\\(?:[ \t=\[]\\|^\\)\\([^ \t\n]+\\)")
+(add-to-list 'company-files--regexps "\\(?:[ \t\"=\[]\\|^\\)\\([^ \t\n]+\\)")

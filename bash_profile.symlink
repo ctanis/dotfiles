@@ -30,7 +30,7 @@ function parse_git_branch {
     git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e 's/\(.*\)/\<\1\>/'
 }
 
-if [ $TERM != 'dumb' ]; then
+if [ -z $INSIDE_EMACS ]; then
     _inline='\[\e[00;31m\]${PROMPT_NOTE}\[\033[0;32m\]`parse_git_branch`\[\e[00;33m\] \W%\[\e[00;00m\] '
     #    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
     _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}\h:\w\a\]'
@@ -172,7 +172,7 @@ function prompt_note() {
     export PROMPT_NOTE="$*"
 }
 function title_note() {
-    export TITLE_NOTE="$*"
+    export TITLE_NOTE="$* "
 }
 
 if [[ -z "$PROMPT_NOTE" ]]; then
