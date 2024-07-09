@@ -18,6 +18,11 @@
 
 (when (require-verbose 'auto-yasnippet)
 
+  ;; aya fields are only alphanumeric+underscore (logic in auto-yasnippet.el
+  ;; tries to allow for any symbol character but has some funkiness with some
+  ;; punctuation like !)
+  (setq aya-field-regex "[a-zA-Z0-9_]")
+
   (defun aya-dispatch (p)
     (interactive "p")
     (if (> p 1)
