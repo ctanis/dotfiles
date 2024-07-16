@@ -71,8 +71,8 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 ; don't use ls for dired -- use elisp
-(setq ls-lisp-use-insert-directory-program nil)
-(require 'ls-lisp)
+;; (setq ls-lisp-use-insert-directory-program nil)
+;; (require 'ls-lisp)
 
 
 (define-key dired-mode-map "\M-o" 'craig-prefix)
