@@ -116,7 +116,6 @@
   (if (eq company-backend 'company-files)
       (let ((sel (nth company-selection
                       company-candidates)))
-        (message "it is files")
         (pcase-let ((`(,prefix . ,suffix) (company--boundaries sel)))
           (company--insert-candidate sel (or prefix company-prefix))))
     (company--complete-nth company-selection)))
