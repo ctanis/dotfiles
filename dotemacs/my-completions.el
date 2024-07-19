@@ -109,14 +109,16 @@
 ; (add-to-list 'company-files--regexps "\\(?:[ \t\"=\[]\\|^\\)\\([^ \t\n]+\\)")
 
 ;; [^a-z...] is used to specify valid filename contents
-(add-to-list 'company-files--regexps "\\(?:[ \t\"=\[]\\|^\\)[^a-zA-Z0-9/-_.]*\\([^ \t\n]+\\)")
+(add-to-list 'company-files--regexps "\\(?:[ \t\"=\[]\\|^\\)[^~a-zA-Z0-9/-_.]*\\([^ \t\n]+\\)")
 
 (defun my-company-continue ()
   (interactive)
-  (let ((sel (nth company-selection
-                  company-candidates)))
-    (message sel)
-    (pcase-let ((`(,prefix . ,suffix) (company--boundaries sel)))
-      (company--insert-candidate sel (or prefix company-prefix)))))
+  (if (eq company-backend 'company-files)
+      (let ((sel (nth company-selection
+                      company-candidates)))
+        (message "it is files")
+        (pcase-let ((`(,prefix . ,suffix) (company--boundaries sel)))
+          (company--insert-candidate sel (or prefix company-prefix))))
+    (company--complete-nth company-selection)))
 
 (define-key company-active-map "\C-e" 'my-company-continue) 
