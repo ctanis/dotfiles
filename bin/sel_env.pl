@@ -100,7 +100,7 @@ if (@unknown)  {
 if ($export_mode eq 'bash') {
 
   for my $k (@order) {
-    print "export $k=$newenv{$k};\n";
+    print "export $k=\"$newenv{$k}\"\n";
     delete $newenv{$k};
   }
 
