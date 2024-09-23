@@ -1,11 +1,17 @@
 ;; dired customizations
 
 (setq dired-deletion-confirmer 'y-or-n-p)
+
 ; dired - guess destination when 2 dired windows are visible
+(setq dired-dwim-target-other-window
+      (lambda()
+        (save-excursion (other-window 1)
+                        (list default-directory ))))
+
 (setq dired-dwim-target nil)
 (defun dired-do-copy-other-window ()
        (interactive)
-       (let ((dired-dwim-target t))
+       (let ((dired-dwim-target dired-dwim-target-other-window))
          (call-interactively 'dired-do-copy)))
 
 (defun dired-do-rename-other-window ()

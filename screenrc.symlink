@@ -1,6 +1,5 @@
 #ctrl-a as a screen key sucks for emacs
-# escape "``"
-escape "\^\^"
+escape 
 autodetach on
 activity "activity: window ~%"
 vbell_msg "bell: window ~%"
@@ -14,6 +13,8 @@ attrcolor b ".I"
 termcapinfo xterm* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
 
+# don't need to lock a screen...
+bind x
 
 # # turn sending of screen messages to hardstatus off
 hardstatus off

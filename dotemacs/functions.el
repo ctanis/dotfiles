@@ -114,10 +114,12 @@ more than 2 windows are currently displayed."
 ;; how to use this for the switch-to-common-buffer prompt
 ;;(apply (function concat) (mapcar (function car) common-buffers))
 
+(defvar is-common-shell-buffer t)
+(make-variable-buffer-local 'is-common-shell-buffer)
 (defun get-all-shell-buffers()
   (seq-filter (lambda (c)
                 (with-current-buffer c
-                  (eq major-mode 'shell-mode)))
+                  (and (eq major-mode 'shell-mode) is-common-shell-buffer)))
               (buffer-list)))
 
 (defun add-current-to-common-buffers (k)
