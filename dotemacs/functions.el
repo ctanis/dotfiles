@@ -172,9 +172,11 @@ common-buffers alist"
                     (switch-to-buffer-other-window next-shell)
                   (switch-to-buffer next-shell)))
                                                                         
-            (let* ((buff (directory-shell-buffer-name))
+            (let* ((case-fold-search t)
+                   (buff (replace-regexp-in-string "^/scp:" "scp:" (expand-file-name default-directory)))
                    (shells (mapcar (lambda (z)
-                                     (let ((n (buffer-name z)))
+                                     (let ((n (with-current-buffer z
+                                                (replace-regexp-in-string "^/scp:" "scp:" (expand-file-name default-directory)))))
                                        (cons (longest-prefix buff n) z)))
                                    (get-all-shell-buffers))))
               (message (buffer-name (cdar shells)))
