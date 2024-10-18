@@ -103,7 +103,6 @@
 (autoload 'turn-off-folding-mode "folding" "Folding mode" t)
 (autoload 'turn-on-folding-mode  "folding" "Folding mode" t)
 (autoload 'hs-toggle-hiding "hideshow" "Hideshow mode" t)
-(autoload 'grow-buffer-mode "grow-buffer" "grow-buffer mode" t)
 
 
 (require 'uniquify)
