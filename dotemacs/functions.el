@@ -250,23 +250,20 @@ common-buffer) and go there."
 (defvar shell-last-shell nil)
 
 (defun shell-current-directory ()
-
   "Create a shell pertaining to the current directory."
-
   (interactive)
   (let ((shell-buffer-name (directory-shell-buffer-name)))
     (setq shell-last-shell shell-buffer-name)
-    (if (get-buffer shell-buffer-name)
-	(do-jump-to-common-buffer shell-buffer-name)
-      (progn (save-window-excursion
-               (if (file-remote-p default-directory)
-                   (let ((explicit-shell-file-name "/bin/bash")) (shell))
-                 (shell))
-               (rename-buffer (directory-shell-buffer-name) t)
-               (set (make-local-variable 'is-common-buffer) t)
-               )
-             (do-jump-to-common-buffer shell-buffer-name)
-             ))))
+    (progn (save-window-excursion
+             (if (file-remote-p default-directory)
+                 (let ((explicit-shell-file-name "/bin/bash")) (shell))
+               (shell))
+             (rename-buffer (directory-shell-buffer-name) t)
+             (set (make-local-variable 'is-common-buffer) t)
+             (setq shell-buffer-name (buffer-name))
+             )
+           (do-jump-to-common-buffer shell-buffer-name)
+           )))
 
 
 (require 'advice)
