@@ -164,6 +164,7 @@
              `(org-code ((,class (:font ,ctanis_code_font :height ,ctanis_code_font_height :foreground ,base1 :background ,base02))))
              `(org-block ((,class (:font ,ctanis_code_font :height ,ctanis_code_font_height :foreground ,base1))))
              `(org-checkbox ((,class (:background ,base03 :foreground ,base0 :weight bold))))
+             `(org-agenda-clocking ((,class (:background "yellow"))))
              `(deft-title-face ((,class (:inherit deft-date-face :weight bold))))
              `(company-tooltip-selection ((,class (:weight bold :background ,base2))))
              ) 

@@ -179,7 +179,7 @@ common-buffers alist"
                                                 (replace-regexp-in-string "^/scp:" "scp:" (expand-file-name default-directory)))))
                                        (cons (longest-prefix buff n) z)))
                                    (get-all-shell-buffers))))
-              (message (buffer-name (cdar shells)))
+              ;(message (buffer-name (cdar shells)))
               (if shells
                   (do-jump-to-common-buffer
                    (cdar (sort shells (lambda (a b) (> (car a) (car b))))))

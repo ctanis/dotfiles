@@ -1,3 +1,4 @@
+# 
 [onedark]
 ForegroundColour=171,178,191
 BackgroundColour=30,33,39
@@ -402,3 +403,115 @@ Cyan=138,190,183
 BoldCyan=90,162,152
 White=197,200,198
 BoldWhite=255,255,255
+
+# https://github.com/Justus0405/mintt
+[frappe]
+ForegroundColour=   198, 208, 245
+CursorColour=       198, 208, 245
+BackgroundColour=   48,   52,  70
+BoldBlack=          181, 191, 226
+Black=              181, 191, 226
+BoldRed=            231, 130, 132
+Red=                231, 130, 132
+BoldGreen=          166, 209, 137
+Green=              166, 209, 137
+BoldYellow=         229, 200, 144
+Yellow=             229, 200, 144
+BoldBlue=           140, 170, 238
+Blue=               140, 170, 238
+BoldMagenta=        202, 158, 230
+Magenta=            202, 158, 230
+BoldCyan=           129, 200, 190
+Cyan=               129, 200, 190
+BoldWhite=          35,   38,  52
+White=              35,   38,  52
+
+[latte]
+ForegroundColour=   76,   79, 105
+CursorColour=       76,   79, 105
+BackgroundColour=   239, 241, 245
+BoldBlack=          92,   95, 119
+Black=              92,   95, 119
+BoldRed=            210,  15, 57
+Red=                210,  15, 57
+BoldGreen=          64,  160, 43
+Green=              64,  160, 43
+BoldYellow=         223, 142, 29
+Yellow=             223, 142, 29
+BoldBlue=           30,  102, 245
+Blue=               30,  102, 245
+BoldMagenta=        136,  57, 239
+Magenta=            136,  57, 239
+BoldCyan=           23,  146, 153
+Cyan=               23,  146, 153
+BoldWhite=          220, 224, 232
+White=              220, 224, 232
+
+[macchiato]
+ForegroundColour=   202, 211, 245
+CursorColour=       202, 211, 245
+BackgroundColour=   36,   39,  58
+BoldBlack=          184, 192, 224
+Black=              184, 192, 224
+BoldRed=            237, 135, 150
+Red=                237, 135, 150
+BoldGreen=          166, 218, 149
+Green=              166, 218, 149
+BoldYellow=         238, 212, 159
+Yellow=             238, 212, 159
+BoldBlue=           138, 173, 244
+Blue=               138, 173, 244
+BoldMagenta=        198, 160, 246
+Magenta=            198, 160, 246
+BoldCyan=           139, 213, 202
+Cyan=               139, 213, 202
+BoldWhite=          24,   25,  38
+White=              24,   25,  38
+
+[mocha]
+ForegroundColour=   205, 214, 244
+CursorColour=       205, 214, 244
+BackgroundColour=   30,   30,  46
+BoldBlack=          186, 194, 222
+Black=              186, 194, 222
+BoldRed=            243, 139, 168
+Red=                243, 139, 168
+BoldGreen=          166, 227, 161
+Green=              166, 227, 161
+BoldYellow=         249, 226, 175
+Yellow=             249, 226, 175
+BoldBlue=           137, 180, 250
+Blue=               137, 180, 250
+BoldMagenta=        203, 166, 247
+Magenta=            203, 166, 247
+BoldCyan=           148, 226, 213
+Cyan=               148, 226, 213
+BoldWhite=          17,   17,  27
+White=              17,   17,  27
+
+
+[dracula]
+ForegroundColour=248,248,242
+BackgroundColour=40,42,54
+Black=0,0,0
+BoldBlack=104,104,104
+Red=255,85,85
+BoldRed=255,110,103
+Green=80,250,123
+BoldGreen=90,247,142
+Yellow=241,250,140
+BoldYellow=244,249,157
+Blue=202,169,250
+BoldBlue=202,169,250
+Magenta=255,121,198
+BoldMagenta=255,146,208
+Cyan=139,233,253
+BoldCyan=154,237,254
+White=191,191,191
+BoldWhite=230,230,230
+
+
+[lightme]
+CursorColour=200,255,255
+BackgroundColour=250,250,202
+ForegroundColour=0,0,0
