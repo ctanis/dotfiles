@@ -69,6 +69,9 @@ alias ls='ls $LS_OPTIONS'
 # Default to screen reconnect if possible
 alias screen='screen -R'
 
+# a variation on tail using less
+alias ltail='less --follow-name  -Pw -S +F'
+
 # extended glob features and programmable tab completion
 shopt -s extglob progcomp
 
