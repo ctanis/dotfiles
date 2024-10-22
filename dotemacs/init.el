@@ -219,19 +219,6 @@
 (setq electric-pair-skip-whitespace-chars '(9 32))
 ;(setq electric-pair-skip-self t)
 
-(defun apair-try-expand-list (old)
-  (let ((rval (try-expand-list old)))
-    (if (and rval electric-pair-mode)
-        (backward-delete-char 1))
-    rval))
-
-(defun apair-try-expand-list-all-buffers (old)
-  (let ((rval (try-expand-list-all-buffers old)))
-    (if (and rval electric-pair-mode)
-        (backward-delete-char 1))
-    rval))
-
-
 
 
 ;; tramp

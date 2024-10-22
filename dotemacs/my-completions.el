@@ -65,16 +65,32 @@
 
 
 
+(defun my-try-expand-line (old)
+  (if (not (eolp)) nil
+    (try-expand-line old)))
+(defun my-try-expand-line-all-buffers (old)
+  (if (not (eolp)) nil
+    (try-expand-line-all-buffers old)))
+(defun my-try-expand-list (old)
+  (let ((rval (try-expand-list old)))
+    (if (and rval electric-pair-mode)
+        (backward-delete-char 1))
+    rval))
+(defun my-try-expand-list-all-buffers (old)
+  (let ((rval (try-expand-list-all-buffers old)))
+    (if (and rval electric-pair-mode)
+        (backward-delete-char 1))
+    rval))
+
 ;; hippie
 (setq hippie-expand-try-functions-list
       '(
-       
-        try-expand-line
-        apair-try-expand-list
+        my-try-expand-line
+        my-try-expand-list
         try-expand-dabbrev
 
-        try-expand-line-all-buffers
-        apair-try-expand-list-all-buffers
+        my-try-expand-line-all-buffers
+        my-try-expand-list-all-buffers
         try-expand-dabbrev-from-kill
         try-expand-dabbrev-all-buffers
 
