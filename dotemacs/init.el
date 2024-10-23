@@ -277,7 +277,17 @@
     (advice-remove 'jump-to-register "really-tail"))
   
   (enable-really-tail)
-  (defalias 'tail-file 'itail))
+  (defalias 'tail-file 'itail)
+
+  (defun itail-disable-qoe ()
+    (let ((proc (get-buffer-process (current-buffer))))
+      (when proc
+        (set-process-query-on-exit-flag proc nil))))
+  
+
+  (add-hook 'itail-mode-hook 'itail-disable-qoe)
+
+  )
 
 (when (require-verbose 'immortal-scratch)
   (immortal-scratch-mode))

@@ -57,6 +57,8 @@
 (define-key craig-prefix-map "c" 'copy-buffer-file-name)
 (define-key craig-prefix-map "r" 'auto-revert-mode)
 
+(global-set-key "\C-x-" 'shrink-window-to-selection)
+
 (global-set-key "\M-j" 'backward-jump-to-char)
 (global-set-key "\M-,"  'ispell-word)
 

@@ -33,7 +33,7 @@
 
 (defun kill-current-buffer (prefix)
   (interactive "P")
-  (if (and (buffer-modified-p) (not prefix))
+  (if (and buffer-file-name (buffer-modified-p) (not prefix))
       (error "Can't kill current buffer, buffer modified.")
     (kill-buffer (current-buffer))))
 
@@ -734,3 +734,24 @@ agnostic agenda-file management"
   "Set the Xterm window title to TITLE."
   (interactive "sTitle: ")
   (send-string-to-terminal (concat "\033]0;" title "\007")))
+
+;; shrink current window and jump to other other
+(defun shrink-window-to-selection ()
+  (interactive)
+  (if (= (length (window-list)) 1)
+      (progn (split-window-below) (redisplay)))
+  (if (use-region-p)
+      (let ((start (region-beginning))
+            (end (region-end)))
+        (narrow-to-region start end)
+        (redisplay)
+        (call-interactively 'shrink-window-if-larger-than-buffer)
+        (let ((ws (window-start))
+              (point (point)))
+          (widen)
+          (redisplay)
+          (set-window-start (selected-window) ws)
+          (goto-char point))
+        (deactivate-mark)
+        (call-interactively 'other-window))
+    (call-interactively 'shrink-window-if-larger-than-buffer)))
