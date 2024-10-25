@@ -305,3 +305,42 @@ Otherwise, no determination is made."
                         ;(c-hanging-semi&comma-criteria . nil)
 			))
 (setq c-default-style "ctanis")
+
+;; vc-diff fix
+(eval-after-load 'vc
+  ;; this uses <current source> rather than nil for the rev2 default so that ido can handle the default better
+  (defun vc-diff-build-argument-list-internal (&optional fileset)
+    "Build argument list for calling internal diff functions."
+    (let* ((vc-fileset (or fileset (vc-deduce-fileset t))) ;FIXME: why t?  --Stef
+           (files (cadr vc-fileset))
+           (backend (car vc-fileset))
+           (first (car files))
+           (rev1-default nil)
+           ) ;; (rev2-default nil)
+      (cond
+       ;; someday we may be able to do revision completion on non-singleton
+       ;; filesets, but not yet.
+       ((/= (length files) 1)
+        nil)
+       ;; if it's a directory, don't supply any revision default
+       ((file-directory-p first)
+        nil)
+       ;; if the file is not up-to-date, use working revision as older revision
+       ((not (vc-up-to-date-p first))
+        (setq rev1-default (vc-working-revision first)))
+       ;; if the file is not locked, use last revision and current source as defaults
+       (t
+        (setq rev1-default (ignore-errors ;If `previous-revision' doesn't work.
+                             (vc-call-backend backend 'previous-revision first
+                                              (vc-working-revision first))))
+        (when (string= rev1-default "") (setq rev1-default nil))))
+      ;; construct argument list
+      (let* ((rev1-prompt (format-prompt "Older revision" rev1-default))
+             (rev2-prompt (format-prompt "Newer revision"
+                                         ;; (or rev2-default
+                                         "current source"))
+             (rev1 (vc-read-revision rev1-prompt files backend rev1-default))
+             (rev2 (vc-read-revision rev2-prompt files backend "<current source>"))) ;; rev2-default
+        (when (string= rev1 "") (setq rev1 nil))
+        (when (or (string= rev2 "") (string= rev2 "<current source>")) (setq rev2 nil))
+        (list files rev1 rev2)))))

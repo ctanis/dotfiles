@@ -111,11 +111,6 @@
 
 (add-hook 'shell-mode-hook 
 	  #'(lambda ()
-					; allow the killing of this buffer without prompting
-	      ;;(process-kill-without-query (get-buffer-process (current-buffer)))
-              (set-process-query-on-exit-flag (get-buffer-process (current-buffer))
-                                              nil)
-	      (local-set-key (kbd "C-c SPC") 'ace-jump-mode)
               (toggle-truncate-lines 0)))
 
 (add-hook 'shell-mode-hook
