@@ -307,7 +307,7 @@ Otherwise, no determination is made."
 (setq c-default-style "ctanis")
 
 ;; vc-diff fix
-(eval-after-load 'vc
+(with-eval-after-load 'vc
   ;; this uses <current source> rather than nil for the rev2 default so that ido can handle the default better
   (defun vc-diff-build-argument-list-internal (&optional fileset)
     "Build argument list for calling internal diff functions."
