@@ -342,6 +342,7 @@
 (define-key 'search-dispatch "b" 'ddg-search)
 (define-key 'search-dispatch "e" 'ediff-buffers)
 (define-key 'search-dispatch "t" 'tail-dispatch)
+(define-key 'search-dispatch "p" 'vc-ediff)
 
 
 (when (require-verbose 'ace-jump-mode)
