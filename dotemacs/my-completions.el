@@ -136,4 +136,4 @@
           (company--insert-candidate sel (or prefix company-prefix))))
     (company--complete-nth company-selection)))
 
-(define-key company-active-map "\C-e" 'my-company-continue) 
+;(define-key company-active-map "\C-e" 'my-company-continue) 

@@ -221,7 +221,7 @@ most localized thing"
 ;; listings config for when (setq org-latex-listings t)
 ;; see also (setq org-latex-caption-above '(table))
 ;; see also #+LATEX_HEADER:\usepackage[labelformat=empty]{caption}
-(setq org-latex-listings t)
+(setq org-latex-listings 'listings)
 (setq org-latex-prefer-user-labels t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (setq org-latex-listings-options
@@ -230,9 +230,9 @@ most localized thing"
         ("basicstyle" "\\ttfamily")
         ("showspaces" "false")
         ("showstringspaces" "false")
-        ("aboveskip" ".5in")
-        ("belowskip" ".5in")
-        ("belowcaptionskip" ".5in")
+        ("aboveskip" ".2in")
+        ("belowskip" ".2in")
+        ("belowcaptionskip" ".2in")
         ))
 
 
