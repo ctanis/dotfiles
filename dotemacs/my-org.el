@@ -227,12 +227,17 @@ most localized thing"
 (setq org-latex-listings-options
       '(("numbers" "none")
         ("frame" "single")
-        ("basicstyle" "\\ttfamily")
+;        ("basicstyle" "\\ttfamily")
+        ("basicstyle" "\\fontfamily{pcr}\\selectfont ")
         ("showspaces" "false")
         ("showstringspaces" "false")
         ("aboveskip" ".2in")
         ("belowskip" ".2in")
         ("belowcaptionskip" ".2in")
+        ("keywordstyle" "")                   ;; Disable keyword coloring
+        ("commentstyle" "")                   ;; Disable comment styling
+        ("stringstyle" "")                    ;; Disable string styling
+        ("identifierstyle" "")                ;; Disable identifiers styling
         ))
 
 
