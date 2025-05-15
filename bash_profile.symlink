@@ -31,7 +31,7 @@ function parse_git_branch {
 }
 
 if [ -z $INSIDE_EMACS ]; then
-    _inline='\[\e[00;34m\]${PROMPT_NOTE}\[\033[0;32m\]`parse_git_branch`\[\e[00;34m\] \W%\[\e[00;00m\] '
+    _inline='\[\e[00;33m\]${PROMPT_NOTE}\[\033[0;32m\]`parse_git_branch`\[\e[00;33m\] \W%\[\e[00;00m\] '
     #    _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}${SCREEN_WINDOW}\h:\w `parse_git_branch`\a\]'
     _title='\[\e[0m\]\[\e]0;${TITLE_NOTE}\h:\w\a\]'
     export PS1="$_title$_inline"

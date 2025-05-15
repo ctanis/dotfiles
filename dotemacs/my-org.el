@@ -238,6 +238,7 @@ most localized thing"
         ("commentstyle" "")                   ;; Disable comment styling
         ("stringstyle" "")                    ;; Disable string styling
         ("identifierstyle" "")                ;; Disable identifiers styling
+        ("literate" "{-}{{-}}1")
         ))
 
 
