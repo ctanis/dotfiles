@@ -316,6 +316,7 @@
 (load-library "my-completions")
 (load-library "my-keys")
 ;(load-library "ui")
+(menu-bar-mode 0)
 
 ;; grep-related
 (defun find-grep-dispatch (prefix)

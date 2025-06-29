@@ -177,7 +177,7 @@ Otherwise, no determination is made."
 (setq c-default-style "ctanis")
 
 (defvar ctanis-dflt-c-compiler "gcc -Wall ")
-(defvar ctanis-dflt-cpp-compiler "g++ -Wall ")
+(defvar ctanis-dflt-cpp-compiler "g++ -std=c++20 -Wall ")
 
 
 (defun ctanis-choose-compiler (mode)

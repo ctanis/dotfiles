@@ -176,3 +176,23 @@
 (eval-after-load 'dired
     '(define-key dired-mode-map "\M-y" 'dired-quick-look))
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . nil))
+
+;; org sort hack Sat Jun 28 18:44:40 2025
+;; collate not working on laptop
+(defun ctanis/collation-simplify (s)
+  "Return a simplified version of string S for naive collation.
+Handles ligatures, strips diacritics, and downcases."
+  (let* ((s (replace-regexp-in-string "[Ææ]" "ae" s))
+         (s (replace-regexp-in-string "[Œœ]" "oe" s))
+         (s (ucs-normalize-NFD-string s)) ; Canonical decomposition
+         (s (replace-regexp-in-string "[\u0300-\u036F]" "" s))) ; Strip diacritics
+    (downcase s)))
+
+(defun ctanis/string-lessp-ignore-locale (s1 s2 _locale ignore-case)
+  "Case-insensitive (if IGNORE-CASE) comparison ignoring locale.
+S1 and S2 are the strings to compare.
+_LOCALE is ignored completely."
+  (if ignore-case
+      (string-lessp (ctanis/collation-simplify s1) (ctanis/collation-simplify s2))
+    (string-lessp s1 s2)))
+(setq org-sort-function #'ctanis/string-lessp-ignore-locale)
