@@ -196,3 +196,14 @@ _LOCALE is ignored completely."
       (string-lessp (ctanis/collation-simplify s1) (ctanis/collation-simplify s2))
     (string-lessp s1 s2)))
 (setq org-sort-function #'ctanis/string-lessp-ignore-locale)
+
+(defun macos-unfreeze()
+  (interactive)
+  (let ((params (frame-parameters)))
+    (modify-frame-parameters nil '((parent-id . nil))) ;; avoid terminal parent reference
+    (let ((new-frame (make-frame params)))
+      (select-frame-set-input-focus new-frame)
+      (sit-for 0.1)
+      (redraw-frame new-frame)
+      (delete-frame (selected-frame)))))
+(define-key craig-prefix-map (kbd "C-<escape>") #'macos-unfreeze)

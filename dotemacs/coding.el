@@ -344,3 +344,11 @@ Otherwise, no determination is made."
         (when (string= rev1 "") (setq rev1 nil))
         (when (or (string= rev2 "") (string= rev2 "<current source>")) (setq rev2 nil))
         (list files rev1 rev2)))))
+
+
+;; tag management
+(defun etag-xref ()
+  (interactive)
+  (let ((xref-backend-functions '(etags--xref-backend)))
+    (call-interactively #'xref-find-definitions)))
+(define-key craig-prefix-map "." 'etag-xref)
