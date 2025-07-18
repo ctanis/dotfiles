@@ -20,7 +20,7 @@
   (let* ((start (point))
          (block (condition-case nil
                     (progn
-                      (fortran-beginning-of-block)
+                      (f90-beginning-of-block)
                       (point))
                   (error nil)))
          (liststart
