@@ -8,7 +8,7 @@
 ;; yasnippet
 (setq yas-prompt-functions (list 'yas-ido-prompt))
 (setq yas-verbosity 1)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/stock-snippets"))
+;; (setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/.emacs.d/stock-snippets"))
 (setq yas-expand-only-for-last-commands '(self-insert-command org-self-insert-command))
 
 (load-library "yasnippet")
