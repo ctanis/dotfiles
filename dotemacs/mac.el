@@ -173,6 +173,7 @@
       (dired-do-shell-command "qlmanage -p" nil (dired-get-marked-files))
       )))
 
+(setq dired-use-ls-dired nil)
 (eval-after-load 'dired
     '(define-key dired-mode-map "\M-y" 'dired-quick-look))
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . nil))

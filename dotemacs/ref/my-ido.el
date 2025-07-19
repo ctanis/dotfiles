@@ -145,3 +145,72 @@
 
 
 (ido-mode 1)
+
+;; function.el
+(defun better-display-buffer(arg)
+  "a better display buffer"
+  (interactive (list (ido-read-buffer "Buffer: ")))
+  (let ((b (current-buffer)))
+    (switch-to-buffer-other-window arg)
+    (switch-to-buffer-other-window b)))
+
+;; hooks
+(add-hook 'ibuffer-mode-hook
+	  #'(lambda ()
+	      (local-set-key "\C-x\C-f" 'ido-find-file)))
+
+
+(add-hook 'ido-minibuffer-setup-hook
+	  #'(lambda()
+	      (define-key ido-file-completion-map "\C-t" 'transpose-chars)
+	      (define-key ido-buffer-completion-map "\C-t" 'transpose-chars)
+	      (define-key ido-file-dir-completion-map "\C-t" 'transpose-chars)
+
+	      (define-key ido-file-completion-map "\M-t" 'ido-toggle-regexp)
+	      (define-key ido-buffer-completion-map "\M-t" 'ido-toggle-regexp)
+	      (define-key ido-file-dir-completion-map "\M-t" 'ido-toggle-regexp)
+
+
+	      (define-key ido-file-completion-map "\M-b" 'backward-word)
+	      (define-key ido-buffer-completion-map "\M-b" 'backward-word)
+	      (define-key ido-file-dir-completion-map "\M-b" 'backward-word)
+	      (define-key ido-file-completion-map "\M-f" 'forward-word)
+	      (define-key ido-buffer-completion-map "\M-f" 'forward-word)
+	      (define-key ido-file-dir-completion-map "\M-f" 'forward-word)
+
+	      (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
+	      (local-unset-key "\M-r")
+              ))
+
+(eval-after-load "hideshow"
+  #'(progn
+      (defadvice idomenu (after expand-after-goto-line
+			        activate compile)
+        "hideshow-expand affected subroutine when using idomenu"
+        (if hs-block-start-regexp
+	    (save-excursion
+	      (search-forward-regexp hs-block-start-regexp)
+	      (hs-show-block))))
+
+      (defadvice imenu-anywhere (after expand-after-goto-line
+				       activate compile)
+        "hideshow-expand affected subroutine when using idomenu"
+        (if hs-block-start-regexp
+	    (save-excursion
+	      (search-forward-regexp hs-block-start-regexp)
+	      (hs-show-block))))
+      ))
+
+
+
+;; my-completions
+(setq yas-prompt-functions (list 'yas-ido-prompt))
+
+
+;; dired.el
+(put 'dired-do-copy-other-window 'ido 'ignore)
+(put 'dired-do-rename-other-window 'ido 'ignore)
+(put 'dired-do-symlink-other-window 'ido 'ignore)
+(put 'dired-do-symlink 'ido 'ignore)
+(put 'dired-create-directory 'ido 'ignore)
+

@@ -1,10 +1,4 @@
 ;; BUFFER MANAGEMENT
-(defun better-display-buffer(arg)
-  "a better display buffer"
-  (interactive (list (ido-read-buffer "Buffer: ")))
-  (let ((b (current-buffer)))
-    (switch-to-buffer-other-window arg)
-    (switch-to-buffer-other-window b)))
 
 
 (defun find-and-display-file (FILENAME)
@@ -496,8 +490,9 @@ multiple times in a row"
     (ignore-errors
       (mkdir dir))
     (ignore-errors
-      (ido-record-work-file file)
-      (ido-record-work-directory dir))
+      ;; (ido-record-work-file file)
+      ;; (ido-record-work-directory dir)
+      )
     (find-file file)))
 
 

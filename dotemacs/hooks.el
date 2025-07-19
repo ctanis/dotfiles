@@ -250,8 +250,7 @@
 (add-hook 'ibuffer-mode-hook
 	  #'(lambda ()
 	      (ibuffer-auto-mode 1)
-	      (local-set-key "\C-x\C-f" 'ido-find-file)
-					;	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
+;	     (add-to-list 'ibuffer-never-show-predicates "^\\*")
 	      (local-unset-key "\M-o")))
 
 
@@ -320,27 +319,7 @@
 
 
 
-(add-hook 'ido-minibuffer-setup-hook
-	  #'(lambda()
-	      (define-key ido-file-completion-map "\C-t" 'transpose-chars)
-	      (define-key ido-buffer-completion-map "\C-t" 'transpose-chars)
-	      (define-key ido-file-dir-completion-map "\C-t" 'transpose-chars)
 
-	      (define-key ido-file-completion-map "\M-t" 'ido-toggle-regexp)
-	      (define-key ido-buffer-completion-map "\M-t" 'ido-toggle-regexp)
-	      (define-key ido-file-dir-completion-map "\M-t" 'ido-toggle-regexp)
-
-
-	      (define-key ido-file-completion-map "\M-b" 'backward-word)
-	      (define-key ido-buffer-completion-map "\M-b" 'backward-word)
-	      (define-key ido-file-dir-completion-map "\M-b" 'backward-word)
-	      (define-key ido-file-completion-map "\M-f" 'forward-word)
-	      (define-key ido-buffer-completion-map "\M-f" 'forward-word)
-	      (define-key ido-file-dir-completion-map "\M-f" 'forward-word)
-
-	      (define-key ido-buffer-completion-map "\M-s" 'ido-enter-find-file)
-	      (local-unset-key "\M-r")
-              ))
 
 
 (add-hook 'erlang-shell-mode-hook
@@ -391,23 +370,6 @@
         "hideshow-expand affected block when using goto-line in a collapsed buffer"
         (save-excursion
 	  (hs-show-block)))
-
-
-      (defadvice idomenu (after expand-after-goto-line
-			        activate compile)
-        "hideshow-expand affected subroutine when using idomenu"
-        (if hs-block-start-regexp
-	    (save-excursion
-	      (search-forward-regexp hs-block-start-regexp)
-	      (hs-show-block))))
-     
-      (defadvice imenu-anywhere (after expand-after-goto-line
-				       activate compile)
-        "hideshow-expand affected subroutine when using idomenu"
-        (if hs-block-start-regexp
-	    (save-excursion
-	      (search-forward-regexp hs-block-start-regexp)
-	      (hs-show-block))))
       ))
 
 
