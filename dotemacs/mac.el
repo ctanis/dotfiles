@@ -207,3 +207,7 @@ _LOCALE is ignored completely."
       (redraw-frame new-frame)
       (delete-frame (selected-frame)))))
 (define-key craig-prefix-map (kbd "C-<escape>") #'macos-unfreeze)
+
+;; seems to be needed on mac for things like `M-x man'
+(setenv "LANG" "C")
+(setenv "LC_ALL" "C")
