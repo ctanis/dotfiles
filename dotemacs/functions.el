@@ -92,6 +92,12 @@ more than 2 windows are currently displayed."
   (interactive)
   (better-display-buffer (other-buffer)))
 
+(defun better-display-buffer(arg)
+  "a better display buffer"
+  (interactive (list (read-buffer "Buffer: ")))
+  (let ((b (current-buffer)))
+    (switch-to-buffer-other-window arg)
+    (switch-to-buffer-other-window b)))
 
 ;--------------------------------------------------
 ; This is for jumping easily to commonly used buffers.

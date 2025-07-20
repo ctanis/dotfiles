@@ -22,5 +22,14 @@
 (recentf-mode 1)
 (savehist-mode 1)
 
-(setq embark-prompter 'embark-completing-read-prompter)
-(setq embark-indicators '(embark--vertico-indicator embark-minimal-indicator embark-highlight-indicator embark-isearch-highlight-indicator))
+(setq embark-prompter 'embark-keymap-prompter)
+(setq embark-indicators
+      '(embark--vertico-indicator
+        embark-minimal-indicator
+        embark-highlight-indicator
+        embark-isearch-highlight-indicator))
+
+;; to get it to stop completing
+(define-key vertico-map (kbd "C-j") #'vertico-exit-input)
+(define-key embark-become-file+buffer-map (kbd "r")
+            #'consult-recent-file)

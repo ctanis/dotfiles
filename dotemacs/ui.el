@@ -159,7 +159,7 @@
              `(comint-highlight-prompt ((,class (:foreground ,base2 :weight bold))))
              `(dired-flagged ((,class (:background ,red :foreground "black"))))
              `(dired-marked ((,class (:background ,blue :foreground "black"))))
-             `(show-paren-match ((,class (:foreground ,base3 :background ,base02))))
+             `(show-paren-match ((,class (:foreground "green" :background ,base02))))
              `(cursor ((,class (:foreground ,base0 :background ,base2))))
              `(org-code ((,class (:font ,ctanis_code_font :height ,ctanis_code_font_height :foreground ,base1 :background ,base02))))
              `(org-block ((,class (:font ,ctanis_code_font :height ,ctanis_code_font_height :foreground ,base1))))
@@ -167,6 +167,7 @@
              `(org-agenda-clocking ((,class (:background "yellow"))))
              `(deft-title-face ((,class (:inherit deft-date-face :weight bold))))
              `(company-tooltip-selection ((,class (:weight bold :background ,base2))))
+             `(region ((,class (:background ,base1 :foreground "black"))))
              ) 
             ))
 

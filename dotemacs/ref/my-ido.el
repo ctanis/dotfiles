@@ -147,12 +147,12 @@
 (ido-mode 1)
 
 ;; function.el
-(defun better-display-buffer(arg)
-  "a better display buffer"
-  (interactive (list (ido-read-buffer "Buffer: ")))
-  (let ((b (current-buffer)))
-    (switch-to-buffer-other-window arg)
-    (switch-to-buffer-other-window b)))
+;; (defun better-display-buffer(arg)
+;;   "a better display buffer"
+;;   (interactive (list (ido-read-buffer "Buffer: ")))
+;;   (let ((b (current-buffer)))
+;;     (switch-to-buffer-other-window arg)
+;;     (switch-to-buffer-other-window b)))
 
 ;; hooks
 (add-hook 'ibuffer-mode-hook
