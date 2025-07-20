@@ -16,6 +16,9 @@
 (when (require-verbose 'embark-consult)
   (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode)
   )
+(when (require-verbose 'consult-dir)
+  (define-key embark-become-file+buffer-map "d" #'consult-dir)
+  )
 (when (require-verbose 'marginalia)
   (marginalia-mode))
 
