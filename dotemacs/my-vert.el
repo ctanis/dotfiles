@@ -8,7 +8,9 @@
 (when (require-verbose 'orderless)
   (setq completion-styles '(orderless)
         completion-category-defaults nil
-        completion-category-overrides '((file (styles . (partial-completion))))))
+        completion-category-overrides '((file (styles . (partial-completion)))))
+  (setq orderless-matching-styles '(orderless-flex))
+  )
 (when (require-verbose 'embark)
   (load-library "embark")
   (global-set-key (kbd "C-.") #'embark-act)
