@@ -43,7 +43,7 @@
        (let* ((ded-buf (completing-read 
 			(concat
 			 "Kill (" (buffer-name) "):")
-			lst nil t nil))
+			lst nil t (buffer-name)))
 	      (real-ded (if (equal "" ded-buf)
 			    (buffer-name)
 			  ded-buf)))
