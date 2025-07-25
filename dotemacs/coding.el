@@ -348,7 +348,9 @@ Otherwise, no determination is made."
 
 ;; tag management
 (defun etag-xref ()
+  "Always show the list of xref definitions, even if only one match."
   (interactive)
-  (let ((xref-backend-functions '(etags--xref-backend)))
+  (cl-letf (((symbol-function #'xref--show-xrefs)
+             (lambda (xrefs _alist) (xref--show-xrefs xrefs nil))))
     (call-interactively #'xref-find-definitions)))
 (define-key craig-prefix-map "." 'etag-xref)
