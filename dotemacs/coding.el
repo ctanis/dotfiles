@@ -353,4 +353,5 @@ Otherwise, no determination is made."
   (cl-letf (((symbol-function #'xref--show-xrefs)
              (lambda (xrefs _alist) (xref--show-xrefs xrefs nil))))
     (call-interactively #'xref-find-definitions)))
+(setq xref-show-definitions-function #'xref-show-definitions-completing-read)
 (define-key craig-prefix-map "." 'etag-xref)
