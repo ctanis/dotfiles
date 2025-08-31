@@ -178,6 +178,8 @@ Otherwise, no determination is made."
 
 (defvar ctanis-dflt-c-compiler "gcc -Wall ")
 (defvar ctanis-dflt-cpp-compiler "g++ -std=c++20 -Wall ")
+(with-eval-after-load 'flycheck
+  (setq-default flycheck-clang-language-standard "c++20"))
 
 
 (defun ctanis-choose-compiler (mode)
