@@ -38,7 +38,7 @@
 (define-key vertico-map (kbd "C-j") #'vertico-exit-input)
 (define-key embark-become-file+buffer-map (kbd "r")
             #'consult-recent-file)
-
+(global-set-key "\C-x\C-r" 'consult-recent-file)
 ;; i want "become" to be "b" not "B"
 (mapcar (lambda (p) (let ((sym (cadr p)))
                       (if (and (boundp sym) (keymapp (symbol-value sym)))
