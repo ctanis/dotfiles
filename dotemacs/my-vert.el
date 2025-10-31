@@ -53,3 +53,7 @@
 (define-key embark-file-map "r" #'crt/bounce-to-recent)
 (define-key embark-file-map "R" #'rename-file)
 (define-key embark-file-map "g" #'magit-status)
+
+
+; don't close the minibuffer after executing an action
+(setq embark-quit-after-action nil)
