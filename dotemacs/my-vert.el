@@ -55,5 +55,6 @@
 (define-key embark-file-map "g" #'magit-status)
 
 
-; don't close the minibuffer after executing an action
-(setq embark-quit-after-action nil)
+; don't close the minibuffer after executing an action (unless it's
+; consult-recent-file...)
+(setq embark-quit-after-action '((consult-recent-file . t) nil))
