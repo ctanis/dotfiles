@@ -373,3 +373,6 @@
   (bash-completion-setup))
 
 
+(when (require-verbose 'gptel)
+  (setq gptel-default-mode 'org-mode)
+  (add-hook 'gptel-post-response-functions 'fill-region))
