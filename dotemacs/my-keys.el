@@ -73,6 +73,7 @@
 
 (define-key ctl-x-map ";" 'comment-region)
 
+
 ;for jumping around in a file quicker
 (global-set-key "\M-p" 'scroll-down-slow)
 (global-set-key "\M-n" 'scroll-up-slow)

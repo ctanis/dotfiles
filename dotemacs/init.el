@@ -345,6 +345,11 @@
 (define-key 'search-dispatch "t" 'tail-dispatch)
 (define-key 'search-dispatch "p" 'vc-ediff)
 
+(when (require-verbose 'pixel-scroll)
+  (defalias 'scroll-down-slow 'pixel-scroll-down)
+  (defalias 'scroll-up-slow 'pixel-scroll-up)
+  )
+
 
 (when (require-verbose 'ace-jump-mode)
   ;;(define-key craig-prefix-map "j" 'ace-jump-mode)

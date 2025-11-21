@@ -347,14 +347,14 @@ multiple times in a row"
 
 ;--- scrolling made slower
 
-(defalias 'scroll-down-slow 'scroll-down)
-(defalias 'scroll-up-slow 'scroll-up)
+;; (defalias 'scroll-down-slow 'scroll-down)
+;; (defalias 'scroll-up-slow 'scroll-up)
 
-(defadvice scroll-down-slow (before slowly activate)
-  (interactive "p"))
+;; (defadvice scroll-down-slow (before slowly activate)
+;;   (interactive "p"))
 
-(defadvice scroll-up-slow (before slowly activate)
-  (interactive "p"))
+;; (defadvice scroll-up-slow (before slowly activate)
+;;   (interactive "p"))
 
 
 ;; MISC
