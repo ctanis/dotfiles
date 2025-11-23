@@ -13,5 +13,5 @@ bind C-] send-prefix
 
 set -g status off
 set -g set-titles on
-set -g set-titles-string '(#I:#W)#T'
+set -g set-titles-string '(#I:#W) #T'
 set -g allow-rename on
