@@ -1,9 +1,9 @@
 set -g default-terminal "xterm-256color"
 # 
 set -g xterm-keys on
-set -s extended-keys always
-#set -g extended-keys-format csi-u
-set -as terminal-features 'xterm*:extkeys'
+set -s extended-keys off
+# set -s extended-keys-format xterm
+#set -as terminal-features 'xterm*:extkeys'
 
 
 unbind C-b
