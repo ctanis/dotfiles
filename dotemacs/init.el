@@ -379,5 +379,22 @@
 
 
 (when (require-verbose 'gptel)
+  (defun gptel-ask()
+    (interactive) (gptel-send t))
+
+  (defun gptel-default()
+    (interactive)
+    (switch-to-buffer-other-window (gptel (format "*%s*"
+                                     (gptel-backend-name
+                                      (default-value 'gptel-backend)))))
+    )
+
   (setq gptel-default-mode 'org-mode)
-  (add-hook 'gptel-post-response-functions 'fill-region))
+  (add-hook 'gptel-post-response-functions 'fill-region)
+  (define-prefix-command 'control-gptel 'control-gptel-map)
+  (define-key 'control-gptel "`" 'gptel-default)
+  (define-key 'control-gptel "r" 'gptel-rewrite)
+  (define-key 'control-gptel "a" 'gptel-context-add)
+  (define-key 'control-gptel "s" 'gptel-ask)
+  (define-key craig-prefix-map "`" 'control-gptel)
+  )
