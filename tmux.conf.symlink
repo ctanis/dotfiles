@@ -4,6 +4,7 @@ set -g xterm-keys on
 set -s extended-keys off
 # set -s extended-keys-format xterm
 #set -as terminal-features 'xterm*:extkeys'
+set -g allow-passthrough on
 
 
 unbind C-b
