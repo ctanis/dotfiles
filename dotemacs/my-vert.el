@@ -13,8 +13,7 @@
   )
 (when (require-verbose 'embark)
   (load-library "embark")
-  (global-set-key (kbd "C-.") #'embark-act)
-  (global-set-key (kbd "C-c .") #'embark-act) ;; for bad terminals
+  (global-set-key (kbd "C-\\") #'embark-act)
   )
 (when (require-verbose 'embark-consult)
   (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode)
