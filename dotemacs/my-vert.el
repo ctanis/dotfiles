@@ -59,3 +59,12 @@
                                  (consult-dir . t)
                                  (consult-buffer .t)
                                  nil))
+;; change certain behaviors
+(vertico-multiform-mode 1)
+(setq vertico-multiform-commands
+      '((rename-file     (vertico-preselect . prompt))
+        (dired-do-rename (vertico-preselect . prompt))
+        (copy-file     (vertico-preselect . prompt))
+        (dired-do-copy (vertico-preselect . prompt))
+        ))
+
