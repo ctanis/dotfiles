@@ -356,7 +356,7 @@
   (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
   (define-key global-map (kbd "M-J") 'ace-jump-mode)
   ;;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
-  (setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
+  (setq ace-jump-mode-move-keys (cl-loop for i from ?a to ?z collect i))
   (set-face-foreground 'ace-jump-face-foreground "black")
   (set-face-background 'ace-jump-face-foreground "wheat")
   (setq ace-jump-mode-submode-list
