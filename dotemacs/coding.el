@@ -357,3 +357,14 @@ Otherwise, no determination is made."
     (call-interactively #'xref-find-definitions)))
 (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
 (define-key craig-prefix-map "." 'etag-xref)
+
+;; compilation coloring
+(require 'ansi-color)
+(add-hook 'compilation-filter-hook
+          (lambda ()
+            (let ((inhibit-read-only t))
+              (ansi-color-apply-on-region compilation-filter-start (point)))))
+
+
+;; skip warnings
+(setq compilation-skip-threshold 2)
