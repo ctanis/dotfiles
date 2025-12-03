@@ -384,15 +384,29 @@
 
   (defun gptel-default()
     (interactive)
-    (switch-to-buffer-other-window (gptel (format "*%s*"
-                                                  (gptel-backend-name
-                                                   (default-value 'gptel-backend)))))
+    (do-jump-to-common-buffer (gptel (format "*%s*"
+                                             (gptel-backend-name
+                                              (default-value 'gptel-backend)))))
     )
 
   (setq gptel-default-mode 'org-mode)
+  
+  (defun ctanis/gptel-hook ()
+    (gptel-highlight-mode 1)
+    (setq-local org-archive-default-command #'org-archive-subtree))
 
-; does not work with source generation very well!
-;(add-hook 'gptel-post-response-functions 'fill-region)
+  (add-hook 'gptel-mode-hook #'ctanis/gptel-hook)
+
+  (setq ctanis-gptel-default-prompt
+          "You are a large language model living in Emacs and a helpful assistant.
+Respond concisely. Very important: generate org-mode syntax, NOT MARKDOWN.
+source code should appear in src blocks.  long paragraphs should be wrapped at
+around 75 characters")
+ 
+  (setq gptel--system-message ctanis-gptel-default-prompt)
+  (setcdr (assq 'default gptel-directives) 'ctanis-gptel-default-prompt)
+
+
 
   (define-prefix-command 'control-gptel 'control-gptel-map)
   (define-key 'control-gptel "`" 'gptel-default)
