@@ -368,3 +368,16 @@ Otherwise, no determination is made."
 
 ;; skip warnings
 (setq compilation-skip-threshold 2)
+
+;; treesit (emacs 30.2/ABI 14/Dec 3 2025)
+(setq treesit-language-source-alist '((cpp "https://github.com/tree-sitter/tree-sitter-cpp" "v0.23.4")
+                                      (c "https://github.com/tree-sitter/tree-sitter-c" "v0.23.4")
+                                      (python "https://github.com/tree-sitter/tree-sitter-python" "v0.23.6")
+                                      (bash "https://github.com/tree-sitter/tree-sitter-bash" "v0.23.3")
+                                      (json "https://github.com/tree-sitter/tree-sitter-json" "v0.24.8") ))
+(when (treesit-available-p)
+  (when (treesit-language-available-p 'cpp)    (add-to-list 'major-mode-remap-alist '(c++-mode   . c++-ts-mode)))
+  (when (treesit-language-available-p 'c)      (add-to-list 'major-mode-remap-alist '(c-mode     . c-ts-mode)))
+  (when (treesit-language-available-p 'python) (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
+  (when (treesit-language-available-p 'bash)   (add-to-list 'major-mode-remap-alist '(sh-mode    . bash-ts-mode)))
+  (when (treesit-language-available-p 'json)   (add-to-list 'major-mode-remap-alist '(json-mode  . json-ts-mode))))
