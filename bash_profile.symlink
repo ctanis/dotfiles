@@ -111,27 +111,30 @@ function expand_alias()
 }
 
 
-
+# update all repos listed in ~/.active_repos
+# if it starts with @ that means fetch only
 function update_repos ()
 {
     for i in `cat ~/.active_repos`; do
-	d=`eval echo $i;`
-	if [ -d $d ]; then 
-	    echo $d;
-	    sh -c "cd $d && git fetch";
-	else
-	    echo "** $d not found **";
-	fi;
+        if [ "${i#@}" != "$i" ]; then
+            action="fetch"
+            d=`eval echo ${i#@}`
+        else
+            action="pull"
+            d=`eval echo $i`
+        fi
 
+        if [ -d "$d" ]; then 
+            echo "$d";
+            sh -c "cd \"$d\" && git $action";
+        else
+            echo "* $d not found *";
+        fi;
     done;
 
     pushd ~/.dotfiles && git pull
     popd
-    ## too many bad compilations
-    ## `emacs -batch --eval '(byte-recompile-directory "~/.dotfiles/dotemacs")'`
 }
-
-
 
 function check_repos ()
 {
