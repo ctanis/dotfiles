@@ -25,6 +25,7 @@
   (marginalia-mode))
 
 (recentf-mode 1)
+(setq recentf-max-saved-items 1000)
 (savehist-mode 1)
 
 (setq embark-prompter 'embark-keymap-prompter)
