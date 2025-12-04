@@ -415,6 +415,26 @@ around 75 characters")
   (define-key 'control-gptel "s" 'gptel-ask)
   (define-key 'control-gptel "t" 'gptel-tools)
   (define-key craig-prefix-map "`" 'control-gptel)
+
+  (load-library "mode-line-note")
+  (mode-line-note-mode)
+  (defvar my-gptel-last-rewrite-buf nil)
+  (advice-add #'gptel-rewrite :before
+              (lambda (&rest _args)
+                (message "saved rewrite-buf")
+                (setq my-gptel-last-rewrite-buf (current-buffer))))
+
+  (add-hook 'gptel-post-request-hook
+            #'(lambda ()
+                (mode-line-note-set "GH:waiting")))
+  (add-hook 'gptel-pre-response-hook
+            #'(lambda () (display-buffer (current-buffer))))
+  (add-hook 'gptel-post-response-functions
+            #'(lambda (start end) (mode-line-note-set nil)))
+  (add-hook 'gptel-post-rewrite-functions
+            #'(lambda (start end)
+                (if my-gptel-last-rewrite-buf (display-buffer my-gptel-last-rewrite-buf))
+                (mode-line-note-set nil)))
   )
 (when (require-verbose 'gptel-magit)
   (gptel-magit-install))
