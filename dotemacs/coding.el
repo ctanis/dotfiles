@@ -187,6 +187,11 @@ Otherwise, no determination is made."
    ((eq mode 'c-mode) ctanis-dflt-c-compiler)
    (t ctanis-dflt-cpp-compiler)))
 
+(add-hook 'prog-mode-hook
+          #'(lambda()
+              (local-set-key "\C-c\C-c" 'compile)
+              ))
+
 (add-hook 'c-mode-common-hook
 	  #'(lambda ()
 	      (local-set-key "\C-c\C-c" 'compile)
