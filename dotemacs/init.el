@@ -438,3 +438,9 @@ around 75 characters")
   )
 (when (require-verbose 'gptel-magit)
   (gptel-magit-install))
+
+;; iterm keybinding trickery for company-capf
+(when (and (getenv "LC_TERMINAL")
+           (string= (getenv "LC_TERMINAL") "iTerm2"))
+  (define-key input-decode-map "\e[1;9" [iterm-C-M-/])
+  (global-set-key [iterm-C-M-/] #'company-capf))
