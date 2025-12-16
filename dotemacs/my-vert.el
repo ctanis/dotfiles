@@ -67,5 +67,7 @@
         (dired-do-rename (vertico-preselect . prompt))
         (copy-file     (vertico-preselect . prompt))
         (dired-do-copy (vertico-preselect . prompt))
+        (dired-do-symlink (vertico-preselect . prompt))
+        (dired-create-directory (vertico-preselect . prompt))
         ))
 
